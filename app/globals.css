@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS — Cuisine Foods
+   Values live here (per BBettr OS SYSTEM/01). Rebrand = edit tokens,
+   never components. Colours are space-separated RGB channels so
+   Tailwind opacity modifiers work: rgb(var(--x) / <alpha-value>).
+   ============================================================ */
+:root {
+  /* Neutrals — warm, premium */
+  --paper: 251 250 247;      /* #FBFAF7 warm off-white page bg */
+  --surface: 255 255 255;    /* #FFFFFF cards */
+  --surface-2: 246 244 239;  /* #F6F4EF subtle alt sections */
+  --ink: 16 22 24;           /* #101618 near-black headings/text */
+  --ink-soft: 74 84 90;      /* #4A545A muted body */
+  --ink-faint: 124 134 140;  /* #7C868C captions */
+  --line: 230 226 217;       /* #E6E2D9 warm hairlines */
+
+  /* Brand — deep forest green (trust · sustainability · UCO) */
+  --brand-50: 237 243 240;
+  --brand-100: 214 228 221;
+  --brand-200: 178 206 194;
+  --brand-500: 27 94 69;     /* #1B5E45 */
+  --brand-600: 20 80 58;     /* #14503A */
+  --brand-700: 14 59 46;     /* #0E3B2E primary */
+  --brand-800: 10 44 34;     /* #0A2C22 */
+  --brand-900: 8 32 25;      /* #082019 */
+
+  /* Accent — warm gold (premium · the oil itself) */
+  --gold-100: 245 234 210;
+  --gold-400: 224 179 84;    /* #E0B354 */
+  --gold-500: 201 146 46;    /* #C9922E */
+  --gold-600: 169 121 31;    /* #A9791F */
+
+  /* Semantic radius / shadow scale */
+  --radius: 0.875rem;
+
+  /* Motion — premium, restrained (Apple/Stripe/Linear) */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur: 320ms;
+  --dur-slow: 560ms;
+
+  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink-soft font-body antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink font-semibold tracking-tight;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: rgb(var(--brand-700));
+    color: rgb(var(--paper));
+  }
+  /* Accessible, on-brand focus ring */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-paper;
+  }
+  /* Honour reduced-motion everywhere */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Consistent horizontal rhythm + max content width */
+  .container-x {
+    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8 lg:px-10;
+  }
+  /* Vertical section rhythm — whitespace increases down the page via modifiers */
+  .section {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-600;
+  }
+  /* Subtle premium elevation */
+  .card {
+    @apply rounded-[var(--radius)] border border-line bg-surface;
+  }
+}

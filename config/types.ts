@@ -1,0 +1,41 @@
+/** Shared content types consumed by page templates. Keeps every money page uniform. */
+import type { CtaIntent } from "@/config/conversion";
+
+export type IconName =
+  | "truck" | "shield-check" | "recycle" | "droplet" | "flame" | "clock"
+  | "map-pin" | "badge-check" | "banknote" | "leaf" | "scale" | "phone"
+  | "message-circle" | "check" | "building-2" | "utensils" | "factory"
+  | "hotel" | "store" | "sparkles" | "file-check" | "thermometer";
+
+export type FeaturePoint = { icon: IconName; title: string; body: string };
+
+/** A page section that answers one objection/question (the OS section contract). */
+export type ContentSection = {
+  heading: string;
+  body?: string;
+  points?: FeaturePoint[];
+  answers?: string; // which objection/question this section resolves (internal note)
+};
+
+export type CrossSell = { label: string; href: string; blurb: string };
+
+/** The canonical money-page shape (products, buyer segments, UCO services, pillars). */
+export type MoneyPage = {
+  slug: string;
+  kind: "product" | "buyer" | "uco-service" | "pillar";
+  intent: CtaIntent;
+  imageId: string;
+  eyebrow: string;
+  h1: string;
+  subhead: string;
+  metaTitle: string;
+  metaDescription: string;
+  intro: string;
+  keyPoints: FeaturePoint[];
+  sections: ContentSection[];
+  faqIds: string[];
+  relatedSlugs?: string[]; // sibling pages to interlink
+  crossSell: CrossSell; // the closed-loop link to the other pillar
+  primaryCtaLabel: string;
+  ppcReady?: boolean;
+};
