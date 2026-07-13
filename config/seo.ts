@@ -6,7 +6,7 @@ export const seo = {
   defaultTitle: "Cuisine Foods | Bulk Cooking Oil Supply & Used Oil Collection",
   defaultDescription:
     "Bulk sunflower, palm olein & soya delivered across Gauteng & the Western Cape — plus free, compliant used cooking oil collection. One trusted South African partner.",
-  ogImage: "/images/og/cuisine-foods-og.jpg", // 1200×630 — provided with photography
+  ogImage: site.brand.ogImage, // /images/logo/og-image.jpg — 1200×630
   ogImageAlt: "Cuisine Foods — premium cooking oil supply and used cooking oil collection",
   twitterCard: "summary_large_image" as const,
   keywords: [

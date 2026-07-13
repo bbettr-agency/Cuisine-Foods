@@ -12,7 +12,7 @@ export function organizationSchema() {
     "@id": `${origin}/#organization`,
     name: site.name,
     url: origin,
-    logo: abs("/images/logo/cuisine-foods-logo.png"),
+    logo: abs(site.brand.logoPrimary),
     description: site.shortDescription,
     foundingDate: String(site.foundedYear),
     sameAs: Object.values(site.social).filter(Boolean),

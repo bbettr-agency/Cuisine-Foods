@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   authors: [{ name: "Bbettr Agency", url: "https://www.bbettragency.com" }],
   alternates: { canonical: site.url },
+  icons: { icon: site.brand.favicon, shortcut: site.brand.favicon, apple: site.brand.logoIcon },
   openGraph: {
     type: "website",
     siteName: site.name,
