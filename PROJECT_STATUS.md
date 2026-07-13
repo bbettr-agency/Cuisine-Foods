@@ -21,7 +21,7 @@
 ## Config-driven / no-fabrication compliance
 - All copy in `config/`; no hardcoded strings in components.
 - **Progressive trust system:** only verified trust items render. Disabled until confirmed: certifications (HACCP/ISO/ISCC/ROSE/B-BBEE), named testimonials, quantified volumes ("thousands of kitchens"), service guarantees, exact response time.
-- **Images:** all branded placeholders; real photography drops in via `config/images.ts` (see `PHOTOGRAPHY-SHOT-LIST.md`).
+- **Images:** real Cuisine Foods shoot photography placed across all sections (branded truck hero, product buckets, UCO drum, chef, operations). Logo wired (`brand.ready: true`) incl. favicon, apple icon, OG image + Organization-schema logo. Unused shoot images remain in `public/images/website/` as `Untitled-*.jpg` for future sections.
 
 ## Dependencies beyond the OS baseline (justified)
 - `clsx` + `tailwind-merge` — class merging for the component library. Tiny, standard, no runtime cost of note.

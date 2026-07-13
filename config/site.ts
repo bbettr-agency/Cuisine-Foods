@@ -81,10 +81,10 @@ export const site = {
    * use the text wordmark. Favicon, OG image and schema logo point here.
    */
   brand: {
-    ready: false,
-    logoPrimary: "/images/logo/logo-primary.png",
+    ready: true,
+    logoPrimary: "/images/logo/logo-primary.webp",
     logoIcon: "/images/logo/logo-icon.png",
-    favicon: "/images/logo/favicon.ico",
+    favicon: "/images/logo/favicon.png",
     ogImage: "/images/logo/og-image.jpg",
   },
 } as const;

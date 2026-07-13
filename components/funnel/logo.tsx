@@ -16,7 +16,7 @@ export function Logo({ className, tone = "dark" }: { className?: string; tone?: 
       className={cn("inline-flex items-center gap-1.5 font-display font-bold tracking-tight", className)}
     >
       {site.brand.ready ? (
-        <Image src={site.brand.logoPrimary} alt="Cuisine Foods" width={168} height={40} priority className="h-9 w-auto" />
+        <Image src={site.brand.logoPrimary} alt="Cuisine Foods" width={230} height={118} priority className="h-8 w-auto sm:h-9" />
       ) : (
         <>
           <span className={cn("text-xl", tone === "light" ? "text-paper" : "text-ink")}>Cuisine</span>
