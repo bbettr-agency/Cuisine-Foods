@@ -26,11 +26,11 @@ export function CtaBand({
   return (
     <section className="section">
       <Container>
-        <Reveal className="relative overflow-hidden rounded-[1.5rem] bg-brand-800 px-6 py-14 text-center sm:px-12 sm:py-16">
+        <Reveal className="relative overflow-hidden rounded-[1.5rem] bg-ink px-6 py-14 text-center ring-1 ring-gold-500/15 sm:px-12 sm:py-16">
           <div
-            className="pointer-events-none absolute inset-0 opacity-30"
+            className="pointer-events-none absolute inset-0 opacity-60"
             style={{
-              backgroundImage: "radial-gradient(circle at 30% 20%, rgb(var(--gold-500) / 0.25), transparent 55%)",
+              backgroundImage: "radial-gradient(circle at 30% 15%, rgb(var(--gold-500) / 0.14), transparent 60%)",
             }}
           />
           <div className="relative mx-auto max-w-2xl">
@@ -40,7 +40,7 @@ export function CtaBand({
               <Button href={primaryHref} variant="gold" size="lg">
                 {label}
               </Button>
-              <Button href={whatsappUrl(waMsg)} variant="whatsapp" size="lg" external>
+              <Button href={whatsappUrl(waMsg)} variant="onDark" size="lg" external>
                 {cta.whatsapp}
               </Button>
               <Button href={telUrl} variant="ghost" size="lg" className="text-paper hover:bg-white/10">

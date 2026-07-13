@@ -36,7 +36,7 @@ export function Hero() {
               <Button href={hero.primary.href} variant="primary" size="lg">
                 {hero.primary.label}
               </Button>
-              <Button href={hero.secondary.href} variant="gold" size="lg">
+              <Button href={hero.secondary.href} variant="dark" size="lg">
                 {hero.secondary.label}
               </Button>
             </div>
@@ -44,7 +44,7 @@ export function Hero() {
           <Reveal delay={0.2}>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-soft">
               <a href={whatsappUrl(whatsappPrefill.general)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-medium hover:text-ink">
-                <span className="text-[#25D366]">◍</span> {cta.whatsapp}
+                <span className="text-gold-600">◍</span> {cta.whatsapp}
               </a>
               <a href={telUrl} className="inline-flex items-center gap-2 font-medium hover:text-ink">
                 <Phone className="h-4 w-4 text-brand-600" /> {site.contact.phone.display}

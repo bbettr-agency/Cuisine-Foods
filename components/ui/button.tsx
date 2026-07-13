@@ -1,18 +1,23 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "gold" | "outline" | "ghost" | "whatsapp";
+type Variant = "primary" | "gold" | "dark" | "onDark" | "outline" | "ghost" | "whatsapp";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-200 ease-out-expo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:opacity-60 min-h-[44px]";
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-200 ease-out-expo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:opacity-60 min-h-[44px]";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-brand-700 text-paper hover:bg-brand-800 shadow-soft hover:shadow-lift",
-  gold: "bg-gold-500 text-brand-900 hover:bg-gold-400 shadow-soft hover:shadow-lift",
-  outline: "border border-brand-700/25 text-brand-800 hover:border-brand-700/50 hover:bg-brand-50",
-  ghost: "text-brand-700 hover:bg-brand-50",
-  whatsapp: "bg-[#25D366] text-white hover:brightness-95 shadow-soft",
+  // Gold CTA with dark text — the primary conversion colour.
+  primary: "bg-gold-500 text-ink hover:bg-gold-600 shadow-soft hover:shadow-lift",
+  gold: "bg-gold-500 text-ink hover:bg-gold-600 shadow-soft hover:shadow-lift",
+  // Strong near-black button (secondary CTA on light backgrounds).
+  dark: "bg-ink text-paper hover:bg-ink/90 shadow-soft hover:shadow-lift",
+  // Light outline for use on dark/near-black sections.
+  onDark: "border border-paper/30 text-paper hover:bg-white/10",
+  outline: "border border-ink/20 text-ink hover:border-ink/40 hover:bg-surface-2",
+  ghost: "text-ink hover:bg-surface-2",
+  whatsapp: "bg-ink text-paper hover:bg-ink/90 shadow-soft",
 };
 
 const sizes: Record<Size, string> = {

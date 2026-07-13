@@ -9,30 +9,41 @@
    Tailwind opacity modifiers work: rgb(var(--x) / <alpha-value>).
    ============================================================ */
 :root {
-  /* Neutrals — warm, premium */
-  --paper: 251 250 247;      /* #FBFAF7 warm off-white page bg */
-  --surface: 255 255 255;    /* #FFFFFF cards */
-  --surface-2: 246 244 239;  /* #F6F4EF subtle alt sections */
-  --ink: 16 22 24;           /* #101618 near-black headings/text */
-  --ink-soft: 74 84 90;      /* #4A545A muted body */
-  --ink-faint: 124 134 140;  /* #7C868C captions */
-  --line: 230 226 217;       /* #E6E2D9 warm hairlines */
+  /* ---- Cuisine Foods palette: BLACK · GOLD · CREAM (no green) ---- */
 
-  /* Brand — deep forest green (trust · sustainability · UCO) */
-  --brand-50: 237 243 240;
-  --brand-100: 214 228 221;
-  --brand-200: 178 206 194;
-  --brand-500: 27 94 69;     /* #1B5E45 */
-  --brand-600: 20 80 58;     /* #14503A */
-  --brand-700: 14 59 46;     /* #0E3B2E primary */
-  --brand-800: 10 44 34;     /* #0A2C22 */
-  --brand-900: 8 32 25;      /* #082019 */
+  /* Neutrals — warm cream & near-black */
+  --paper: 250 246 238;      /* #FAF6EE warm cream page bg */
+  --surface: 255 255 255;    /* #FFFFFF cards / readability */
+  --surface-2: 245 240 231;  /* #F5F0E7 deeper cream (alt sections) */
+  --ink: 23 20 15;           /* #17140F warm near-black — headings/text/strong */
+  --ink-soft: 74 68 58;      /* #4A443A muted body */
+  --ink-faint: 138 130 116;  /* #8A8274 captions */
+  --line: 230 224 212;       /* #E6E0D4 warm hairlines */
 
-  /* Accent — warm gold (premium · the oil itself) */
-  --gold-100: 245 234 210;
-  --gold-400: 224 179 84;    /* #E0B354 */
-  --gold-500: 201 146 46;    /* #C9922E */
-  --gold-600: 169 121 31;    /* #A9791F */
+  /* Gold — the logo gold. Muted metallic (not bright yellow / mustard).
+     -700 is dark enough for readable text on cream; -500 for fills; -600 for icons/large. */
+  --gold-50: 246 239 224;
+  --gold-100: 242 233 209;
+  --gold-200: 232 217 179;
+  --gold-300: 217 194 138;
+  --gold-400: 205 176 101;
+  --gold-500: 184 145 60;    /* #B8913C — primary CTA / accent fill (ink text on top) */
+  --gold-600: 150 116 42;    /* #96742A — icons, borders, large text */
+  --gold-700: 120 92 30;     /* #785C1E — readable gold text / eyebrows on cream */
+  --gold-800: 92 70 24;      /* #5C4618 */
+  --gold-900: 64 48 18;      /* #403012 */
+
+  /* `brand` is aliased to gold so every former-green token now reads gold, consistently. */
+  --brand-50: 246 239 224;
+  --brand-100: 242 233 209;
+  --brand-200: 232 217 179;
+  --brand-300: 217 194 138;
+  --brand-400: 205 176 101;
+  --brand-500: 184 145 60;
+  --brand-600: 150 116 42;
+  --brand-700: 120 92 30;
+  --brand-800: 92 70 24;
+  --brand-900: 64 48 18;
 
   /* Semantic radius / shadow scale */
   --radius: 0.875rem;
@@ -67,12 +78,12 @@
     text-wrap: pretty;
   }
   ::selection {
-    background: rgb(var(--brand-700));
+    background: rgb(var(--ink));
     color: rgb(var(--paper));
   }
-  /* Accessible, on-brand focus ring */
+  /* Accessible, on-brand focus ring — dark gold, clearly visible on cream */
   :focus-visible {
-    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-paper;
+    @apply outline-none ring-2 ring-gold-600 ring-offset-2 ring-offset-paper;
   }
   /* Honour reduced-motion everywhere */
   @media (prefers-reduced-motion: reduce) {
@@ -95,7 +106,7 @@
     @apply py-16 sm:py-20 lg:py-28;
   }
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-600;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold-700;
   }
   /* Subtle premium elevation */
   .card {

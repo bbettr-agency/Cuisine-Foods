@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -34,6 +34,10 @@ export const metadata: Metadata = {
   },
   twitter: { card: seo.twitterCard, title: seo.defaultTitle, description: seo.defaultDescription, images: [seo.ogImage] },
   robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FAF6EE", // warm cream — matches the header / page background
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

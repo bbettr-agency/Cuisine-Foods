@@ -8,7 +8,7 @@ export function StickyMobileCTA() {
       <div className="grid grid-cols-2 gap-2 p-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))]">
         <a
           href={telUrl}
-          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-brand-700/25 font-semibold text-brand-800"
+          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-ink/20 font-semibold text-ink"
         >
           <Phone className="h-4 w-4" /> Call
         </a>
@@ -16,7 +16,7 @@ export function StickyMobileCTA() {
           href={whatsappUrl(whatsappPrefill.general)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#25D366] font-semibold text-white"
+          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gold-500 font-semibold text-ink"
         >
           WhatsApp
         </a>

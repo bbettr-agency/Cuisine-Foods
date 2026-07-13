@@ -110,7 +110,7 @@ export function LeadForm({ defaultIntent = "supply" }: { defaultIntent?: CtaInte
             type="button"
             disabled={!step1Valid}
             onClick={() => setStep(2)}
-            className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-brand-700 font-semibold text-paper transition-colors hover:bg-brand-800 disabled:opacity-50"
+            className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-gold-500 font-semibold text-ink transition-colors hover:bg-gold-600 disabled:opacity-50"
           >
             Continue <ArrowRight className="h-4 w-4" />
           </button>
@@ -163,7 +163,7 @@ export function LeadForm({ defaultIntent = "supply" }: { defaultIntent?: CtaInte
             <button type="button" onClick={() => setStep(1)} className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-line px-5 font-semibold text-ink-soft transition-colors hover:border-brand-300">
               <ArrowLeft className="h-4 w-4" /> Back
             </button>
-            <button type="submit" disabled={submitting} className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full bg-brand-700 font-semibold text-paper transition-colors hover:bg-brand-800 disabled:opacity-60">
+            <button type="submit" disabled={submitting} className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full bg-gold-500 font-semibold text-ink transition-colors hover:bg-gold-600 disabled:opacity-60">
               {submitting ? <><Loader2 className="h-4 w-4 animate-spin" /> Sending…</> : "Send my enquiry"}
             </button>
           </div>
