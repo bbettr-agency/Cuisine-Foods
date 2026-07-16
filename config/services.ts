@@ -183,9 +183,15 @@ export const ucoServices: MoneyPage[] = [
     ],
     sections: [
       {
+        heading: "A fast-growing circular industry",
+        body:
+          "South Africa's used cooking oil market is growing quickly — valued at roughly US$295 million in 2025 and projected to reach around US$550 million by 2035 — driven by demand for renewable biodiesel. Every litre you divert to us becomes feedstock for that clean-energy value chain.",
+        answers: "context: market size / statistic",
+      },
+      {
         heading: "The circular story your customers value",
         body:
-          "Recycling your used oil is good compliance and good for your brand's sustainability story. We can report the litres you divert into biodiesel.",
+          "Recycling your used oil is good compliance and good for your brand's sustainability story. We can report the litres you divert into biodiesel for your ESG reporting.",
         answers: "motivation: ESG / sustainability",
       },
     ],

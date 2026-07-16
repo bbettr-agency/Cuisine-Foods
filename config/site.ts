@@ -90,6 +90,17 @@ export const site = {
   uco: { rateLow: 4, rateHigh: 7 },
 
   /**
+   * Editorial / E-E-A-T. `authorName` is the visible byline (truthful — the
+   * company team). Add a real named `reviewer` (a person + credential) when the
+   * client provides one — it renders a byline AND `reviewedBy` Person schema, a
+   * strong AI-citation and E-E-A-T signal (~3.7× AIO citation correlation).
+   */
+  editorial: {
+    authorName: "The Cuisine Foods Team",
+    reviewer: { name: "", title: "" }, // e.g. { name: "Jane Doe", title: "Operations Manager" }
+  },
+
+  /**
    * Brand assets — uploaded to public/images/logo/.
    * `ready` flips to true once the real logo lands; until then the header/footer
    * use the text wordmark. Favicon, OG image and schema logo point here.

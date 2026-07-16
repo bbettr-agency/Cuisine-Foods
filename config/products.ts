@@ -75,7 +75,7 @@ export const products: MoneyPage[] = [
     metaDescription:
       "Premium RBD palm olein delivered in bulk. Exceptional heat stability and long fry-life for commercial fryers. Serving Gauteng & the Western Cape. Get a quote.",
     intro:
-      "Premium RBD palm olein delivered in bulk to restaurants, food manufacturers, caterers and high-volume frying operations. Engineered for heat stability and long fry-life — because it lasts longer in the fryer, palm olein lowers your total oil usage.",
+      "Palm olein is the liquid fraction of palm oil and the most heat-stable of the common commercial frying oils. We deliver premium RBD palm olein in bulk to restaurants, food manufacturers, caterers and high-volume frying operations. Because it lasts longer in the fryer, palm olein lowers your total oil usage — and combined with our used-oil buy-back, your real cost per litre drops further.",
     keyPoints: [
       { icon: "flame", title: "Exceptional heat stability", body: "Built for repeated high-temperature frying without rapid breakdown." },
       { icon: "clock", title: "Longer fry-life", body: "Lasts longer in the fryer — fewer oil changes, lower total cost." },

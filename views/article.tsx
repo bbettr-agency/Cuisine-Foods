@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
+import { site } from "@/config/site";
 import type { Article } from "@/config/resources";
 import { articlesInCluster, clusters } from "@/config/resources";
 import { getFaqs } from "@/config/faqs";
@@ -49,6 +50,12 @@ export function ArticleView({ article }: { article: Article }) {
             <h1 className="text-display text-ink">{article.title}</h1>
             <p className="mt-3 flex items-center gap-2 text-sm text-ink-faint">
               <Clock className="h-4 w-4" /> {article.readMinutes} min read · Updated {article.updated}
+            </p>
+            <p className="mt-1 text-sm text-ink-faint">
+              By {site.editorial.authorName}
+              {site.editorial.reviewer.name
+                ? ` · Reviewed by ${site.editorial.reviewer.name}${site.editorial.reviewer.title ? `, ${site.editorial.reviewer.title}` : ""}`
+                : ""}
             </p>
             <p className="mt-6 text-xl leading-relaxed text-ink-soft">{article.intro}</p>
           </Reveal>

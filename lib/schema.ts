@@ -157,6 +157,7 @@ export function articleSchema(args: {
   datePublished: string;
   dateModified?: string;
 }) {
+  const reviewer = site.editorial.reviewer;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -165,7 +166,11 @@ export function articleSchema(args: {
     url: abs(args.path),
     datePublished: args.datePublished,
     dateModified: args.dateModified ?? args.datePublished,
-    author: { "@id": ORG_ID },
+    author: { "@type": "Organization", "@id": ORG_ID, name: site.editorial.authorName },
     publisher: { "@id": ORG_ID },
+    // reviewedBy renders only when a real named reviewer is configured (no fabrication).
+    ...(reviewer.name
+      ? { reviewedBy: { "@type": "Person", name: reviewer.name, ...(reviewer.title ? { jobTitle: reviewer.title } : {}) } }
+      : {}),
   };
 }
