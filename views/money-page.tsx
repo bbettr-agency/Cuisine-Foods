@@ -13,6 +13,7 @@ import { SpecTable, ComparisonTableView } from "@/components/shared/data-tables"
 import { ContentSections } from "@/components/sections/content-sections";
 import { CrossSell } from "@/components/funnel/cross-sell";
 import { UcoCalculator } from "@/components/funnel/uco-calculator";
+import { TrustBand } from "@/components/sections/trust-band";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBand } from "@/components/funnel/cta-band";
@@ -83,6 +84,9 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
           </div>
         </Section>
       )}
+
+      {/* Mid-page trust band — proof + reassurance + inline CTA (the conversion anchor) */}
+      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
 
       <ContentSections sections={page.sections} />
 
