@@ -69,10 +69,28 @@ export const ucoServices: MoneyPage[] = [
     ],
     sections: [
       {
-        heading: "Why compliant disposal matters",
+        heading: "Used cooking oil is regulated waste in South Africa",
         body:
-          "South African municipalities prohibit fats, oils and grease entering the sewer, and illegal dumping can bring fines or closure. Using a licensed collector who documents the collection is how you discharge your duty of care.",
-        answers: "objection: are you licensed / do I get a certificate",
+          "Used cooking oil is regulated under the National Environmental Management: Waste Act (Act 59 of 2008). Your kitchen carries a legal duty of care for that waste until it is disposed of properly — which means using a licensed collector and keeping records of every collection. We handle both.",
+        answers: "question: is UCO regulated waste",
+      },
+      {
+        heading: "SAWIS registration for larger kitchens",
+        body:
+          "Generators that produce used oil from roughly 20 kg per day must register on the South African Waste Information System (SAWIS) and report periodically. Our documented collections give you the paper trail that registration requires, so compliance is one less thing to manage.",
+        answers: "question: SAWIS registration",
+      },
+      {
+        heading: "The drain is not an option — municipal FOG by-laws",
+        body:
+          "Cities including Johannesburg, Tshwane and Cape Town prohibit fats, oils and grease from entering the sewer and require grease-trap management. Illegal disposal can bring fines or, for repeat offences, closure. Compliant collection removes that risk entirely.",
+        answers: "objection: can I pour it away",
+      },
+      {
+        heading: "Your safe-disposal certificate",
+        body:
+          "After each collection we provide documentation of compliant disposal — the record a health inspector or auditor asks for. For franchise groups, we can consolidate this into store-level reporting across every site.",
+        answers: "objection: do I get a certificate",
       },
     ],
     faqIds: ["uco-certificate", "uco-legal", "uco-hazardous", "sawis-register", "uco-schedule"],

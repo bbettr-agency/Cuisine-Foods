@@ -103,6 +103,29 @@ export const articles: Article[] = [
     moneyLabel: "See cooking oil recycling",
   },
   {
+    slug: "used-cooking-oil-regulations-south-africa",
+    cluster: "uco",
+    title: "Used cooking oil regulations in South Africa: the Waste Act, SAWIS & FOG by-laws",
+    metaTitle: "Used Cooking Oil Regulations in South Africa (2026) | Cuisine Foods",
+    metaDescription:
+      "How used cooking oil is regulated in South Africa — the Waste Act, SAWIS registration, municipal FOG by-laws and the safe-disposal certificate your kitchen needs.",
+    excerpt: "What the law actually requires when you dispose of used cooking oil in South Africa — plainly explained.",
+    updated: "2026-07-16",
+    readMinutes: 6,
+    intro:
+      "In South Africa, used cooking oil is regulated waste. Your kitchen is legally responsible for disposing of it through a licensed collector and keeping records — and pouring it down the drain is prohibited. Here's the framework in plain terms, and what it means for a restaurant, franchise or food manufacturer.",
+    sections: [
+      { heading: "It's regulated under the Waste Act (Act 59 of 2008)", body: "Used cooking oil falls under the National Environmental Management: Waste Act. The Act places a 'duty of care' on the business that generates the waste — you remain responsible until it is handled by a licensed party and disposed of properly. In practice that means using a documented, licensed collector rather than a bin or a drain." },
+      { heading: "Larger kitchens must register on SAWIS", body: "Generators producing used oil from roughly 20 kg per day are required to register on the South African Waste Information System (SAWIS) and report periodically. The documentation from each compliant collection is what feeds that reporting — so a good collector effectively handles your record-keeping." },
+      { heading: "Municipal FOG by-laws ban the drain", body: "Cities including Johannesburg, Tshwane and Cape Town enforce fats-oils-and-grease (FOG) by-laws that prohibit oil entering the sewer and require grease-trap maintenance. Contraventions can bring fines and, for repeat offences, closure of the kitchen. This is the most common way food businesses fall foul of the rules." },
+      { heading: "The safe-disposal certificate is your proof", body: "A licensed collector provides documentation of compliant disposal after each collection — the record a health inspector or auditor will ask to see. Keep these on file; for multi-site operators, consolidated store-level reporting makes an audit straightforward." },
+      { heading: "Why 'selling to anyone' is a risk", body: "Selling used oil to an unlicensed buyer can leave you exposed — you keep the duty of care, and oil that is illegally re-refined into the food chain is a documented food-safety risk. Using a licensed, certified collector protects your business and your customers." },
+    ],
+    faqIds: ["uco-hazardous", "sawis-register", "uco-legal", "uco-certificate"],
+    moneyHref: "/used-cooking-oil-collection/compliance",
+    moneyLabel: "See compliant collection",
+  },
+  {
     slug: "best-oil-for-commercial-deep-frying",
     cluster: "frying",
     title: "The best oil for commercial deep frying in South Africa",
