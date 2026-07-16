@@ -19,6 +19,16 @@ export type ContentSection = {
 
 export type CrossSell = { label: string; href: string; blurb: string };
 
+/** Product spec / datasheet row (smoke point, pack sizes, etc.). */
+export type ProductSpec = { label: string; value: string };
+
+/** Comparison table (e.g. Sunflower vs Palm Olein vs Soya) — tables win AI-search citations. */
+export type ComparisonTable = {
+  caption: string;
+  columns: string[]; // first column is the feature label
+  rows: string[][]; // each row: [feature, ...values aligned to columns[1..]]
+};
+
 /** The canonical money-page shape (products, buyer segments, UCO services, pillars). */
 export type MoneyPage = {
   slug: string;
@@ -38,4 +48,6 @@ export type MoneyPage = {
   crossSell: CrossSell; // the closed-loop link to the other pillar
   primaryCtaLabel: string;
   ppcReady?: boolean;
+  specs?: ProductSpec[]; // product datasheet (rendered as a spec table)
+  comparison?: ComparisonTable; // optional decision table (e.g. on the frying-oil page)
 };

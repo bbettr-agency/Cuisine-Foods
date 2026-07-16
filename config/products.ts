@@ -18,6 +18,13 @@ export const products: MoneyPage[] = [
     eyebrow: "Bulk Cooking Oil Supply",
     h1: "Sunflower Oil",
     subhead: "100% pure sunflower oil, supplied in bulk to South African kitchens.",
+    specs: [
+      { label: "Type", value: "100% pure, refined sunflower oil" },
+      { label: "Best for", value: "Everyday frying, baking, cooking & dressings" },
+      { label: "Approx. smoke point", value: "~225 °C (refined)" },
+      { label: "Colour", value: "Light, bright" },
+      { label: "Packaging", value: "From 20L containers, no strict minimum; larger formats on request" },
+    ],
     metaTitle: "Bulk Sunflower Oil Supplier | 20L | Cuisine Foods",
     metaDescription:
       "100% pure bulk sunflower oil for restaurants, caterers & food manufacturers. Reliable delivery across Gauteng & the Western Cape. Get a bulk quote.",
@@ -56,6 +63,14 @@ export const products: MoneyPage[] = [
     eyebrow: "Bulk Cooking Oil Supply",
     h1: "Palm Olein",
     subhead: "Heat-stable RBD palm olein for high-volume commercial frying.",
+    specs: [
+      { label: "Type", value: "RBD palm olein (liquid fraction of palm oil)" },
+      { label: "Best for", value: "High-volume commercial deep frying" },
+      { label: "Heat stability", value: "Excellent — the most heat-stable of the three" },
+      { label: "Fry-life", value: "Longest — fewer oil changes, lower total cost" },
+      { label: "Approx. smoke point", value: "~230 °C" },
+      { label: "Packaging", value: "From 20L containers, no strict minimum; larger formats on request" },
+    ],
     metaTitle: "Bulk Palm Olein Supplier | Heat-Stable Frying Oil | Cuisine Foods",
     metaDescription:
       "Premium RBD palm olein delivered in bulk. Exceptional heat stability and long fry-life for commercial fryers. Serving Gauteng & the Western Cape. Get a quote.",
@@ -94,6 +109,13 @@ export const products: MoneyPage[] = [
     eyebrow: "Bulk Cooking Oil Supply",
     h1: "Soya Oil",
     subhead: "Reliable, cost-effective soya oil for the food industry.",
+    specs: [
+      { label: "Type", value: "Refined soya (soybean) oil" },
+      { label: "Best for", value: "Frying, baking, sauces, dressings & processed foods" },
+      { label: "Flavour", value: "Neutral — lets natural flavours through" },
+      { label: "Approx. smoke point", value: "~234 °C (refined)" },
+      { label: "Packaging", value: "From 20L containers, no strict minimum; larger formats on request" },
+    ],
     metaTitle: "Bulk Soya Oil Supplier | Food Industry | Cuisine Foods",
     metaDescription:
       "Cost-effective bulk soya oil for food manufacturers, caterers & high-volume kitchens. Neutral flavour, consistent quality. Gauteng & Western Cape. Get a quote.",
@@ -130,6 +152,18 @@ export const products: MoneyPage[] = [
     eyebrow: "Bulk Cooking Oil Supply",
     h1: "Frying Oil for Commercial Kitchens",
     subhead: "Which frying oil is right for your fryer — and how to make it last.",
+    comparison: {
+      caption: "Sunflower vs Palm Olein vs Soya — which frying oil to choose",
+      columns: ["", "Sunflower", "Palm Olein", "Soya"],
+      rows: [
+        ["Best for", "Versatile frying & baking", "High-volume deep frying", "High-volume & manufacturing"],
+        ["Heat stability", "High", "Highest", "High"],
+        ["Fry-life", "Good", "Longest", "Good"],
+        ["Flavour", "Clean, neutral", "Neutral", "Neutral"],
+        ["Approx. smoke point", "~225 °C", "~230 °C", "~234 °C"],
+        ["Typical buyer", "Restaurants, bakeries", "QSR, takeaways, busy fryers", "Manufacturers, caterers"],
+      ],
+    },
     metaTitle: "Frying Oil Supplier | Long-Life Commercial Frying Oil | Cuisine Foods",
     metaDescription:
       "The right frying oil for your kitchen — palm olein for heat stability, sunflower for versatility. Bulk supply across Gauteng & the Western Cape. Get a quote.",
@@ -148,7 +182,7 @@ export const products: MoneyPage[] = [
         answers: "question: how to choose / extend fry-life",
       },
     ],
-    faqIds: ["palm-vs-sunflower", "when-change-oil", "min-order", "delivery-areas"],
+    faqIds: ["what-is-palm-olein", "best-frying-oil", "palm-vs-sunflower", "when-change-oil", "min-order", "delivery-areas"],
     relatedSlugs: ["palm-olein", "sunflower-oil", "soya-oil"],
     crossSell: ucoCrossSell,
     primaryCtaLabel: cta.supplyQuote,

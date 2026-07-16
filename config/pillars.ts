@@ -78,7 +78,7 @@ export const pillars: Record<string, Pillar> = {
       { label: "UCO Compliance Reporting", href: "/uco-compliance-reporting", blurb: "For franchises & groups", icon: "scale" },
       { label: "Cooking Oil Recycling", href: "/cooking-oil-recycling", blurb: "Into renewable biodiesel", icon: "recycle" },
     ],
-    faqIds: ["uco-pay-rate", "uco-free-drums", "uco-schedule", "uco-certificate", "uco-legal", "do-both"],
+    faqIds: ["uco-worth", "uco-pay-rate", "uco-free-drums", "uco-schedule", "uco-certificate", "uco-legal", "uco-hazardous", "do-both"],
     crossSell: {
       label: "Need fresh oil too? We deliver that.",
       href: "/bulk-cooking-oil-supply",

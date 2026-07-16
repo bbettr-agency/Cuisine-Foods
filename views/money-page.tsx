@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { Section } from "@/components/ui/container";
 import { PageHero } from "@/components/sections/page-hero";
 import { FeatureGrid } from "@/components/shared/feature-grid";
+import { SpecTable, ComparisonTableView } from "@/components/shared/data-tables";
 import { ContentSections } from "@/components/sections/content-sections";
 import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
@@ -52,6 +53,26 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
           <FeatureGrid points={page.keyPoints} />
         </div>
       </Section>
+
+      {/* Product datasheet + decision table (SEO depth + AI-search extraction) */}
+      {(page.specs || page.comparison) && (
+        <Section alt>
+          <div className="mx-auto max-w-3xl space-y-10">
+            {page.specs && (
+              <div>
+                <SectionHeading eyebrow="Specifications" title={`${page.h1} at a glance`} />
+                <div className="mt-6"><SpecTable specs={page.specs} caption={`${page.h1} specifications`} /></div>
+              </div>
+            )}
+            {page.comparison && (
+              <div>
+                <SectionHeading eyebrow="Which oil?" title={page.comparison.caption} />
+                <div className="mt-6"><ComparisonTableView table={page.comparison} /></div>
+              </div>
+            )}
+          </div>
+        </Section>
+      )}
 
       <ContentSections sections={page.sections} />
 
