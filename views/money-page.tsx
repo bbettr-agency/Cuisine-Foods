@@ -26,6 +26,7 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
   const crumbs = buildCrumbs(page);
   const faqs = getFaqs(page.faqIds);
   const related = resolveRelated(page.relatedSlugs);
+  const allRelated = [...related, ...(page.resourceLinks ?? [])];
 
   const schema: object[] = [breadcrumbSchema(crumbs)];
   if (faqs.length) schema.push(faqPageSchema(faqs));
@@ -48,9 +49,11 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
         primaryLabel={page.primaryCtaLabel}
       />
 
-      {/* Intro + key points */}
+      {/* Lead with the value (no heading repeating the H1) + key points */}
       <Section>
-        <SectionHeading eyebrow={page.eyebrow} title={page.h1} intro={page.intro} />
+        <Reveal className="max-w-prose">
+          <p className="text-xl leading-relaxed text-ink-soft">{page.intro}</p>
+        </Reveal>
         <div className="mt-10">
           <FeatureGrid points={page.keyPoints} />
         </div>
@@ -95,11 +98,7 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
         <CrossSell label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
       </Section>
 
-      {related.length > 0 && <RelatedLinks title="Related pages" items={related} />}
-
-      {page.resourceLinks && page.resourceLinks.length > 0 && (
-        <RelatedLinks title="Related guides" items={page.resourceLinks} />
-      )}
+      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} />}
 
       <FaqSection ids={page.faqIds} alt />
 
