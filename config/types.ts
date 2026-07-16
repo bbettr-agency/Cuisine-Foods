@@ -19,6 +19,9 @@ export type ContentSection = {
 
 export type CrossSell = { label: string; href: string; blurb: string };
 
+/** A contextual link to a supporting resource article (content ↔ money interlinking). */
+export type ResourceLink = { label: string; href: string; blurb?: string };
+
 /** Product spec / datasheet row (smoke point, pack sizes, etc.). */
 export type ProductSpec = { label: string; value: string };
 
@@ -51,4 +54,5 @@ export type MoneyPage = {
   specs?: ProductSpec[]; // product datasheet (rendered as a spec table)
   comparison?: ComparisonTable; // optional decision table (e.g. on the frying-oil page)
   calculator?: boolean; // render the UCO value calculator (e.g. on the get-paid page)
+  resourceLinks?: ResourceLink[]; // supporting guides (content ↔ money interlinking)
 };

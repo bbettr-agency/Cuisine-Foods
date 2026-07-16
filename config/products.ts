@@ -97,6 +97,9 @@ export const products: MoneyPage[] = [
     ],
     faqIds: ["min-order", "delivery-areas", "bulk-pricing", "palm-vs-sunflower"],
     relatedSlugs: ["sunflower-oil", "soya-oil", "frying-oil"],
+    resourceLinks: [
+      { label: "Best oil for commercial deep frying", href: "/resources/best-oil-for-commercial-deep-frying", blurb: "How palm olein compares" },
+    ],
     crossSell: ucoCrossSell,
     primaryCtaLabel: cta.supplyQuote,
     ppcReady: true,
@@ -184,6 +187,10 @@ export const products: MoneyPage[] = [
     ],
     faqIds: ["what-is-palm-olein", "best-frying-oil", "palm-vs-sunflower", "when-change-oil", "min-order", "delivery-areas"],
     relatedSlugs: ["palm-olein", "sunflower-oil", "soya-oil"],
+    resourceLinks: [
+      { label: "Best oil for commercial deep frying", href: "/resources/best-oil-for-commercial-deep-frying" },
+      { label: "The commercial frying best-practice guide", href: "/resources/commercial-frying-guide" },
+    ],
     crossSell: ucoCrossSell,
     primaryCtaLabel: cta.supplyQuote,
     ppcReady: true,

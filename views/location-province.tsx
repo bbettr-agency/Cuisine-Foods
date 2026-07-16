@@ -48,12 +48,18 @@ export function LocationProvinceView({ province }: { province: Province }) {
           <Reveal className="card p-7 sm:p-8">
             <h2 className="font-display text-xl font-bold text-ink">Bulk cooking oil supply in {province.name}</h2>
             <p className="mt-2 text-ink-soft">Sunflower, palm olein & soya delivered across {province.name} on your schedule — reliable, consistent, competitively priced.</p>
-            <div className="mt-5"><Button href="/request-a-quote?intent=supply">Get a Bulk Oil Quote</Button></div>
+            <div className="mt-5 flex flex-wrap items-center gap-4">
+              <Button href="/request-a-quote?intent=supply">Get a Bulk Oil Quote</Button>
+              <Link href="/bulk-cooking-oil-supply" className="text-sm font-semibold text-brand-700 hover:underline">Explore bulk oil supply →</Link>
+            </div>
           </Reveal>
           <Reveal className="card p-7 sm:p-8">
             <h2 className="font-display text-xl font-bold text-ink">Used cooking oil collection in {province.name}</h2>
             <p className="mt-2 text-ink-soft">Free, compliant collection across {province.name} — we pay you per litre and provide safe-disposal documentation.</p>
-            <div className="mt-5"><Button href="/request-a-quote?intent=uco" variant="gold">Arrange Free Collection</Button></div>
+            <div className="mt-5 flex flex-wrap items-center gap-4">
+              <Button href="/request-a-quote?intent=uco" variant="gold">Arrange Free Collection</Button>
+              <Link href="/used-cooking-oil-collection" className="text-sm font-semibold text-brand-700 hover:underline">Explore UCO collection →</Link>
+            </div>
           </Reveal>
         </div>
       </Section>

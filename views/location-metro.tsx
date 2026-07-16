@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MapPin, ShieldCheck, Truck } from "lucide-react";
 import type { Metro } from "@/config/locations";
 import { getProvince } from "@/config/locations";
@@ -80,12 +81,18 @@ export function LocationMetroView({ metro }: { metro: Metro }) {
           <div className="card p-7">
             <p className="flex items-center gap-2 font-display text-lg font-bold text-ink"><Truck className="h-5 w-5 text-brand-600" /> Bulk oil supply</p>
             <p className="mt-2 text-sm text-ink-soft">Sunflower, palm olein & soya delivered across {metro.name}.</p>
-            <div className="mt-4"><Button href="/request-a-quote?intent=supply">Get a Bulk Oil Quote</Button></div>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <Button href="/request-a-quote?intent=supply">Get a Bulk Oil Quote</Button>
+              <Link href="/bulk-cooking-oil-supply" className="text-sm font-semibold text-brand-700 hover:underline">Bulk oil supply →</Link>
+            </div>
           </div>
           <div className="card p-7">
             <p className="flex items-center gap-2 font-display text-lg font-bold text-ink"><MapPin className="h-5 w-5 text-brand-600" /> Used-oil collection</p>
             <p className="mt-2 text-sm text-ink-soft">Free, compliant collection in {metro.name} — paid per litre.</p>
-            <div className="mt-4"><Button href="/request-a-quote?intent=uco" variant="gold">Arrange Free Collection</Button></div>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <Button href="/request-a-quote?intent=uco" variant="gold">Arrange Free Collection</Button>
+              <Link href="/used-cooking-oil-collection" className="text-sm font-semibold text-brand-700 hover:underline">UCO collection →</Link>
+            </div>
           </div>
         </div>
       </Section>

@@ -1,5 +1,5 @@
 /** PILLAR HUBS — the two head-term pages that anchor topical authority. */
-import type { FeaturePoint, IconName } from "@/config/types";
+import type { FeaturePoint, IconName, ResourceLink } from "@/config/types";
 
 export type PillarChild = { label: string; href: string; blurb: string; icon: IconName };
 
@@ -18,6 +18,7 @@ export type Pillar = {
   faqIds: string[];
   crossSell: { label: string; href: string; blurb: string };
   primaryCtaLabel: string;
+  resourceLinks?: ResourceLink[];
 };
 
 export const pillars: Record<string, Pillar> = {
@@ -52,6 +53,10 @@ export const pillars: Record<string, Pillar> = {
       href: "/used-cooking-oil-collection",
       blurb: "One partner for the oil in and the oil out. Free, compliant collection with a rebate per litre.",
     },
+    resourceLinks: [
+      { label: "Best oil for commercial deep frying", href: "/resources/best-oil-for-commercial-deep-frying" },
+      { label: "The commercial frying best-practice guide", href: "/resources/commercial-frying-guide" },
+    ],
     primaryCtaLabel: "Get a Bulk Oil Quote",
   },
   uco: {
@@ -84,6 +89,11 @@ export const pillars: Record<string, Pillar> = {
       href: "/bulk-cooking-oil-supply",
       blurb: "One account for the oil in and the oil out — the advantage of a closed-loop partner.",
     },
+    resourceLinks: [
+      { label: "How to dispose of used cooking oil legally in SA", href: "/resources/how-to-dispose-of-used-cooking-oil" },
+      { label: "Used cooking oil regulations in South Africa", href: "/resources/used-cooking-oil-regulations-south-africa" },
+      { label: "What is used cooking oil worth per litre?", href: "/resources/used-cooking-oil-price-per-litre" },
+    ],
     primaryCtaLabel: "Arrange Free Collection",
   },
 };

@@ -93,6 +93,10 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
 
       {related.length > 0 && <RelatedLinks title="Related pages" items={related} />}
 
+      {page.resourceLinks && page.resourceLinks.length > 0 && (
+        <RelatedLinks title="Related guides" items={page.resourceLinks} />
+      )}
+
       <FaqSection ids={page.faqIds} alt />
 
       <CtaBand intent={page.intent} primaryLabel={page.primaryCtaLabel} primaryHref={`/request-a-quote?intent=${page.intent}`} />

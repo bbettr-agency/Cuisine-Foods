@@ -44,6 +44,9 @@ export const ucoServices: MoneyPage[] = [
     ],
     faqIds: ["uco-worth", "uco-pay-rate", "uco-free-drums", "uco-schedule", "uco-min-volume", "uco-how-much-restaurant"],
     relatedSlugs: ["compliance", "cooking-oil-recycling"],
+    resourceLinks: [
+      { label: "What is used cooking oil worth per litre in SA?", href: "/resources/used-cooking-oil-price-per-litre" },
+    ],
     crossSell: supplyCrossSell,
     primaryCtaLabel: cta.ucoGetPaid,
     ppcReady: true,
@@ -95,6 +98,10 @@ export const ucoServices: MoneyPage[] = [
     ],
     faqIds: ["uco-certificate", "uco-legal", "uco-hazardous", "sawis-register", "uco-schedule"],
     relatedSlugs: ["get-paid", "uco-compliance-reporting"],
+    resourceLinks: [
+      { label: "Used cooking oil regulations in South Africa", href: "/resources/used-cooking-oil-regulations-south-africa" },
+      { label: "Is it legal to reuse cooking oil in a restaurant?", href: "/resources/is-it-legal-to-reuse-cooking-oil-in-restaurants" },
+    ],
     crossSell: supplyCrossSell,
     primaryCtaLabel: cta.ucoFreeCollection,
     ppcReady: true,

@@ -12,6 +12,7 @@ import { FeatureGrid } from "@/components/shared/feature-grid";
 import { Icon } from "@/components/ui/icon";
 import { Reveal, RevealGroup } from "@/components/ui/reveal";
 import { CrossSell } from "@/components/funnel/cross-sell";
+import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBand } from "@/components/funnel/cta-band";
 
@@ -76,6 +77,10 @@ export function PillarView({ pillar }: { pillar: Pillar }) {
       <Section>
         <CrossSell label={pillar.crossSell.label} href={pillar.crossSell.href} blurb={pillar.crossSell.blurb} />
       </Section>
+
+      {pillar.resourceLinks && pillar.resourceLinks.length > 0 && (
+        <RelatedLinks title="Guides & resources" items={pillar.resourceLinks} />
+      )}
 
       <FaqSection ids={pillar.faqIds} alt />
       <CtaBand intent={pillar.intent} primaryLabel={pillar.primaryCtaLabel} primaryHref={`/request-a-quote?intent=${pillar.intent}`} />
