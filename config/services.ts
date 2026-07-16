@@ -47,6 +47,7 @@ export const ucoServices: MoneyPage[] = [
     crossSell: supplyCrossSell,
     primaryCtaLabel: cta.ucoGetPaid,
     ppcReady: true,
+    calculator: true,
   },
   {
     slug: "compliance",

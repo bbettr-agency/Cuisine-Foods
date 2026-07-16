@@ -50,4 +50,5 @@ export type MoneyPage = {
   ppcReady?: boolean;
   specs?: ProductSpec[]; // product datasheet (rendered as a spec table)
   comparison?: ComparisonTable; // optional decision table (e.g. on the frying-oil page)
+  calculator?: boolean; // render the UCO value calculator (e.g. on the get-paid page)
 };

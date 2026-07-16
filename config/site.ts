@@ -83,6 +83,13 @@ export const site = {
   provincesServed: ["Gauteng", "Western Cape"],
 
   /**
+   * UCO buy-back rate range (R/litre) used by the value calculator. This is an
+   * ESTIMATE range shown to visitors (labelled as such) — update to the client's
+   * confirmed rates when available. Market context: SA collectors pay ~R4–R7/litre.
+   */
+  uco: { rateLow: 4, rateHigh: 7 },
+
+  /**
    * Brand assets — uploaded to public/images/logo/.
    * `ready` flips to true once the real logo lands; until then the header/footer
    * use the text wordmark. Favicon, OG image and schema logo point here.

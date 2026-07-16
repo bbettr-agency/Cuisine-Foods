@@ -12,6 +12,7 @@ import { FeatureGrid } from "@/components/shared/feature-grid";
 import { SpecTable, ComparisonTableView } from "@/components/shared/data-tables";
 import { ContentSections } from "@/components/sections/content-sections";
 import { CrossSell } from "@/components/funnel/cross-sell";
+import { UcoCalculator } from "@/components/funnel/uco-calculator";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBand } from "@/components/funnel/cta-band";
@@ -53,6 +54,15 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
           <FeatureGrid points={page.keyPoints} />
         </div>
       </Section>
+
+      {/* UCO value calculator — conversion lead magnet */}
+      {page.calculator && (
+        <Section alt>
+          <div className="mx-auto max-w-2xl">
+            <UcoCalculator />
+          </div>
+        </Section>
+      )}
 
       {/* Product datasheet + decision table (SEO depth + AI-search extraction) */}
       {(page.specs || page.comparison) && (
