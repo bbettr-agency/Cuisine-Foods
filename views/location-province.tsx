@@ -4,7 +4,7 @@ import type { Province } from "@/config/locations";
 import { metrosFor } from "@/config/locations";
 import { site } from "@/config/site";
 import { getFaqs } from "@/config/faqs";
-import { breadcrumbSchema, serviceSchema, localBusinessSchema, faqPageSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceSchema, faqPageSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { Section } from "@/components/ui/container";
@@ -28,7 +28,6 @@ export function LocationProvinceView({ province }: { province: Province }) {
       <JsonLd
         data={[
           breadcrumbSchema(crumbs),
-          localBusinessSchema(branch),
           serviceSchema({ name: `Cooking oil supply & UCO collection in ${province.name}`, description: province.metaDescription, path, areaServed: [province.name] }),
           faqPageSchema(getFaqs(localFaqs)),
         ]}

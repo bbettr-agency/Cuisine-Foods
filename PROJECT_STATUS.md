@@ -36,6 +36,10 @@
 7. `GHL_WEBHOOK_URL` for live lead delivery (set in Vercel).
 8. Professional photography → replace placeholders.
 
+## SEO/GEO — Critical phase (done) + client actions
+Implemented (see `SEO-GEO-RESEARCH/`): corrected UCO authorities (ISCC/SABA/IWMSA/Waste-Act/SAWIS — **ROSE removed**, it's motor-oil only); entity/schema foundation (`@graph` Organization + 2× LocalBusiness with geo, `knowsAbout`, progressive `sameAs`; City-scoped `areaServed` on metros; Product images; Article `dateModified`); explicit AI-crawler allow + security headers; 301s for old GoHighLevel URLs; middleware that `noindex`es any non-`cuisinefoods.co.za` host (Vercel alias stays out of the index). **No llms.txt (intentional).**
+**Client/ops actions to finish Critical + unlock High-Impact:** point `cuisinefoods.co.za` DNS to this Vercel project (site auto-becomes indexable); create the **Wikidata** item + **two Google Business Profiles** (Food products supplier + Recycling center/Waste management service) + **LinkedIn**; then paste those URLs into `config/site.ts` → `entity.links` and `branch.gbpUrl` (they light up `sameAs` automatically); verify both branches in **Bing Webmaster Tools**; set up GA4 AI channel + GSC.
+
 ## Post-launch (Gate 4 / GROW)
 - Set `GHL_WEBHOOK_URL` + verify a live lead lands in GHL.
 - Submit sitemap in Search Console; set up 2× Google Business Profiles; fire SA citations.

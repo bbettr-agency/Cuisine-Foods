@@ -32,7 +32,7 @@ export function LocationMetroView({ metro }: { metro: Metro }) {
       <JsonLd
         data={[
           breadcrumbSchema(crumbs),
-          serviceSchema({ name: `Cooking oil supply & UCO collection in ${metro.name}`, description: metro.metaDescription, path, areaServed: [metro.name] }),
+          serviceSchema({ name: `Cooking oil supply & UCO collection in ${metro.name}`, description: metro.metaDescription, path, areaServed: [metro.name], placeType: "City" }),
           faqPageSchema(getFaqs(metro.faqIds)),
         ]}
       />

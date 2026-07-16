@@ -4,7 +4,7 @@ import "./globals.css";
 
 import { site } from "@/config/site";
 import { seo } from "@/config/seo";
-import { organizationSchema, localBusinessSchema } from "@/lib/schema";
+import { siteGraph } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Header } from "@/components/funnel/header";
 import { Footer } from "@/components/funnel/footer";
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-ZA" className={`${inter.variable} ${jakarta.variable}`}>
       <body className="min-h-dvh">
-        <JsonLd data={[organizationSchema(), ...site.branches.map((b) => localBusinessSchema(b))]} />
+        <JsonLd data={siteGraph()} />
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-700 focus:px-4 focus:py-2 focus:text-paper">
           Skip to content
         </a>

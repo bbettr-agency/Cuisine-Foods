@@ -30,13 +30,20 @@ export const trust = {
     { value: "", label: "Litres delivered / month", enabled: false, note: "PENDING quantified volume" },
   ] as TrustStat[],
 
-  /** Certifications / accreditations. All PENDING — render as a badge row when provided. */
+  /**
+   * Certifications / accreditations. All PENDING — render as a badge row when provided.
+   * NOTE: correct UCO/biodiesel bodies are ISCC + SABA (SA Biodiesel Association) and
+   * IWMSA. Do NOT use the ROSE Foundation for used COOKING oil — ROSE governs used
+   * LUBRICATING/motor oil only (verified rosefoundation.org.za). Compliance framework:
+   * Waste Act 59/2008 + SAWIS registration + municipal FOG by-laws.
+   */
   certifications: [
     { id: "bbbee", label: "B-BBEE Contributor", enabled: false },
     { id: "haccp", label: "HACCP / Food Safety", enabled: false },
     { id: "iso", label: "ISO", enabled: false },
-    { id: "iscc", label: "ISCC (UCO / biodiesel feedstock)", enabled: false },
-    { id: "rose", label: "ROSE Foundation Registered", enabled: false },
+    { id: "iscc", label: "ISCC Certified (UCO / biodiesel feedstock)", enabled: false },
+    { id: "saba", label: "SA Biodiesel Association (SABA) Member", enabled: false },
+    { id: "iwmsa", label: "IWMSA Member", enabled: false },
   ] as TrustBadge[],
 
   /** Client industries served (category-level — safe to show, no named clients). */

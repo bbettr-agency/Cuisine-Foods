@@ -14,6 +14,9 @@ export type Branch = {
   city: string;
   postalCode: string;
   region: string; // ISO-ish region for schema
+  lat: number; // geo for LocalBusiness schema (approx — refine when confirmed)
+  lng: number;
+  gbpUrl?: string; // Google Business Profile URL — add once the profile is live
   mapEmbed: string; // Google Maps embed src
   mapLink: string;
 };
@@ -53,6 +56,8 @@ export const site = {
       city: "Centurion",
       postalCode: "0157",
       region: "GP",
+      lat: -25.8665,
+      lng: 28.1466,
       mapEmbed:
         "https://www.google.com/maps?q=591+Barolong+Street,+Sunderland+Ridge,+Centurion&output=embed",
       mapLink: "https://www.google.com/maps/search/?api=1&query=591+Barolong+Street+Sunderland+Ridge+Centurion",
@@ -66,6 +71,8 @@ export const site = {
       city: "Cape Town",
       postalCode: "7441",
       region: "WC",
+      lat: -33.8741,
+      lng: 18.5169,
       mapEmbed:
         "https://www.google.com/maps?q=34B+Station+Road,+Montague+Gardens,+Cape+Town&output=embed",
       mapLink: "https://www.google.com/maps/search/?api=1&query=34B+Station+Road+Montague+Gardens+Cape+Town",
@@ -86,6 +93,35 @@ export const site = {
     logoIcon: "/images/logo/logo-icon.png",
     favicon: "/images/logo/favicon.png",
     ogImage: "/images/logo/og-image.jpg",
+  },
+
+  /**
+   * Entity / Knowledge-Graph signals (OS + GEO). `knowsAbout` declares topical
+   * authority to Google/LLMs; `links` become Organization `sameAs`. Add the GBP,
+   * LinkedIn and Wikidata URLs here as they go live — progressive, no fabrication.
+   */
+  entity: {
+    knowsAbout: [
+      "Bulk cooking oil supply",
+      "Sunflower oil",
+      "Palm olein",
+      "Soya oil",
+      "Frying oil",
+      "Used cooking oil collection",
+      "Used cooking oil recycling",
+      "Biodiesel feedstock",
+      "Grease trap cleaning",
+      "Food-service oil compliance",
+    ],
+    // Add real URLs when available (rendered into Organization.sameAs):
+    links: {
+      linkedin: "", // e.g. "https://www.linkedin.com/company/cuisine-foods"
+      wikidata: "", // e.g. "https://www.wikidata.org/wiki/Q..."
+      gbpGauteng: "", // Google Business Profile (Centurion)
+      gbpWesternCape: "", // Google Business Profile (Montague Gardens)
+      helloPeter: "",
+      brabys: "",
+    },
   },
 } as const;
 

@@ -1,5 +1,6 @@
 import type { MoneyPage } from "@/config/types";
 import { getFaqs } from "@/config/faqs";
+import { getImage } from "@/config/images";
 import { site } from "@/config/site";
 import { hrefFor, resolveRelated } from "@/lib/registry";
 import { faqPageSchema, breadcrumbSchema, productSchema, serviceSchema } from "@/lib/schema";
@@ -26,7 +27,7 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
   const schema: object[] = [breadcrumbSchema(crumbs)];
   if (faqs.length) schema.push(faqPageSchema(faqs));
   if (page.kind === "product") {
-    schema.push(productSchema({ name: page.h1, description: page.metaDescription, path }));
+    schema.push(productSchema({ name: page.h1, description: page.metaDescription, path, image: getImage(page.imageId).src }));
   } else {
     schema.push(serviceSchema({ name: page.h1, description: page.metaDescription, path }));
   }
