@@ -77,6 +77,15 @@ export const images: Record<string, ImageSlot> = {
     page: "Soya Oil",
     shot: "20L cooking oil container.",
   },
+  "trust-operations": {
+    id: "trust-operations",
+    file: "team-loading-delivery-truck.jpg",
+    src: `${W}/team-loading-delivery-truck.jpg`,
+    alt: "Cuisine Foods team loading the branded delivery truck — reliable bulk oil delivery across Gauteng and the Western Cape",
+    ratio: "4/3",
+    page: "Commercial pages (trust band)",
+    shot: "Branded team + branded truck loading — reliability proof.",
+  },
   "why-fleet": {
     id: "why-fleet",
     file: "cuisine-foods-team-branded-oil.jpg",

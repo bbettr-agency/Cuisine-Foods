@@ -27,6 +27,7 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
   const faqs = getFaqs(page.faqIds);
   const related = resolveRelated(page.relatedSlugs);
   const allRelated = [...related, ...(page.resourceLinks ?? [])];
+  const closing = closingFor(page);
 
   const schema: object[] = [breadcrumbSchema(crumbs)];
   if (faqs.length) schema.push(faqPageSchema(faqs));
@@ -102,9 +103,41 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
 
       <FaqSection ids={page.faqIds} alt />
 
-      <CtaBand intent={page.intent} primaryLabel={page.primaryCtaLabel} primaryHref={`/request-a-quote?intent=${page.intent}`} />
+      <CtaBand
+        intent={page.intent}
+        title={closing.title}
+        body={closing.body}
+        primaryLabel={page.primaryCtaLabel}
+        primaryHref={`/request-a-quote?intent=${page.intent}`}
+      />
     </>
   );
+}
+
+/**
+ * Page-specific closing copy. Each commercial page closes in its own voice
+ * instead of repeating one generic band sitewide (a repetition flagged in the
+ * conversion review). Config can override via `page.closing`.
+ */
+function closingFor(page: MoneyPage): { title: string; body: string } {
+  if (page.closing) return page.closing;
+  if (page.kind === "product") {
+    return {
+      title: `Ready to order ${page.h1.toLowerCase()}?`,
+      body: "Tell us your monthly volume and delivery area — we'll come back quickly with pricing and a delivery schedule that fits your kitchen.",
+    };
+  }
+  if (page.kind === "buyer") {
+    return {
+      title: `${page.h1} — get your pricing`,
+      body: "Tell us your volumes, sites and area. We'll put together pricing and a delivery schedule built around how you actually operate.",
+    };
+  }
+  // uco-service
+  return {
+    title: "Ready to turn your used oil into cash?",
+    body: "Free sealed drums, collection on your schedule, paid per litre — with the documentation that keeps your kitchen compliant.",
+  };
 }
 
 function buildCrumbs(page: MoneyPage) {

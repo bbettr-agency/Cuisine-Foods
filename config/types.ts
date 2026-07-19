@@ -55,4 +55,7 @@ export type MoneyPage = {
   comparison?: ComparisonTable; // optional decision table (e.g. on the frying-oil page)
   calculator?: boolean; // render the UCO value calculator (e.g. on the get-paid page)
   resourceLinks?: ResourceLink[]; // supporting guides (content ↔ money interlinking)
+  /** Page-specific closing CTA copy. Each commercial page closes in its own voice
+   *  rather than repeating one generic band across the site. */
+  closing?: { title: string; body: string };
 };
