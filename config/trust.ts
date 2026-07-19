@@ -69,6 +69,13 @@ export const trust = {
 
   /** Real testimonials only, with consent. NONE yet — never invent these. */
   testimonials: [] as Testimonial[],
+
+  /**
+   * Named client logos (progressive). Renders as a proof strip only when real,
+   * consented client logos are supplied — never placeholder or invented brands.
+   * Each: { name, src } with the file dropped into /public/images/logos/clients/.
+   */
+  clientLogos: [] as { name: string; src: string }[],
 } as const;
 
 export const enabledStats = () => trust.stats.filter((s) => s.enabled && s.value);

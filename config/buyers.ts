@@ -21,6 +21,8 @@ const base = {
 export const buyers: MoneyPage[] = [
   {
     ...base,
+    // Its own visual story: a real commercial kitchen, not the generic product shot.
+    imageId: "social-kitchen",
     slug: "cooking-oil-for-restaurants",
     h1: "Cooking Oil for Restaurants",
     subhead: "Reliable bulk oil supply that keeps your kitchen frying.",
