@@ -44,6 +44,7 @@ export const buyers: MoneyPage[] = [
   },
   {
     ...base,
+    imageId: "buyer-hotels",
     slug: "cooking-oil-for-hotels",
     h1: "Cooking Oil for Hotels",
     subhead: "Consistent bulk supply and compliant used-oil collection for hospitality.",
@@ -65,6 +66,7 @@ export const buyers: MoneyPage[] = [
   },
   {
     ...base,
+    imageId: "buyer-caterers",
     slug: "cooking-oil-for-caterers",
     h1: "Cooking Oil for Caterers",
     subhead: "Flexible bulk oil supply for events and high-volume catering.",
@@ -86,6 +88,7 @@ export const buyers: MoneyPage[] = [
   },
   {
     ...base,
+    imageId: "buyer-manufacturers",
     slug: "cooking-oil-for-food-manufacturers",
     h1: "Cooking Oil for Food Manufacturers",
     subhead: "Consistent-spec bulk oil for production lines.",
@@ -107,6 +110,7 @@ export const buyers: MoneyPage[] = [
   },
   {
     ...base,
+    imageId: "buyer-franchises",
     slug: "cooking-oil-for-franchises",
     h1: "Cooking Oil for Franchises",
     subhead: "Multi-site supply, collection and reporting under one account.",

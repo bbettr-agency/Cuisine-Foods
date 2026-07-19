@@ -18,6 +18,7 @@ export type Metro = {
   customerClusters: string;
   complianceNote: string; // municipality-specific — the anti-doorway signal
   faqIds: string[];
+  imageId?: string; // its own local visual story (never the same photo twice)
 };
 
 export type Province = {
@@ -64,6 +65,7 @@ export const provinces: Province[] = [
 export const metros: Metro[] = [
   {
     slug: "johannesburg",
+    imageId: "metro-johannesburg",
     provinceSlug: "gauteng",
     name: "Johannesburg",
     h1: "Cooking Oil Supply & UCO Collection in Johannesburg",
@@ -83,6 +85,7 @@ export const metros: Metro[] = [
   },
   {
     slug: "pretoria",
+    imageId: "metro-pretoria",
     provinceSlug: "gauteng",
     name: "Pretoria & Centurion",
     h1: "Cooking Oil Supply & UCO Collection in Pretoria & Centurion",
@@ -102,6 +105,7 @@ export const metros: Metro[] = [
   },
   {
     slug: "cape-town",
+    imageId: "metro-cape-town",
     provinceSlug: "western-cape",
     name: "Cape Town",
     h1: "Cooking Oil Supply & UCO Collection in Cape Town",
@@ -121,6 +125,7 @@ export const metros: Metro[] = [
   },
   {
     slug: "northern-suburbs",
+    imageId: "metro-northern-suburbs",
     provinceSlug: "western-cape",
     name: "Northern Suburbs",
     h1: "Cooking Oil Supply & UCO Collection — Cape Town Northern Suburbs",

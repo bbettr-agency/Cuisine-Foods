@@ -41,6 +41,7 @@ export function LocationMetroView({ metro }: { metro: Metro }) {
         eyebrow={`${province.name} · ${metro.name}`}
         h1={metro.h1}
         subhead={metro.intro}
+        imageId={metro.imageId}
         crumbs={crumbs}
         intent="general"
         primaryLabel="Get a Quote"

@@ -151,7 +151,7 @@ export const products: MoneyPage[] = [
     slug: "frying-oil",
     kind: "product",
     intent: "supply",
-    imageId: "product-palm-olein",
+    imageId: "product-frying-oil",
     eyebrow: "Bulk Cooking Oil Supply",
     h1: "Frying Oil for Commercial Kitchens",
     subhead: "Which frying oil is right for your fryer — and how to make it last.",
