@@ -12,16 +12,18 @@ export const home = {
     secondary: { label: "Arrange Used-Oil Collection", href: "/request-a-quote?intent=uco", intent: "uco" as const },
   },
 
-  // Section 2 — the three-product lineup the hero sunflower drum travels into.
+  // Section 2 — the three-product lineup the hero products travel into.
+  // Order = the on-screen landing order (left → right) and the hero journey legs.
   productLineup: {
     eyebrow: "Our cooking oils",
     title: "Three premium oils for professional kitchens",
-    body: "Sunflower, palm olein and soya — supplied in bulk, delivered on your schedule across Gauteng & the Western Cape.",
+    body: "Palm olein, cooking oil and sunflower — supplied in bulk, delivered on your schedule across Gauteng & the Western Cape.",
     products: [
-      // `drum: "sunflower"` marks the landing slot for the travelling hero drum.
-      { slug: "sunflower", drum: "sunflower", name: "Sunflower Oil", tagline: "100% pure · versatile", body: "Clean flavour and a high smoke point — the everyday all-rounder for frying, baking and cooking.", href: "/sunflower-oil", imageId: "sunflower" },
-      { slug: "palm-olein", drum: "palm-olein", name: "Palm Olein", tagline: "Heat-stable · long fry-life", body: "The most heat-stable frying oil, engineered for high-volume commercial fryers.", href: "/palm-olein", imageId: "palm-olein" },
-      { slug: "soya", drum: "soya", name: "Soya Oil", tagline: "Cost-effective · neutral", body: "A dependable, neutral-flavoured oil for high-volume kitchens and food manufacturers.", href: "/soya-oil", imageId: "soya" },
+      // `imageId` matches config/drums.ts; each card holds a landing slot for the
+      // travelling hero product of the same id.
+      { slug: "palm", imageId: "palm", name: "Palm Olein", tagline: "Heat-stable · long fry-life", body: "The most heat-stable frying oil, engineered for high-volume commercial fryers.", href: "/palm-olein" },
+      { slug: "cooking", imageId: "cooking", name: "Cooking Oil", tagline: "All-purpose · dependable", body: "A pure, neutral cooking oil for general frying, baking, roasting and salads across high-volume kitchens.", href: "/bulk-cooking-oil-supply" },
+      { slug: "sunflower", imageId: "sunflower", name: "Sunflower Oil", tagline: "100% pure · versatile", body: "Clean flavour and a high smoke point — the everyday all-rounder for frying, baking and cooking.", href: "/sunflower-oil" },
     ],
   },
 

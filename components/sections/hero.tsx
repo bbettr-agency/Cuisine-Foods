@@ -6,7 +6,6 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { DrumImage } from "@/components/motion/drum-image";
-import { HERO_DRUM, HERO_ANCHOR_ID } from "@/config/drums";
 
 /** Home hero — the 5-second decision: who/what/where/why-trust/next-action. */
 export function Hero() {
@@ -55,16 +54,47 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* The sunflower drum is the hero object — a physical product on the page.
-            It is the rest anchor for the drum that travels into the products
-            section below. Static render here (with a subtle idle float) becomes
-            the live travelling drum once the journey hydrates. */}
-        <Reveal delay={0.1} className="lg:pl-4">
+        {/* The three products are the hero object — physical pails on the page,
+            intentionally composed with depth (cooking oil forward & centre,
+            palm and sunflower set back to either side). Each is the rest anchor
+            for the product that travels into the lineup below; the static renders
+            here become the live travelling overlay once the journey hydrates.
+
+            Desktop shows the full three-product composition; mobile keeps the
+            original single-product hero (see below). */}
+        <Reveal delay={0.1} className="lg:pl-2">
+          {/* ---- Desktop composition (lg+) ----
+              Each product's OUTER box is the positioned anchor the overlay
+              measures; the idle float lives on an INNER wrapper so the float's
+              transform never fights the positioning transform. */}
+          <div className="relative mx-auto hidden h-[420px] w-full max-w-[520px] [perspective:1400px] lg:block xl:h-[460px]">
+            {/* Palm — left, set back */}
+            <div id="hero-palm" className="absolute bottom-6 left-0 z-10 w-[43%]">
+              <div className="drum-float" style={{ animationDelay: "-1.2s" }}>
+                <DrumImage id="palm" staticFor="hero" sizes="240px" />
+              </div>
+            </div>
+            {/* Sunflower — right, set back */}
+            <div id="hero-sunflower" className="absolute bottom-6 right-0 z-20 w-[43%]">
+              <div className="drum-float" style={{ animationDelay: "-3.4s" }}>
+                <DrumImage id="sunflower" staticFor="hero" sizes="240px" />
+              </div>
+            </div>
+            {/* Cooking oil — centre, forward & larger */}
+            <div id="hero-cooking" className="absolute bottom-0 left-1/2 z-30 w-[54%] -translate-x-1/2">
+              <div className="drum-float">
+                <DrumImage id="cooking" staticFor="hero" priority sizes="300px" />
+              </div>
+            </div>
+          </div>
+
+          {/* ---- Mobile hero (unchanged behaviour: a single travelling product
+                 that falls into the top lineup card — palm) ---- */}
           <div
-            id={HERO_ANCHOR_ID}
-            className="mx-auto w-[62%] max-w-[300px] [perspective:1200px] sm:w-[48%] lg:w-full lg:max-w-[380px]"
+            id="hero-mobile"
+            className="mx-auto w-[58%] max-w-[280px] [perspective:1200px] sm:w-[46%] lg:hidden"
           >
-            <DrumImage id={HERO_DRUM} isStatic priority className="drum-float" sizes="(max-width: 1024px) 55vw, 380px" />
+            <DrumImage id="palm" staticFor="hero-mobile" priority className="drum-float" sizes="(max-width: 1024px) 52vw, 280px" />
           </div>
         </Reveal>
       </Container>

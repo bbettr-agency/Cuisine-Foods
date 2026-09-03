@@ -4,16 +4,16 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { home } from "@/config/home";
-import { SLOT_ANCHOR_ID } from "@/config/drums";
 import { Section } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { DrumImage } from "@/components/motion/drum-image";
 import { cn } from "@/lib/utils";
 
 /**
- * Section 2 — the three-drum product lineup. The sunflower card holds the
- * landing slot (#drum-slot-anchor) for the travelling hero drum; its static
- * drum is hidden while the journey is live (the overlay lands there instead).
+ * Section 2 — the three-product lineup. Each card holds a landing slot
+ * (#slot-<id>) for the matching hero product that travels in; the static render
+ * is hidden while the journey is live (the overlay lands there instead — on
+ * desktop all three, on mobile only sunflower, matching the hero journey).
  * Hover (desktop) / tap (mobile) lifts a product forward, deepens its shadow
  * and reveals its supporting copy while the others recede.
  */
@@ -36,7 +36,6 @@ export function ProductsLineup() {
         {productLineup.products.map((p) => {
           const isActive = active === p.slug;
           const dimmed = active !== null && !isActive;
-          const isSunflower = p.drum === "sunflower";
           return (
             <button
               type="button"
@@ -58,13 +57,9 @@ export function ProductsLineup() {
                   isActive && "-translate-y-1 scale-[1.06]",
                 )}
               >
-                {isSunflower ? (
-                  <span id={SLOT_ANCHOR_ID} className="inline-flex h-full items-end justify-center">
-                    <DrumImage id={p.imageId} isStatic className="max-h-full w-auto" sizes="(max-width:640px) 40vw, 200px" />
-                  </span>
-                ) : (
-                  <DrumImage id={p.imageId} className="max-h-full w-auto" sizes="(max-width:640px) 40vw, 200px" />
-                )}
+                <span id={`slot-${p.slug}`} className="inline-flex h-full items-end justify-center">
+                  <DrumImage id={p.imageId} staticFor="slot" slotId={p.slug} className="max-h-full w-auto" sizes="(max-width:640px) 40vw, 200px" />
+                </span>
               </div>
 
               <h3 className="mt-6 font-display text-xl font-bold text-ink">{p.name}</h3>

@@ -115,11 +115,23 @@
 }
 
 /* ---- Hero → Products drum journey ---- */
-/* When the live travelling drum is active, hide the two static drums (hero rest
-   + sunflower slot) but keep their layout box so the slot stays reserved. */
-.journey-live [data-drum-static] {
-  opacity: 0;
-  visibility: hidden;
+/* When the live travelling products are active, hide the matching static
+   renders but keep their layout boxes so the slots stay reserved (no CLS).
+   The set that travels differs by breakpoint, so the hiding is breakpoint-aware
+   and mirrors the overlay: desktop = all three, mobile = sunflower only. */
+@media (min-width: 1024px) {
+  .journey-live [data-hero-static],
+  .journey-live [data-slot-static] {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@media (max-width: 1023.98px) {
+  .journey-live [data-hero-static-mobile],
+  .journey-live [data-slot-static="palm"] {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 /* Subtle premium idle float for the static hero drum (before the journey
