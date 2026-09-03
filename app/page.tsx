@@ -7,6 +7,8 @@ import { seo } from "@/config/seo";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { Hero } from "@/components/sections/hero";
+import { ProductsLineup } from "@/components/sections/products-lineup";
+import { ProductJourney } from "@/components/motion/product-journey";
 import { TrustBar } from "@/components/funnel/trust-bar";
 import { OfferCards } from "@/components/sections/offer-cards";
 import { WhyUs } from "@/components/sections/why-us";
@@ -26,7 +28,11 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={faqPageSchema(getFaqs([...home.faqIds]))} />
-      <Hero />
+      {/* Hero → Products cinematic drum journey (one persistent object). */}
+      <ProductJourney>
+        <Hero />
+        <ProductsLineup />
+      </ProductJourney>
       <TrustBar />
       <OfferCards />
       <WhyUs />

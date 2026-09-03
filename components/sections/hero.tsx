@@ -5,7 +5,8 @@ import { cta, telUrl, whatsappUrl, whatsappPrefill } from "@/config/conversion";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
-import { PlaceholderImage } from "@/components/ui/placeholder-image";
+import { DrumImage } from "@/components/motion/drum-image";
+import { HERO_DRUM, HERO_ANCHOR_ID } from "@/config/drums";
 
 /** Home hero — the 5-second decision: who/what/where/why-trust/next-action. */
 export function Hero() {
@@ -54,8 +55,17 @@ export function Hero() {
           </Reveal>
         </div>
 
+        {/* The sunflower drum is the hero object — a physical product on the page.
+            It is the rest anchor for the drum that travels into the products
+            section below. Static render here (with a subtle idle float) becomes
+            the live travelling drum once the journey hydrates. */}
         <Reveal delay={0.1} className="lg:pl-4">
-          <PlaceholderImage id="hero-home" sizes="(max-width: 1024px) 100vw, 45vw" className="shadow-lift" />
+          <div
+            id={HERO_ANCHOR_ID}
+            className="mx-auto w-[62%] max-w-[300px] [perspective:1200px] sm:w-[48%] lg:w-full lg:max-w-[380px]"
+          >
+            <DrumImage id={HERO_DRUM} isStatic priority className="drum-float" sizes="(max-width: 1024px) 55vw, 380px" />
+          </div>
         </Reveal>
       </Container>
     </section>

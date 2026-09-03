@@ -113,3 +113,23 @@
     @apply rounded-[var(--radius)] border border-line bg-surface;
   }
 }
+
+/* ---- Hero → Products drum journey ---- */
+/* When the live travelling drum is active, hide the two static drums (hero rest
+   + sunflower slot) but keep their layout box so the slot stays reserved. */
+.journey-live [data-drum-static] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Subtle premium idle float for the static hero drum (before the journey
+   hydrates, and as the reduced-motion fallback). Neutralised by the global
+   prefers-reduced-motion rule above. */
+@keyframes drumFloat {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+.drum-float {
+  animation: drumFloat 6.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  transform-origin: center bottom;
+}
