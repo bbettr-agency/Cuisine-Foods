@@ -246,3 +246,67 @@
   opacity: calc(var(--r) * 0.5);
 }
 
+
+/* ============================================================
+   COOKING OIL PAGE — bespoke "The Living Label" motion
+   (prototype, /bulk-cooking-oil-supply only)
+   ============================================================ */
+
+/* The gold packaging artwork "escapes" the bucket and grows into the page.
+   Every part draws / opens from a single inherited --grow (0 → 1). Defaults
+   to fully grown so no-JS and reduced-motion render the finished illustration.
+   --px / --py add a restrained pointer parallax per depth layer. */
+/* Typed, inheritable growth driver — initial 1 so any standalone render is
+   fully grown; the theatre sets it on its stage and it cascades to the SVG.
+   Registering it also lets CSS transition --grow (used by the CTA). */
+@property --grow {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+/* --grow is intentionally NOT set here so it INHERITS from the theatre stage
+   when live; every rule below falls back to var(--grow, 1) — i.e. fully grown —
+   so a standalone (reduced-motion / no-JS / static) render shows finished art. */
+.living-art {
+  --px: 0px;
+  --py: 0px;
+  overflow: visible;
+}
+.living-layer {
+  translate: calc(var(--px) * var(--d, 1)) calc(var(--py) * var(--d, 1));
+}
+/* Stems + branches draw along their own length (pathLength="1"). */
+.living-stem {
+  --r: clamp(0, calc((var(--grow, 1) - var(--s, 0)) / var(--span, 0.3)), 1);
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--r));
+  opacity: calc(0.5 + 0.5 * var(--r));
+}
+/* Leaves open (scale) from their base once their stem has reached them. */
+.living-leaf {
+  --r: clamp(0, calc((var(--grow, 1) - var(--s, 0)) / var(--span, 0.18)), 1);
+  transform-box: fill-box;
+  transform-origin: var(--o, 50% 100%);
+  opacity: calc(var(--r) * 0.9);
+  scale: calc(0.18 + 0.82 * var(--r));
+}
+/* Petals bloom from the flower centre. */
+.living-petal {
+  --r: clamp(0, calc((var(--grow, 1) - var(--s, 0)) / var(--span, 0.16)), 1);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  opacity: calc(var(--r) * 0.95);
+  scale: calc(0.1 + 0.9 * var(--r));
+}
+/* Seed-head stipple + centre ring fade in last. */
+.living-seed {
+  --r: clamp(0, calc((var(--grow, 1) - var(--s, 0)) / 0.12), 1);
+  opacity: calc(var(--r) * 0.9);
+}
+.living-ring {
+  --r: clamp(0, calc((var(--grow, 1) - var(--s, 0)) / 0.14), 1);
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: calc(var(--r) * 0.5);
+  scale: calc(0.4 + 0.6 * var(--r));
+}
