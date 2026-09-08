@@ -211,3 +211,38 @@
   -webkit-text-stroke: 1.4px rgb(var(--gold-600));
 }
 
+/* ============================================================
+   PALM OLEIN PAGE — bespoke "Unfurl" motion (prototype, /palm-olein only)
+   ============================================================ */
+
+/* The gold palm canopy: fronds' spines draw and leaflets unfurl outward from a
+   single inherited --unfurl (0 → 1). Defaults to fully open (no-JS / reduced
+   motion). --px / --py add a subconscious pointer parallax per depth layer. */
+.palm-canopy {
+  --unfurl: 1;
+  --px: 0px;
+  --py: 0px;
+  overflow: visible;
+}
+.palm-layer {
+  translate: calc(var(--px) * var(--d, 1)) calc(var(--py) * var(--d, 1));
+}
+.palm-spine {
+  --r: clamp(0, calc((var(--unfurl) - var(--u0, 0)) / 0.16), 1);
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--r));
+  opacity: calc(0.35 + 0.4 * var(--r));
+}
+.palm-leaflet {
+  --r: clamp(0, calc((var(--unfurl) - var(--u0, 0) - var(--s, 0)) / 0.2), 1);
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  fill: none;
+  opacity: calc(var(--r) * 0.72);
+  scale: calc(0.06 + 0.94 * var(--r)) 1;
+}
+.palm-crown {
+  --r: clamp(0, calc(var(--unfurl) / 0.1), 1);
+  opacity: calc(var(--r) * 0.5);
+}
+

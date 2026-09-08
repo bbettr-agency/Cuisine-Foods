@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { getProduct } from "@/config/products";
 import { buildMetadata } from "@/lib/metadata";
-import { MoneyPageView } from "@/views/money-page";
+import { PalmView } from "@/views/palm-view";
 
 const page = getProduct("palm-olein")!;
 export const metadata: Metadata = buildMetadata({ title: page.metaTitle, description: page.metaDescription, path: `/${page.slug}` });
 export default function Page() {
-  return <MoneyPageView page={page} />;
+  return <PalmView page={page} />;
 }
