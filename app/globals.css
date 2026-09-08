@@ -145,3 +145,69 @@
   animation: drumFloat 6.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
   transform-origin: center bottom;
 }
+
+/* ============================================================
+   SUNFLOWER OIL PAGE — bespoke motion (prototype, /sunflower-oil only)
+   ============================================================ */
+
+/* --- The gold botanical: every part reveals from a single inherited --bloom
+   (0 → 1). Defaults to fully bloomed so no-JS and reduced-motion show the
+   finished illustration. --px / --py add a subconscious pointer parallax. --- */
+.sf-botanical {
+  --bloom: 1;
+  --px: 0px;
+  --py: 0px;
+  overflow: visible;
+}
+.sf-layer {
+  translate: calc(var(--px) * var(--d, 1)) calc(var(--py) * var(--d, 1));
+}
+.sf-seedhead {
+  translate: calc(var(--px) * var(--d, 3) * 0.6) calc(var(--py) * var(--d, 3) * 0.6);
+}
+.sf-petal {
+  --r: clamp(0, calc((var(--bloom) - var(--s, 0.2)) / 0.24), 1);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  opacity: calc(var(--r) * 0.9);
+  scale: calc(0.16 + 0.84 * var(--r));
+}
+.sf-ring {
+  --r: clamp(0, calc((var(--bloom) - var(--s, 0)) / 0.16), 1);
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: calc(var(--r) * 0.55);
+  scale: calc(0.3 + 0.7 * var(--r));
+}
+.sf-seed {
+  --r: clamp(0, calc((var(--bloom) - var(--s, 0)) / 0.14), 1);
+  opacity: calc(var(--r) * 0.85);
+}
+.sf-stem {
+  --r: clamp(0, calc((var(--bloom) - 0.04) / 0.32), 1);
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--r));
+  opacity: 0.7;
+}
+.sf-leaf {
+  --r: clamp(0, calc((var(--bloom) - var(--s, 0.35)) / 0.2), 1);
+  transform-box: fill-box;
+  transform-origin: 100% 0%;
+  opacity: calc(var(--r) * 0.7);
+  scale: calc(0.4 + 0.6 * var(--r));
+}
+.sf-leaf--r {
+  transform-origin: 0% 0%;
+}
+
+/* --- A masked upward reveal for headings / lines (Cuisine motion vocabulary). --- */
+.sf-mask {
+  overflow: hidden;
+}
+
+/* Outlined gold display type for the kinetic commercial-use strip. */
+.sf-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.4px rgb(var(--gold-600));
+}
+
