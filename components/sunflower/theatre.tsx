@@ -43,14 +43,14 @@ export function SunflowerTheatre({ states }: { states: TheatreState[] }) {
   // only after mount (and only when motion is allowed) does desktop upgrade to
   // the pinned theatre. The swap happens below the fold → no visible shift, and
   // reduced-motion simply keeps the static stage.
-  const pinned = mounted && !reduce;
+  const live = mounted && !reduce;
   return (
     <section aria-label="Sunflower Oil story" className="relative bg-paper">
       <div className="hidden lg:block">
-        {pinned ? <TheatrePinned states={states} /> : <TheatreStatic states={states} />}
+        {live ? <TheatrePinned states={states} /> : <TheatreStatic states={states} />}
       </div>
       <div className="lg:hidden">
-        <TheatreStatic states={states} mobile />
+        {live ? <MobileTheatre states={states} /> : <TheatreStatic states={states} mobile />}
       </div>
     </section>
   );
@@ -112,11 +112,21 @@ function TheatrePinned({ states }: { states: TheatreState[] }) {
           }}
         />
 
-        {/* BACKGROUND — the blooming botanical */}
+        {/* BACKGROUND — the blooming botanical. Strongest around the product on
+            the left; a feathered horizontal mask quiets it under the copy on the
+            right so the words always win (no opaque boxes). */}
         <motion.div
           aria-hidden
-          className="sf-botanical pointer-events-none absolute left-1/2 top-1/2 h-[112vh] w-[112vh] -translate-x-1/2 -translate-y-1/2 opacity-[0.5]"
-          style={{ ["--bloom" as string]: bloom, ["--px" as string]: pxVar, ["--py" as string]: pyVar }}
+          className="sf-botanical pointer-events-none absolute left-[36%] top-1/2 h-[116vh] w-[116vh] -translate-x-1/2 -translate-y-1/2 opacity-[0.55]"
+          style={{
+            ["--bloom" as string]: bloom,
+            ["--px" as string]: pxVar,
+            ["--py" as string]: pyVar,
+            WebkitMaskImage:
+              "linear-gradient(90deg, #000 0%, #000 50%, rgba(0,0,0,0.32) 72%, rgba(0,0,0,0.16) 100%)",
+            maskImage:
+              "linear-gradient(90deg, #000 0%, #000 50%, rgba(0,0,0,0.32) 72%, rgba(0,0,0,0.16) 100%)",
+          }}
         >
           <SunflowerBotanical className="h-full w-full" />
         </motion.div>
@@ -149,8 +159,17 @@ function TheatrePinned({ states }: { states: TheatreState[] }) {
             </motion.div>
           </div>
 
-          {/* CONTENT — the four states, stacked & cross-faded by progress */}
+          {/* CONTENT — the four states, stacked & cross-faded by progress.
+              A feathered paper wash sits under the copy to hold readability. */}
           <div className="relative min-h-[340px]">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-x-6 -inset-y-10"
+              style={{
+                background:
+                  "radial-gradient(115% 82% at 34% 50%, rgb(var(--paper)) 0%, rgb(var(--paper) / 0.72) 42%, rgb(var(--paper) / 0) 78%)",
+              }}
+            />
             {states.map((s, i) => (
               <StateBlock key={s.n} progress={scrollYProgress} index={i} total={states.length} state={s} />
             ))}
@@ -173,11 +192,13 @@ function StateBlock({
   index,
   total,
   state,
+  compact,
 }: {
   progress: MotionValue<number>;
   index: number;
   total: number;
   state: TheatreState;
+  compact?: boolean;
 }) {
   const center = (index + 0.5) / total;
   const w = 0.5 / total; // half-window
@@ -186,8 +207,34 @@ function StateBlock({
     [center - w - 0.02, center - w * 0.5, center + w * 0.5, center + w + 0.02],
     [0, 1, 1, 0],
   );
-  const y = useTransform(progress, [center - w, center, center + w], [34, 0, -34]);
+  const y = useTransform(progress, [center - w, center, center + w], [compact ? 22 : 34, 0, compact ? -22 : -34]);
   const titleY = useTransform(progress, [center - w, center - w * 0.4], ["105%", "0%"]);
+
+  if (compact) {
+    return (
+      <motion.div style={{ opacity, y }} className="absolute inset-0 flex flex-col items-center justify-start text-center">
+        <div className="flex items-baseline gap-2.5">
+          <span className="font-display text-3xl font-bold leading-none text-gold-500/80 tabular-nums">{state.n}</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.24em] text-gold-700">{state.label}</span>
+        </div>
+        <div className="sf-mask mt-3">
+          <motion.h2 style={{ y: titleY }} className="text-2xl font-bold text-ink">
+            {state.title}
+          </motion.h2>
+        </div>
+        <p className="mx-auto mt-3 max-w-[34ch] text-[15px] leading-relaxed text-ink-soft">{state.body}</p>
+        {state.chips && (
+          <ul className="mt-4 flex flex-wrap justify-center gap-2">
+            {state.chips.map((c) => (
+              <li key={c} className="rounded-full border border-gold-300/70 bg-surface/70 px-3 py-1 text-[13px] font-medium text-ink-soft">
+                {c}
+              </li>
+            ))}
+          </ul>
+        )}
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div style={{ opacity, y }} className="absolute inset-0 flex flex-col justify-center">
@@ -237,6 +284,73 @@ function ProgressDot({
       style={{ opacity: active, scale }}
       className="h-1.5 w-6 rounded-full bg-gold-500"
     />
+  );
+}
+
+/* ------------------------------------------------------------- mobile bloom */
+
+/**
+ * MobileTheatre — the same Sunflower Bloom idea, recomposed for phones. A short,
+ * tight pinned stage (~2.2vh) with the drum sticky in the upper half and the gold
+ * botanical blooming behind/around it, petals expanding OUTWARD past the screen
+ * edges (feather-masked away from the copy below). One scroll-progress source
+ * drives the same four states + bloom. No pointer effects. Uses svh units so the
+ * mobile address bar doesn't break the layout.
+ */
+function MobileTheatre({ states }: { states: TheatreState[] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const bloom = useTransform(scrollYProgress, [0.05, 0.92], [0.03, 1]);
+  const mask =
+    "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, #000 26%, #000 52%, rgba(0,0,0,0.24) 78%, rgba(0,0,0,0) 100%)";
+
+  return (
+    <div ref={ref} style={{ height: "220vh" }} className="relative">
+      <div className="sticky top-0 flex h-[100svh] flex-col overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{ background: "radial-gradient(70% 42% at 50% 32%, rgb(var(--gold-100) / 0.55) 0%, transparent 66%)" }}
+        />
+
+        {/* PRODUCT + BOTANICAL (upper half) */}
+        <div className="relative flex h-[54svh] items-center justify-center">
+          <motion.div
+            aria-hidden
+            className="sf-botanical pointer-events-none absolute left-1/2 top-[44%] h-[152vw] w-[152vw] -translate-x-1/2 -translate-y-1/2 opacity-[0.6]"
+            style={{ ["--bloom" as string]: bloom, WebkitMaskImage: mask, maskImage: mask }}
+          >
+            <SunflowerBotanical className="h-full w-full" />
+          </motion.div>
+          <div className="relative h-[40svh]">
+            <Image
+              src={DRUM.src}
+              alt="Cuisine Foods 100% pure sunflower oil — bulk pail"
+              width={DRUM.w}
+              height={DRUM.h}
+              priority
+              sizes="70vw"
+              className="h-full w-auto select-none [filter:drop-shadow(0_24px_28px_rgb(16_22_24/0.26))]"
+              draggable={false}
+            />
+          </div>
+        </div>
+
+        {/* STORY (lower half) */}
+        <div className="container-x relative flex-1 pb-14 pt-2">
+          <div className="relative h-full">
+            {states.map((s, i) => (
+              <StateBlock key={s.n} progress={scrollYProgress} index={i} total={states.length} state={s} compact />
+            ))}
+          </div>
+          <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2">
+            {states.map((s, i) => (
+              <ProgressDot key={s.n} progress={scrollYProgress} index={i} total={states.length} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
