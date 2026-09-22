@@ -1,5 +1,5 @@
 /**
- * MOTION PRESETS — premium, restrained (Apple/Stripe/Linear).
+ * MOTION PRESETS – premium, restrained (Apple/Stripe/Linear).
  * Subtle fades and rises that guide attention; never flashy. All motion is
  * gated by prefers-reduced-motion at the component level (see Reveal).
  */

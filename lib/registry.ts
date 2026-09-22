@@ -1,4 +1,4 @@
-/** Resolves internal links/labels for any money page — powers related-link blocks. */
+/** Resolves internal links/labels for any money page – powers related-link blocks. */
 import { products } from "@/config/products";
 import { ucoServices } from "@/config/services";
 import { buyers } from "@/config/buyers";

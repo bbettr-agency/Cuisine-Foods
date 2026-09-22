@@ -45,7 +45,7 @@ export function localBusinessSchema(branch: (typeof site.branches)[number]) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": branchId(branch.id),
-    name: `${site.name} — ${branch.label}`,
+    name: `${site.name} – ${branch.label}`,
     url: abs(`/${branch.id}`),
     image: abs(site.brand.ogImage),
     telephone: site.contact.phone.dial,

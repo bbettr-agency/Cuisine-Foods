@@ -2,7 +2,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 /**
- * cn — merge Tailwind classes without conflicts.
+ * cn – merge Tailwind classes without conflicts.
  * (clsx + tailwind-merge: two tiny deps that keep component class logic clean;
  * justified in PROJECT_STATUS.md per the OS minimal-deps rule.)
  */

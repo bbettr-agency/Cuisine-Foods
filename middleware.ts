@@ -3,8 +3,8 @@ import type { NextRequest } from "next/server";
 
 /**
  * Keep only the canonical domain (cuisinefoods.co.za) indexable.
- * Any non-canonical host — the *.vercel.app preview/production alias or a bare
- * IP — gets X-Robots-Tag: noindex so duplicate hosts never compete in search.
+ * Any non-canonical host – the *.vercel.app preview/production alias or a bare
+ * IP – gets X-Robots-Tag: noindex so duplicate hosts never compete in search.
  * (Canonical <link> tags already point to the real domain; this is belt-and-braces.)
  */
 export function middleware(request: NextRequest) {
