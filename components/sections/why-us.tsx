@@ -5,22 +5,20 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, RevealGroup } from "@/components/ui/reveal";
 import { PlaceholderImage } from "@/components/ui/placeholder-image";
 
-/** Why Cuisine Foods — two proof columns (reliable supply · compliant collection). */
+/** Why Cuisine Foods – two proof columns (reliable supply · compliant collection). */
 export function WhyUs() {
   const { why } = home;
   return (
     <Section alt>
-      <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
-          <SectionHeading eyebrow={why.eyebrow} title={why.title} />
-          <Reveal className="mt-8">
-            <PlaceholderImage id="why-fleet" sizes="(max-width: 1024px) 100vw, 40vw" />
-          </Reveal>
-        </div>
+      <SectionHeading eyebrow={why.eyebrow} title={why.title} />
+      <div className="mt-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <Reveal>
+          <PlaceholderImage id="why-fleet" sizes="(max-width: 1024px) 100vw, 40vw" />
+        </Reveal>
         <div className="grid gap-8 sm:grid-cols-2">
           {why.columns.map((col) => (
             <div key={col.title}>
-              <h3 className="font-display text-lg font-bold text-brand-700">{col.title}</h3>
+              <h3 className="font-display text-lg font-bold leading-none text-brand-700">{col.title}</h3>
               <RevealGroup className="mt-4 space-y-5">
                 {col.points.map((p) => (
                   <Reveal as="div" key={p.title} className="flex gap-3.5">

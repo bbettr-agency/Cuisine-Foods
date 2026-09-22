@@ -1,7 +1,7 @@
 import { Phone } from "lucide-react";
 import { telUrl, whatsappUrl, whatsappPrefill } from "@/config/conversion";
 
-/** Sticky mobile CTA bar (Call + WhatsApp) — always-in-reach conversion on phones. */
+/** Sticky mobile CTA bar (Call + WhatsApp) – always-in-reach conversion on phones. */
 export function StickyMobileCTA() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper/95 backdrop-blur-md lg:hidden">

@@ -20,7 +20,7 @@ function LeafNode({ on }: { on?: boolean }) {
 }
 
 /**
- * CookingSpecs — the escaped botanical becomes information architecture. A
+ * CookingSpecs – the escaped botanical becomes information architecture. A
  * central gold stem runs through the datasheet; a branch reaches out to each
  * specification with a small leaf node. Hover/focus draws the branch the final
  * few pixels and brings its fact forward. Editorial, not a corporate timeline.

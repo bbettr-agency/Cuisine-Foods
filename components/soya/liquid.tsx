@@ -4,13 +4,13 @@ import { useEffect, useRef } from "react";
 import { motion, useMotionValueEvent, type MotionValue } from "framer-motion";
 
 /**
- * SoyaLiquid — the bespoke "liquid gold" form of the Soya page: a single closed
+ * SoyaLiquid – the bespoke "liquid gold" form of the Soya page: a single closed
  * SVG shape that genuinely MORPHS between four topology-compatible keyframes
  * (droplet → stretch → ribbon → flow) as the theatre's local scroll progress
  * (0 → 1) advances. Smoothed with a Catmull-Rom pass so it reads as fluid, not
  * geometric. Editorial gold gradient + restrained opacity (no blobs / neon /
  * heavy blur). Two depth layers (+ a specular streak) that a pointer can nudge
- * a pixel or two. The path `d` is written imperatively on scroll change only —
+ * a pixel or two. The path `d` is written imperatively on scroll change only –
  * no per-frame React state, no rAF loop.
  */
 
@@ -115,7 +115,7 @@ export function SoyaLiquid({
         </linearGradient>
       </defs>
 
-      {/* BACK — translucent liquid body (tiny pointer parallax) */}
+      {/* BACK – translucent liquid body (tiny pointer parallax) */}
       <motion.g style={px && py ? { x: px, y: py } : undefined}>
         <path ref={bodyRef} d={pathAt(0)} fill={`url(#${gid})`} opacity={0.5} />
         <ellipse ref={hiRef} cx={268} cy={402} rx={40} ry={66} fill="rgb(var(--gold-100))" opacity={0.4} />

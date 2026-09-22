@@ -57,7 +57,7 @@ export function Footer() {
             <div key={b.id} className="flex gap-3 text-sm">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
               <div>
-                <p className="font-semibold text-paper">{site.name} — {b.label}</p>
+                <p className="font-semibold text-paper">{site.name} – {b.label}</p>
                 <p className="text-paper/70">
                   {b.street}, {b.city}, {b.postalCode}
                 </p>

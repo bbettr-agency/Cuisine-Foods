@@ -2,7 +2,7 @@ import { Plus } from "lucide-react";
 import type { Faq } from "@/config/faqs";
 import { Reveal } from "@/components/ui/reveal";
 
-/** FAQ accordion using native <details> — accessible, zero JS. Emit FAQPage schema alongside. */
+/** FAQ accordion using native <details> – accessible, zero JS. Emit FAQPage schema alongside. */
 export function FaqList({ faqs }: { faqs: Faq[] }) {
   if (faqs.length === 0) return null;
   return (

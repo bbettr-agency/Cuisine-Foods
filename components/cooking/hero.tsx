@@ -16,10 +16,10 @@ import { Breadcrumbs, type Crumb } from "@/components/shared/breadcrumbs";
 const DRUM = { src: "/images/website/product-cooking.png", w: 869, h: 1046 };
 
 /**
- * CookingHero — the approved interior hero, kept fundamentally intact, but the
+ * CookingHero – the approved interior hero, kept fundamentally intact, but the
  * black bucket is the dominant object and the black/white/gold/cream contrast
  * is pushed. One secret detail: a single fine gold stem sits just past the
- * bucket edge and, on hover, grows a few pixels and settles — the first hint of
+ * bucket edge and, on hover, grows a few pixels and settles – the first hint of
  * the Living Label. Nothing else happens; the theatre later delivers the trick.
  */
 export function CookingHero({
@@ -79,7 +79,7 @@ export function CookingHero({
         </div>
 
         <div ref={zoneRef} onMouseMove={onMove} onMouseEnter={onEnter} onMouseLeave={reset} className="relative flex justify-center [perspective:1200px]">
-          {/* the secret hint — a single gold stem just past the bucket's right edge */}
+          {/* the secret hint – a single gold stem just past the bucket's right edge */}
           <motion.div
             aria-hidden
             className="living-art pointer-events-none absolute left-[58%] top-[38%] h-[62%] w-[62%]"
@@ -89,7 +89,7 @@ export function CookingHero({
           </motion.div>
           <motion.div className="relative w-[62%] max-w-[300px] [transform-style:preserve-3d] sm:w-[52%] lg:w-full lg:max-w-[350px]" style={reduce ? undefined : { rotateX, rotateY, x: tx, y: ty }}>
             <div className={reduce ? undefined : "drum-float"}>
-              <Image src={DRUM.src} alt="Cuisine Foods 100% pure cooking oil — 20L bucket" width={DRUM.w} height={DRUM.h} priority sizes="(max-width: 1024px) 55vw, 350px" className="h-auto w-full select-none [filter:drop-shadow(0_30px_36px_rgb(16_22_24/0.3))]" draggable={false} />
+              <Image src={DRUM.src} alt="Cuisine Foods 100% pure cooking oil – 20L bucket" width={DRUM.w} height={DRUM.h} priority sizes="(max-width: 1024px) 55vw, 350px" className="h-auto w-full select-none [filter:drop-shadow(0_30px_36px_rgb(16_22_24/0.3))]" draggable={false} />
             </div>
           </motion.div>
         </div>

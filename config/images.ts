@@ -1,5 +1,5 @@
 /**
- * IMAGE MANIFEST — real Cuisine Foods photography.
+ * IMAGE MANIFEST – real Cuisine Foods photography.
  *
  * All website photography lives in one flat folder: public/images/website/.
  * <Placeholder> renders the `src` image if set, else a branded placeholder box.
@@ -26,17 +26,17 @@ export const images: Record<string, ImageSlot> = {
     id: "hero-home",
     file: "hero-branded-delivery-truck.jpg",
     src: `${W}/hero-branded-delivery-truck.jpg`,
-    alt: "Cuisine Foods branded delivery truck — bulk cooking oil delivered across Gauteng and the Western Cape",
+    alt: "Cuisine Foods branded delivery truck – bulk cooking oil delivered across Gauteng and the Western Cape",
     ratio: "4/3",
     priority: true,
     page: "Home",
-    shot: "Branded delivery truck — communicates scale, logistics and professionalism.",
+    shot: "Branded delivery truck – communicates scale, logistics and professionalism.",
   },
   "supply-pillar": {
     id: "supply-pillar",
     file: "bulk-cooking-oil-range.jpg",
     src: `${W}/bulk-cooking-oil-range.jpg`,
-    alt: "Cuisine Foods bulk cooking oil range — sunflower, palm olein and cooking oil in 20L containers",
+    alt: "Cuisine Foods bulk cooking oil range – sunflower, palm olein and cooking oil in 20L containers",
     ratio: "4/3",
     page: "Bulk Cooking Oil Supply",
     shot: "The 20L product range on a counter.",
@@ -81,10 +81,10 @@ export const images: Record<string, ImageSlot> = {
     id: "trust-operations",
     file: "team-loading-delivery-truck.jpg",
     src: `${W}/team-loading-delivery-truck.jpg`,
-    alt: "Cuisine Foods team loading the branded delivery truck — reliable bulk oil delivery across Gauteng and the Western Cape",
+    alt: "Cuisine Foods team loading the branded delivery truck – reliable bulk oil delivery across Gauteng and the Western Cape",
     ratio: "4/3",
     page: "Commercial pages (trust band)",
-    shot: "Branded team + branded truck loading — reliability proof.",
+    shot: "Branded team + branded truck loading – reliability proof.",
   },
   "why-fleet": {
     id: "why-fleet",
@@ -93,7 +93,7 @@ export const images: Record<string, ImageSlot> = {
     alt: "A Cuisine Foods team member in branded uniform with bulk cooking oil containers",
     ratio: "4/3",
     page: "Home / About",
-    shot: "Branded-uniform staff with product — reliability + people + brand.",
+    shot: "Branded-uniform staff with product – reliability + people + brand.",
   },
   "social-kitchen": {
     id: "social-kitchen",
@@ -111,7 +111,7 @@ export const images: Record<string, ImageSlot> = {
     alt: "A chef presenting the Cuisine Foods cooking oil range",
     ratio: "4/3",
     page: "About",
-    shot: "Chef with the product range — humanises the brand.",
+    shot: "Chef with the product range – humanises the brand.",
   },
   "location-gauteng": {
     id: "location-gauteng",
@@ -135,26 +135,26 @@ export const images: Record<string, ImageSlot> = {
   /* ---- Per-page imagery: every commercial page gets its own visual story ---- */
 
   // Buyer segments
-  "buyer-hotels": { id: "buyer-hotels", file: "hotel-hospitality-kitchen.jpg", src: `${W}/hotel-hospitality-kitchen.jpg`, alt: "Hotel kitchen service plated with oil supplied by Cuisine Foods", ratio: "4/3", page: "Cooking Oil for Hotels", shot: "Hospitality plating — premium hotel food service." },
-  "buyer-caterers": { id: "buyer-caterers", file: "catering-plated-dishes.jpg", src: `${W}/catering-plated-dishes.jpg`, alt: "Catering dishes fried in Cuisine Foods cooking oil", ratio: "4/3", page: "Cooking Oil for Caterers", shot: "Plated catering dishes — event food presentation." },
-  "buyer-manufacturers": { id: "buyer-manufacturers", file: "bulk-oil-volume-supply.jpg", src: `${W}/bulk-oil-volume-supply.jpg`, alt: "Bulk Cuisine Foods cooking oil supplied at volume for food production", ratio: "4/3", page: "Cooking Oil for Food Manufacturers", shot: "Volume/scale — production-line supply." },
-  "buyer-franchises": { id: "buyer-franchises", file: "franchise-branded-oil-supply.jpg", src: `${W}/franchise-branded-oil-supply.jpg`, alt: "Cuisine Foods branded staff with the bulk oil range for franchise groups", ratio: "4/3", page: "Cooking Oil for Franchises", shot: "Branded team + full range — multi-site consistency." },
+  "buyer-hotels": { id: "buyer-hotels", file: "hotel-hospitality-kitchen.jpg", src: `${W}/hotel-hospitality-kitchen.jpg`, alt: "Hotel kitchen service plated with oil supplied by Cuisine Foods", ratio: "4/3", page: "Cooking Oil for Hotels", shot: "Hospitality plating – premium hotel food service." },
+  "buyer-caterers": { id: "buyer-caterers", file: "catering-plated-dishes.jpg", src: `${W}/catering-plated-dishes.jpg`, alt: "Catering dishes fried in Cuisine Foods cooking oil", ratio: "4/3", page: "Cooking Oil for Caterers", shot: "Plated catering dishes – event food presentation." },
+  "buyer-manufacturers": { id: "buyer-manufacturers", file: "bulk-oil-volume-supply.jpg", src: `${W}/bulk-oil-volume-supply.jpg`, alt: "Bulk Cuisine Foods cooking oil supplied at volume for food production", ratio: "4/3", page: "Cooking Oil for Food Manufacturers", shot: "Volume/scale – production-line supply." },
+  "buyer-franchises": { id: "buyer-franchises", file: "franchise-branded-oil-supply.jpg", src: `${W}/franchise-branded-oil-supply.jpg`, alt: "Cuisine Foods branded staff with the bulk oil range for franchise groups", ratio: "4/3", page: "Cooking Oil for Franchises", shot: "Branded team + full range – multi-site consistency." },
 
   // UCO services
-  "uco-get-paid": { id: "uco-get-paid", file: "uco-collection-drums.jpg", src: `${W}/uco-collection-drums.jpg`, alt: "Cuisine Foods used cooking oil collection drum and sealed containers ready for pickup", ratio: "3/4", page: "Get Paid for Used Oil", shot: "Collection drums — what we pay for." },
-  "uco-compliance": { id: "uco-compliance", file: "uco-collection-documentation.jpg", src: `${W}/uco-collection-documentation.jpg`, alt: "Signing collection documentation at a Cuisine Foods branded vehicle", ratio: "4/3", page: "UCO Compliance", shot: "Documentation handover — the compliance paper trail." },
+  "uco-get-paid": { id: "uco-get-paid", file: "uco-collection-drums.jpg", src: `${W}/uco-collection-drums.jpg`, alt: "Cuisine Foods used cooking oil collection drum and sealed containers ready for pickup", ratio: "3/4", page: "Get Paid for Used Oil", shot: "Collection drums – what we pay for." },
+  "uco-compliance": { id: "uco-compliance", file: "uco-collection-documentation.jpg", src: `${W}/uco-collection-documentation.jpg`, alt: "Signing collection documentation at a Cuisine Foods branded vehicle", ratio: "4/3", page: "UCO Compliance", shot: "Documentation handover – the compliance paper trail." },
   "uco-grease-trap": { id: "uco-grease-trap", file: "onsite-oil-collection.jpg", src: `${W}/onsite-oil-collection.jpg`, alt: "On-site oil collection at a commercial kitchen by Cuisine Foods", ratio: "3/4", page: "Grease-Trap Cleaning", shot: "On-site collection in action." },
-  "uco-reporting": { id: "uco-reporting", file: "uco-reporting-paperwork.jpg", src: `${W}/uco-reporting-paperwork.jpg`, alt: "Collection paperwork recorded against a Cuisine Foods vehicle for store-level reporting", ratio: "3/4", page: "UCO Compliance Reporting", shot: "Paperwork/record-keeping — store-level reporting." },
-  "uco-recycling": { id: "uco-recycling", file: "uco-recycling-loading.jpg", src: `${W}/uco-recycling-loading.jpg`, alt: "Used cooking oil loaded for recycling into renewable biodiesel", ratio: "3/4", page: "Cooking Oil Recycling", shot: "Loading collected oil — the recycling journey begins." },
+  "uco-reporting": { id: "uco-reporting", file: "uco-reporting-paperwork.jpg", src: `${W}/uco-reporting-paperwork.jpg`, alt: "Collection paperwork recorded against a Cuisine Foods vehicle for store-level reporting", ratio: "3/4", page: "UCO Compliance Reporting", shot: "Paperwork/record-keeping – store-level reporting." },
+  "uco-recycling": { id: "uco-recycling", file: "uco-recycling-loading.jpg", src: `${W}/uco-recycling-loading.jpg`, alt: "Used cooking oil loaded for recycling into renewable biodiesel", ratio: "3/4", page: "Cooking Oil Recycling", shot: "Loading collected oil – the recycling journey begins." },
 
   // Product decision page
-  "product-frying-oil": { id: "product-frying-oil", file: "frying-oil-pouring.jpg", src: `${W}/frying-oil-pouring.jpg`, alt: "Fresh Cuisine Foods frying oil being poured for a commercial fryer", ratio: "4/3", page: "Frying Oil", shot: "Pouring fresh oil — the frying moment." },
+  "product-frying-oil": { id: "product-frying-oil", file: "frying-oil-pouring.jpg", src: `${W}/frying-oil-pouring.jpg`, alt: "Fresh Cuisine Foods frying oil being poured for a commercial fryer", ratio: "4/3", page: "Frying Oil", shot: "Pouring fresh oil – the frying moment." },
 
   // Metro location pages
-  "metro-johannesburg": { id: "metro-johannesburg", file: "johannesburg-delivery-team.jpg", src: `${W}/johannesburg-delivery-team.jpg`, alt: "Cuisine Foods delivery team on the branded truck serving Johannesburg", ratio: "4/3", page: "Johannesburg", shot: "Delivery team + livery — local presence." },
-  "metro-pretoria": { id: "metro-pretoria", file: "pretoria-delivery-crew.jpg", src: `${W}/pretoria-delivery-crew.jpg`, alt: "Cuisine Foods delivery crew serving Pretoria and Centurion from the Centurion branch", ratio: "4/3", page: "Pretoria & Centurion", shot: "Crew in the cab — the home-branch team." },
+  "metro-johannesburg": { id: "metro-johannesburg", file: "johannesburg-delivery-team.jpg", src: `${W}/johannesburg-delivery-team.jpg`, alt: "Cuisine Foods delivery team on the branded truck serving Johannesburg", ratio: "4/3", page: "Johannesburg", shot: "Delivery team + livery – local presence." },
+  "metro-pretoria": { id: "metro-pretoria", file: "pretoria-delivery-crew.jpg", src: `${W}/pretoria-delivery-crew.jpg`, alt: "Cuisine Foods delivery crew serving Pretoria and Centurion from the Centurion branch", ratio: "4/3", page: "Pretoria & Centurion", shot: "Crew in the cab – the home-branch team." },
   "metro-cape-town": { id: "metro-cape-town", file: "cape-town-oil-loading.jpg", src: `${W}/cape-town-oil-loading.jpg`, alt: "Loading bulk cooking oil for delivery across Cape Town", ratio: "3/4", page: "Cape Town", shot: "Loading for the Cape Town run." },
-  "metro-northern-suburbs": { id: "metro-northern-suburbs", file: "northern-suburbs-delivery.jpg", src: `${W}/northern-suburbs-delivery.jpg`, alt: "Cuisine Foods delivery to Cape Town's Northern Suburbs", ratio: "3/4", page: "Northern Suburbs", shot: "Delivery run — Bellville/Durbanville area." },
+  "metro-northern-suburbs": { id: "metro-northern-suburbs", file: "northern-suburbs-delivery.jpg", src: `${W}/northern-suburbs-delivery.jpg`, alt: "Cuisine Foods delivery to Cape Town's Northern Suburbs", ratio: "3/4", page: "Northern Suburbs", shot: "Delivery run – Bellville/Durbanville area." },
 };
 
 export function getImage(id: string): ImageSlot {

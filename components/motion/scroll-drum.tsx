@@ -20,11 +20,11 @@ const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2,
 type Cur = { x: number; y: number; s: number; rz: number; ry: number; inited: boolean };
 
 /**
- * ScrollDrum — the live journey overlay. Each product lives on a fixed overlay
+ * ScrollDrum – the live journey overlay. Each product lives on a fixed overlay
  * and is positioned every frame by interpolating between two live DOM anchors:
  * its rest slot in the hero composition and its landing slot in the lineup.
  * Because it reads the anchors' live rects, it sits exactly on the static render
- * at rest and exactly in the lineup slot once landed — one persistent object,
+ * at rest and exactly in the lineup slot once landed – one persistent object,
  * no duplicate fade, no layout jump.
  *
  * All legs share ONE scroll progress (so they detach and land together) but each
@@ -61,7 +61,7 @@ export function ScrollDrum() {
     if (!heroRef || !slotRef) return;
     const rr = heroRef.getBoundingClientRect();
     const sref = slotRef.getBoundingClientRect();
-    if (!rr.width) return; // reference hidden at this breakpoint — wait a frame
+    if (!rr.width) return; // reference hidden at this breakpoint – wait a frame
     const vh = window.innerHeight;
     const scrollY = window.scrollY;
     const start = rr.top + scrollY - vh * 0.05;

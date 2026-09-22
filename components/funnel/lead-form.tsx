@@ -114,7 +114,7 @@ export function LeadForm({ defaultIntent = "supply" }: { defaultIntent?: CtaInte
           >
             Continue <ArrowRight className="h-4 w-4" />
           </button>
-          <p className="text-center text-xs text-ink-faint">Prefer to chat? WhatsApp or call us — details in the header.</p>
+          <p className="text-center text-xs text-ink-faint">Prefer to chat? WhatsApp or call us – details in the header.</p>
         </div>
       )}
 

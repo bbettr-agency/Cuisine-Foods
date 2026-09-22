@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
-/** The closed-loop cross-sell block (OS P2/P12) — binds the two pillars + sells. */
+/** The closed-loop cross-sell block (OS P2/P12) – binds the two pillars + sells. */
 export function CrossSell({ label, href, blurb }: { label: string; href: string; blurb: string }) {
   return (
     <Reveal>

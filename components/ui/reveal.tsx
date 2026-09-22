@@ -5,7 +5,7 @@ import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 /**
- * Reveal — subtle in-view motion. Honours prefers-reduced-motion (renders static).
+ * Reveal – subtle in-view motion. Honours prefers-reduced-motion (renders static).
  * Premium, restrained; guides attention without distracting.
  */
 export function Reveal({
@@ -41,7 +41,7 @@ export function Reveal({
   );
 }
 
-/** RevealGroup — staggers Reveal children into view. */
+/** RevealGroup – staggers Reveal children into view. */
 export function RevealGroup({ children, className }: { children: React.ReactNode; className?: string }) {
   const reduce = useReducedMotion();
   if (reduce) return <div className={className}>{children}</div>;

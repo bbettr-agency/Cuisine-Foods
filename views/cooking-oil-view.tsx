@@ -21,7 +21,7 @@ import { CookingApplications } from "@/components/cooking/applications";
 import { CookingCta } from "@/components/cooking/cta";
 
 /**
- * CookingOilView — the bespoke, motion-forward Bulk Cooking Oil page ("The
+ * CookingOilView – the bespoke, motion-forward Bulk Cooking Oil page ("The
  * Living Label"). Built on the supply pillar: it keeps the hub's job (the
  * spokes grid, cross-sell, resources, FAQ) but leads with the black-bucket hero
  * and the signature theatre where the packaging artwork escapes into the page.
@@ -33,8 +33,8 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
   const faqs = getFaqs(pillar.faqIds);
 
   const states: CookState[] = [
-    { n: "01", label: "PREMIUM", title: "A decade of premium supply", body: "Consistent quality, dependable delivery and competitive bulk pricing — from 20L, with no strict minimum." },
-    { n: "02", label: "THE RANGE", title: pillar.keyPoints[0]?.title ?? "Three core oils", body: pillar.keyPoints[0]?.body ?? "Sunflower, palm olein and soya — the right oil for every kitchen and fryer." },
+    { n: "01", label: "PREMIUM", title: "A decade of premium supply", body: "Consistent quality, dependable delivery and competitive bulk pricing – from 20L, with no strict minimum." },
+    { n: "02", label: "THE RANGE", title: pillar.keyPoints[0]?.title ?? "Three core oils", body: pillar.keyPoints[0]?.body ?? "Sunflower, palm olein and soya – the right oil for every kitchen and fryer." },
     {
       n: "03",
       label: "RELIABLE",
@@ -42,7 +42,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
       body: pillar.keyPoints[1]?.body ?? "Daily, weekly or monthly, so you never run out mid-service.",
       chips: ["Restaurants", "Caterers", "Manufacturers"],
     },
-    { n: "04", label: "LOWER COST", title: pillar.keyPoints[2]?.title ?? "Lower real cost", body: pillar.keyPoints[2]?.body ?? "We buy back your used oil — dropping your true cost per litre." },
+    { n: "04", label: "LOWER COST", title: pillar.keyPoints[2]?.title ?? "Lower real cost", body: pillar.keyPoints[2]?.body ?? "We buy back your used oil – dropping your true cost per litre." },
   ];
 
   const specs = [
@@ -79,7 +79,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
         <div className="mt-10"><FeatureGrid points={pillar.keyPoints} /></div>
       </Section>
 
-      {/* THE SIGNATURE — the Living Label */}
+      {/* THE SIGNATURE – the Living Label */}
       <CookingTheatre states={states} />
 
       {/* The grown botanical becomes the datasheet */}
@@ -88,7 +88,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
       {/* Where the oil goes */}
       <CookingApplications heading="Across professional kitchens" items={apps} />
 
-      {/* Spokes — the hub's job, kept intact */}
+      {/* Spokes – the hub's job, kept intact */}
       <Section alt>
         <SectionHeading eyebrow="Explore" title="Everything under this service" align="center" />
         <RevealGroup className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -121,7 +121,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
 
       <CookingCta
         title="cooking oil?"
-        body="Tell us your monthly volume and delivery area — we'll come back quickly with bulk pricing and a reliable supply schedule for your kitchen or production line."
+        body="Tell us your monthly volume and delivery area – we'll come back quickly with bulk pricing and a reliable supply schedule for your kitchen or production line."
         primaryLabel={pillar.primaryCtaLabel}
         primaryHref={`/request-a-quote?intent=${pillar.intent}`}
       />

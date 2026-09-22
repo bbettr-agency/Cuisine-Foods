@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, RevealGroup } from "@/components/ui/reveal";
 
-/** How it works — both tracks, compact. Kills switching inertia. */
+/** How it works – both tracks, compact. Kills switching inertia. */
 export function HowItWorks() {
   const { howItWorks } = home;
   return (

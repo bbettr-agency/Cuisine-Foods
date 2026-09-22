@@ -12,9 +12,9 @@ const ratioClass: Record<string, string> = {
 };
 
 /**
- * PlaceholderImage — the config-driven image system (OS P10).
+ * PlaceholderImage – the config-driven image system (OS P10).
  * If the manifest slot has a real `src`, render an optimised next/image.
- * Otherwise render a clean, branded placeholder container — so when the client
+ * Otherwise render a clean, branded placeholder container – so when the client
  * uploads photography and we set `src`, the image simply appears (no re-layout).
  */
 export function PlaceholderImage({
@@ -52,7 +52,7 @@ export function PlaceholderImage({
     );
   }
 
-  // Branded placeholder — premium, on-brand, clearly intentional.
+  // Branded placeholder – premium, on-brand, clearly intentional.
   return (
     <div className={shell} role="img" aria-label={slot.alt}>
       <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-surface-2 to-gold-100/50" />

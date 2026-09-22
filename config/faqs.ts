@@ -1,4 +1,4 @@
-/** FAQ BANK — keyed Q&A reused across pages and emitted as FAQPage schema. */
+/** FAQ BANK – keyed Q&A reused across pages and emitted as FAQPage schema. */
 
 export type Faq = { id: string; q: string; a: string };
 
@@ -15,7 +15,7 @@ export const faqs: Record<string, Faq> = {
   },
   "bulk-pricing": {
     id: "bulk-pricing",
-    q: "How does pricing work — are there hidden costs?",
+    q: "How does pricing work – are there hidden costs?",
     a: "Pricing is quote-based on your product and monthly volume, with no hidden costs. Send us your requirement and we'll return a competitive written quote quickly.",
   },
   "product-packaging": {
@@ -25,7 +25,7 @@ export const faqs: Record<string, Faq> = {
   },
   "palm-vs-sunflower": {
     id: "palm-vs-sunflower",
-    q: "Palm olein or sunflower — which is better for frying?",
+    q: "Palm olein or sunflower – which is better for frying?",
     a: "Palm olein is the most heat-stable with the longest fry-life, ideal for high-volume commercial fryers. Sunflower is more versatile with a clean flavour when you fry, bake and cook on one oil. We'll help you choose.",
   },
   "when-change-oil": {
@@ -36,12 +36,12 @@ export const faqs: Record<string, Faq> = {
   "uco-pay-rate": {
     id: "uco-pay-rate",
     q: "How much do you pay for used cooking oil?",
-    a: "We pay per litre, with the rate depending on the volume you produce and the quality of the oil. Larger, cleaner volumes earn more — ask us for today's rate for your kitchen.",
+    a: "We pay per litre, with the rate depending on the volume you produce and the quality of the oil. Larger, cleaner volumes earn more – ask us for today's rate for your kitchen.",
   },
   "uco-free-drums": {
     id: "uco-free-drums",
     q: "Do you provide containers for the used oil?",
-    a: "Yes — we supply clean, sealed drums so your used oil is stored safely between collections.",
+    a: "Yes – we supply clean, sealed drums so your used oil is stored safely between collections.",
   },
   "uco-schedule": {
     id: "uco-schedule",
@@ -66,18 +66,18 @@ export const faqs: Record<string, Faq> = {
   "grease-frequency": {
     id: "grease-frequency",
     q: "How often should a grease trap be cleaned?",
-    a: "Most commercial kitchens need cleaning roughly every 30 days — more often for busy, high-volume fryers. We'll set a schedule to match your kitchen.",
+    a: "Most commercial kitchens need cleaning roughly every 30 days – more often for busy, high-volume fryers. We'll set a schedule to match your kitchen.",
   },
   "uco-recycle": {
     id: "uco-recycle",
     q: "What happens to the used oil you collect?",
-    a: "It's filtered, cleaned and converted into renewable biodiesel and oleochemicals — never routed back into the food chain.",
+    a: "It's filtered, cleaned and converted into renewable biodiesel and oleochemicals – never routed back into the food chain.",
   },
   // General homepage FAQs
   "do-both": {
     id: "do-both",
     q: "Do you both supply fresh oil and collect used oil?",
-    a: "Yes — that's our advantage. We're one of the few partners who supply your fresh cooking oil and collect your used oil, so you deal with one company for the oil going in and the oil coming out.",
+    a: "Yes – that's our advantage. We're one of the few partners who supply your fresh cooking oil and collect your used oil, so you deal with one company for the oil going in and the oil coming out.",
   },
   "how-start": {
     id: "how-start",
@@ -89,17 +89,17 @@ export const faqs: Record<string, Faq> = {
   "what-is-palm-olein": {
     id: "what-is-palm-olein",
     q: "What is palm olein?",
-    a: "Palm olein is the liquid fraction of palm oil, separated by fractionation. It is the most heat-stable of the common commercial frying oils, prized for long fry-life and consistent performance at high temperatures — which is why high-volume kitchens use it to lower their total oil cost.",
+    a: "Palm olein is the liquid fraction of palm oil, separated by fractionation. It is the most heat-stable of the common commercial frying oils, prized for long fry-life and consistent performance at high temperatures – which is why high-volume kitchens use it to lower their total oil cost.",
   },
   "best-frying-oil": {
     id: "best-frying-oil",
     q: "What is the best oil for commercial deep frying?",
-    a: "For high-volume frying, palm olein gives the best heat stability and the longest fry-life. Sunflower is the most versatile all-rounder with a clean flavour. Soya is a cost-effective choice for high-volume kitchens. The right pick depends on how hard and how often you fry — we help you choose.",
+    a: "For high-volume frying, palm olein gives the best heat stability and the longest fry-life. Sunflower is the most versatile all-rounder with a clean flavour. Soya is a cost-effective choice for high-volume kitchens. The right pick depends on how hard and how often you fry – we help you choose.",
   },
   "uco-worth": {
     id: "uco-worth",
     q: "How much is used cooking oil worth in South Africa?",
-    a: "Used cooking oil is bought as a biodiesel feedstock, so collectors pay you per litre rather than charging to remove it. The rate depends on your volume, the oil's quality and your region — larger, cleaner volumes earn more. Ask us for today's rate for your kitchen.",
+    a: "Used cooking oil is bought as a biodiesel feedstock, so collectors pay you per litre rather than charging to remove it. The rate depends on your volume, the oil's quality and your region – larger, cleaner volumes earn more. Ask us for today's rate for your kitchen.",
   },
   "uco-hazardous": {
     id: "uco-hazardous",

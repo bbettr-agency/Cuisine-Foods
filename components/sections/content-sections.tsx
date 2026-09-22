@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { FeatureGrid } from "@/components/shared/feature-grid";
 
-/** Renders prose ContentSection[] — each answers one objection/question. */
+/** Renders prose ContentSection[] – each answers one objection/question. */
 export function ContentSections({ sections }: { sections: ContentSection[] }) {
   if (sections.length === 0) return null;
   return (

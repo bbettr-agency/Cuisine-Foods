@@ -1,4 +1,4 @@
-/** NAVIGATION — header + footer. Labels/URLs config-driven; no hardcoded links in components. */
+/** NAVIGATION – header + footer. Labels/URLs config-driven; no hardcoded links in components. */
 
 export type NavLink = { label: string; href: string; description?: string };
 export type NavGroup = { label: string; href?: string; links: NavLink[] };
@@ -12,7 +12,7 @@ export const headerNav: NavGroup[] = [
       { label: "Sunflower Oil", href: "/sunflower-oil", description: "100% pure, versatile" },
       { label: "Palm Olein", href: "/palm-olein", description: "Heat-stable, long fry-life" },
       { label: "Soya Oil", href: "/soya-oil", description: "Cost-effective, neutral" },
-      { label: "Frying Oil — which to choose", href: "/frying-oil", description: "The right oil for your fryer" },
+      { label: "Frying Oil – which to choose", href: "/frying-oil", description: "The right oil for your fryer" },
     ],
   },
   {
@@ -31,11 +31,11 @@ export const headerNav: NavGroup[] = [
     label: "Locations",
     links: [
       { label: "Gauteng", href: "/gauteng", description: "Johannesburg · Pretoria · Centurion" },
-      { label: "— Johannesburg", href: "/gauteng/johannesburg" },
-      { label: "— Pretoria & Centurion", href: "/gauteng/pretoria" },
+      { label: "– Johannesburg", href: "/gauteng/johannesburg" },
+      { label: "– Pretoria & Centurion", href: "/gauteng/pretoria" },
       { label: "Western Cape", href: "/western-cape", description: "Cape Town & surrounds" },
-      { label: "— Cape Town", href: "/western-cape/cape-town" },
-      { label: "— Northern Suburbs", href: "/western-cape/northern-suburbs" },
+      { label: "– Cape Town", href: "/western-cape/cape-town" },
+      { label: "– Northern Suburbs", href: "/western-cape/northern-suburbs" },
     ],
   },
   {

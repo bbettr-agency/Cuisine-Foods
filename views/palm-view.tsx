@@ -20,7 +20,7 @@ import { PalmCta } from "@/components/palm/cta";
 import { MaskUp, DrawLine, RevealStagger } from "@/components/sunflower/motion-kit";
 
 /**
- * PalmView — the bespoke, motion-forward /palm-olein experience ("The Unfurl").
+ * PalmView – the bespoke, motion-forward /palm-olein experience ("The Unfurl").
  * Shares the Sunflower ENGINEERING (product theatre, motion vocabulary, reduced
  * motion) but a distinct visual world: an architectural gold palm canopy.
  * Built only from the existing Palm Olein config content.
@@ -40,7 +40,7 @@ export function PalmView({ page }: { page: MoneyPage }) {
   if (faqs.length) schema.push(faqPageSchema(faqs));
   schema.push(productSchema({ name: page.h1, description: page.metaDescription, path, image: getImage(page.imageId).src }));
 
-  // Four states — every word from the Palm config.
+  // Four states – every word from the Palm config.
   const states: PalmState[] = [
     { n: "01", label: "HEAT-STABLE", title: "The most heat-stable frying oil", body: page.keyPoints[0]?.body ?? page.subhead },
     { n: "02", label: "FRY-LIFE", title: "Longest fry-life", body: page.keyPoints[1]?.body ?? "" },
@@ -75,7 +75,7 @@ export function PalmView({ page }: { page: MoneyPage }) {
         <div className="mt-10"><FeatureGrid points={page.keyPoints} /></div>
       </Section>
 
-      {/* THE SIGNATURE — Palm Unfurl */}
+      {/* THE SIGNATURE – Palm Unfurl */}
       <PalmTheatre states={states} />
 
       {/* Interactive specifications */}
@@ -83,7 +83,7 @@ export function PalmView({ page }: { page: MoneyPage }) {
 
       <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
 
-      {/* Story content — varied motion vocabulary */}
+      {/* Story content – varied motion vocabulary */}
       <Section alt>
         <div className="mx-auto max-w-3xl space-y-16">
           {page.sections.map((s, i) => (
@@ -114,7 +114,7 @@ export function PalmView({ page }: { page: MoneyPage }) {
 
       <PalmCta
         title={`${page.h1.toLowerCase()}?`}
-        body="Tell us your monthly volume and delivery area — we'll come back quickly with pricing and a delivery schedule that keeps a busy fryer running."
+        body="Tell us your monthly volume and delivery area – we'll come back quickly with pricing and a delivery schedule that keeps a busy fryer running."
         primaryLabel={page.primaryCtaLabel}
         primaryHref={`/request-a-quote?intent=${page.intent}`}
       />

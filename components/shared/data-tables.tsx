@@ -1,7 +1,7 @@
 import type { ProductSpec, ComparisonTable } from "@/config/types";
 import { Reveal } from "@/components/ui/reveal";
 
-/** Product datasheet — a clean 2-column spec table (also strong for AI-search extraction). */
+/** Product datasheet – a clean 2-column spec table (also strong for AI-search extraction). */
 export function SpecTable({ specs, caption }: { specs: ProductSpec[]; caption?: string }) {
   if (!specs || specs.length === 0) return null;
   return (
@@ -21,7 +21,7 @@ export function SpecTable({ specs, caption }: { specs: ProductSpec[]; caption?: 
   );
 }
 
-/** Comparison table — tables win AI-search / featured-snippet citations for commercial queries. */
+/** Comparison table – tables win AI-search / featured-snippet citations for commercial queries. */
 export function ComparisonTableView({ table }: { table: ComparisonTable }) {
   return (
     <Reveal>

@@ -1,5 +1,5 @@
 /**
- * CONVERSION CONFIG — CTA labels, intents and WhatsApp pre-fills.
+ * CONVERSION CONFIG – CTA labels, intents and WhatsApp pre-fills.
  * The site forks two journeys (buy oil vs. arrange collection); every CTA
  * carries a page-specific pre-filled intent so leads arrive pre-qualified.
  */
@@ -8,7 +8,7 @@ import { site } from "@/config/site";
 export type CtaIntent = "supply" | "uco" | "general";
 
 export const cta = {
-  // Benefit-loaded labels only — never "Submit"/"Learn More"/"Contact Us".
+  // Benefit-loaded labels only – never "Submit"/"Learn More"/"Contact Us".
   supplyQuote: "Get a Bulk Oil Quote",
   ucoArrange: "Arrange Used-Oil Collection",
   ucoGetPaid: "Get Paid for Your Used Oil",

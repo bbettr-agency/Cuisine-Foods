@@ -14,7 +14,7 @@ import { PalmBotanical } from "@/components/palm/frond";
 const DRUM = { src: "/images/website/product-palm.png", w: 827, h: 1027 };
 
 /**
- * PalmCta — the closing beat, composed as a mirror of the theatre: the Palm drum
+ * PalmCta – the closing beat, composed as a mirror of the theatre: the Palm drum
  * enters from the LEFT edge, a gold canopy frames the RIGHT, and the copy sits
  * between. Restrained magnetic primary button (drifts a few px toward the
  * pointer, arrow nudges) that stays fully clickable.

@@ -8,9 +8,9 @@ import { MaskUp } from "@/components/sunflower/motion-kit";
 type App = { title: string; body: string };
 
 /**
- * SoyaApplications — where Soya works (supported copy only), as cards connected
+ * SoyaApplications – where Soya works (supported copy only), as cards connected
  * by a gold flow line that draws through them as the section enters: card,
- * flow, card, flow… It resolves quickly on view — a fast scroll simply lands
+ * flow, card, flow… It resolves quickly on view – a fast scroll simply lands
  * everything. Reduced-motion: all shown, static.
  */
 export function SoyaApplications({ heading, items }: { heading: string; items: App[] }) {

@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { PalmBotanical } from "@/components/palm/frond";
 
 /**
- * PalmApplications — where Palm Olein works (supported page copy only). Large
+ * PalmApplications – where Palm Olein works (supported page copy only). Large
  * words drift horizontally at two speeds as the visitor scrolls vertically,
  * while a single faint gold palm frond layer slowly crosses behind them. Clipped
  * (no horizontal scrollbar), not a ticker. Reduced-motion: still.

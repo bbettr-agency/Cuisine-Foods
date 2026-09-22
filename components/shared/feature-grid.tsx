@@ -3,7 +3,7 @@ import { Icon } from "@/components/ui/icon";
 import { Reveal, RevealGroup } from "@/components/ui/reveal";
 import { cn } from "@/lib/utils";
 
-/** Feature/benefit grid — the reusable proof block used across every template. */
+/** Feature/benefit grid – the reusable proof block used across every template. */
 export function FeatureGrid({ points, columns = 3 }: { points: FeaturePoint[]; columns?: 2 | 3 }) {
   return (
     <RevealGroup

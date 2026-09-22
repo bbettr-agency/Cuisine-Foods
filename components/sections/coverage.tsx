@@ -6,14 +6,14 @@ import { Section } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, RevealGroup } from "@/components/ui/reveal";
 
-/** Coverage — the two province pillars + branches. Local proof + internal links. */
+/** Coverage – the two province pillars + branches. Local proof + internal links. */
 export function Coverage() {
   return (
     <Section alt>
       <SectionHeading
         eyebrow="Where we operate"
         title="Local to Gauteng &amp; the Western Cape"
-        intro="Two branches, two provinces, one closed-loop service — supply and collection, close to your kitchen."
+        intro="Two branches, two provinces, one closed-loop service – supply and collection, close to your kitchen."
         align="center"
       />
       <RevealGroup className="mt-12 grid gap-6 lg:grid-cols-2">

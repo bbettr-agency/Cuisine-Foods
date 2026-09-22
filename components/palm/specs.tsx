@@ -12,7 +12,7 @@ const DRUM = { src: "/images/website/product-palm.png", w: 827, h: 1027 };
 type Spec = { label: string; value: string };
 
 /**
- * PalmSpecs — the datasheet as a structured, architectural panel: drum offset
+ * PalmSpecs – the datasheet as a structured, architectural panel: drum offset
  * right, a vertical specification stack on the left. Hovering/focusing a spec
  * expands a gold rule, promotes its value, nudges the product, and reveals a
  * faint palm leaflet behind the product. Keyboard-navigable; stacked on mobile.
@@ -61,7 +61,7 @@ export function PalmSpecs({ specs, title }: { specs: Spec[]; title: string }) {
               animate={reduce ? undefined : { x: (active % 2 === 0 ? -1 : 1) * 3, rotate: active % 2 === 0 ? -0.6 : 0.6 }}
               transition={{ type: "spring", stiffness: 120, damping: 18 }}
             >
-              <Image src={DRUM.src} alt="Cuisine Foods 100% pure palm olein — bulk pail" width={DRUM.w} height={DRUM.h} sizes="(max-width:1024px) 45vw, 230px" className="h-auto w-full select-none [filter:drop-shadow(0_24px_28px_rgb(16_22_24/0.22))]" draggable={false} />
+              <Image src={DRUM.src} alt="Cuisine Foods 100% pure palm olein – bulk pail" width={DRUM.w} height={DRUM.h} sizes="(max-width:1024px) 45vw, 230px" className="h-auto w-full select-none [filter:drop-shadow(0_24px_28px_rgb(16_22_24/0.22))]" draggable={false} />
             </motion.div>
           </div>
         </div>

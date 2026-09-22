@@ -6,7 +6,7 @@ import { Reveal, RevealGroup } from "@/components/ui/reveal";
 
 export type RelatedItem = { label: string; href: string; blurb?: string };
 
-/** Sibling/related internal links — semantic interlinking within a cluster. */
+/** Sibling/related internal links – semantic interlinking within a cluster. */
 export function RelatedLinks({ title, items }: { title: string; items: RelatedItem[] }) {
   if (items.length === 0) return null;
   return (

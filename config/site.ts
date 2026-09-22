@@ -1,5 +1,5 @@
 /**
- * SITE CONFIG — single source of truth for identity, contact & branches.
+ * SITE CONFIG – single source of truth for identity, contact & branches.
  * Nothing here should be hardcoded in components. Values marked PENDING are
  * client-confirmable; where a value is unverified it is either omitted or
  * surfaced only through the progressive trust system (config/trust.ts).
@@ -14,9 +14,9 @@ export type Branch = {
   city: string;
   postalCode: string;
   region: string; // ISO-ish region for schema
-  lat: number; // geo for LocalBusiness schema (approx — refine when confirmed)
+  lat: number; // geo for LocalBusiness schema (approx – refine when confirmed)
   lng: number;
-  gbpUrl?: string; // Google Business Profile URL — add once the profile is live
+  gbpUrl?: string; // Google Business Profile URL – add once the profile is live
   mapEmbed: string; // Google Maps embed src
   mapLink: string;
 };
@@ -27,7 +27,7 @@ export const site = {
   // Verified positioning from research (client's own words).
   tagline: "Premium cooking oil in. Used cooking oil out. One trusted partner.",
   shortDescription:
-    "Bulk sunflower, palm olein & soya delivered to South African kitchens — plus free, compliant used cooking oil collection.",
+    "Bulk sunflower, palm olein & soya delivered to South African kitchens – plus free, compliant used cooking oil collection.",
   foundedYear: 2009, // PENDING reconciliation (site also says "15+ years")
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuisinefoods.co.za",
   locale: "en_ZA",
@@ -84,15 +84,15 @@ export const site = {
 
   /**
    * UCO buy-back rate range (R/litre) used by the value calculator. This is an
-   * ESTIMATE range shown to visitors (labelled as such) — update to the client's
+   * ESTIMATE range shown to visitors (labelled as such) – update to the client's
    * confirmed rates when available. Market context: SA collectors pay ~R4–R7/litre.
    */
   uco: { rateLow: 4, rateHigh: 7 },
 
   /**
-   * Editorial / E-E-A-T. `authorName` is the visible byline (truthful — the
+   * Editorial / E-E-A-T. `authorName` is the visible byline (truthful – the
    * company team). Add a real named `reviewer` (a person + credential) when the
-   * client provides one — it renders a byline AND `reviewedBy` Person schema, a
+   * client provides one – it renders a byline AND `reviewedBy` Person schema, a
    * strong AI-citation and E-E-A-T signal (~3.7× AIO citation correlation).
    */
   editorial: {
@@ -101,7 +101,7 @@ export const site = {
   },
 
   /**
-   * Brand assets — uploaded to public/images/logo/.
+   * Brand assets – uploaded to public/images/logo/.
    * `ready` flips to true once the real logo lands; until then the header/footer
    * use the text wordmark. Favicon, OG image and schema logo point here.
    */
@@ -116,7 +116,7 @@ export const site = {
   /**
    * Entity / Knowledge-Graph signals (OS + GEO). `knowsAbout` declares topical
    * authority to Google/LLMs; `links` become Organization `sameAs`. Add the GBP,
-   * LinkedIn and Wikidata URLs here as they go live — progressive, no fabrication.
+   * LinkedIn and Wikidata URLs here as they go live – progressive, no fabrication.
    */
   entity: {
     knowsAbout: [

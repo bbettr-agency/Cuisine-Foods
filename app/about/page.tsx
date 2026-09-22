@@ -16,13 +16,13 @@ import { CtaBand } from "@/components/funnel/cta-band";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Cuisine Foods | Family-Owned SA Cooking Oil Partner",
-  description: "A family-owned South African cooking oil partner since 2009 — supplying bulk oil and collecting used cooking oil across Gauteng & the Western Cape.",
+  description: "A family-owned South African cooking oil partner since 2009 – supplying bulk oil and collecting used cooking oil across Gauteng & the Western Cape.",
   path: "/about",
 });
 
 const values = [
-  { icon: "shield-check" as const, title: "Reliability first", body: "Consistent quality and dependable delivery — the two things a professional kitchen can't do without." },
-  { icon: "hand" as const, title: "A true partnership", body: "We don't just supply oil — we partner with your kitchen for the long term." },
+  { icon: "shield-check" as const, title: "Reliability first", body: "Consistent quality and dependable delivery – the two things a professional kitchen can't do without." },
+  { icon: "hand" as const, title: "A true partnership", body: "We don't just supply oil – we partner with your kitchen for the long term." },
   { icon: "recycle" as const, title: "Responsible by design", body: "Every litre of used oil we collect is recycled into biodiesel, never back into the food chain." },
 ];
 
@@ -37,7 +37,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow={site.ownership}
         h1="One partner for the oil in and the oil out"
-        subhead="Cuisine Foods is a family-owned South African business supplying bulk cooking oil and collecting used cooking oil across Gauteng and the Western Cape — a genuine closed loop for professional kitchens."
+        subhead="Cuisine Foods is a family-owned South African business supplying bulk cooking oil and collecting used cooking oil across Gauteng and the Western Cape – a genuine closed loop for professional kitchens."
         imageId="about-team"
         crumbs={crumbs}
         primaryLabel="Get a Quote"
@@ -51,7 +51,7 @@ export default function AboutPage() {
             <SectionHeading eyebrow="Our story" title="Supplying South Africa's kitchens since 2009" />
             <div className="mt-5 space-y-4 text-lg leading-relaxed text-ink-soft">
               <p>For more than a decade, our focus has stayed simple: deliver exceptional oil quality, reliable service and consistent bulk supply that keeps professional kitchens running smoothly.</p>
-              <p>From branches in Centurion and Cape Town, we supply sunflower, palm olein and soya to restaurants, caterers, hotels and food manufacturers — and we collect their used cooking oil, paying per litre and recycling it into renewable biodiesel.</p>
+              <p>From branches in Centurion and Cape Town, we supply sunflower, palm olein and soya to restaurants, caterers, hotels and food manufacturers – and we collect their used cooking oil, paying per litre and recycling it into renewable biodiesel.</p>
               <p>It's a rare model in South Africa: one trusted partner for the oil going into your kitchen and the used oil coming back out.</p>
             </div>
           </Reveal>
@@ -76,7 +76,7 @@ export default function AboutPage() {
           })}
         </RevealGroup>
 
-        {/* Certifications — progressive: renders only when the client confirms them */}
+        {/* Certifications – progressive: renders only when the client confirms them */}
         {certs.length > 0 && (
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {certs.map((c) => (

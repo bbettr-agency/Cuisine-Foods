@@ -20,7 +20,7 @@ import { SoyaCta } from "@/components/soya/cta";
 import { MaskUp, DrawLine, RevealStagger } from "@/components/sunflower/motion-kit";
 
 /**
- * SoyaView — the bespoke, motion-forward /soya-oil experience ("The Pour").
+ * SoyaView – the bespoke, motion-forward /soya-oil experience ("The Pour").
  * Shares the Sunflower/Palm ENGINEERING but a distinct liquid-gold visual world.
  * Built only from the existing Soya config content.
  */
@@ -49,7 +49,7 @@ export function SoyaView({ page }: { page: MoneyPage }) {
       body: page.sections[1]?.body ?? "",
       chips: ["Food manufacturers", "Caterers", "High-volume kitchens", "Processed foods"],
     },
-    { n: "04", label: "BULK SUPPLY", title: "Reliable bulk supply", body: "Supplied in bulk with consistent quality — from 20L, no strict minimum, larger formats on request." },
+    { n: "04", label: "BULK SUPPLY", title: "Reliable bulk supply", body: "Supplied in bulk with consistent quality – from 20L, no strict minimum, larger formats on request." },
   ];
 
   const apps: { title: string; body: string }[] = [
@@ -78,7 +78,7 @@ export function SoyaView({ page }: { page: MoneyPage }) {
         <div className="mt-10"><FeatureGrid points={page.keyPoints} /></div>
       </Section>
 
-      {/* THE SIGNATURE — Soya Pour */}
+      {/* THE SIGNATURE – Soya Pour */}
       <SoyaTheatre states={states} />
 
       {/* Liquid data specifications */}
@@ -86,7 +86,7 @@ export function SoyaView({ page }: { page: MoneyPage }) {
 
       <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
 
-      {/* Story content — varied motion vocabulary */}
+      {/* Story content – varied motion vocabulary */}
       <Section alt>
         <div className="mx-auto max-w-3xl space-y-16">
           {page.sections.map((s, i) => (
@@ -117,7 +117,7 @@ export function SoyaView({ page }: { page: MoneyPage }) {
 
       <SoyaCta
         title={`${page.h1.toLowerCase()}?`}
-        body="Tell us your monthly volume and delivery area — we'll come back quickly with pricing and a consistent supply schedule for your kitchen or production line."
+        body="Tell us your monthly volume and delivery area – we'll come back quickly with pricing and a consistent supply schedule for your kitchen or production line."
         primaryLabel={page.primaryCtaLabel}
         primaryHref={`/request-a-quote?intent=${page.intent}`}
       />

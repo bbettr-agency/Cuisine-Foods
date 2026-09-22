@@ -1,4 +1,4 @@
-/** Renders JSON-LD structured data. Server component — no client JS. */
+/** Renders JSON-LD structured data. Server component – no client JS. */
 export function JsonLd({ data }: { data: object | object[] }) {
   const json = Array.isArray(data) ? data : [data];
   return (

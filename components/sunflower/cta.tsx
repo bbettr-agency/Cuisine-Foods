@@ -14,7 +14,7 @@ import { SunflowerBotanical } from "@/components/sunflower/botanical";
 const DRUM = { src: "/images/website/product-sunflower.png", w: 837, h: 1024 };
 
 /**
- * SunflowerCta — the closing beat. The dark brand band with a cropped drum and
+ * SunflowerCta – the closing beat. The dark brand band with a cropped drum and
  * a faint bloomed botanical, plus a restrained magnetic primary button (drifts
  * a few px toward the pointer, arrow nudges) that stays fully clickable.
  */

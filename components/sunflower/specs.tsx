@@ -12,7 +12,7 @@ const DRUM = { src: "/images/website/product-sunflower.png", w: 837, h: 1024 };
 type Spec = { label: string; value: string };
 
 /**
- * SunflowerSpecs — the "at a glance" data, turned into a calm interactive panel.
+ * SunflowerSpecs – the "at a glance" data, turned into a calm interactive panel.
  * The drum anchors the left; each spec is a focusable row. Hovering/focusing a
  * row makes it prominent (gold accent draws in, others recede) and nudges the
  * product a pixel or two. Fully keyboard-navigable. Mobile: a clean stacked list.
@@ -43,7 +43,7 @@ export function SunflowerSpecs({ specs, title }: { specs: Spec[]; title: string 
             >
               <Image
                 src={DRUM.src}
-                alt="Cuisine Foods 100% pure sunflower oil — bulk pail"
+                alt="Cuisine Foods 100% pure sunflower oil – bulk pail"
                 width={DRUM.w}
                 height={DRUM.h}
                 sizes="(max-width: 1024px) 45vw, 240px"

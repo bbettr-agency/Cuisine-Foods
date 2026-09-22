@@ -8,7 +8,7 @@ import { MaskUp } from "@/components/sunflower/motion-kit";
 type App = { title: string; body: string };
 
 /**
- * CookingApplications — the escaped botanical points to where the oil goes. A
+ * CookingApplications – the escaped botanical points to where the oil goes. A
  * gold branch draws across the top and a small leaf node terminates over each
  * card as it reveals: branch → card → branch → card. Resolves immediately on a
  * fast scroll (whileInView, no scroll choreography). Reduced-motion: all shown.

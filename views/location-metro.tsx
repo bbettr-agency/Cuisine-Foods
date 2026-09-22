@@ -15,9 +15,9 @@ import { CtaBand } from "@/components/funnel/cta-band";
 import { FaqSection } from "@/components/sections/faq-section";
 
 /**
- * LocationMetroView — hyper-local & unique (anti-doorway, OS P11).
+ * LocationMetroView – hyper-local & unique (anti-doorway, OS P11).
  * Carries real suburbs, local logistics, customer clusters and that
- * municipality's actual FOG regulation note — unique by construction.
+ * municipality's actual FOG regulation note – unique by construction.
  */
 export function LocationMetroView({ metro }: { metro: Metro }) {
   const province = getProvince(metro.provinceSlug)!;
@@ -89,7 +89,7 @@ export function LocationMetroView({ metro }: { metro: Metro }) {
           </div>
           <div className="card p-7">
             <p className="flex items-center gap-2 font-display text-lg font-bold text-ink"><MapPin className="h-5 w-5 text-brand-600" /> Used-oil collection</p>
-            <p className="mt-2 text-sm text-ink-soft">Free, compliant collection in {metro.name} — paid per litre.</p>
+            <p className="mt-2 text-sm text-ink-soft">Free, compliant collection in {metro.name} – paid per litre.</p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <Button href="/request-a-quote?intent=uco" variant="gold">Arrange Free Collection</Button>
               <Link href="/used-cooking-oil-collection" className="text-sm font-semibold text-brand-700 hover:underline">UCO collection →</Link>
@@ -98,7 +98,7 @@ export function LocationMetroView({ metro }: { metro: Metro }) {
         </div>
       </Section>
 
-      <FaqSection ids={metro.faqIds} title={`${metro.name} — common questions`} />
+      <FaqSection ids={metro.faqIds} title={`${metro.name} – common questions`} />
       <CtaBand
         title={`Your local partner in ${metro.name}`}
         body={`Bulk oil delivered and used oil collected across ${metro.name} and surrounds. Get a quote today.`}

@@ -15,7 +15,7 @@ import { Breadcrumbs, type Crumb } from "@/components/shared/breadcrumbs";
 const DRUM = { src: "/images/website/product-palm.png", w: 827, h: 1027 };
 
 /**
- * PalmHero — the approved interior hero layout with the Palm Olein drum as a
+ * PalmHero – the approved interior hero layout with the Palm Olein drum as a
  * physical, pointer-responsive object (restrained tilt/parallax + moving
  * shadow, spring-return). Mobile / reduced-motion: calm and static.
  */
@@ -76,7 +76,7 @@ export function PalmHero({
             style={reduce ? undefined : { rotateX, rotateY, x: tx, y: ty }}
           >
             <div className={reduce ? undefined : "drum-float"}>
-              <Image src={DRUM.src} alt="Cuisine Foods 100% pure palm olein — bulk pail" width={DRUM.w} height={DRUM.h} priority sizes="(max-width: 1024px) 52vw, 340px" className="h-auto w-full select-none [filter:drop-shadow(0_26px_30px_rgb(16_22_24/0.24))]" draggable={false} />
+              <Image src={DRUM.src} alt="Cuisine Foods 100% pure palm olein – bulk pail" width={DRUM.w} height={DRUM.h} priority sizes="(max-width: 1024px) 52vw, 340px" className="h-auto w-full select-none [filter:drop-shadow(0_26px_30px_rgb(16_22_24/0.24))]" draggable={false} />
             </div>
           </motion.div>
         </div>

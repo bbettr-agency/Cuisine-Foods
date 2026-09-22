@@ -25,7 +25,7 @@ export type ResourceLink = { label: string; href: string; blurb?: string };
 /** Product spec / datasheet row (smoke point, pack sizes, etc.). */
 export type ProductSpec = { label: string; value: string };
 
-/** Comparison table (e.g. Sunflower vs Palm Olein vs Soya) — tables win AI-search citations. */
+/** Comparison table (e.g. Sunflower vs Palm Olein vs Soya) – tables win AI-search citations. */
 export type ComparisonTable = {
   caption: string;
   columns: string[]; // first column is the feature label

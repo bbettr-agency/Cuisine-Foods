@@ -28,7 +28,7 @@ export default function ContactPage() {
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           {/* Contact details */}
           <div>
-            <SectionHeading eyebrow="Contact" title="Let's talk oil — in and out" intro="Bulk supply or used-oil collection, we'll come back quickly. WhatsApp is usually fastest." as="h1" />
+            <SectionHeading eyebrow="Contact" title="Let's talk oil – in and out" intro="Bulk supply or used-oil collection, we'll come back quickly. WhatsApp is usually fastest." as="h1" />
             <div className="mt-8 space-y-3">
               <a href={telUrl} className="flex items-center gap-3 text-ink hover:text-brand-700"><Phone className="h-5 w-5 text-brand-600" /> {site.contact.phone.display}</a>
               <a href={whatsappUrl(whatsappPrefill.general)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-ink hover:text-brand-700"><span className="text-gold-600">◍</span> WhatsApp {site.contact.whatsapp.display}</a>

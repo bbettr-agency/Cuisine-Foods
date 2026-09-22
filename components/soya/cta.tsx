@@ -14,7 +14,7 @@ import { MaskUp } from "@/components/sunflower/motion-kit";
 const DRUM = { src: "/images/website/product-cooking.png", w: 869, h: 1046 };
 
 /**
- * SoyaCta — the closing beat: a gold droplet stretches into a liquid underline
+ * SoyaCta – the closing beat: a gold droplet stretches into a liquid underline
  * beneath the headline as the CTA enters, the Soya drum sits cropped on the
  * right, and the primary button carries the restrained magnetic microinteraction.
  */

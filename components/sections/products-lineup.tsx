@@ -10,9 +10,9 @@ import { DrumImage } from "@/components/motion/drum-image";
 import { cn } from "@/lib/utils";
 
 /**
- * Section 2 — the three-product lineup. Each card holds a landing slot
+ * Section 2 – the three-product lineup. Each card holds a landing slot
  * (#slot-<id>) for the matching hero product that travels in; the static render
- * is hidden while the journey is live (the overlay lands there instead — on
+ * is hidden while the journey is live (the overlay lands there instead – on
  * desktop all three, on mobile only sunflower, matching the hero journey).
  * Hover (desktop) / tap (mobile) lifts a product forward, deepens its shadow
  * and reveals its supporting copy while the others recede.
@@ -65,7 +65,7 @@ export function ProductsLineup() {
               <h3 className="mt-6 font-display text-xl font-bold text-ink">{p.name}</h3>
               <p className="mt-1 text-sm font-medium text-gold-700">{p.tagline}</p>
 
-              {/* Supporting copy — revealed on hover/tap without shifting layout */}
+              {/* Supporting copy – revealed on hover/tap without shifting layout */}
               <div
                 className={cn(
                   "grid transition-all duration-500 ease-out-expo",

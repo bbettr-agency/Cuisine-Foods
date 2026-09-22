@@ -1,9 +1,9 @@
-/** BUYER-SEGMENT MONEY PAGES — segment-qualified intent; also PPC landing pages. */
+/** BUYER-SEGMENT MONEY PAGES – segment-qualified intent; also PPC landing pages. */
 import type { MoneyPage } from "@/config/types";
 import { cta } from "@/config/conversion";
 
 const ucoCrossSell = {
-  label: "We also collect your used oil — and pay you for it",
+  label: "We also collect your used oil – and pay you for it",
   href: "/used-cooking-oil-collection",
   blurb: "One partner for the oil in and the oil out. Free, compliant collection with a rebate per litre.",
 };
@@ -28,13 +28,13 @@ export const buyers: MoneyPage[] = [
     subhead: "Reliable bulk oil supply that keeps your kitchen frying.",
     metaTitle: "Cooking Oil Supplier for Restaurants | Bulk Delivery | Cuisine Foods",
     metaDescription:
-      "Bulk cooking oil for restaurants — sunflower, palm olein & soya, delivered reliably across Gauteng & the Western Cape. Plus free used-oil collection. Get a quote.",
+      "Bulk cooking oil for restaurants – sunflower, palm olein & soya, delivered reliably across Gauteng & the Western Cape. Plus free used-oil collection. Get a quote.",
     intro:
-      "Your kitchen can't stop because the oil ran out. We keep restaurants supplied with consistent, quality bulk oil on a delivery schedule that fits your service — and we collect and pay for your used oil too.",
+      "Your kitchen can't stop because the oil ran out. We keep restaurants supplied with consistent, quality bulk oil on a delivery schedule that fits your service – and we collect and pay for your used oil too.",
     keyPoints: [
       { icon: "truck", title: "Never run dry", body: "Daily, weekly or monthly delivery that matches how you fry." },
       { icon: "droplet", title: "Consistent quality", body: "The same clean oil every time, so your food tastes the same every service." },
-      { icon: "banknote", title: "A rebate on used oil", body: "We buy back your used oil — lowering your real cost per litre." },
+      { icon: "banknote", title: "A rebate on used oil", body: "We buy back your used oil – lowering your real cost per litre." },
     ],
     sections: [
       { heading: "Switching is easy", body: "Get a quote today and we'll set up your first delivery this week. No lock-in.", answers: "objection: switching inertia" },
@@ -59,7 +59,7 @@ export const buyers: MoneyPage[] = [
       { icon: "clock", title: "Dependable delivery", body: "Scheduled supply so no outlet runs short." },
     ],
     sections: [
-      { heading: "Account terms & a dedicated contact", body: "Tell us your outlets and volumes — we'll structure supply, collection and a single point of contact.", answers: "objection: reliability / terms" },
+      { heading: "Account terms & a dedicated contact", body: "Tell us your outlets and volumes – we'll structure supply, collection and a single point of contact.", answers: "objection: reliability / terms" },
     ],
     faqIds: ["min-order", "delivery-areas", "uco-certificate"],
     relatedSlugs: ["cooking-oil-for-caterers", "cooking-oil-for-restaurants"],
@@ -72,11 +72,11 @@ export const buyers: MoneyPage[] = [
     subhead: "Flexible bulk oil supply for events and high-volume catering.",
     metaTitle: "Wholesale Cooking Oil for Caterers | Cuisine Foods",
     metaDescription:
-      "Flexible bulk cooking oil for caterers — sunflower, palm olein & soya in 20L, no strict minimum. Reliable across Gauteng & the Western Cape. Get a quote.",
+      "Flexible bulk cooking oil for caterers – sunflower, palm olein & soya in 20L, no strict minimum. Reliable across Gauteng & the Western Cape. Get a quote.",
     intro:
-      "Catering volumes swing with your calendar. We supply flexible bulk oil when you need it, in 20L with no strict minimum, and collect the used oil afterwards — for cash.",
+      "Catering volumes swing with your calendar. We supply flexible bulk oil when you need it, in 20L with no strict minimum, and collect the used oil afterwards – for cash.",
     keyPoints: [
-      { icon: "utensils", title: "Flexible volumes", body: "Scale up for a big event, back down after — no rigid minimums." },
+      { icon: "utensils", title: "Flexible volumes", body: "Scale up for a big event, back down after – no rigid minimums." },
       { icon: "truck", title: "Delivered on time", body: "Supply that lands before your prep does." },
       { icon: "banknote", title: "Paid for used oil", body: "We collect and pay for the oil once the event's done." },
     ],
@@ -96,10 +96,10 @@ export const buyers: MoneyPage[] = [
     metaDescription:
       "Consistent-spec bulk sunflower, soya & palm oil for food manufacturers. Larger formats and reliable supply across Gauteng & the Western Cape. Request a spec & quote.",
     intro:
-      "Production can't tolerate a variable input. We supply consistent-spec bulk oil — sunflower, soya and palm olein — with the reliability and formats a manufacturing line needs.",
+      "Production can't tolerate a variable input. We supply consistent-spec bulk oil – sunflower, soya and palm olein – with the reliability and formats a manufacturing line needs.",
     keyPoints: [
       { icon: "factory", title: "Consistent spec", body: "The same oil, batch after batch, for predictable production." },
-      { icon: "scale", title: "Volume & formats", body: "From 20L to larger formats — tell us your line's requirement." },
+      { icon: "scale", title: "Volume & formats", body: "From 20L to larger formats – tell us your line's requirement." },
       { icon: "recycle", title: "Waste-oil offtake", body: "We collect and recycle your used and residue oil, compliantly." },
     ],
     sections: [
@@ -125,7 +125,7 @@ export const buyers: MoneyPage[] = [
       { icon: "scale", title: "Store-level reporting", body: "Cost, compliance and sustainability, visible across the group." },
     ],
     sections: [
-      { heading: "Roll it out group-wide", body: "Talk to us about a group rollout — supply, collection and reporting under one agreement.", answers: "segment: franchise HQ" },
+      { heading: "Roll it out group-wide", body: "Talk to us about a group rollout – supply, collection and reporting under one agreement.", answers: "segment: franchise HQ" },
     ],
     faqIds: ["min-order", "delivery-areas", "uco-certificate"],
     relatedSlugs: ["uco-compliance-reporting", "cooking-oil-for-hotels"],

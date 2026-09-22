@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 type Spec = { label: string; value: string };
 
 /**
- * SoyaSpecs — the datasheet as a "liquid data line": a thin gold line runs
+ * SoyaSpecs – the datasheet as a "liquid data line": a thin gold line runs
  * through the specifications with a droplet node at each. Hovering/focusing an
  * item swells its droplet, brightens the line under it and lifts the value.
  * Desktop = horizontal flow; mobile = vertical stack with a left gold accent.

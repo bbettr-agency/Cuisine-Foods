@@ -8,7 +8,7 @@ const base =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-200 ease-out-expo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:opacity-60 min-h-[44px]";
 
 const variants: Record<Variant, string> = {
-  // Gold CTA with dark text — the primary conversion colour.
+  // Gold CTA with dark text – the primary conversion colour.
   primary: "bg-gold-500 text-ink hover:bg-gold-600 shadow-soft hover:shadow-lift",
   gold: "bg-gold-500 text-ink hover:bg-gold-600 shadow-soft hover:shadow-lift",
   // Strong near-black button (secondary CTA on light backgrounds).

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { DrumImage } from "@/components/motion/drum-image";
 
-/** Home hero — the 5-second decision: who/what/where/why-trust/next-action. */
+/** Home hero – the 5-second decision: who/what/where/why-trust/next-action. */
 export function Hero() {
   const { hero } = home;
   return (
@@ -54,7 +54,7 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* The three products are the hero object — physical pails on the page,
+        {/* The three products are the hero object – physical pails on the page,
             intentionally composed with depth (cooking oil forward & centre,
             palm and sunflower set back to either side). Each is the rest anchor
             for the product that travels into the lineup below; the static renders
@@ -68,19 +68,19 @@ export function Hero() {
               measures; the idle float lives on an INNER wrapper so the float's
               transform never fights the positioning transform. */}
           <div className="relative mx-auto hidden h-[420px] w-full max-w-[520px] [perspective:1400px] lg:block xl:h-[460px]">
-            {/* Palm — left, set back */}
+            {/* Palm – left, set back */}
             <div id="hero-palm" className="absolute bottom-6 left-0 z-10 w-[43%]">
               <div className="drum-float" style={{ animationDelay: "-1.2s" }}>
                 <DrumImage id="palm" staticFor="hero" sizes="240px" />
               </div>
             </div>
-            {/* Sunflower — right, set back */}
+            {/* Sunflower – right, set back */}
             <div id="hero-sunflower" className="absolute bottom-6 right-0 z-20 w-[43%]">
               <div className="drum-float" style={{ animationDelay: "-3.4s" }}>
                 <DrumImage id="sunflower" staticFor="hero" sizes="240px" />
               </div>
             </div>
-            {/* Cooking oil — centre, forward & larger */}
+            {/* Cooking oil – centre, forward & larger */}
             <div id="hero-cooking" className="absolute bottom-0 left-1/2 z-30 w-[54%] -translate-x-1/2">
               <div className="drum-float">
                 <DrumImage id="cooking" staticFor="hero" priority sizes="300px" />
@@ -89,7 +89,7 @@ export function Hero() {
           </div>
 
           {/* ---- Mobile hero (unchanged behaviour: a single travelling product
-                 that falls into the top lineup card — palm) ---- */}
+                 that falls into the top lineup card – palm) ---- */}
           <div
             id="hero-mobile"
             className="mx-auto w-[58%] max-w-[280px] [perspective:1200px] sm:w-[46%] lg:hidden"

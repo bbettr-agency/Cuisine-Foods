@@ -16,7 +16,7 @@ import { Breadcrumbs, type Crumb } from "@/components/shared/breadcrumbs";
 const DRUM = { src: "/images/website/product-cooking.png", w: 869, h: 1046 };
 
 /**
- * SoyaHero — the approved interior hero with the Soya drum standing just above a
+ * SoyaHero – the approved interior hero with the Soya drum standing just above a
  * single elegant gold oil droplet (the first hint of the page's liquid language).
  * Restrained pointer depth on desktop (product and liquid at different depths).
  */
@@ -76,7 +76,7 @@ export function SoyaHero({
           </motion.div>
           <motion.div className="relative w-[58%] max-w-[280px] [transform-style:preserve-3d] sm:w-[48%] lg:w-full lg:max-w-[330px]" style={reduce ? undefined : { rotateX, rotateY, x: tx, y: ty }}>
             <div className={reduce ? undefined : "drum-float"}>
-              <Image src={DRUM.src} alt="Cuisine Foods soya oil — bulk pail" width={DRUM.w} height={DRUM.h} priority sizes="(max-width: 1024px) 50vw, 330px" className="h-auto w-full select-none [filter:drop-shadow(0_26px_30px_rgb(16_22_24/0.24))]" draggable={false} />
+              <Image src={DRUM.src} alt="Cuisine Foods soya oil – bulk pail" width={DRUM.w} height={DRUM.h} priority sizes="(max-width: 1024px) 50vw, 330px" className="h-auto w-full select-none [filter:drop-shadow(0_26px_30px_rgb(16_22_24/0.24))]" draggable={false} />
             </div>
           </motion.div>
         </div>

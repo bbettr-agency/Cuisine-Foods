@@ -17,11 +17,24 @@ export function Header() {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const pathname = usePathname();
 
+  // Compress the (black) navbar once the visitor scrolls in. Hysteresis – enter
+  // at 64px, leave at 24px – so a scroll resting near the threshold can't flicker
+  // the state. A single boolean transition (not a per-pixel calc) keeps it cheap.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      setScrolled((prev) => {
+        const y = window.scrollY;
+        if (!prev && y > 64) return true;
+        if (prev && y < 24) return false;
+        return prev;
+      });
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => { window.removeEventListener("scroll", onScroll); if (raf) cancelAnimationFrame(raf); };
   }, []);
 
   // Close menus on route change
@@ -41,12 +54,23 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300 ease-out-expo",
-        scrolled ? "border-b border-line bg-paper/85 backdrop-blur-md" : "bg-transparent",
+        "sticky top-0 z-50 w-full bg-ink text-paper transition-all duration-300 ease-out-expo",
+        scrolled ? "border-b border-white/10 shadow-[0_10px_30px_-18px_rgb(0_0_0/0.8)]" : "border-b border-white/5",
       )}
     >
-      <div className="container-x flex h-16 items-center justify-between gap-4 lg:h-[72px]">
-        <Logo />
+      <div
+        className={cn(
+          "container-x flex items-center justify-between gap-4 transition-all duration-300 ease-out-expo",
+          scrolled ? "h-14 lg:h-16" : "h-[68px] lg:h-[92px]",
+        )}
+      >
+        <Logo
+          tone="light"
+          imgClassName={cn(
+            "w-auto transition-all duration-300 ease-out-expo",
+            scrolled ? "h-7 lg:h-8" : "h-8 lg:h-11",
+          )}
+        />
 
         {/* Desktop nav */}
         <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
@@ -55,7 +79,7 @@ export function Header() {
               <Link
                 key={group.label}
                 href={group.href ?? "#"}
-                className="rounded-full px-3 py-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+                className="rounded-full px-3 py-2 text-sm font-medium text-paper/75 transition-colors hover:text-paper"
               >
                 {group.label}
               </Link>
@@ -67,7 +91,7 @@ export function Header() {
                 onMouseLeave={() => setOpenGroup(null)}
               >
                 <button
-                  className="inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+                  className="inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-paper/75 transition-colors hover:text-paper"
                   aria-expanded={openGroup === group.label}
                   onClick={() => setOpenGroup(openGroup === group.label ? null : group.label)}
                 >
@@ -106,7 +130,7 @@ export function Header() {
         <div className="hidden items-center gap-2 lg:flex">
           <a
             href={telUrl}
-            className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-paper/75 transition-colors hover:text-paper"
           >
             <Phone className="h-4 w-4" aria-hidden />
             {site.contact.phone.display}
@@ -118,7 +142,7 @@ export function Header() {
 
         {/* Mobile toggle */}
         <button
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-paper lg:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
@@ -127,9 +151,14 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu – offset tracks the (animated) header height */}
       {mobileOpen && (
-        <div className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-line bg-paper lg:hidden">
+        <div
+          className={cn(
+            "fixed inset-x-0 bottom-0 z-40 overflow-y-auto border-t border-line bg-paper transition-all duration-300 ease-out-expo lg:hidden",
+            scrolled ? "top-14" : "top-[68px]",
+          )}
+        >
           <nav aria-label="Mobile" className="container-x py-6">
             {headerNav.map((group) => (
               <div key={group.label} className="border-b border-line py-2">

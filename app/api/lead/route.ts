@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 /**
- * Lead intake — forwards the enquiry to the GoHighLevel webhook (GHL is the
+ * Lead intake – forwards the enquiry to the GoHighLevel webhook (GHL is the
  * backend per the OS; no custom DB). Configure GHL_WEBHOOK_URL in Vercel.
  */
 export async function POST(request: Request) {
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ ok: false, error: "Upstream error." }, { status: 502 });
       }
     } else {
-      // No webhook configured yet (pre-launch) — accept and log so the form is testable.
+      // No webhook configured yet (pre-launch) – accept and log so the form is testable.
       console.info("[lead] GHL_WEBHOOK_URL not set; lead received:", payload);
     }
 

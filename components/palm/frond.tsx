@@ -1,11 +1,11 @@
 /**
- * PalmBotanical — a bespoke, architectural gold palm canopy drawn as SVG
+ * PalmBotanical – a bespoke, architectural gold palm canopy drawn as SVG
  * linework in the Cuisine Foods gold language (no clipart / tropical stock /
  * bright green / emoji). It reads as structured and strong rather than delicate:
  * a crown of fronds whose central spines draw and whose leaflets progressively
  * UNFURL outward from a single inherited `--unfurl` variable (0 → 1). Each frond
  * carries a `--u0` start offset so they open in sequence; a tiny pointer
- * parallax rides `--px` / `--py`. Purely presentational — one variable animates
+ * parallax rides `--px` / `--py`. Purely presentational – one variable animates
  * the whole canopy with zero per-frame React work.
  */
 
@@ -24,7 +24,7 @@ function leaflets(len: number, count: number): Leaflet[] {
     const t = 0.1 + (i / (count - 1)) * 0.86; // position along the spine
     const y = -t * len;
     const L = len * 0.34 * (0.5 + 0.55 * Math.sin(t * Math.PI)); // taper: fuller mid-frond
-    const beta = 33 + 34 * (1 - t); // angle from the spine — wider at the base
+    const beta = 33 + 34 * (1 - t); // angle from the spine – wider at the base
     return {
       y: +y.toFixed(2),
       L: +L.toFixed(2),

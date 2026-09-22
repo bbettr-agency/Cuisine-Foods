@@ -5,7 +5,7 @@ import { site } from "@/config/site";
  * Robots policy.
  * We WANT AI-search citations, so every AI crawler (search, user, and training)
  * is explicitly allowed alongside classic search bots. No llms.txt (evidence: it
- * is ignored by Google/AI engines — GEO research 2026). If the client ever objects
+ * is ignored by Google/AI engines – GEO research 2026). If the client ever objects
  * to model *training*, disallow only GPTBot / ClaudeBot / Google-Extended here.
  */
 const AI_AND_SEARCH_BOTS = [

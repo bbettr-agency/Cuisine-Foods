@@ -1,4 +1,4 @@
-/** HOMEPAGE CONTENT — the 9 sections locked in the Final Review. */
+/** HOMEPAGE CONTENT – the 9 sections locked in the Final Review. */
 import type { FeaturePoint } from "@/config/types";
 
 export const home = {
@@ -6,31 +6,31 @@ export const home = {
     eyebrow: "Family-owned & South African · since 2009",
     h1: "Premium cooking oil in. Used cooking oil out. One trusted partner.",
     subhead:
-      "Bulk sunflower, palm olein & soya delivered to restaurants, hotels and food manufacturers across Gauteng & the Western Cape — plus free, compliant collection of your used cooking oil.",
+      "Bulk sunflower, palm olein & soya delivered to restaurants, hotels and food manufacturers across Gauteng & the Western Cape – plus free, compliant collection of your used cooking oil.",
     // Two-path fork (the most important conversion decision on the page)
     primary: { label: "Get a Bulk Oil Quote", href: "/request-a-quote?intent=supply", intent: "supply" as const },
     secondary: { label: "Arrange Used-Oil Collection", href: "/request-a-quote?intent=uco", intent: "uco" as const },
   },
 
-  // Section 2 — the three-product lineup the hero products travel into.
+  // Section 2 – the three-product lineup the hero products travel into.
   // Order = the on-screen landing order (left → right) and the hero journey legs.
   productLineup: {
     eyebrow: "Our cooking oils",
     title: "Three premium oils for professional kitchens",
-    body: "Palm olein, cooking oil and sunflower — supplied in bulk, delivered on your schedule across Gauteng & the Western Cape.",
+    body: "Palm olein, cooking oil and sunflower – supplied in bulk, delivered on your schedule across Gauteng & the Western Cape.",
     products: [
       // `imageId` matches config/drums.ts; each card holds a landing slot for the
       // travelling hero product of the same id.
       { slug: "palm", imageId: "palm", name: "Palm Olein", tagline: "Heat-stable · long fry-life", body: "The most heat-stable frying oil, engineered for high-volume commercial fryers.", href: "/palm-olein" },
       { slug: "cooking", imageId: "cooking", name: "Cooking Oil", tagline: "All-purpose · dependable", body: "A pure, neutral cooking oil for general frying, baking, roasting and salads across high-volume kitchens.", href: "/bulk-cooking-oil-supply" },
-      { slug: "sunflower", imageId: "sunflower", name: "Sunflower Oil", tagline: "100% pure · versatile", body: "Clean flavour and a high smoke point — the everyday all-rounder for frying, baking and cooking.", href: "/sunflower-oil" },
+      { slug: "sunflower", imageId: "sunflower", name: "Sunflower Oil", tagline: "100% pure · versatile", body: "Clean flavour and a high smoke point – the everyday all-rounder for frying, baking and cooking.", href: "/sunflower-oil" },
     ],
   },
 
   // Closed-loop framing that headers the two offer cards
   offersHeading: {
     eyebrow: "The closed loop",
-    title: "One partner for the oil going in — and the oil coming out",
+    title: "One partner for the oil going in – and the oil coming out",
     body: "Almost no supplier does both. We do, which means one account, one delivery route, and a lower real cost per litre.",
   },
   offers: [
@@ -50,7 +50,7 @@ export const home = {
     {
       intent: "uco" as const,
       title: "Used Cooking Oil Collection",
-      body: "Free, compliant collection on your schedule — and we pay you per litre.",
+      body: "Free, compliant collection on your schedule – and we pay you per litre.",
       href: "/used-cooking-oil-collection",
       points: ["We pay per litre", "Free sealed drums & collection", "Safe-disposal documentation"],
       productLinks: [
@@ -62,7 +62,7 @@ export const home = {
     },
   ],
 
-  // "Why Cuisine Foods" — two proof columns (reliable supply · compliant collection)
+  // "Why Cuisine Foods" – two proof columns (reliable supply · compliant collection)
   why: {
     eyebrow: "Why Cuisine Foods",
     title: "The obvious choice for South Africa's kitchens",
@@ -78,7 +78,7 @@ export const home = {
         title: "Compliant collection",
         points: [
           { icon: "shield-check", title: "Licensed & documented", body: "Safe-disposal documentation that protects you at inspection." },
-          { icon: "banknote", title: "Paid for your waste", body: "We buy back your used oil — lowering your real cost per litre." },
+          { icon: "banknote", title: "Paid for your waste", body: "We buy back your used oil – lowering your real cost per litre." },
         ] as FeaturePoint[],
       },
     ],

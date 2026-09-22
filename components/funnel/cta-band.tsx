@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import type { CtaIntent } from "@/config/conversion";
 
-/** Closing CTA band — repeats the primary conversion with a response-time promise. */
+/** Closing CTA band – repeats the primary conversion with a response-time promise. */
 export function CtaBand({
   title = "Ready for a supplier that does both?",
   body = "Get a bulk oil quote or arrange a free used-oil collection today. No obligation, no lock-in.",

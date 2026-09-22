@@ -7,7 +7,7 @@ import { whatsappUrl } from "@/config/conversion";
 import { Reveal } from "@/components/ui/reveal";
 
 /**
- * UCO value calculator — a lead magnet no SA competitor has.
+ * UCO value calculator – a lead magnet no SA competitor has.
  * Estimates monthly buy-back earnings from litres/week using the config rate
  * range. Clearly labelled an estimate; CTA pre-fills WhatsApp with the volume.
  */
@@ -19,7 +19,7 @@ export function UcoCalculator() {
   const high = Math.round((perMonth * rateHigh) / 10) * 10;
   const fmt = (n: number) => "R" + n.toLocaleString("en-ZA");
 
-  const waMsg = `Hi Cuisine Foods, we produce about ${litres}L of used cooking oil per week — what rate can you offer and can you collect?`;
+  const waMsg = `Hi Cuisine Foods, we produce about ${litres}L of used cooking oil per week – what rate can you offer and can you collect?`;
 
   return (
     <Reveal>

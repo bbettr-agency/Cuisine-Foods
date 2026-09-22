@@ -18,7 +18,7 @@ export type CookState = { n: string; label: string; title: string; body: string;
 const DRUM = { src: "/images/website/product-cooking.png", w: 869, h: 1046 };
 
 /**
- * CookingTheatre — the signature interaction of the Cooking Oil page:
+ * CookingTheatre – the signature interaction of the Cooking Oil page:
  * THE LIVING LABEL. The gold sunflower artwork printed on the bucket appears to
  * grow beyond the packaging and become the page itself:
  *   CONTAINED → ESCAPE → GROW → ENVIRONMENT.
@@ -36,7 +36,7 @@ export function CookingTheatre({ states }: { states: CookState[] }) {
   useEffect(() => setMounted(true), []);
   const live = mounted && !reduce;
   return (
-    <section aria-label="Cooking Oil story — the living label" className="relative bg-paper">
+    <section aria-label="Cooking Oil story – the living label" className="relative bg-paper">
       <div className="hidden lg:block">{live ? <CookingPinned states={states} /> : <CookingStatic states={states} />}</div>
       <div className="lg:hidden">{live ? <CookingMobile states={states} /> : <CookingStatic states={states} mobile />}</div>
     </section>
@@ -56,7 +56,7 @@ function CookingPinned({ states }: { states: CookState[] }) {
   const growRaw = useTransform(scrollYProgress, [0.03, 0.86], [0, 1]);
   const grow = useSpring(growRaw, { stiffness: 120, damping: 26, mass: 0.4 });
 
-  // pointer easter egg — the black bucket answers by a sub-degree tilt.
+  // pointer easter egg – the black bucket answers by a sub-degree tilt.
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
   const drumTiltY = useSpring(useTransform(rawX, (v) => v * 3), { stiffness: 90, damping: 16 });
@@ -69,7 +69,7 @@ function CookingPinned({ states }: { states: CookState[] }) {
   };
   const onLeave = () => { rawX.set(0); rawY.set(0); };
 
-  // Product motion per state — the black bucket has weight; keep it restrained.
+  // Product motion per state – the black bucket has weight; keep it restrained.
   const drumScale = useTransform(scrollYProgress, [0, 0.5, 0.8, 1], [1, 1.02, 1.05, 1.03]);
   const drumRotateY = useTransform(scrollYProgress, [0, 0.25, 0.6, 1], [0, 5, 4, 0]);
   const drumRotateZ = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, -1.6, -1, 0]);
@@ -91,7 +91,7 @@ function CookingPinned({ states }: { states: CookState[] }) {
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ background: "radial-gradient(60% 60% at 66% 40%, rgb(var(--gold-100) / 0.5) 0%, transparent 62%)" }} />
 
         <div className="container-x relative grid w-full grid-cols-[1.04fr_0.96fr] items-center gap-8">
-          {/* CONTENT — text left, on a soft paper wash */}
+          {/* CONTENT – text left, on a soft paper wash */}
           <div className="relative z-[3] min-h-[360px]">
             <div aria-hidden className="pointer-events-none absolute -inset-x-8 -inset-y-12" style={{ background: "radial-gradient(120% 78% at 38% 50%, rgb(var(--paper)) 0%, rgb(var(--paper) / 0.7) 44%, rgb(var(--paper) / 0) 80%)" }} />
             {states.map((s, i) => (
@@ -99,9 +99,9 @@ function CookingPinned({ states }: { states: CookState[] }) {
             ))}
           </div>
 
-          {/* PRODUCT — the strong black foreground; gold grows from behind it */}
+          {/* PRODUCT – the strong black foreground; gold grows from behind it */}
           <div className="relative flex justify-center">
-            {/* BACK BOTANICAL — the SVG's growth origin (230,640 → 25.6%,71.1%)
+            {/* BACK BOTANICAL – the SVG's growth origin (230,640 → 25.6%,71.1%)
                 is pinned to the bucket centre, so its first pixels are always
                 masked by the bucket; growth climbs up-and-right, cropping over
                 the top-right corner. Scale (vh) sets how far it reaches. */}
@@ -118,11 +118,11 @@ function CookingPinned({ states }: { states: CookState[] }) {
               style={{ x: drumX, scale: drumScale, rotateY: drumRotateY, rotateZ: drumRotateZ, rotateX: drumTiltX }}
             >
               <motion.div style={{ rotateY: drumTiltY }} className="[transform-style:preserve-3d]">
-                <Image src={DRUM.src} alt="Cuisine Foods 100% pure cooking oil — 20L bucket" width={DRUM.w} height={DRUM.h} priority sizes="360px" className="h-auto w-full select-none [filter:drop-shadow(0_40px_44px_rgb(16_22_24/0.34))]" draggable={false} />
+                <Image src={DRUM.src} alt="Cuisine Foods 100% pure cooking oil – 20L bucket" width={DRUM.w} height={DRUM.h} priority sizes="360px" className="h-auto w-full select-none [filter:drop-shadow(0_40px_44px_rgb(16_22_24/0.34))]" draggable={false} />
               </motion.div>
             </motion.div>
 
-            {/* FOREGROUND — same coordinate space (same origin pin + size), one
+            {/* FOREGROUND – same coordinate space (same origin pin + size), one
                 leaf crossing in front of the bucket's outer-right edge */}
             <div
               aria-hidden
@@ -134,7 +134,7 @@ function CookingPinned({ states }: { states: CookState[] }) {
           </div>
         </div>
 
-        {/* THE ESCAPE CONTINUES — a drawn branch that hands off to the next section */}
+        {/* THE ESCAPE CONTINUES – a drawn branch that hands off to the next section */}
         <motion.svg style={{ opacity: dividerOpacity }} className="living-art pointer-events-none absolute bottom-0 left-0 w-full" viewBox="0 0 1440 70" fill="none" preserveAspectRatio="none" aria-hidden>
           <motion.path style={{ pathLength: dividerDraw }} d="M0 48 C 300 26, 560 30, 760 40 C 1000 52, 1220 30, 1440 40" stroke="rgb(var(--gold-500))" strokeWidth={2} strokeLinecap="round" />
         </motion.svg>
@@ -214,12 +214,12 @@ function CookingMobile({ states }: { states: CookState[] }) {
       <motion.div className="sticky top-0 flex h-[100svh] flex-col overflow-hidden" style={{ ["--grow" as string]: grow }}>
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ background: "radial-gradient(76% 40% at 54% 30%, rgb(var(--gold-100) / 0.5) 0%, transparent 66%)" }} />
         <div className="relative flex h-[56svh] items-center justify-center">
-          {/* origin (25.6%,71.1%) pinned to the bucket centre — same as desktop */}
+          {/* origin (25.6%,71.1%) pinned to the bucket centre – same as desktop */}
           <div aria-hidden className="living-art pointer-events-none absolute left-1/2 top-1/2 z-0 h-[178vw] w-[178vw]" style={{ transform: "translate(-25.6%, -71.1%)", WebkitMaskImage: mask, maskImage: mask }}>
             <LivingBotanical className="h-full w-full" id="mobile" />
           </div>
           <div className="relative z-[1] h-[42svh]">
-            <Image src={DRUM.src} alt="Cuisine Foods 100% pure cooking oil — 20L bucket" width={DRUM.w} height={DRUM.h} priority sizes="72vw" className="h-full w-auto select-none [filter:drop-shadow(0_28px_30px_rgb(16_22_24/0.3))]" draggable={false} />
+            <Image src={DRUM.src} alt="Cuisine Foods 100% pure cooking oil – 20L bucket" width={DRUM.w} height={DRUM.h} priority sizes="72vw" className="h-full w-auto select-none [filter:drop-shadow(0_28px_30px_rgb(16_22_24/0.3))]" draggable={false} />
           </div>
           <div aria-hidden className="living-art pointer-events-none absolute left-1/2 top-1/2 z-[2] h-[178vw] w-[178vw]" style={{ transform: "translate(-25.6%, -71.1%)" }}>
             <LivingForeground className="h-full w-full" />
@@ -253,7 +253,7 @@ function CookingStatic({ states, mobile }: { states: CookState[]; mobile?: boole
             <LivingBotanical className="h-full w-full" id="static" />
           </div>
           <div className="relative mx-auto w-[60%] max-w-[280px]">
-            <Image src={DRUM.src} alt="Cuisine Foods 100% pure cooking oil — 20L bucket" width={DRUM.w} height={DRUM.h} sizes="(max-width:1024px) 60vw, 280px" className="h-auto w-full select-none [filter:drop-shadow(0_30px_34px_rgb(16_22_24/0.3))]" draggable={false} />
+            <Image src={DRUM.src} alt="Cuisine Foods 100% pure cooking oil – 20L bucket" width={DRUM.w} height={DRUM.h} sizes="(max-width:1024px) 60vw, 280px" className="h-auto w-full select-none [filter:drop-shadow(0_30px_34px_rgb(16_22_24/0.3))]" draggable={false} />
           </div>
         </div>
         <ol className={mobile ? "mt-12 space-y-10" : "mx-auto mt-12 grid max-w-3xl gap-8 sm:grid-cols-2"}>

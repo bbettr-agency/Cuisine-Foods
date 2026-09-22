@@ -1,5 +1,5 @@
 /**
- * SunflowerBotanical — a bespoke, fine gold botanical sunflower drawn as SVG
+ * SunflowerBotanical – a bespoke, fine gold botanical sunflower drawn as SVG
  * linework in the Cuisine Foods gold language (no clipart / emoji / bright
  * yellow). It is purely presentational: every part reveals from a single
  * inherited `--bloom` CSS variable (0 → 1) and a tiny pointer parallax from
@@ -13,7 +13,7 @@
 function petals(count: number, len: number, width: number, ring: number) {
   return Array.from({ length: count }, (_, i) => {
     const a = (360 / count) * i + (ring === 1 ? 360 / count / 2 : 0);
-    // staggered opening — petals open progressively as the flower blooms
+    // staggered opening – petals open progressively as the flower blooms
     const s = 0.18 + (ring === 1 ? 0.12 : 0) + (i % count) / count * 0.22;
     // rooted at the flower centre (0,0) so it scales/rotates from the origin
     const d = `M 0 0 C ${width} -${len * 0.4} ${width} -${len * 0.82} 0 -${len} C -${width} -${len * 0.82} -${width} -${len * 0.4} 0 0 Z`;
@@ -24,7 +24,7 @@ function petals(count: number, len: number, width: number, ring: number) {
 export function SunflowerBotanical({ className }: { className?: string }) {
   const outer = petals(22, 168, 26, 0);
   const inner = petals(22, 118, 20, 1);
-  // seed head — concentric guide rings + a phyllotaxis dot field
+  // seed head – concentric guide rings + a phyllotaxis dot field
   const rings = [30, 24, 18, 12];
   const seeds = Array.from({ length: 130 }, (_, i) => {
     const t = i / 130;
@@ -68,7 +68,7 @@ export function SunflowerBotanical({ className }: { className?: string }) {
         />
       </g>
 
-      {/* PETALS — outer then inner ring */}
+      {/* PETALS – outer then inner ring */}
       <g className="sf-layer sf-head" style={{ ["--d" as string]: 2, transform: "translate(200px, 150px)" }}>
         <g className="sf-petals">
           {outer.map((p) => (

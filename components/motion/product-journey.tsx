@@ -5,7 +5,7 @@ import { useReducedMotion } from "framer-motion";
 import { ScrollDrum } from "@/components/motion/scroll-drum";
 
 /**
- * ProductJourney — wraps the hero + product lineup and, when motion is allowed,
+ * ProductJourney – wraps the hero + product lineup and, when motion is allowed,
  * mounts the single travelling ScrollDrum overlay and hides the two static
  * drums (hero rest + sunflower slot) via the `journey-live` class so only the
  * live drum shows. On the server / before hydration / with reduced-motion it

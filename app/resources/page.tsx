@@ -13,7 +13,7 @@ import { CtaBand } from "@/components/funnel/cta-band";
 
 export const metadata: Metadata = buildMetadata({
   title: "Resources for Professional Kitchens | Cuisine Foods",
-  description: "Practical guides on cooking oil, frying and used cooking oil — collection, pricing, compliance and recycling for South African kitchens.",
+  description: "Practical guides on cooking oil, frying and used cooking oil – collection, pricing, compliance and recycling for South African kitchens.",
   path: "/resources",
 });
 
@@ -25,7 +25,7 @@ export default function ResourcesPage() {
       <PageHero
         eyebrow="Resources"
         h1="Guides for professional kitchens"
-        subhead="Practical, South-Africa-specific guidance on cooking oil, commercial frying, and everything to do with used cooking oil — pricing, compliance and recycling."
+        subhead="Practical, South-Africa-specific guidance on cooking oil, commercial frying, and everything to do with used cooking oil – pricing, compliance and recycling."
         crumbs={crumbs}
         primaryLabel="Get a Quote"
       />

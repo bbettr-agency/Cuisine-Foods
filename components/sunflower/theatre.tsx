@@ -25,10 +25,10 @@ export type TheatreState = {
 const DRUM = { src: "/images/website/product-sunflower.png", w: 837, h: 1024 };
 
 /**
- * SunflowerTheatre — the signature interaction of /sunflower-oil.
+ * SunflowerTheatre – the signature interaction of /sunflower-oil.
  * A tall section whose inner stage is `position: sticky` (no scroll hijacking).
  * The section's own scroll progress (0→1) drives FOUR bounded story states,
- * the gold botanical blooming behind the drum, and subtle product motion — all
+ * the gold botanical blooming behind the drum, and subtle product motion – all
  * from a single progress value, so fast / reverse / mid-refresh scrolling all
  * resolve to the correct state with no object chasing page coordinates.
  *
@@ -66,7 +66,7 @@ function TheatrePinned({ states }: { states: TheatreState[] }) {
   // Bloom: seed head forms early, flower fully open near the end.
   const bloom = useTransform(scrollYProgress, [0.03, 0.86], [0.05, 1]);
 
-  // Pointer parallax (easter egg) — tiny, spring-damped, scroll stays primary.
+  // Pointer parallax (easter egg) – tiny, spring-damped, scroll stays primary.
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
   const px = useSpring(rawX, { stiffness: 60, damping: 18, mass: 0.6 });
@@ -85,7 +85,7 @@ function TheatrePinned({ states }: { states: TheatreState[] }) {
     rawY.set(0);
   };
 
-  // Product motion across the four states — restrained "photography coming alive".
+  // Product motion across the four states – restrained "photography coming alive".
   const drumRotate = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [-3, -1.5, 5, 2.5, 0]);
   const drumScale = useTransform(scrollYProgress, [0, 0.5, 0.75, 1], [1, 1.015, 1.05, 1.03]);
   const drumX = useTransform(scrollYProgress, [0, 0.5, 1], [0, -8, 6]);
@@ -112,7 +112,7 @@ function TheatrePinned({ states }: { states: TheatreState[] }) {
           }}
         />
 
-        {/* BACKGROUND — the blooming botanical. Strongest around the product on
+        {/* BACKGROUND – the blooming botanical. Strongest around the product on
             the left; a feathered horizontal mask quiets it under the copy on the
             right so the words always win (no opaque boxes). */}
         <motion.div
@@ -132,7 +132,7 @@ function TheatrePinned({ states }: { states: TheatreState[] }) {
         </motion.div>
 
         <div className="container-x relative grid w-full grid-cols-[0.95fr_1.05fr] items-center gap-8">
-          {/* FOREGROUND — the drum */}
+          {/* FOREGROUND – the drum */}
           <div className="relative flex justify-center">
             <motion.div
               className="relative w-[74%] max-w-[380px] will-change-transform [transform-style:preserve-3d]"
@@ -147,7 +147,7 @@ function TheatrePinned({ states }: { states: TheatreState[] }) {
               <motion.div style={{ rotateY: drumTiltX }} className="[transform-style:preserve-3d]">
                 <Image
                   src={DRUM.src}
-                  alt="Cuisine Foods 100% pure sunflower oil — bulk pail"
+                  alt="Cuisine Foods 100% pure sunflower oil – bulk pail"
                   width={DRUM.w}
                   height={DRUM.h}
                   priority
@@ -159,7 +159,7 @@ function TheatrePinned({ states }: { states: TheatreState[] }) {
             </motion.div>
           </div>
 
-          {/* CONTENT — the four states, stacked & cross-faded by progress.
+          {/* CONTENT – the four states, stacked & cross-faded by progress.
               A feathered paper wash sits under the copy to hold readability. */}
           <div className="relative min-h-[340px]">
             <div
@@ -290,7 +290,7 @@ function ProgressDot({
 /* ------------------------------------------------------------- mobile bloom */
 
 /**
- * MobileTheatre — the same Sunflower Bloom idea, recomposed for phones. A short,
+ * MobileTheatre – the same Sunflower Bloom idea, recomposed for phones. A short,
  * tight pinned stage (~2.2vh) with the drum sticky in the upper half and the gold
  * botanical blooming behind/around it, petals expanding OUTWARD past the screen
  * edges (feather-masked away from the copy below). One scroll-progress source
@@ -325,7 +325,7 @@ function MobileTheatre({ states }: { states: TheatreState[] }) {
           <div className="relative h-[40svh]">
             <Image
               src={DRUM.src}
-              alt="Cuisine Foods 100% pure sunflower oil — bulk pail"
+              alt="Cuisine Foods 100% pure sunflower oil – bulk pail"
               width={DRUM.w}
               height={DRUM.h}
               priority
@@ -367,7 +367,7 @@ function TheatreStatic({ states, mobile }: { states: TheatreState[]; mobile?: bo
           <div className="relative mx-auto w-[64%] max-w-[280px]">
             <Image
               src={DRUM.src}
-              alt="Cuisine Foods 100% pure sunflower oil — bulk pail"
+              alt="Cuisine Foods 100% pure sunflower oil – bulk pail"
               width={DRUM.w}
               height={DRUM.h}
               sizes="(max-width: 1024px) 64vw, 280px"

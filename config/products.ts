@@ -1,12 +1,12 @@
-/** PRODUCT MONEY PAGES — one product = one page = one keyword cluster. */
+/** PRODUCT MONEY PAGES – one product = one page = one keyword cluster. */
 import type { MoneyPage } from "@/config/types";
 import { cta } from "@/config/conversion";
 
 const ucoCrossSell = {
-  label: "You fry it — we collect it, and pay you for it",
+  label: "You fry it – we collect it, and pay you for it",
   href: "/used-cooking-oil-collection",
   blurb:
-    "Frying at volume? We collect your used cooking oil for free, on your schedule — and pay you per litre. See your real cost per litre after buy-back.",
+    "Frying at volume? We collect your used cooking oil for free, on your schedule – and pay you per litre. See your real cost per litre after buy-back.",
 };
 
 export const products: MoneyPage[] = [
@@ -31,9 +31,9 @@ export const products: MoneyPage[] = [
     intro:
       "High-quality, 100% pure sunflower oil supplied in bulk to restaurants, caterers, food manufacturers and commercial kitchens. Bright in colour, clean in flavour, with a high smoke point that stands up to everyday frying, baking and cooking.",
     keyPoints: [
-      { icon: "droplet", title: "100% pure", body: "Clean, bright, versatile — for frying, baking, dressings and everyday cooking." },
+      { icon: "droplet", title: "100% pure", body: "Clean, bright, versatile – for frying, baking, dressings and everyday cooking." },
       { icon: "thermometer", title: "High smoke point", body: "Holds up to deep frying and long cooking cycles in commercial equipment." },
-      { icon: "truck", title: "Reliable bulk delivery", body: "Daily, weekly or monthly — your kitchen never runs out. From 20L, no strict minimum." },
+      { icon: "truck", title: "Reliable bulk delivery", body: "Daily, weekly or monthly – your kitchen never runs out. From 20L, no strict minimum." },
     ],
     sections: [
       {
@@ -45,7 +45,7 @@ export const products: MoneyPage[] = [
       {
         heading: "Best pricing for bulk buyers",
         body:
-          "Quote-based bulk pricing with no hidden costs. Tell us your monthly volume and we'll give you a competitive, written quote — fast.",
+          "Quote-based bulk pricing with no hidden costs. Tell us your monthly volume and we'll give you a competitive, written quote – fast.",
         answers: "objection: price / hidden costs",
       },
     ],
@@ -66,8 +66,8 @@ export const products: MoneyPage[] = [
     specs: [
       { label: "Type", value: "RBD palm olein (liquid fraction of palm oil)" },
       { label: "Best for", value: "High-volume commercial deep frying" },
-      { label: "Heat stability", value: "Excellent — the most heat-stable of the three" },
-      { label: "Fry-life", value: "Longest — fewer oil changes, lower total cost" },
+      { label: "Heat stability", value: "Excellent – the most heat-stable of the three" },
+      { label: "Fry-life", value: "Longest – fewer oil changes, lower total cost" },
       { label: "Approx. smoke point", value: "~230 °C" },
       { label: "Packaging", value: "From 20L containers, no strict minimum; larger formats on request" },
     ],
@@ -75,10 +75,10 @@ export const products: MoneyPage[] = [
     metaDescription:
       "Premium RBD palm olein delivered in bulk. Exceptional heat stability and long fry-life for commercial fryers. Serving Gauteng & the Western Cape. Get a quote.",
     intro:
-      "Palm olein is the liquid fraction of palm oil and the most heat-stable of the common commercial frying oils. We deliver premium RBD palm olein in bulk to restaurants, food manufacturers, caterers and high-volume frying operations. Because it lasts longer in the fryer, palm olein lowers your total oil usage — and combined with our used-oil buy-back, your real cost per litre drops further.",
+      "Palm olein is the liquid fraction of palm oil and the most heat-stable of the common commercial frying oils. We deliver premium RBD palm olein in bulk to restaurants, food manufacturers, caterers and high-volume frying operations. Because it lasts longer in the fryer, palm olein lowers your total oil usage – and combined with our used-oil buy-back, your real cost per litre drops further.",
     keyPoints: [
       { icon: "flame", title: "Exceptional heat stability", body: "Built for repeated high-temperature frying without rapid breakdown." },
-      { icon: "clock", title: "Longer fry-life", body: "Lasts longer in the fryer — fewer oil changes, lower total cost." },
+      { icon: "clock", title: "Longer fry-life", body: "Lasts longer in the fryer – fewer oil changes, lower total cost." },
       { icon: "factory", title: "Ideal for commercial fryers", body: "The workhorse frying oil for QSR, takeaways and high-volume kitchens." },
     ],
     sections: [
@@ -115,7 +115,7 @@ export const products: MoneyPage[] = [
     specs: [
       { label: "Type", value: "Refined soya (soybean) oil" },
       { label: "Best for", value: "Frying, baking, sauces, dressings & processed foods" },
-      { label: "Flavour", value: "Neutral — lets natural flavours through" },
+      { label: "Flavour", value: "Neutral – lets natural flavours through" },
       { label: "Approx. smoke point", value: "~234 °C (refined)" },
       { label: "Packaging", value: "From 20L containers, no strict minimum; larger formats on request" },
     ],
@@ -123,7 +123,7 @@ export const products: MoneyPage[] = [
     metaDescription:
       "Cost-effective bulk soya oil for food manufacturers, caterers & high-volume kitchens. Neutral flavour, consistent quality. Gauteng & Western Cape. Get a quote.",
     intro:
-      "Widely used across the food industry — for frying, baking, sauces, dressings and processed foods. A versatile, cost-effective, neutral-flavoured oil supplied in bulk with consistent quality.",
+      "Widely used across the food industry – for frying, baking, sauces, dressings and processed foods. A versatile, cost-effective, neutral-flavoured oil supplied in bulk with consistent quality.",
     keyPoints: [
       { icon: "droplet", title: "Versatile & multi-purpose", body: "Frying, baking, sauces, dressings and processed foods." },
       { icon: "scale", title: "Cost-effective at volume", body: "A dependable choice for high-volume kitchens and manufacturers." },
@@ -132,7 +132,7 @@ export const products: MoneyPage[] = [
     sections: [
       {
         heading: "Consistent quality standards",
-        body: "The same reliable spec every delivery, handled to strict food-safety standards — so your production stays predictable.",
+        body: "The same reliable spec every delivery, handled to strict food-safety standards – so your production stays predictable.",
         answers: "objection: consistent quality",
       },
       {
@@ -154,9 +154,9 @@ export const products: MoneyPage[] = [
     imageId: "product-frying-oil",
     eyebrow: "Bulk Cooking Oil Supply",
     h1: "Frying Oil for Commercial Kitchens",
-    subhead: "Which frying oil is right for your fryer — and how to make it last.",
+    subhead: "Which frying oil is right for your fryer – and how to make it last.",
     comparison: {
-      caption: "Sunflower vs Palm Olein vs Soya — which frying oil to choose",
+      caption: "Sunflower vs Palm Olein vs Soya – which frying oil to choose",
       columns: ["", "Sunflower", "Palm Olein", "Soya"],
       rows: [
         ["Best for", "Versatile frying & baking", "High-volume deep frying", "High-volume & manufacturing"],
@@ -169,19 +169,19 @@ export const products: MoneyPage[] = [
     },
     metaTitle: "Frying Oil Supplier | Long-Life Commercial Frying Oil | Cuisine Foods",
     metaDescription:
-      "The right frying oil for your kitchen — palm olein for heat stability, sunflower for versatility. Bulk supply across Gauteng & the Western Cape. Get a quote.",
+      "The right frying oil for your kitchen – palm olein for heat stability, sunflower for versatility. Bulk supply across Gauteng & the Western Cape. Get a quote.",
     intro:
-      "Not sure which frying oil to order? It depends on how you fry. Here's how to choose between palm olein and sunflower for a commercial fryer — and how to get the longest, cleanest fry-life from whichever you pick.",
+      "Not sure which frying oil to order? It depends on how you fry. Here's how to choose between palm olein and sunflower for a commercial fryer – and how to get the longest, cleanest fry-life from whichever you pick.",
     keyPoints: [
-      { icon: "flame", title: "Palm olein — for high-volume frying", body: "Best heat stability and the longest fry-life. Ideal for QSR and busy fryers." },
-      { icon: "droplet", title: "Sunflower — for versatility", body: "Clean flavour and a high smoke point when you fry, bake and cook on one oil." },
+      { icon: "flame", title: "Palm olein – for high-volume frying", body: "Best heat stability and the longest fry-life. Ideal for QSR and busy fryers." },
+      { icon: "droplet", title: "Sunflower – for versatility", body: "Clean flavour and a high smoke point when you fry, bake and cook on one oil." },
       { icon: "clock", title: "Longer fry-life, lower cost", body: "The right oil plus good fryer practice cuts your cost per litre." },
     ],
     sections: [
       {
         heading: "Make your frying oil last longer",
         body:
-          "Keep the fryer clean, filter daily, avoid overheating (160–190°C), and skim often. Our frying guide covers the full routine — and we collect and pay for your used oil when it's spent.",
+          "Keep the fryer clean, filter daily, avoid overheating (160–190°C), and skim often. Our frying guide covers the full routine – and we collect and pay for your used oil when it's spent.",
         answers: "question: how to choose / extend fry-life",
       },
     ],

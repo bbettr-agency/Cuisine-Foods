@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FAF6EE", // warm cream — matches the header / page background
+  themeColor: "#FAF6EE", // warm cream – matches the header / page background
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

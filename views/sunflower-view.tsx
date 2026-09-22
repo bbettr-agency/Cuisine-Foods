@@ -20,7 +20,7 @@ import { SunflowerCta } from "@/components/sunflower/cta";
 import { MaskUp, DrawLine, RevealStagger } from "@/components/sunflower/motion-kit";
 
 /**
- * SunflowerView — the bespoke, motion-forward /sunflower-oil experience.
+ * SunflowerView – the bespoke, motion-forward /sunflower-oil experience.
  * Built ONLY from the existing Sunflower config content; reuses the approved
  * TrustBand / CrossSell / RelatedLinks / FAQ, and adds the signature
  * "Sunflower Bloom" product theatre plus a Cuisine motion vocabulary.
@@ -40,7 +40,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
   if (faqs.length) schema.push(faqPageSchema(faqs));
   schema.push(productSchema({ name: page.h1, description: page.metaDescription, path, image: getImage(page.imageId).src }));
 
-  // Four theatre states — every word drawn from the page's own config.
+  // Four theatre states – every word drawn from the page's own config.
   const states: TheatreState[] = [
     { n: "01", label: "PURE", title: "100% pure sunflower oil", body: page.keyPoints[0]?.body ?? page.subhead },
     { n: "02", label: "CONSISTENT", title: page.sections[0]?.heading ?? "Consistent quality", body: page.sections[0]?.body ?? "" },
@@ -48,7 +48,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
       n: "03",
       label: "COMMERCIAL",
       title: "Built for commercial kitchens",
-      body: "A high smoke point that stands up to everyday frying, baking and cooking — service after service.",
+      body: "A high smoke point that stands up to everyday frying, baking and cooking – service after service.",
       chips: ["Restaurants", "Caterers", "Food manufacturers", "Commercial kitchens"],
     },
     { n: "04", label: "BULK SUPPLY", title: "Reliable bulk supply", body: page.keyPoints[2]?.body ?? page.subhead },
@@ -70,7 +70,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
         primaryHref={`/request-a-quote?intent=${page.intent}`}
       />
 
-      {/* Breathing intro — value first, then the key points */}
+      {/* Breathing intro – value first, then the key points */}
       <Section>
         <MaskUp as="p" className="max-w-prose text-xl leading-relaxed text-ink-soft">
           {page.intro}
@@ -80,7 +80,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
         </div>
       </Section>
 
-      {/* THE SIGNATURE — Sunflower Product Theatre */}
+      {/* THE SIGNATURE – Sunflower Product Theatre */}
       <SunflowerTheatre states={states} />
 
       {/* Interactive specifications */}
@@ -89,7 +89,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
       {/* Mid-page trust band (approved, kept) */}
       <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
 
-      {/* Story content — varied motion vocabulary */}
+      {/* Story content – varied motion vocabulary */}
       <Section alt>
         <div className="mx-auto max-w-3xl space-y-16">
           {page.sections.map((s, i) => (
@@ -123,7 +123,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
 
       <SunflowerCta
         title={`${page.h1.toLowerCase()}?`}
-        body="Tell us your monthly volume and delivery area — we'll come back quickly with pricing and a delivery schedule that fits your kitchen."
+        body="Tell us your monthly volume and delivery area – we'll come back quickly with pricing and a delivery schedule that fits your kitchen."
         primaryLabel={page.primaryCtaLabel}
         primaryHref={`/request-a-quote?intent=${page.intent}`}
       />

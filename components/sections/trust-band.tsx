@@ -10,7 +10,7 @@ import { Reveal, RevealGroup } from "@/components/ui/reveal";
 import { PlaceholderImage } from "@/components/ui/placeholder-image";
 
 /**
- * Mid-page trust band — real operations photography + the closed-loop
+ * Mid-page trust band – real operations photography + the closed-loop
  * differentiator + reliability/objection proof + progressive certifications +
  * an inline CTA. The conversion anchor on commercial pages: it answers the
  * "can I trust this supplier?" question in one screen.
@@ -28,7 +28,7 @@ export function TrustBand({
   return (
     <Section>
       <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
-        {/* Real operations photography — proves the fleet, the team, the scale */}
+        {/* Real operations photography – proves the fleet, the team, the scale */}
         <Reveal className="order-2 lg:order-1">
           <PlaceholderImage id="trust-operations" sizes="(max-width: 1024px) 100vw, 46vw" className="shadow-soft" />
         </Reveal>

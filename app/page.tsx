@@ -9,12 +9,11 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { Hero } from "@/components/sections/hero";
 import { ProductsLineup } from "@/components/sections/products-lineup";
 import { ProductJourney } from "@/components/motion/product-journey";
-import { TrustBar } from "@/components/funnel/trust-bar";
+import { CredibilityBand } from "@/components/sections/credibility-band";
 import { OfferCards } from "@/components/sections/offer-cards";
 import { WhyUs } from "@/components/sections/why-us";
 import { Industries } from "@/components/sections/industries";
 import { Coverage } from "@/components/sections/coverage";
-import { HowItWorks } from "@/components/sections/how-it-works";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBand } from "@/components/funnel/cta-band";
 
@@ -33,12 +32,13 @@ export default function HomePage() {
         <Hero />
         <ProductsLineup />
       </ProductJourney>
-      <TrustBar />
-      <OfferCards />
-      <WhyUs />
-      <Industries />
+      {/* Narrative: what we sell → why trust us → where we operate →
+          what else we do → who we serve → remaining proof → conversion */}
+      <CredibilityBand />
       <Coverage />
-      <HowItWorks />
+      <OfferCards />
+      <Industries />
+      <WhyUs />
       <FaqSection ids={[...home.faqIds]} alt />
       <CtaBand title={home.closing.title} body={home.closing.body} />
     </>

@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { PlaceholderImage } from "@/components/ui/placeholder-image";
 import { Breadcrumbs, type Crumb } from "@/components/shared/breadcrumbs";
 
-/** Interior page hero — reused by product, buyer, UCO, pillar and location pages. */
+/** Interior page hero – reused by product, buyer, UCO, pillar and location pages. */
 export function PageHero({
   eyebrow,
   h1,

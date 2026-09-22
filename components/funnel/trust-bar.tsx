@@ -2,7 +2,7 @@ import { enabledStats } from "@/config/trust";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 
-/** Trust bar — renders only enabled, verified proof (progressive trust, OS P9). */
+/** Trust bar – renders only enabled, verified proof (progressive trust, OS P9). */
 export function TrustBar({ bordered = true }: { bordered?: boolean }) {
   const stats = enabledStats();
   if (stats.length === 0) return null;

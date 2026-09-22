@@ -16,7 +16,7 @@ import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBand } from "@/components/funnel/cta-band";
 
-/** PillarView — the two head-term hubs (supply / UCO). Routes to their spokes. */
+/** PillarView – the two head-term hubs (supply / UCO). Routes to their spokes. */
 export function PillarView({ pillar }: { pillar: Pillar }) {
   const path = `/${pillar.slug}`;
   const crumbs = [{ name: "Home", path: "/" }, { name: pillar.h1, path }];

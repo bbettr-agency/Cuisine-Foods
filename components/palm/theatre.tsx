@@ -19,10 +19,10 @@ export type PalmState = { n: string; label: string; title: string; body: string;
 const DRUM = { src: "/images/website/product-palm.png", w: 827, h: 1027 };
 
 /**
- * PalmTheatre — the signature interaction of /palm-olein: THE UNFURL.
+ * PalmTheatre – the signature interaction of /palm-olein: THE UNFURL.
  * Architectural sibling to the Sunflower theatre (shared engineering: a sticky
  * stage driven by its own bounded scroll progress → four states + a canopy that
- * unfurls behind the drum) but a deliberately different visual world — a broad,
+ * unfurls behind the drum) but a deliberately different visual world – a broad,
  * structured gold palm canopy rather than a radial flower. Desktop = pinned
  * stage; mobile = a tighter recomposed unfurl; reduced-motion = the finished
  * static canopy.
@@ -66,7 +66,7 @@ function PalmPinned({ states }: { states: PalmState[] }) {
   };
   const onLeave = () => { rawX.set(0); rawY.set(0); };
 
-  // Product motion — deliberate, architectural (not floral).
+  // Product motion – deliberate, architectural (not floral).
   const drumRotate = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [-2, 3, 6, 4, 0]);
   const drumScale = useTransform(scrollYProgress, [0, 0.5, 0.75, 1], [1, 1.02, 1.05, 1.04]);
   const drumX = useTransform(scrollYProgress, [0, 0.5, 1], [4, -6, 4]);
@@ -88,7 +88,7 @@ function PalmPinned({ states }: { states: PalmState[] }) {
           style={{ background: "radial-gradient(58% 60% at 34% 46%, rgb(var(--gold-100) / 0.5) 0%, transparent 60%)" }}
         />
 
-        {/* BACKGROUND — the unfurling canopy (strong around the product, feather-
+        {/* BACKGROUND – the unfurling canopy (strong around the product, feather-
             masked away from the copy on the right). */}
         <motion.div
           aria-hidden
@@ -113,7 +113,7 @@ function PalmPinned({ states }: { states: PalmState[] }) {
               <motion.div style={{ rotateY: drumTiltY }} className="[transform-style:preserve-3d]">
                 <Image
                   src={DRUM.src}
-                  alt="Cuisine Foods 100% pure palm olein — bulk pail"
+                  alt="Cuisine Foods 100% pure palm olein – bulk pail"
                   width={DRUM.w}
                   height={DRUM.h}
                   priority
@@ -137,7 +137,7 @@ function PalmPinned({ states }: { states: PalmState[] }) {
           </div>
         </div>
 
-        {/* progress — an architectural segmented rule */}
+        {/* progress – an architectural segmented rule */}
         <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center gap-2">
           {states.map((s, i) => (
             <PalmTick key={s.n} progress={scrollYProgress} index={i} total={states.length} />
@@ -231,7 +231,7 @@ function PalmMobile({ states }: { states: PalmState[] }) {
           <div className="relative mb-[3svh] h-[40svh]">
             <Image
               src={DRUM.src}
-              alt="Cuisine Foods 100% pure palm olein — bulk pail"
+              alt="Cuisine Foods 100% pure palm olein – bulk pail"
               width={DRUM.w}
               height={DRUM.h}
               priority
@@ -267,7 +267,7 @@ function PalmStatic({ states, mobile }: { states: PalmState[]; mobile?: boolean 
             <PalmBotanical className="h-full w-full" />
           </div>
           <div className="relative mx-auto w-[62%] max-w-[270px]">
-            <Image src={DRUM.src} alt="Cuisine Foods 100% pure palm olein — bulk pail" width={DRUM.w} height={DRUM.h} sizes="(max-width:1024px) 62vw, 270px" className="h-auto w-full select-none [filter:drop-shadow(0_26px_30px_rgb(16_22_24/0.26))]" draggable={false} />
+            <Image src={DRUM.src} alt="Cuisine Foods 100% pure palm olein – bulk pail" width={DRUM.w} height={DRUM.h} sizes="(max-width:1024px) 62vw, 270px" className="h-auto w-full select-none [filter:drop-shadow(0_26px_30px_rgb(16_22_24/0.26))]" draggable={false} />
           </div>
         </div>
         <ol className={mobile ? "mt-12 space-y-10" : "mx-auto mt-12 grid max-w-3xl gap-8 sm:grid-cols-2"}>

@@ -20,7 +20,7 @@ import { CtaBand } from "@/components/funnel/cta-band";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-/** MoneyPageView — the single template behind products, buyer segments & UCO services. */
+/** MoneyPageView – the single template behind products, buyer segments & UCO services. */
 export function MoneyPageView({ page }: { page: MoneyPage }) {
   const path = hrefFor(page);
   const crumbs = buildCrumbs(page);
@@ -60,7 +60,7 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
         </div>
       </Section>
 
-      {/* UCO value calculator — conversion lead magnet */}
+      {/* UCO value calculator – conversion lead magnet */}
       {page.calculator && (
         <Section alt>
           <div className="mx-auto max-w-2xl">
@@ -89,7 +89,7 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
         </Section>
       )}
 
-      {/* Mid-page trust band — proof + reassurance + inline CTA (the conversion anchor) */}
+      {/* Mid-page trust band – proof + reassurance + inline CTA (the conversion anchor) */}
       <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
 
       <ContentSections sections={page.sections} />
@@ -124,19 +124,19 @@ function closingFor(page: MoneyPage): { title: string; body: string } {
   if (page.kind === "product") {
     return {
       title: `Ready to order ${page.h1.toLowerCase()}?`,
-      body: "Tell us your monthly volume and delivery area — we'll come back quickly with pricing and a delivery schedule that fits your kitchen.",
+      body: "Tell us your monthly volume and delivery area – we'll come back quickly with pricing and a delivery schedule that fits your kitchen.",
     };
   }
   if (page.kind === "buyer") {
     return {
-      title: `${page.h1} — get your pricing`,
+      title: `${page.h1} – get your pricing`,
       body: "Tell us your volumes, sites and area. We'll put together pricing and a delivery schedule built around how you actually operate.",
     };
   }
   // uco-service
   return {
     title: "Ready to turn your used oil into cash?",
-    body: "Free sealed drums, collection on your schedule, paid per litre — with the documentation that keeps your kitchen compliant.",
+    body: "Free sealed drums, collection on your schedule, paid per litre – with the documentation that keeps your kitchen compliant.",
   };
 }
 

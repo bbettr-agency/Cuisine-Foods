@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { Reveal, RevealGroup } from "@/components/ui/reveal";
 
-/** Two offer cards under the closed-loop header — clean split of the two journeys. */
+/** Two offer cards under the closed-loop header – clean split of the two journeys. */
 export function OfferCards() {
   const { offersHeading, offers } = home;
   return (

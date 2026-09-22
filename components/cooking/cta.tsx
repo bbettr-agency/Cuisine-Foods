@@ -14,7 +14,7 @@ import { LivingBotanical } from "@/components/cooking/botanical";
 const DRUM = { src: "/images/website/product-cooking.png", w: 869, h: 1046 };
 
 /**
- * CookingCta — the payoff of the Living Label. The gold artwork that escaped the
+ * CookingCta – the payoff of the Living Label. The gold artwork that escaped the
  * bucket now frames the closing call, the bucket enters cropped from the right,
  * and a final branch draws toward the primary button before stopping just short
  * of it. The button keeps Cuisine's restrained magnetic/arrow microinteraction.

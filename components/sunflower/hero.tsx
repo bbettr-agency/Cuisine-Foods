@@ -21,11 +21,11 @@ import { Breadcrumbs, type Crumb } from "@/components/shared/breadcrumbs";
 const DRUM = { src: "/images/website/product-sunflower.png", w: 837, h: 1024 };
 
 /**
- * SunflowerHero — the approved interior hero layout, but the product is now a
+ * SunflowerHero – the approved interior hero layout, but the product is now a
  * physical, pointer-responsive object (transparent drum with a grounding
  * shadow, subtle idle float, and restrained tilt/parallax on desktop pointer
  * movement, spring-returning to neutral). Mobile / reduced-motion: no pointer
- * effects, no float — a calm static hero.
+ * effects, no float – a calm static hero.
  */
 export function SunflowerHero({
   eyebrow,
@@ -117,7 +117,7 @@ export function SunflowerHero({
             <div className={reduce ? undefined : "drum-float"}>
               <Image
                 src={DRUM.src}
-                alt="Cuisine Foods 100% pure sunflower oil — bulk pail"
+                alt="Cuisine Foods 100% pure sunflower oil – bulk pail"
                 width={DRUM.w}
                 height={DRUM.h}
                 priority

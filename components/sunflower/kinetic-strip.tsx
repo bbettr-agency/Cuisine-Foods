@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 /**
- * KineticStrip — large kinetic typography of where Sunflower Oil is used
+ * KineticStrip – large kinetic typography of where Sunflower Oil is used
  * (from supported page copy only). As the visitor scrolls VERTICALLY, two rows
  * drift horizontally in opposite directions at a restrained rate. No horizontal
  * scrollbar, not a ticker. Reduced-motion: perfectly still.

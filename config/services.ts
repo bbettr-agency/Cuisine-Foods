@@ -1,4 +1,4 @@
-/** UCO SERVICE MONEY PAGES — each isolates one UCO intent + objection. */
+/** UCO SERVICE MONEY PAGES – each isolates one UCO intent + objection. */
 import type { MoneyPage } from "@/config/types";
 import { cta } from "@/config/conversion";
 
@@ -6,7 +6,7 @@ const supplyCrossSell = {
   label: "Need fresh oil too? We deliver that.",
   href: "/bulk-cooking-oil-supply",
   blurb:
-    "We're one of the few partners who both supply your fresh cooking oil and collect the used oil — one account for the oil in and the oil out.",
+    "We're one of the few partners who both supply your fresh cooking oil and collect the used oil – one account for the oil in and the oil out.",
 };
 
 export const ucoServices: MoneyPage[] = [
@@ -17,16 +17,16 @@ export const ucoServices: MoneyPage[] = [
     imageId: "uco-get-paid",
     eyebrow: "Used Cooking Oil",
     h1: "Get Paid for Your Used Cooking Oil",
-    subhead: "Your used oil has value — we collect it free and pay you per litre.",
+    subhead: "Your used oil has value – we collect it free and pay you per litre.",
     metaTitle: "Sell Used Cooking Oil | We Pay Per Litre | Cuisine Foods",
     metaDescription:
       "Turn your used cooking oil into cash. Free sealed drums, free collection on your schedule, paid per litre. Serving Gauteng & the Western Cape. Arrange collection.",
     intro:
-      "Used cooking oil isn't waste — it's a feedstock for renewable biodiesel, and it has real value. We collect yours for free, on a schedule that suits you, and pay you per litre. No cost to remove it, and a rebate on every collection.",
+      "Used cooking oil isn't waste – it's a feedstock for renewable biodiesel, and it has real value. We collect yours for free, on a schedule that suits you, and pay you per litre. No cost to remove it, and a rebate on every collection.",
     keyPoints: [
-      { icon: "banknote", title: "Paid per litre", body: "We pay you for every litre collected — rates depend on volume and quality. Ask for today's rate." },
+      { icon: "banknote", title: "Paid per litre", body: "We pay you for every litre collected – rates depend on volume and quality. Ask for today's rate." },
       { icon: "droplet", title: "Free sealed drums", body: "We supply clean, sealed storage drums so your oil stays contained and safe." },
-      { icon: "truck", title: "Free collection", body: "No collection fee — weekly, monthly or a schedule you choose." },
+      { icon: "truck", title: "Free collection", body: "No collection fee – weekly, monthly or a schedule you choose." },
     ],
     sections: [
       {
@@ -67,14 +67,14 @@ export const ucoServices: MoneyPage[] = [
       "Pouring used cooking oil down the drain is illegal, and your kitchen stays legally responsible for its waste until it's disposed of properly. We collect yours as a licensed handler and provide the documentation you need to show a health inspector.",
     keyPoints: [
       { icon: "file-check", title: "Safe-disposal documentation", body: "Proof of compliant collection to keep on file for inspections." },
-      { icon: "shield-check", title: "Licensed, compliant handling", body: "Collected and recycled the right way — never routed back into the food chain." },
+      { icon: "shield-check", title: "Licensed, compliant handling", body: "Collected and recycled the right way – never routed back into the food chain." },
       { icon: "scale", title: "Meet municipal FOG by-laws", body: "Fats, oils & grease can't go down the drain. We help you stay on the right side of the by-law." },
     ],
     sections: [
       {
         heading: "Used cooking oil is regulated waste in South Africa",
         body:
-          "Used cooking oil is regulated under the National Environmental Management: Waste Act (Act 59 of 2008). Your kitchen carries a legal duty of care for that waste until it is disposed of properly — which means using a licensed collector and keeping records of every collection. We handle both.",
+          "Used cooking oil is regulated under the National Environmental Management: Waste Act (Act 59 of 2008). Your kitchen carries a legal duty of care for that waste until it is disposed of properly – which means using a licensed collector and keeping records of every collection. We handle both.",
         answers: "question: is UCO regulated waste",
       },
       {
@@ -84,7 +84,7 @@ export const ucoServices: MoneyPage[] = [
         answers: "question: SAWIS registration",
       },
       {
-        heading: "The drain is not an option — municipal FOG by-laws",
+        heading: "The drain is not an option – municipal FOG by-laws",
         body:
           "Cities including Johannesburg, Tshwane and Cape Town prohibit fats, oils and grease from entering the sewer and require grease-trap management. Illegal disposal can bring fines or, for repeat offences, closure. Compliant collection removes that risk entirely.",
         answers: "objection: can I pour it away",
@@ -92,7 +92,7 @@ export const ucoServices: MoneyPage[] = [
       {
         heading: "Your safe-disposal certificate",
         body:
-          "After each collection we provide documentation of compliant disposal — the record a health inspector or auditor asks for. For franchise groups, we can consolidate this into store-level reporting across every site.",
+          "After each collection we provide documentation of compliant disposal – the record a health inspector or auditor asks for. For franchise groups, we can consolidate this into store-level reporting across every site.",
         answers: "objection: do I get a certificate",
       },
     ],
@@ -128,7 +128,7 @@ export const ucoServices: MoneyPage[] = [
       {
         heading: "One partner for oil and grease",
         body:
-          "Combine grease-trap cleaning with your used-oil collection and fresh-oil supply — fewer suppliers, one point of contact, one compliant kitchen.",
+          "Combine grease-trap cleaning with your used-oil collection and fresh-oil supply – fewer suppliers, one point of contact, one compliant kitchen.",
         answers: "cross-service convenience",
       },
     ],
@@ -150,7 +150,7 @@ export const ucoServices: MoneyPage[] = [
     metaDescription:
       "Transparent, store-level used cooking oil reporting for franchise groups, fast-food chains, hotels and corporate canteens. Track cost, compliance & sustainability.",
     intro:
-      "For franchise groups and multi-site operators, transparent store-level reporting turns used cooking oil from a blind spot into a managed line item — cost, compliance and sustainability, visible across every site.",
+      "For franchise groups and multi-site operators, transparent store-level reporting turns used cooking oil from a blind spot into a managed line item – cost, compliance and sustainability, visible across every site.",
     keyPoints: [
       { icon: "scale", title: "Reduce oil costs", body: "See usage and rebates by store to find savings across the group." },
       { icon: "file-check", title: "Group-wide compliance", body: "Audit-ready disposal documentation for every location." },
@@ -180,19 +180,19 @@ export const ucoServices: MoneyPage[] = [
     subhead: "Your used oil, recycled into renewable biodiesel.",
     metaTitle: "Cooking Oil Recycling in South Africa | Cuisine Foods",
     metaDescription:
-      "We recycle collected used cooking oil into renewable biodiesel and oleochemicals — a compliant, circular solution for South African kitchens. Learn how it works.",
+      "We recycle collected used cooking oil into renewable biodiesel and oleochemicals – a compliant, circular solution for South African kitchens. Learn how it works.",
     intro:
-      "Every litre of used cooking oil we collect is filtered, cleaned and converted into renewable biodiesel and oleochemicals — never routed back into the food chain. It's a compliant, circular solution that turns a waste problem into clean energy.",
+      "Every litre of used cooking oil we collect is filtered, cleaned and converted into renewable biodiesel and oleochemicals – never routed back into the food chain. It's a compliant, circular solution that turns a waste problem into clean energy.",
     keyPoints: [
       { icon: "recycle", title: "Filtered & cleaned", body: "Collected oil is processed before it becomes feedstock." },
       { icon: "leaf", title: "Into renewable biodiesel", body: "Converted into clean, renewable fuel and oleochemicals." },
-      { icon: "shield-check", title: "Never back into food", body: "Responsibly recycled — a point we take seriously." },
+      { icon: "shield-check", title: "Never back into food", body: "Responsibly recycled – a point we take seriously." },
     ],
     sections: [
       {
         heading: "A fast-growing circular industry",
         body:
-          "South Africa's used cooking oil market is growing quickly — valued at roughly US$295 million in 2025 and projected to reach around US$550 million by 2035 — driven by demand for renewable biodiesel. Every litre you divert to us becomes feedstock for that clean-energy value chain.",
+          "South Africa's used cooking oil market is growing quickly – valued at roughly US$295 million in 2025 and projected to reach around US$550 million by 2035 – driven by demand for renewable biodiesel. Every litre you divert to us becomes feedstock for that clean-energy value chain.",
         answers: "context: market size / statistic",
       },
       {

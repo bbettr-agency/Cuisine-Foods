@@ -5,13 +5,13 @@ import { easeOutExpo, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 /**
- * A small Cuisine motion vocabulary for the Sunflower page — used sparingly so
+ * A small Cuisine motion vocabulary for the Sunflower page – used sparingly so
  * sections don't all share one generic fade. Everything honours reduced-motion
  * (renders static). GPU-friendly: transform + opacity only.
  */
 
 /**
- * Masked upward reveal — the phrase rises from behind a clip edge.
+ * Masked upward reveal – the phrase rises from behind a clip edge.
  * `mode="mount"` plays on load (use above the fold, where whileInView can race);
  * `mode="inview"` (default) plays when scrolled into view.
  */
@@ -32,7 +32,7 @@ export function MaskUp({
   const Motion = motion[as];
   // Keep the SAME DOM structure whether or not motion is allowed (SSR renders
   // reduce=false); only the animation props differ, so reduced-motion clients
-  // don't hit a structural hydration mismatch — they just render static.
+  // don't hit a structural hydration mismatch – they just render static.
   const anim = reduce
     ? {}
     : mode === "mount"

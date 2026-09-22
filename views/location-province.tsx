@@ -47,7 +47,7 @@ export function LocationProvinceView({ province }: { province: Province }) {
         <div className="grid gap-6 lg:grid-cols-2">
           <Reveal className="card p-7 sm:p-8">
             <h2 className="font-display text-xl font-bold text-ink">Bulk cooking oil supply in {province.name}</h2>
-            <p className="mt-2 text-ink-soft">Sunflower, palm olein & soya delivered across {province.name} on your schedule — reliable, consistent, competitively priced.</p>
+            <p className="mt-2 text-ink-soft">Sunflower, palm olein & soya delivered across {province.name} on your schedule – reliable, consistent, competitively priced.</p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
               <Button href="/request-a-quote?intent=supply">Get a Bulk Oil Quote</Button>
               <Link href="/bulk-cooking-oil-supply" className="text-sm font-semibold text-brand-700 hover:underline">Explore bulk oil supply →</Link>
@@ -55,7 +55,7 @@ export function LocationProvinceView({ province }: { province: Province }) {
           </Reveal>
           <Reveal className="card p-7 sm:p-8">
             <h2 className="font-display text-xl font-bold text-ink">Used cooking oil collection in {province.name}</h2>
-            <p className="mt-2 text-ink-soft">Free, compliant collection across {province.name} — we pay you per litre and provide safe-disposal documentation.</p>
+            <p className="mt-2 text-ink-soft">Free, compliant collection across {province.name} – we pay you per litre and provide safe-disposal documentation.</p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
               <Button href="/request-a-quote?intent=uco" variant="gold">Arrange Free Collection</Button>
               <Link href="/used-cooking-oil-collection" className="text-sm font-semibold text-brand-700 hover:underline">Explore UCO collection →</Link>
@@ -87,7 +87,7 @@ export function LocationProvinceView({ province }: { province: Province }) {
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div>
             <p className="eyebrow mb-3">Our {province.name} branch</p>
-            <h2 className="text-h2 text-ink">{site.name} — {branch.label}</h2>
+            <h2 className="text-h2 text-ink">{site.name} – {branch.label}</h2>
             <p className="mt-4 text-ink-soft">{branch.street}, {branch.city}, {branch.postalCode}</p>
             <p className="mt-1 text-sm text-ink-faint">{site.contact.hours}</p>
             <div className="mt-6"><Button href={branch.mapLink} variant="outline" external>Open in Google Maps</Button></div>
@@ -104,7 +104,7 @@ export function LocationProvinceView({ province }: { province: Province }) {
         </div>
       </Section>
 
-      <FaqSection ids={localFaqs} alt title={`${province.name} — common questions`} />
+      <FaqSection ids={localFaqs} alt title={`${province.name} – common questions`} />
       <CtaBand
         title={`Supplying & collecting across ${province.name}`}
         body="Get a bulk oil quote or arrange a free used-oil collection today."
