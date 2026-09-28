@@ -37,9 +37,10 @@ export const buyers: MoneyPage[] = [
       { icon: "banknote", title: "A rebate on used oil", body: "We buy back your used oil – lowering your real cost per litre." },
     ],
     sections: [
+      { heading: "Lower your true cost per litre", body: "Because we buy back your used oil, your real cost per litre drops – you're not just buying oil, you're recovering value from it. Ask us to work the numbers against your fry volume.", answers: "value: closed-loop cost" },
       { heading: "Switching is easy", body: "Get a quote today and we'll set up your first delivery this week. No lock-in.", answers: "objection: switching inertia" },
     ],
-    faqIds: ["min-order", "delivery-areas", "bulk-pricing"],
+    faqIds: ["min-order", "delivery-areas", "bulk-pricing", "do-both", "how-start"],
     relatedSlugs: ["cooking-oil-for-caterers", "cooking-oil-for-franchises"],
   },
   {
@@ -59,9 +60,10 @@ export const buyers: MoneyPage[] = [
       { icon: "clock", title: "Dependable delivery", body: "Scheduled supply so no outlet runs short." },
     ],
     sections: [
+      { heading: "Consistency your guests can taste", body: "Across restaurants, banqueting and room service, the same clean oil means the same result on every plate – and one compliance file covering the whole property.", answers: "value: multi-outlet consistency" },
       { heading: "Account terms & a dedicated contact", body: "Tell us your outlets and volumes – we'll structure supply, collection and a single point of contact.", answers: "objection: reliability / terms" },
     ],
-    faqIds: ["min-order", "delivery-areas", "uco-certificate"],
+    faqIds: ["min-order", "delivery-areas", "uco-certificate", "do-both", "how-start"],
     relatedSlugs: ["cooking-oil-for-caterers", "cooking-oil-for-restaurants"],
   },
   {
@@ -81,9 +83,10 @@ export const buyers: MoneyPage[] = [
       { icon: "banknote", title: "Paid for used oil", body: "We collect and pay for the oil once the event's done." },
     ],
     sections: [
+      { heading: "No event too big or small", body: "From a single function to a full season of contracts, we quote to the calendar – 20L with no strict minimum means you're never over-ordering for a quiet week or scrambling before a busy one.", answers: "value: flexible volume" },
       { heading: "Ad-hoc or recurring", body: "Whether it's a one-off function or weekly contracts, we'll quote to fit.", answers: "objection: flexibility" },
     ],
-    faqIds: ["min-order", "delivery-areas", "bulk-pricing"],
+    faqIds: ["min-order", "delivery-areas", "bulk-pricing", "do-both", "how-start"],
     relatedSlugs: ["cooking-oil-for-restaurants", "cooking-oil-for-hotels"],
   },
   {
@@ -103,9 +106,10 @@ export const buyers: MoneyPage[] = [
       { icon: "recycle", title: "Waste-oil offtake", body: "We collect and recycle your used and residue oil, compliantly." },
     ],
     sections: [
+      { heading: "Documented supply and waste offtake", body: "Consistent input on the way in, compliant used-oil offtake with safe-disposal documentation on the way out – the paper trail your quality and environmental systems expect.", answers: "value: traceability / compliance" },
       { heading: "Need a spec sheet?", body: "Request a specification and a volume-based quote and we'll match your requirement.", answers: "objection: spec / traceability" },
     ],
-    faqIds: ["product-packaging", "delivery-areas", "bulk-pricing"],
+    faqIds: ["product-packaging", "delivery-areas", "bulk-pricing", "do-both", "how-start"],
     relatedSlugs: ["soya-oil", "cooking-oil-for-franchises"],
   },
   {
@@ -125,9 +129,10 @@ export const buyers: MoneyPage[] = [
       { icon: "scale", title: "Store-level reporting", body: "Cost, compliance and sustainability, visible across the group." },
     ],
     sections: [
+      { heading: "One number for every site", body: "Instead of each outlet sourcing its own oil and arranging its own disposal, head office gets one supplier, one collection partner and one consolidated report – less admin, better group pricing and cleaner compliance.", answers: "value: centralised group management" },
       { heading: "Roll it out group-wide", body: "Talk to us about a group rollout – supply, collection and reporting under one agreement.", answers: "segment: franchise HQ" },
     ],
-    faqIds: ["min-order", "delivery-areas", "uco-certificate"],
+    faqIds: ["min-order", "delivery-areas", "uco-certificate", "do-both", "how-start"],
     relatedSlugs: ["uco-compliance-reporting", "cooking-oil-for-hotels"],
   },
 ];
