@@ -15,6 +15,7 @@ import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBand } from "@/components/funnel/cta-band";
+import { KineticStrip } from "@/components/shared/kinetic-strip";
 
 /** PillarView – the two head-term hubs (supply / UCO). Routes to their spokes. */
 export function PillarView({ pillar }: { pillar: Pillar }) {
@@ -73,6 +74,15 @@ export function PillarView({ pillar }: { pillar: Pillar }) {
           ))}
         </RevealGroup>
       </Section>
+
+      {pillar.kinetic && (
+        <KineticStrip
+          eyebrow={pillar.kinetic.eyebrow}
+          title={pillar.kinetic.title}
+          intro={pillar.kinetic.intro}
+          items={pillar.kinetic.items}
+        />
+      )}
 
       <Section>
         <CrossSell label={pillar.crossSell.label} href={pillar.crossSell.href} blurb={pillar.crossSell.blurb} />

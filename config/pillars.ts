@@ -19,6 +19,8 @@ export type Pillar = {
   crossSell: { label: string; href: string; blurb: string };
   primaryCtaLabel: string;
   resourceLinks?: ResourceLink[];
+  /** Optional site-wide kinetic-strip motif (words must be supported by page content). */
+  kinetic?: { eyebrow?: string; title: string; intro?: string; items: string[] };
 };
 
 export const pillars: Record<string, Pillar> = {
@@ -95,5 +97,11 @@ export const pillars: Record<string, Pillar> = {
       { label: "What is used cooking oil worth per litre?", href: "/resources/used-cooking-oil-price-per-litre" },
     ],
     primaryCtaLabel: "Arrange Free Collection",
+    kinetic: {
+      eyebrow: "The closed loop",
+      title: "From your fryer to renewable fuel",
+      intro: "We collect it, pay you for it and document it – then it's recycled into biodiesel.",
+      items: ["Compliant Collection", "Paid Per Litre", "Sealed Drums", "Safe Disposal", "Renewable Biodiesel"],
+    },
   },
 };

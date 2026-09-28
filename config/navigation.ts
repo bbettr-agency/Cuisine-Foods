@@ -44,6 +44,7 @@ export const headerNav: NavGroup[] = [
     links: [
       { label: "All Resources", href: "/resources", description: "Guides for professional kitchens" },
       { label: "Used Cooking Oil Hub", href: "/resources/used-cooking-oil", description: "Collection, pricing & compliance" },
+      { label: "Frying & Cooking Oil Hub", href: "/resources/frying", description: "Choosing & getting more from your oil" },
     ],
   },
   { label: "About", href: "/about", links: [] },

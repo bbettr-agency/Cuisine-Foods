@@ -14,6 +14,7 @@ import { Reveal, RevealGroup } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/funnel/cta-band";
 import { FaqSection } from "@/components/sections/faq-section";
+import { KineticStrip } from "@/components/shared/kinetic-strip";
 
 const localFaqs = ["delivery-areas", "uco-pay-rate", "uco-certificate", "min-order"];
 
@@ -103,6 +104,13 @@ export function LocationProvinceView({ province }: { province: Province }) {
           </div>
         </div>
       </Section>
+
+      {/* Site-wide kinetic motif — real, page-accurate coverage terms */}
+      <KineticStrip
+        eyebrow={`${province.name} coverage`}
+        title={`Delivered & collected across ${province.name}`}
+        items={[province.name, ...metros.map((m) => m.name), "Delivered & Collected"]}
+      />
 
       <FaqSection ids={localFaqs} alt title={`${province.name} – common questions`} />
       <CtaBand

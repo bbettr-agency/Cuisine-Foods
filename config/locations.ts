@@ -52,9 +52,9 @@ export const provinces: Province[] = [
     name: "Western Cape",
     branchId: "western-cape",
     h1: "Cooking Oil Supply & Used-Oil Collection in the Western Cape",
-    metaTitle: "Bulk Cooking Oil Supplier Cape Town | UCO Collection | Cuisine Foods",
+    metaTitle: "Bulk Cooking Oil Supplier Western Cape | UCO Collection | Cuisine Foods",
     metaDescription:
-      "Bulk cooking oil supply and used cooking oil collection across the Western Cape – Cape Town & the Northern Suburbs. Local branch in Montague Gardens. Get a quote.",
+      "Bulk cooking oil supply and used cooking oil collection across the Western Cape – Cape Town, Northern Suburbs & the Winelands. Local branch in Montague Gardens. Get a quote.",
     intro:
       "From our Montague Gardens branch we supply bulk cooking oil and collect used cooking oil across the Western Cape – Cape Town, the Northern and Southern Suburbs, and the Winelands. One local partner for the oil in and the oil out.",
     imageId: "location-western-cape",

@@ -116,6 +116,21 @@ export const faqs: Record<string, Faq> = {
     q: "How much used cooking oil does a restaurant produce?",
     a: "It varies with fryer count and menu, but a single-fryer takeaway typically produces around 20–60 litres a week, while a busy multi-fryer restaurant can generate several hundred litres a month. Tell us your setup and we'll estimate your monthly rebate.",
   },
+  "grease-why": {
+    id: "grease-why",
+    q: "Why does a commercial kitchen need a grease trap?",
+    a: "South African municipal by-laws require food premises to fit and maintain a grease trap so that fats, oils and grease (FOG) don't enter the sewer and cause blockages. A neglected trap brings odours, slow drains, pests and failed inspections – regular servicing keeps your kitchen hygienic and on the right side of the by-law.",
+  },
+  "grease-included": {
+    id: "grease-included",
+    q: "Can grease-trap cleaning be combined with used-oil collection?",
+    a: "Yes. We can service your grease trap on the same relationship as your used-oil collection and fresh-oil supply, so it's one point of contact for a compliant kitchen. Tell us your setup and we'll match a servicing schedule to how hard your kitchen works.",
+  },
+  "reporting-includes": {
+    id: "reporting-includes",
+    q: "What does used-oil compliance reporting include for a group?",
+    a: "For multi-site operators we consolidate the litres collected and rebate earned per store, plus the safe-disposal documentation each location needs for inspection – one view of used oil across the whole group, so it becomes a managed line item rather than a blind spot.",
+  },
 };
 
 export const getFaqs = (ids: string[]): Faq[] => ids.map((id) => faqs[id]).filter(Boolean);

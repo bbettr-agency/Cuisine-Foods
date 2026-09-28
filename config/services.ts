@@ -126,13 +126,25 @@ export const ucoServices: MoneyPage[] = [
     ],
     sections: [
       {
+        heading: "Why the grease trap matters",
+        body:
+          "Fats, oils and grease (FOG) cool and harden inside drains and the municipal sewer. South African municipal by-laws require food premises to fit and maintain a grease trap to keep FOG out of the system, and a neglected trap quickly means bad odours, slow drains, pests and a failed health inspection. Scheduled servicing keeps the trap working and your kitchen compliant.",
+        answers: "why grease traps are required",
+      },
+      {
+        heading: "Serviced on a schedule that fits your kitchen",
+        body:
+          "How often a trap needs cleaning depends on how hard the kitchen fries – most commercial kitchens need it roughly monthly, busy multi-fryer sites more often. We match the interval to your volume so build-up never gets ahead of you.",
+        answers: "how the service is scheduled",
+      },
+      {
         heading: "One partner for oil and grease",
         body:
           "Combine grease-trap cleaning with your used-oil collection and fresh-oil supply – fewer suppliers, one point of contact, one compliant kitchen.",
         answers: "cross-service convenience",
       },
     ],
-    faqIds: ["grease-frequency", "uco-schedule"],
+    faqIds: ["grease-why", "grease-frequency", "grease-included", "uco-legal", "uco-schedule"],
     relatedSlugs: ["compliance", "get-paid"],
     crossSell: supplyCrossSell,
     primaryCtaLabel: cta.ucoArrange,
@@ -163,8 +175,20 @@ export const ucoServices: MoneyPage[] = [
           "Franchise groups, fast-food chains, hotels, corporate canteens, schools and hospitals: one consolidated view of used-oil across every site, with the documentation each location needs.",
         answers: "segment: franchise / group",
       },
+      {
+        heading: "What we report, store by store",
+        body:
+          "For each location we track the litres collected and the rebate earned, and file the safe-disposal documentation that site needs for inspection. Rolled up to head office, that turns used cooking oil from a per-store blind spot into a managed, auditable line item across the whole group.",
+        answers: "what the reporting contains",
+      },
+      {
+        heading: "The oil out — alongside the oil in",
+        body:
+          "Compliance reporting covers the used oil leaving your kitchens. Pair it with our bulk cooking oil supply and every site runs one account for the oil in and the oil out, with consistent quality on delivery and consistent documentation on collection.",
+        answers: "differentiate from bulk supply / cross-link",
+      },
     ],
-    faqIds: ["uco-certificate", "uco-schedule"],
+    faqIds: ["reporting-includes", "uco-certificate", "sawis-register", "uco-hazardous", "uco-schedule"],
     relatedSlugs: ["compliance", "get-paid"],
     crossSell: supplyCrossSell,
     primaryCtaLabel: cta.ucoArrange,
