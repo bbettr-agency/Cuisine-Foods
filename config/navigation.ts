@@ -60,7 +60,10 @@ export const footerNav: NavGroup[] = [
       { label: "Soya Oil", href: "/soya-oil" },
       { label: "Frying Oil Guide", href: "/frying-oil" },
       { label: "For Restaurants", href: "/cooking-oil-for-restaurants" },
+      { label: "For Hotels", href: "/cooking-oil-for-hotels" },
+      { label: "For Caterers", href: "/cooking-oil-for-caterers" },
       { label: "For Food Manufacturers", href: "/cooking-oil-for-food-manufacturers" },
+      { label: "For Franchises", href: "/cooking-oil-for-franchises" },
     ],
   },
   {

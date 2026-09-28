@@ -23,7 +23,7 @@ export default function ContactPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
-      <Container className="pt-8 lg:pt-12"><Breadcrumbs items={crumbs} /></Container>
+      <Container className="pt-10 lg:pt-16"><Breadcrumbs items={crumbs} /></Container>
       <Section className="pt-4">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           {/* Contact details */}

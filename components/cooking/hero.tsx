@@ -60,7 +60,7 @@ export function CookingHero({
   return (
     <section className="relative overflow-hidden border-b border-line">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ background: "radial-gradient(54% 62% at 84% 4%, rgb(var(--gold-100) / 0.7) 0%, transparent 60%)" }} />
-      <Container className="grid items-center gap-10 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:py-16">
+      <Container className="grid items-center gap-10 pb-10 pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:pb-16 lg:pt-20">
         <div>
           <Breadcrumbs items={crumbs} />
           <p className="eyebrow mb-3 mt-1">{eyebrow}</p>

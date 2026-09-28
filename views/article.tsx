@@ -39,7 +39,7 @@ export function ArticleView({ article }: { article: Article }) {
         ]}
       />
 
-      <Container className="pt-8 lg:pt-12">
+      <Container className="pt-10 lg:pt-16">
         <Breadcrumbs items={crumbs} />
       </Container>
 

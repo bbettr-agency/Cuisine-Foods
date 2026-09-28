@@ -78,7 +78,7 @@ export function SunflowerHero({
         className="pointer-events-none absolute inset-0 -z-10"
         style={{ background: "radial-gradient(50% 60% at 12% 0%, rgb(var(--brand-50)) 0%, transparent 60%)" }}
       />
-      <Container className="grid items-center gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
+      <Container className="grid items-center gap-10 pb-10 pt-12 lg:grid-cols-[1.1fr_0.9fr] lg:pb-16 lg:pt-20">
         <div>
           <Breadcrumbs items={crumbs} />
           <p className="eyebrow mb-3 mt-1">{eyebrow}</p>

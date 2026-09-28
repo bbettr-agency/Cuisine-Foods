@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Building2, HeartHandshake, Recycle, ShieldCheck } from "lucide-react";
 import { site } from "@/config/site";
 import { trust, enabledCerts } from "@/config/trust";
@@ -50,8 +51,8 @@ export default function AboutPage() {
           <Reveal>
             <SectionHeading eyebrow="Our story" title="Supplying South Africa's kitchens since 2009" />
             <div className="mt-5 space-y-4 text-lg leading-relaxed text-ink-soft">
-              <p>For more than a decade, our focus has stayed simple: deliver exceptional oil quality, reliable service and consistent bulk supply that keeps professional kitchens running smoothly.</p>
-              <p>From branches in Centurion and Cape Town, we supply sunflower, palm olein and soya to restaurants, caterers, hotels and food manufacturers – and we collect their used cooking oil, paying per litre and recycling it into renewable biodiesel.</p>
+              <p>For more than a decade, our focus has stayed simple: deliver exceptional oil quality, reliable service and consistent <Link href="/bulk-cooking-oil-supply" className="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:decoration-brand-700">bulk cooking oil supply</Link> that keeps professional kitchens running smoothly.</p>
+              <p>From branches in Centurion and Cape Town, we supply sunflower, palm olein and soya to restaurants, caterers, hotels and food manufacturers – and we <Link href="/used-cooking-oil-collection" className="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:decoration-brand-700">collect their used cooking oil</Link>, paying per litre and recycling it into renewable biodiesel.</p>
               <p>It's a rare model in South Africa: one trusted partner for the oil going into your kitchen and the used oil coming back out.</p>
             </div>
           </Reveal>
