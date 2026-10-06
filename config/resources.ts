@@ -23,7 +23,7 @@ export const articles: Article[] = [
     title: "How to dispose of used cooking oil in South Africa (legally)",
     metaTitle: "How to Dispose of Used Cooking Oil in South Africa | Cuisine Foods",
     metaDescription:
-      "The legal, compliant way to dispose of used cooking oil in South Africa – why the drain is illegal, what the by-laws require, and how licensed collection works.",
+      "The legal, compliant way to dispose of used cooking oil in South Africa – why the drain is illegal, what the by-laws require, and how compliant collection works.",
     excerpt: "Pouring it down the drain is illegal. Here's the compliant way to get rid of used cooking oil – and get paid for it.",
     updated: "2026-07-13",
     readMinutes: 5,
@@ -31,8 +31,8 @@ export const articles: Article[] = [
       "Used cooking oil can't go down the drain, into the bin, or back into the fryer indefinitely. South African municipalities treat fats, oils and grease as a serious pollutant, and getting disposal wrong can cost your kitchen fines – or its licence. The good news: the compliant route is also the one that pays you.",
     sections: [
       { heading: "Never pour it down the drain", body: "Fats, oils and grease solidify in the sewer, cause blockages, and are prohibited by municipal wastewater by-laws in cities including Johannesburg, Tshwane and Cape Town. Illegal disposal can bring penalties and, for repeat offences, closure." },
-      { heading: "Store it safely between collections", body: "Decant cooled used oil into sealed containers kept away from prep areas. A licensed collector will usually supply free sealed drums so your oil stays contained and clean." },
-      { heading: "Use a licensed collector who documents it", body: "Your kitchen carries a duty of care for its waste until it's disposed of properly. A licensed used-oil collector removes it, recycles it into biodiesel, and provides safe-disposal documentation you can show an inspector." },
+      { heading: "Store it safely between collections", body: "Decant cooled used oil into sealed containers kept away from prep areas. A used-oil collector will usually supply free sealed drums so your oil stays contained and clean." },
+      { heading: "Use a used-oil collector who documents it", body: "Your kitchen carries a duty of care for its waste until it's disposed of properly. A used-oil collector removes it, recycles it into biodiesel, and provides safe-disposal documentation you can show an inspector." },
       { heading: "Get paid for it", body: "Because used cooking oil is a biodiesel feedstock, reputable collectors pay you per litre rather than charging to remove it – so compliant disposal becomes a small revenue line, not a cost." },
     ],
     faqIds: ["uco-legal", "uco-certificate", "uco-free-drums", "uco-pay-rate"],
@@ -54,7 +54,7 @@ export const articles: Article[] = [
     sections: [
       { heading: "Degraded oil is the real risk", body: "Repeatedly heated oil breaks down, forming compounds that affect food quality and safety. Food-safety guidance treats heavily degraded frying oil as unfit for use – so 'reuse forever' isn't an option." },
       { heading: "Know when to change it", body: "Change your oil when it darkens, foams excessively or smells burnt. Filtering daily, keeping the fryer clean and frying at 160–190°C all extend usable life without compromising safety." },
-      { heading: "What you can't do", body: "You can't route spent oil back into the food chain or sell it for human or animal consumption – that's where reuse crosses into illegality. Spent oil should go to a licensed collector for recycling into biodiesel." },
+      { heading: "What you can't do", body: "You can't route spent oil back into the food chain or sell it for human or animal consumption – that's where reuse crosses into illegality. Spent oil should go to a used-oil collector for recycling into biodiesel." },
     ],
     faqIds: ["when-change-oil", "uco-legal", "uco-recycle"],
     moneyHref: "/used-cooking-oil-collection/compliance",
@@ -108,18 +108,18 @@ export const articles: Article[] = [
     title: "Used cooking oil regulations in South Africa: the Waste Act, SAWIS & FOG by-laws",
     metaTitle: "Used Cooking Oil Regulations in South Africa (2026) | Cuisine Foods",
     metaDescription:
-      "How used cooking oil is regulated in South Africa – the Waste Act, SAWIS registration, municipal FOG by-laws and the safe-disposal certificate your kitchen needs.",
+      "How used cooking oil is regulated in South Africa – the Waste Act, SAWIS registration, municipal FOG by-laws and the collection documentation your kitchen needs.",
     excerpt: "What the law actually requires when you dispose of used cooking oil in South Africa – plainly explained.",
     updated: "2026-07-16",
     readMinutes: 6,
     intro:
-      "In South Africa, used cooking oil is regulated waste. Your kitchen is legally responsible for disposing of it through a licensed collector and keeping records – and pouring it down the drain is prohibited. Here's the framework in plain terms, and what it means for a restaurant, franchise or food manufacturer.",
+      "In South Africa, used cooking oil is regulated waste. Your kitchen is legally responsible for disposing of it through a used-oil collector and keeping records – and pouring it down the drain is prohibited. Here's the framework in plain terms, and what it means for a restaurant, franchise or food manufacturer.",
     sections: [
-      { heading: "It's regulated under the Waste Act (Act 59 of 2008)", body: "Used cooking oil falls under the National Environmental Management: Waste Act. The Act places a 'duty of care' on the business that generates the waste – you remain responsible until it is handled by a licensed party and disposed of properly. In practice that means using a documented, licensed collector rather than a bin or a drain." },
+      { heading: "It's regulated under the Waste Act (Act 59 of 2008)", body: "Used cooking oil falls under the National Environmental Management: Waste Act. The Act places a 'duty of care' on the business that generates the waste – you remain responsible until it is handled by an appropriate waste handler and disposed of properly. In practice that means using a documented, used-oil collector rather than a bin or a drain." },
       { heading: "Larger kitchens must register on SAWIS", body: "Generators producing used oil from roughly 20 kg per day are required to register on the South African Waste Information System (SAWIS) and report periodically. The documentation from each compliant collection is what feeds that reporting – so a good collector effectively handles your record-keeping." },
       { heading: "Municipal FOG by-laws ban the drain", body: "Cities including Johannesburg, Tshwane and Cape Town enforce fats-oils-and-grease (FOG) by-laws that prohibit oil entering the sewer and require grease-trap maintenance. Contraventions can bring fines and, for repeat offences, closure of the kitchen. This is the most common way food businesses fall foul of the rules." },
-      { heading: "The safe-disposal certificate is your proof", body: "A licensed collector provides documentation of compliant disposal after each collection – the record a health inspector or auditor will ask to see. Keep these on file; for multi-site operators, consolidated store-level reporting makes an audit straightforward." },
-      { heading: "Why 'selling to anyone' is a risk", body: "Selling used oil to an unlicensed buyer can leave you exposed – you keep the duty of care, and oil that is illegally re-refined into the food chain is a documented food-safety risk. Using a licensed, certified collector protects your business and your customers." },
+      { heading: "The collection documentation is your proof", body: "A used-oil collector provides documentation of compliant disposal after each collection – the record a health inspector or auditor will ask to see. Keep these on file; for multi-site operators, consolidating those records makes an audit straightforward." },
+      { heading: "Why 'selling to anyone' is a risk", body: "Selling used oil to an informal buyer can leave you exposed – you keep the duty of care, and oil that is illegally re-refined into the food chain is a documented food-safety risk. Using a documented, compliant collector protects your business and your customers." },
     ],
     faqIds: ["uco-hazardous", "sawis-register", "uco-legal", "uco-certificate"],
     moneyHref: "/used-cooking-oil-collection/compliance",

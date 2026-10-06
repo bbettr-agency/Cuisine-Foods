@@ -24,7 +24,8 @@ export const trust = {
     { value: "Since 2009", label: "Serving SA kitchens", enabled: true, note: "PENDING: reconcile 2009 vs 15+ yrs" },
     { value: "2", label: "Branches – Gauteng & Western Cape", enabled: true },
     { value: "Family-owned", label: "Proudly South African", enabled: true },
-    { value: "Licensed", label: "Compliant UCO collection", enabled: true, note: "PENDING: exact licence/registration" },
+    // Disabled until the client confirms a licence/registration — never publish an unverified "Licensed" claim.
+    { value: "Documented", label: "Compliant UCO collection", enabled: false, note: "PENDING: exact licence/registration – was 'Licensed', disabled as unverified" },
     // Disabled until verified – do not fabricate:
     { value: "1000s", label: "Kitchens served", enabled: false, note: "client-stated; confirm before use" },
     { value: "", label: "Litres delivered / month", enabled: false, note: "PENDING quantified volume" },

@@ -6,7 +6,7 @@ const supplyCrossSell = {
   label: "Need fresh oil too? We deliver that.",
   href: "/bulk-cooking-oil-supply",
   blurb:
-    "We're one of the few partners who both supply your fresh cooking oil and collect the used oil – one account for the oil in and the oil out.",
+    "We supply your fresh cooking oil and collect the used oil – one account for the oil going in and the oil coming out.",
 };
 
 export const ucoServices: MoneyPage[] = [
@@ -18,11 +18,12 @@ export const ucoServices: MoneyPage[] = [
     eyebrow: "Used Cooking Oil",
     h1: "Get Paid for Your Used Cooking Oil",
     subhead: "Your used oil has value – we collect it free and pay you per litre.",
-    metaTitle: "Sell Used Cooking Oil | We Pay Per Litre | Cuisine Foods",
+    metaTitle: "Sell Used Cooking Oil | Get Paid Per Litre | Cuisine Foods",
     metaDescription:
-      "Turn your used cooking oil into cash. Free sealed drums, free collection on your schedule, paid per litre. Serving Gauteng & the Western Cape. Arrange collection.",
+      "Sell your used cooking oil to Cuisine Foods. Free sealed drums, free collection on your schedule and a rebate per litre for commercial kitchens. Arrange collection.",
     intro:
       "Used cooking oil isn't waste – it's a feedstock for renewable biodiesel, and it has real value. We collect yours for free, on a schedule that suits you, and pay you per litre. No cost to remove it, and a rebate on every collection.",
+    national: true,
     keyPoints: [
       { icon: "banknote", title: "Paid per litre", body: "We pay you for every litre collected – rates depend on volume and quality. Ask for today's rate." },
       { icon: "droplet", title: "Free sealed drums", body: "We supply clean, sealed storage drums so your oil stays contained and safe." },
@@ -58,44 +59,45 @@ export const ucoServices: MoneyPage[] = [
     intent: "uco",
     imageId: "uco-compliance",
     eyebrow: "Used Cooking Oil",
-    h1: "UCO Compliance & Safe-Disposal Certificates",
-    subhead: "Compliant collection that protects you at inspection.",
+    h1: "Used Cooking Oil Disposal & Compliance",
+    subhead: "Responsible collection with documentation for inspections.",
     metaTitle: "Used Cooking Oil Disposal & Compliance | Cuisine Foods",
     metaDescription:
-      "Compliant used cooking oil disposal with safe-disposal documentation. Meet municipal FOG by-laws and protect your kitchen at inspection. Gauteng & Western Cape.",
+      "Responsible used cooking oil disposal with collection documentation to keep on file. Understand your kitchen's duty of care under SA waste law. Arrange collection.",
     intro:
-      "Pouring used cooking oil down the drain is illegal, and your kitchen stays legally responsible for its waste until it's disposed of properly. We collect yours as a licensed handler and provide the documentation you need to show a health inspector.",
+      "Pouring used cooking oil down the drain is against municipal by-laws, and your kitchen carries a legal duty of care for that oil until it's handled responsibly. We collect yours and give you documentation of each collection to keep on file for a health inspector.",
     keyPoints: [
-      { icon: "file-check", title: "Safe-disposal documentation", body: "Proof of compliant collection to keep on file for inspections." },
-      { icon: "shield-check", title: "Licensed, compliant handling", body: "Collected and recycled the right way – never routed back into the food chain." },
-      { icon: "scale", title: "Meet municipal FOG by-laws", body: "Fats, oils & grease can't go down the drain. We help you stay on the right side of the by-law." },
+      { icon: "file-check", title: "Collection documentation", body: "A record of each collection to keep on file for inspections and audits." },
+      { icon: "shield-check", title: "Responsibly handled", body: "Collected and sent for recovery the right way – never routed back into the food chain." },
+      { icon: "scale", title: "Supports FOG by-laws", body: "Fats, oils and grease can't go down the drain. Scheduled collection helps keep you on the right side of the by-law." },
     ],
     sections: [
       {
         heading: "Used cooking oil is regulated waste in South Africa",
         body:
-          "Used cooking oil is regulated under the National Environmental Management: Waste Act (Act 59 of 2008). Your kitchen carries a legal duty of care for that waste until it is disposed of properly – which means using a licensed collector and keeping records of every collection. We handle both.",
+          "Used cooking oil is regulated under the National Environmental Management: Waste Act (Act 59 of 2008). Your kitchen carries a legal duty of care for that waste until it is handled responsibly – which generally means using a collector and keeping records of each collection. We collect it and give you that record. Your duty of care stays with you, so keeping the paperwork matters.",
         answers: "question: is UCO regulated waste",
       },
       {
         heading: "SAWIS registration for larger kitchens",
         body:
-          "Generators that produce used oil from roughly 20 kg per day must register on the South African Waste Information System (SAWIS) and report periodically. Our documented collections give you the paper trail that registration requires, so compliance is one less thing to manage.",
+          "Generators above the thresholds in the Waste Act may need to register on the South African Waste Information System (SAWIS) and report periodically. Whether it applies to you depends on your volumes – our collection records give you a paper trail either way. If you're unsure, check your obligations with your local authority.",
         answers: "question: SAWIS registration",
       },
       {
         heading: "The drain is not an option – municipal FOG by-laws",
         body:
-          "Cities including Johannesburg, Tshwane and Cape Town prohibit fats, oils and grease from entering the sewer and require grease-trap management. Illegal disposal can bring fines or, for repeat offences, closure. Compliant collection removes that risk entirely.",
+          "Municipalities including Johannesburg, Tshwane and Cape Town prohibit fats, oils and grease from entering the sewer and require grease-trap management, and the exact requirements vary by municipality and by business. Illegal disposal can bring penalties. Scheduled collection keeps your used oil out of the drain entirely.",
         answers: "objection: can I pour it away",
       },
       {
-        heading: "Your safe-disposal certificate",
+        heading: "Your collection documentation",
         body:
-          "After each collection we provide documentation of compliant disposal – the record a health inspector or auditor asks for. For franchise groups, we can consolidate this into store-level reporting across every site.",
-        answers: "objection: do I get a certificate",
+          "After each collection we provide documentation of how your oil was handled – the kind of record a health inspector or auditor asks for. For multi-site operators we can consolidate this per store; see UCO compliance reporting for how that works across a group.",
+        answers: "objection: do I get a record",
       },
     ],
+    national: true,
     faqIds: ["uco-certificate", "uco-legal", "uco-hazardous", "sawis-register", "uco-schedule"],
     relatedSlugs: ["get-paid", "uco-compliance-reporting"],
     resourceLinks: [
@@ -149,6 +151,8 @@ export const ucoServices: MoneyPage[] = [
     crossSell: supplyCrossSell,
     primaryCtaLabel: cta.ucoArrange,
     ppcReady: false,
+    // Regional service — areaServed derives from the hubs that actually offer it.
+    serviceAreaKey: "greaseTrap",
   },
   {
     slug: "uco-compliance-reporting",
@@ -158,33 +162,33 @@ export const ucoServices: MoneyPage[] = [
     eyebrow: "For Franchises & Groups",
     h1: "UCO Compliance Reporting",
     subhead: "Store-level reporting for franchises, groups and multi-site operators.",
-    metaTitle: "UCO Compliance Reporting for Franchises | Cuisine Foods",
+    metaTitle: "UCO Reporting for Franchises & Multi-Site Groups | Cuisine Foods",
     metaDescription:
-      "Transparent, store-level used cooking oil reporting for franchise groups, fast-food chains, hotels and corporate canteens. Track cost, compliance & sustainability.",
+      "One used-oil collection relationship across every site, with collection documentation consolidated per store for head office. Built for franchise and hotel groups.",
     intro:
-      "For franchise groups and multi-site operators, transparent store-level reporting turns used cooking oil from a blind spot into a managed line item – cost, compliance and sustainability, visible across every site.",
+      "For franchise groups and multi-site operators, one collection relationship across every site – with the documentation from each store brought together for head office – turns used cooking oil from a per-site loose end into something you can see and account for in one place.",
     keyPoints: [
-      { icon: "scale", title: "Reduce oil costs", body: "See usage and rebates by store to find savings across the group." },
-      { icon: "file-check", title: "Group-wide compliance", body: "Audit-ready disposal documentation for every location." },
-      { icon: "leaf", title: "Report sustainability", body: "Track litres recycled into biodiesel for your ESG reporting." },
+      { icon: "file-check", title: "Documentation per store", body: "A collection record for each location, consolidated for head office." },
+      { icon: "scale", title: "One relationship, every site", body: "The same collection arrangement across the group, not a different handler per store." },
+      { icon: "recycle", title: "Records of what you divert", body: "A record of the litres collected from each site for your own reporting." },
     ],
     sections: [
       {
         heading: "Built for multi-site operators",
         body:
-          "Franchise groups, fast-food chains, hotels, corporate canteens, schools and hospitals: one consolidated view of used-oil across every site, with the documentation each location needs.",
+          "Franchise groups, fast-food chains, hotels, corporate canteens and other groups: one collection relationship across every site, with the documentation each location needs for inspection brought together in one place.",
         answers: "segment: franchise / group",
       },
       {
-        heading: "What we report, store by store",
+        heading: "What you get, store by store",
         body:
-          "For each location we track the litres collected and the rebate earned, and file the safe-disposal documentation that site needs for inspection. Rolled up to head office, that turns used cooking oil from a per-store blind spot into a managed, auditable line item across the whole group.",
+          "For each location we collect on a schedule and provide documentation of the collection. Brought together for head office, those per-store records give you one view of how used oil is handled across the group, rather than a loose end at every site. (The exact format we can consolidate records in is confirmed with you when we set the account up.)",
         answers: "what the reporting contains",
       },
       {
         heading: "The oil out — alongside the oil in",
         body:
-          "Compliance reporting covers the used oil leaving your kitchens. Pair it with our bulk cooking oil supply and every site runs one account for the oil in and the oil out, with consistent quality on delivery and consistent documentation on collection.",
+          "This covers the used oil leaving your kitchens. Pair it with our bulk cooking oil supply and every site runs one account for the oil in and the oil out, with consistent quality on delivery and consistent documentation on collection.",
         answers: "differentiate from bulk supply / cross-link",
       },
     ],
@@ -193,6 +197,8 @@ export const ucoServices: MoneyPage[] = [
     crossSell: supplyCrossSell,
     primaryCtaLabel: cta.ucoArrange,
     ppcReady: true,
+    // Regional — reporting footprint follows the hubs that offer it (not KZN yet).
+    serviceAreaKey: "complianceReporting",
   },
   {
     slug: "cooking-oil-recycling",
@@ -202,35 +208,39 @@ export const ucoServices: MoneyPage[] = [
     eyebrow: "Sustainability",
     h1: "Cooking Oil Recycling",
     subhead: "Your used oil, recycled into renewable biodiesel.",
-    metaTitle: "Cooking Oil Recycling in South Africa | Cuisine Foods",
+    metaTitle: "What Happens to Used Cooking Oil | Recycling | Cuisine Foods",
     metaDescription:
-      "We recycle collected used cooking oil into renewable biodiesel and oleochemicals – a compliant, circular solution for South African kitchens. Learn how it works.",
+      "What happens to your used cooking oil after collection: aggregated, cleaned and sent for recovery into renewable biodiesel – never back into the food chain.",
     intro:
-      "Every litre of used cooking oil we collect is filtered, cleaned and converted into renewable biodiesel and oleochemicals – never routed back into the food chain. It's a compliant, circular solution that turns a waste problem into clean energy.",
+      "Once we collect your used cooking oil it doesn't go to waste. It's aggregated, cleaned and sent on as a feedstock for renewable biodiesel – never routed back into the food chain. A straightforward, circular route that turns a kitchen by-product into clean energy.",
     keyPoints: [
-      { icon: "recycle", title: "Filtered & cleaned", body: "Collected oil is processed before it becomes feedstock." },
-      { icon: "leaf", title: "Into renewable biodiesel", body: "Converted into clean, renewable fuel and oleochemicals." },
-      { icon: "shield-check", title: "Never back into food", body: "Responsibly recycled – a point we take seriously." },
+      { icon: "truck", title: "Collected & aggregated", body: "Your oil is collected and combined with other kitchens' used oil into a usable volume." },
+      { icon: "recycle", title: "Cleaned for recovery", body: "It's filtered and cleaned so it can be used as a biodiesel feedstock." },
+      { icon: "shield-check", title: "Never back into food", body: "Used oil we collect is sent for recovery – never re-sold into the food chain." },
     ],
     sections: [
       {
-        heading: "A fast-growing circular industry",
+        heading: "What happens to your used cooking oil",
         body:
-          "South Africa's used cooking oil market is growing quickly – valued at roughly US$295 million in 2025 and projected to reach around US$550 million by 2035 – driven by demand for renewable biodiesel. Every litre you divert to us becomes feedstock for that clean-energy value chain.",
-        answers: "context: market size / statistic",
+          "After collection, your used oil is aggregated with oil from other kitchens, then filtered and cleaned to remove food solids and water. From there it's supplied as a feedstock for renewable biodiesel – a cleaner-burning fuel made from waste oil rather than crude. The point most kitchens care about: it never goes back into the food chain.",
+        answers: "question: what happens to used cooking oil after collection",
       },
       {
-        heading: "The circular story your customers value",
+        heading: "Why it's worth diverting",
         body:
-          "Recycling your used oil is good compliance and good for your brand's sustainability story. We can report the litres you divert into biodiesel for your ESG reporting.",
-        answers: "motivation: ESG / sustainability",
+          "Sending used oil for recovery keeps it out of drains and landfill and turns it into something useful. It's good for compliance and it's a genuine part of your kitchen's sustainability story – backed by the collection records we give you, rather than a vague claim.",
+        answers: "motivation: sustainability (honest)",
       },
     ],
-    faqIds: ["uco-recycle", "uco-legal"],
+    faqIds: ["uco-recycle", "uco-hazardous", "uco-legal"],
     relatedSlugs: ["get-paid", "compliance"],
+    resourceLinks: [
+      { label: "How used cooking oil becomes biodiesel", href: "/resources/how-used-cooking-oil-becomes-biodiesel" },
+    ],
     crossSell: supplyCrossSell,
     primaryCtaLabel: cta.ucoArrange,
     ppcReady: false,
+    national: true,
   },
 ];
 

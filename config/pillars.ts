@@ -21,6 +21,9 @@ export type Pillar = {
   resourceLinks?: ResourceLink[];
   /** Optional site-wide kinetic-strip motif (words must be supported by page content). */
   kinetic?: { eyebrow?: string; title: string; intro?: string; items: string[] };
+  /** Commercial-depth Q&A: plain, answer-engine-friendly questions that each link
+   *  deeper into the cluster rather than duplicating a spoke page. */
+  depth?: { q: string; a: string; href?: string; linkLabel?: string }[];
 };
 
 export const pillars: Record<string, Pillar> = {
@@ -66,17 +69,17 @@ export const pillars: Record<string, Pillar> = {
     intent: "uco",
     imageId: "uco-pillar",
     eyebrow: "Used Cooking Oil",
-    h1: "Used Cooking Oil Collection – Gauteng & Western Cape",
-    subhead: "Free, compliant collection on your schedule – and we pay you per litre.",
-    metaTitle: "Used Cooking Oil Collection | Free & Compliant | Cuisine Foods",
+    h1: "Used Cooking Oil Collection for Commercial Kitchens",
+    subhead: "Free, documented collection on your schedule – and we pay you per litre.",
+    metaTitle: "Used Cooking Oil Collection | Commercial & Documented | Cuisine Foods",
     metaDescription:
-      "Free used cooking oil collection across Gauteng & the Western Cape. We pay per litre, provide sealed drums and safe-disposal documentation. Arrange collection.",
+      "Used cooking oil collection for South African commercial kitchens. We pay per litre, supply sealed drums and provide collection documentation. Arrange collection.",
     intro:
-      "We collect your used cooking oil for free, on a schedule that suits you, and pay you per litre – then recycle it into renewable biodiesel. Sealed drums provided, safe-disposal documentation included, fully compliant.",
+      "We collect your used cooking oil for free, on a schedule that suits you, and pay you per litre – then send it for recovery into renewable biodiesel. Sealed drums supplied, collection documentation included, responsibly handled.",
     keyPoints: [
       { icon: "banknote", title: "We pay per litre", body: "Your used oil has value – we pay you for every litre we collect." },
       { icon: "droplet", title: "Free sealed drums", body: "Clean, sealed storage supplied so your oil stays safe between pickups." },
-      { icon: "file-check", title: "Compliant + documented", body: "Licensed collection with safe-disposal documentation for inspections." },
+      { icon: "file-check", title: "Documented collection", body: "A record of each collection to keep on file for inspections." },
     ],
     children: [
       { label: "Get Paid for Your Used Oil", href: "/used-cooking-oil-collection/get-paid", blurb: "What your oil is worth", icon: "banknote" },
@@ -100,8 +103,50 @@ export const pillars: Record<string, Pillar> = {
     kinetic: {
       eyebrow: "The closed loop",
       title: "From your fryer to renewable fuel",
-      intro: "We collect it, pay you for it and document it – then it's recycled into biodiesel.",
-      items: ["Compliant Collection", "Paid Per Litre", "Sealed Drums", "Safe Disposal", "Renewable Biodiesel"],
+      intro: "We collect it, pay you for it and document it – then it's recovered into biodiesel.",
+      items: ["Documented Collection", "Paid Per Litre", "Sealed Drums", "Responsible Handling", "Renewable Biodiesel"],
     },
+    depth: [
+      {
+        q: "What qualifies as used cooking oil?",
+        a: "Any used frying or cooking oil from a commercial kitchen – sunflower, palm olein, canola, soya or blends. We collect it whatever you fry with.",
+      },
+      {
+        q: "Who can use the collection service?",
+        a: "Restaurants, hotels, caterers, franchises, food manufacturers and other commercial kitchens – single-site or multi-site operators.",
+      },
+      {
+        q: "How does collection work?",
+        a: "We drop off clean sealed drums, you fill them between services, and we collect on a schedule that suits you – weekly, monthly or custom – and pay you per litre.",
+      },
+      {
+        q: "How should I store used oil before collection?",
+        a: "In the sealed drums we supply, cooled and kept free of water and food waste. Cleaner oil is worth more, so keeping it uncontaminated pays off.",
+      },
+      {
+        q: "Can my business be paid for its used oil?",
+        a: "Yes. Eligible used oil earns a rebate per litre – the rate depends on your volume, the oil's quality and your location.",
+        href: "/used-cooking-oil-collection/get-paid",
+        linkLabel: "See how getting paid works",
+      },
+      {
+        q: "How does documentation and compliance work?",
+        a: "Each collection comes with a record of how your oil was handled, for your duty-of-care file. Requirements vary by municipality and business.",
+        href: "/used-cooking-oil-collection/compliance",
+        linkLabel: "Compliance & documentation",
+      },
+      {
+        q: "Can multi-site businesses use one account?",
+        a: "Yes – one collection relationship across every site, with the documentation from each store brought together for head office.",
+        href: "/uco-compliance-reporting",
+        linkLabel: "Reporting for groups",
+      },
+      {
+        q: "What happens to the oil you collect?",
+        a: "It's aggregated, cleaned and sent for recovery into renewable biodiesel – never routed back into the food chain.",
+        href: "/cooking-oil-recycling",
+        linkLabel: "What happens to used oil",
+      },
+    ],
   },
 };

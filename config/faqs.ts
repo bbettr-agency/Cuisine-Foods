@@ -55,13 +55,13 @@ export const faqs: Record<string, Faq> = {
   },
   "uco-certificate": {
     id: "uco-certificate",
-    q: "Do you provide a safe-disposal certificate?",
-    a: "We collect as a licensed handler and provide documentation of compliant disposal to keep on file for health inspections and your duty-of-care obligations.",
+    q: "Do you provide collection documentation?",
+    a: "Yes. After each collection we provide documentation of how your used oil was handled, to keep on file for health inspections and your duty-of-care obligations.",
   },
   "uco-legal": {
     id: "uco-legal",
     q: "Is it illegal to pour used cooking oil down the drain?",
-    a: "Yes. South African municipalities prohibit fats, oils and grease entering the sewer, and illegal dumping can bring fines or closure. Compliant collection by a licensed handler is the correct route.",
+    a: "Yes. South African municipalities prohibit fats, oils and grease entering the sewer, and illegal dumping can bring penalties. Arranging scheduled collection and keeping the documentation is the correct route.",
   },
   "grease-frequency": {
     id: "grease-frequency",
@@ -104,12 +104,12 @@ export const faqs: Record<string, Faq> = {
   "uco-hazardous": {
     id: "uco-hazardous",
     q: "Is used cooking oil regulated or hazardous waste in South Africa?",
-    a: "Used cooking oil is regulated waste under the National Environmental Management: Waste Act (Act 59 of 2008). It must be handled by a licensed collector and documented; pouring it down the drain is prohibited by municipal fats-oils-and-grease (FOG) by-laws and can bring fines. We collect it compliantly and provide the documentation.",
+    a: "Used cooking oil is regulated waste under the National Environmental Management: Waste Act (Act 59 of 2008). It should be collected and documented rather than dumped; pouring it down the drain is prohibited by municipal fats-oils-and-grease (FOG) by-laws and can bring penalties. We collect it responsibly and provide the documentation.",
   },
   "sawis-register": {
     id: "sawis-register",
     q: "Do I need to register on SAWIS for used cooking oil?",
-    a: "Under the Waste Act, generators producing used oil from roughly 20 kg per day must register on the South African Waste Information System (SAWIS) and report periodically. Using a licensed collector who documents every collection is how you keep that record and stay compliant.",
+    a: "Under the Waste Act, generators above the thresholds for used oil may need to register on the South African Waste Information System (SAWIS) and report periodically – whether it applies depends on your volumes, so check with your local authority. Using a collector that documents every collection is how you keep that record either way.",
   },
   "uco-how-much-restaurant": {
     id: "uco-how-much-restaurant",
@@ -128,8 +128,8 @@ export const faqs: Record<string, Faq> = {
   },
   "reporting-includes": {
     id: "reporting-includes",
-    q: "What does used-oil compliance reporting include for a group?",
-    a: "For multi-site operators we consolidate the litres collected and rebate earned per store, plus the safe-disposal documentation each location needs for inspection – one view of used oil across the whole group, so it becomes a managed line item rather than a blind spot.",
+    q: "What does used-oil reporting include for a group?",
+    a: "For multi-site operators we bring the collection documentation from each store together for head office, so you have one view of how used oil is handled across the group rather than a loose end at every site. The exact format we consolidate records in is confirmed when we set the account up.",
   },
 
   // --- Homepage company/commercial overview ---

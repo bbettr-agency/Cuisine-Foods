@@ -86,7 +86,11 @@ export const site = {
    * ESTIMATE range shown to visitors (labelled as such) – update to the client's
    * confirmed rates when available. Market context: SA collectors pay ~R4–R7/litre.
    */
-  uco: { rateLow: 4, rateHigh: 7 },
+  // UCO buy-back rate. `rateVerified` MUST stay false until the client confirms a
+  // current rate — while false, no rand figure is published (the estimator captures
+  // volume and routes to a quote instead). rateLow/rateHigh are indicative only and
+  // are never rendered as a price while unverified.
+  uco: { rateLow: 4, rateHigh: 7, rateVerified: false },
 
   /**
    * Editorial / E-E-A-T. `authorName` is the visible byline (truthful – the
