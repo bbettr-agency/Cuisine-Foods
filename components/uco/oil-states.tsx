@@ -45,7 +45,7 @@ export function OilStates({ className }: { className?: string }) {
   const labelsO = useTransform(scrollYProgress, [0.3, 0.85], [0, 1]);
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={`relative ${className ?? ""}`}>
       {/* Horizontal band (sm+) */}
       <div className="relative hidden sm:block">
         <svg viewBox="0 0 1000 120" fill="none" className="w-full" preserveAspectRatio="none" aria-hidden style={{ height: "clamp(72px, 10vw, 120px)" }}>

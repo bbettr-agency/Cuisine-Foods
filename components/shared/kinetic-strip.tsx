@@ -54,7 +54,7 @@ export function KineticStrip({
   return (
     <section
       ref={ref}
-      className={cn("section overflow-hidden", tone === "surface-2" && "bg-surface-2", className)}
+      className={cn("section relative overflow-hidden", tone === "surface-2" && "bg-surface-2", className)}
       aria-label={eyebrow ?? title}
     >
       <Container>
