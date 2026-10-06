@@ -34,7 +34,7 @@ export const pillars: Record<string, Pillar> = {
     eyebrow: "Bulk Cooking Oil Supply",
     h1: "Bulk Cooking Oil Supplier for South African Kitchens",
     subhead: "Sunflower, palm olein & soya, delivered reliably to professional kitchens.",
-    metaTitle: "Bulk Cooking Oil Supplier | Sunflower, Palm Olein & Soya | Cuisine Foods",
+    metaTitle: "Bulk Cooking Oil Supplier for SA Kitchens | Cuisine Foods",
     metaDescription:
       "Reliable bulk cooking oil supply – sunflower, palm olein & soya – for restaurants, caterers & manufacturers, with nationwide delivery from our regional hubs. Get a bulk quote.",
     intro:
@@ -71,7 +71,7 @@ export const pillars: Record<string, Pillar> = {
     eyebrow: "Used Cooking Oil",
     h1: "Used Cooking Oil Collection for Commercial Kitchens",
     subhead: "Documented collection on your schedule – and we pay you for it.",
-    metaTitle: "Used Cooking Oil Collection | Commercial & Documented | Cuisine Foods",
+    metaTitle: "Used Cooking Oil Collection | Commercial | Cuisine Foods",
     metaDescription:
       "Used cooking oil collection for South African commercial kitchens. We pay for the oil we collect, supply sealed drums and provide collection documentation. Arrange collection.",
     intro:

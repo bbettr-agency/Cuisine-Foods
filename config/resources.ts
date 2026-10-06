@@ -49,7 +49,7 @@ export const articles: Article[] = [
     slug: "is-it-legal-to-reuse-cooking-oil-in-restaurants",
     cluster: "uco",
     title: "Is it legal to reuse cooking oil in a restaurant?",
-    metaTitle: "Is It Legal to Reuse Cooking Oil in a Restaurant? (South Africa) | Cuisine Foods",
+    metaTitle: "Can You Reuse Cooking Oil in a Restaurant? (SA) | Cuisine Foods",
     metaDescription:
       "How long you can reuse frying oil in a South African commercial kitchen, when it becomes a food-safety risk, and the rules that apply. A practical guide.",
     excerpt: "You can reuse frying oil – up to a point. Here's when it becomes a food-safety and compliance problem.",
@@ -122,7 +122,7 @@ export const articles: Article[] = [
       "In South Africa, used cooking oil is regulated waste. Your kitchen is legally responsible for disposing of it through a used-oil collector and keeping records – and pouring it down the drain is prohibited. Here's the framework in plain terms, and what it means for a restaurant, franchise or food manufacturer.",
     sections: [
       { heading: "It's regulated under the Waste Act (Act 59 of 2008)", body: "Used cooking oil falls under the National Environmental Management: Waste Act. The Act places a 'duty of care' on the business that generates the waste – you remain responsible until it is handled by an appropriate waste handler and disposed of properly. In practice that means using a documented, used-oil collector rather than a bin or a drain." },
-      { heading: "Larger kitchens must register on SAWIS", body: "Generators producing used oil from roughly 20 kg per day are required to register on the South African Waste Information System (SAWIS) and report periodically. The documentation from each compliant collection is what feeds that reporting – so a good collector effectively handles your record-keeping." },
+      { heading: "Some generators must register on SAWIS", body: "The South African Waste Information System (SAWIS) was established under the Waste Act, and the National Waste Information Regulations (2012) set out, in their Annexure 1, which waste activities must register and report. Whether your kitchen is caught depends on your volumes and activity – check your obligations with your local authority. Either way, the documentation from each collection is the record that supports that reporting." },
       { heading: "Municipal FOG by-laws ban the drain", body: "Cities including Johannesburg, Tshwane and Cape Town enforce fats-oils-and-grease (FOG) by-laws that prohibit oil entering the sewer and require grease-trap maintenance. Contraventions can bring fines and, for repeat offences, closure of the kitchen. This is the most common way food businesses fall foul of the rules." },
       { heading: "The collection documentation is your proof", body: "A used-oil collector provides documentation of compliant disposal after each collection – the record a health inspector or auditor will ask to see. Keep these on file; for multi-site operators, consolidating those records makes an audit straightforward." },
       { heading: "Why 'selling to anyone' is a risk", body: "Selling used oil to an informal buyer can leave you exposed – you keep the duty of care, and oil that is illegally re-refined into the food chain is a documented food-safety risk. Using a documented, compliant collector protects your business and your customers." },
@@ -133,6 +133,7 @@ export const articles: Article[] = [
     sources: [
       { label: "National Environmental Management: Waste Act, 2008 (Act No. 59 of 2008) – Department of Forestry, Fisheries & the Environment", url: "https://www.dffe.gov.za/sites/default/files/legislations/nema_amendment_act59.pdf" },
       { label: "A user-friendly guide to the NEM: Waste Act – SAWIC / DFFE", url: "https://sawic.environment.gov.za/documents/944.pdf" },
+      { label: "National Waste Information Regulations, 2012 (registration & reporting; Annexure 1) – DFFE", url: "https://sawic.environment.gov.za" },
       { label: "South African Waste Information System (SAWIS) – DFFE", url: "https://sawic.environment.gov.za" },
       { label: "Municipal fats, oils & grease (FOG) by-laws – City of Cape Town, City of Johannesburg and City of Tshwane wastewater/industrial-effluent by-laws" },
     ],
@@ -187,7 +188,7 @@ export const clusters = {
   uco: {
     slug: "used-cooking-oil",
     title: "Used Cooking Oil Hub",
-    metaTitle: "Used Cooking Oil Guide: Collection, Pricing & Compliance | Cuisine Foods",
+    metaTitle: "Used Cooking Oil Guide for SA Kitchens | Cuisine Foods",
     metaDescription:
       "Everything South African kitchens need on used cooking oil – disposal, pricing per litre, compliance, recycling into biodiesel and more.",
     intro: "The most useful place in South Africa to understand used cooking oil – how to dispose of it legally, what it's worth, and how it's recycled.",
