@@ -43,7 +43,7 @@ export const provinces: Province[] = [
     metaDescription:
       "Bulk cooking oil supply and used cooking oil collection across Gauteng – Johannesburg, Pretoria & Centurion. Local branch in Centurion. Get a quote.",
     intro:
-      "From our Centurion branch we supply bulk cooking oil and collect used cooking oil across Gauteng – Johannesburg, Pretoria, Centurion, the East and West Rand. Fresh oil delivered on schedule, used oil collected and paid for, all compliant.",
+      "From our Centurion branch we supply bulk cooking oil and collect used cooking oil across Gauteng – Johannesburg, Pretoria, Centurion, the East and West Rand. Fresh oil delivered on schedule, used oil collected and paid for, with documentation.",
     imageId: "location-gauteng",
     metros: ["johannesburg", "pretoria"],
   },
@@ -73,7 +73,7 @@ export const metros: Metro[] = [
     metaDescription:
       "Bulk cooking oil delivery and used cooking oil collection across Johannesburg – Sandton, Midrand, Soweto, the East & West Rand. Get a quote or arrange collection.",
     intro:
-      "Johannesburg's kitchens fry hard, and they need a supplier who keeps up. We deliver bulk sunflower, palm olein and soya across the city and collect your used oil for cash.",
+      "Johannesburg's kitchens fry hard, and they need a supplier who keeps up. We deliver bulk sunflower, palm olein and soya across the city and collect your used oil – and pay you for it.",
     suburbs: ["Sandton", "Midrand", "Randburg", "Roodepoort", "Soweto", "the East Rand", "the West Rand"],
     localLogistics:
       "Scheduled delivery and collection routes run across the greater Johannesburg metro, from Sandton and Midrand through to Soweto and the East Rand, on daily, weekly or monthly cycles.",
@@ -93,10 +93,10 @@ export const metros: Metro[] = [
     metaDescription:
       "Local bulk cooking oil supply and used cooking oil collection in Pretoria & Centurion – our Gauteng home base. Fast delivery and collection. Get a quote.",
     intro:
-      "Centurion is our Gauteng home, so Pretoria and Centurion kitchens get our fastest, most local service – bulk oil delivered and used oil collected, often same-week.",
+      "Centurion is our Gauteng home, so Pretoria and Centurion kitchens get our most local service – bulk oil delivered and used oil collected on a schedule that suits you.",
     suburbs: ["Centurion", "Pretoria East", "Hatfield", "Menlyn", "Montana", "Rosslyn", "Sunderland Ridge"],
     localLogistics:
-      "With our branch in Sunderland Ridge, Centurion, we run tight local routes across Pretoria and Centurion – short lead times on both delivery and collection.",
+      "With our branch in Sunderland Ridge, Centurion, we run local routes across Pretoria and Centurion for both delivery and collection.",
     customerClusters:
       "We serve Pretoria East and Menlyn restaurants, Hatfield student-strip takeaways, corporate canteens in the capital, and manufacturers around Rosslyn and Sunderland Ridge.",
     complianceNote:
@@ -133,10 +133,10 @@ export const metros: Metro[] = [
     metaDescription:
       "Bulk cooking oil supply and used cooking oil collection across Cape Town's Northern Suburbs – Bellville, Durbanville, Brackenfell. Local & fast. Get a quote.",
     intro:
-      "Our Montague Gardens branch sits on the doorstep of the Northern Suburbs, so Bellville, Durbanville and Brackenfell kitchens get quick, local supply and collection.",
+      "Our Montague Gardens branch sits on the doorstep of the Northern Suburbs, so Bellville, Durbanville and Brackenfell kitchens get local supply and collection.",
     suburbs: ["Bellville", "Durbanville", "Brackenfell", "Parow", "Goodwood", "Kraaifontein", "Kuils River"],
     localLogistics:
-      "Short, frequent routes from Montague Gardens cover the Northern Suburbs – quick delivery turnaround and flexible collection for Bellville, Durbanville and Brackenfell.",
+      "Routes from our Montague Gardens branch cover the Northern Suburbs for delivery and flexible collection across Bellville, Durbanville and Brackenfell.",
     customerClusters:
       "We serve family restaurants and franchises across Durbanville and Brackenfell, Bellville's commercial kitchens and takeaways, and food producers around Parow and Goodwood.",
     complianceNote:

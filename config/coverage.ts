@@ -117,7 +117,7 @@ const kwaZuluNatal: Hub = {
   terminology: "regional hub",
   services: { supply: true, ucoCollection: true, greaseTrap: false, complianceReporting: false },
   metros: [], // PENDING client — do not assume Durban / Pietermaritzburg
-  opening: "Opening soon — Cuisine Foods' national coverage is expanding into KwaZulu-Natal.",
+  opening: "Opening soon – Cuisine Foods' national coverage is expanding into KwaZulu-Natal.",
   // address / geo / map / contact / gbpUrl intentionally omitted until verified.
 };
 
