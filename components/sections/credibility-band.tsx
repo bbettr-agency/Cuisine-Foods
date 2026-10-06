@@ -4,19 +4,15 @@ import { useEffect, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { easeOutExpo, viewportOnce } from "@/lib/motion";
+import { openHubs, allHubs, coverage } from "@/config/coverage";
 
 /**
- * CredibilityBand – the proof band under "Our Cooking Oils". Replaces the old
- * four-equal-column stat strip with a hierarchy: a large primary anchor
- * (SINCE 2009), a secondary presence figure (02 branches) and two supporting
- * credibility statements (family-owned · licensed). Facts mirror the enabled
- * items in config/trust.ts – history, presence, ownership, compliance. Existing
- * cream/white/gold visual system only (no colour-flow redesign in this pass).
- *
- * Motion: the (un-clipped) grid is the scroll trigger – its children animate via
- * inherited variants, so the masked figures never observe their own clipped box
- * (which would deadlock whileInView). A masked rise on the big figures, a gold
- * rule that draws, a small stagger on the supporting lines. Reduced-motion: static.
+ * CredibilityBand (V2) – national proof band under "Our Cooking Oils".
+ * A hierarchy of verified signals: history (since 2009), regional-hub presence
+ * (figure DERIVED from config/coverage.ts so it is never hard-coded and never
+ * overstates open hubs while KZN is coming-soon), nationwide coverage, and
+ * family ownership. No certification/licence claims (unverified). Cream/warm
+ * visual system. Motion: mounted-gate + inherited variants (SSR/reduced = static).
  */
 
 const container: Variants = {
@@ -38,19 +34,31 @@ const draw: Variants = {
 
 export function CredibilityBand() {
   const reduce = useReducedMotion();
-  // Mounted-gate: SSR and the first client render are the static (visible) state,
-  // so there is no hydration mismatch and reduced-motion never gets stuck in a
-  // baked-in "hidden" variant. We upgrade to the animated reveal only after mount
-  // when motion is allowed – and this section is below the fold, so no flash.
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   const live = mounted && !reduce;
   const trigger = live ? { initial: "hidden" as const, whileInView: "show" as const, viewport: viewportOnce } : {};
 
+  // Status-driven hub figure — honest while KZN is coming-soon, correct when open.
+  const open = openHubs();
+  const total = allHubs();
+  const allOpen = open.length === total.length;
+  const hubFigure = String(allOpen ? total.length : open.length).padStart(2, "0");
+  const openNames = open.map((h) => h.name);
+  const comingNames = coverage.hubs.filter((h) => h.status === "coming-soon").map((h) => h.name);
+  const hubSub = allOpen
+    ? total.map((h) => h.name).join(" · ")
+    : `${openNames.join(" & ")}${comingNames.length ? ` – ${comingNames.join(", ")} opening soon` : ""}`;
+
+  const supporting = [
+    { k: "Nationwide", v: "Supply & collection across South Africa" },
+    { k: "Family-owned", v: "Proudly South African since 2009" },
+  ];
+
   return (
-    <section className="border-y border-line bg-surface" aria-label="Why Cuisine Foods can be trusted">
+    <section className="border-y border-line bg-surface-2" aria-label="Why Cuisine Foods can be trusted">
       <Container className="py-12 lg:py-16">
-        <motion.div {...trigger} variants={container} className="grid gap-x-10 gap-y-10 lg:grid-cols-[1.25fr_0.85fr_1.1fr] lg:items-center">
+        <motion.div {...trigger} variants={container} className="grid gap-x-10 gap-y-10 lg:grid-cols-[1.25fr_0.95fr_1.1fr] lg:items-center">
           {/* PRIMARY – history */}
           <div>
             <p className="eyebrow mb-2">Since</p>
@@ -59,16 +67,16 @@ export function CredibilityBand() {
                 2009
               </motion.div>
             </div>
-            <p className="mt-3 max-w-[22ch] text-sm leading-snug text-ink-soft">Serving South African kitchens for over 15 years.</p>
+            <p className="mt-3 max-w-[24ch] text-sm leading-snug text-ink-soft">Serving South African kitchens for over 15 years.</p>
           </div>
 
-          {/* SECONDARY – presence */}
+          {/* SECONDARY – regional hub presence (derived from coverage status) */}
           <div className="lg:border-l lg:border-line lg:pl-10">
-            <p className="eyebrow mb-2">Branches</p>
+            <p className="eyebrow mb-2">Regional hubs</p>
             <div className="flex items-end gap-3">
               <div className="overflow-hidden">
                 <motion.div variants={live ? rise : undefined} className="font-display text-[68px] font-bold leading-[0.9] tracking-tight text-gold-600 lg:text-[96px]">
-                  02
+                  {hubFigure}
                 </motion.div>
               </div>
               <motion.span
@@ -77,15 +85,12 @@ export function CredibilityBand() {
                 className="mb-4 hidden h-[3px] w-14 origin-left rounded-full bg-gradient-to-r from-gold-500 to-gold-500/0 lg:block"
               />
             </div>
-            <p className="mt-3 max-w-[22ch] text-sm leading-snug text-ink-soft">Gauteng &amp; the Western Cape – close to your kitchen.</p>
+            <p className="mt-3 max-w-[26ch] text-sm leading-snug text-ink-soft">{hubSub}</p>
           </div>
 
-          {/* SUPPORTING – ownership + compliance */}
+          {/* SUPPORTING – nationwide coverage + ownership */}
           <div className="grid grid-cols-2 gap-6 lg:border-l lg:border-line lg:pl-10">
-            {[
-              { k: "Family-owned", v: "Proudly South African" },
-              { k: "Licensed", v: "Compliant UCO collection" },
-            ].map((item) => (
+            {supporting.map((item) => (
               <motion.div key={item.k} variants={live ? fade : undefined}>
                 <span aria-hidden className="mb-3 block h-px w-8 bg-gold-500/70" />
                 <p className="font-display text-lg font-bold leading-tight text-ink">{item.k}</p>

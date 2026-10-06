@@ -10,10 +10,10 @@ import { Hero } from "@/components/sections/hero";
 import { ProductsLineup } from "@/components/sections/products-lineup";
 import { ProductJourney } from "@/components/motion/product-journey";
 import { CredibilityBand } from "@/components/sections/credibility-band";
-import { OfferCards } from "@/components/sections/offer-cards";
+import { NationalFootprint } from "@/components/sections/national-footprint";
+import { ClosedLoop } from "@/components/sections/closed-loop";
 import { WhyUs } from "@/components/sections/why-us";
 import { Industries } from "@/components/sections/industries";
-import { Coverage } from "@/components/sections/coverage";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBand } from "@/components/funnel/cta-band";
 
@@ -32,11 +32,13 @@ export default function HomePage() {
         <Hero />
         <ProductsLineup />
       </ProductJourney>
-      {/* Narrative: what we sell → why trust us → where we operate →
-          what else we do → who we serve → remaining proof → conversion */}
+      {/* V2 national narrative, with a deliberate tonal rhythm (paper → warm
+          surface → INK peak → paper → warm → paper → warm → INK close):
+          who we are/sell → national credibility → national footprint (ink) →
+          supply + recovery → who we serve → why Cuisine → FAQ → conversion. */}
       <CredibilityBand />
-      <Coverage />
-      <OfferCards />
+      <NationalFootprint />
+      <ClosedLoop />
       <Industries />
       <WhyUs />
       <FaqSection ids={[...home.faqIds]} alt />

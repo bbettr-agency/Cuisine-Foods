@@ -9,7 +9,7 @@ import { KineticStrip } from "@/components/shared/kinetic-strip";
  * consent-gated client logos / testimonials that render only when real data
  * exists. The homepage represents Cuisine's broader customer base.
  */
-const TRADE = ["Restaurants", "Hotels", "Caterers", "Food Manufacturers", "Bakeries"];
+const TRADE = ["Restaurants", "Hotels", "Caterers", "Franchises", "Food Manufacturers", "Commercial Kitchens"];
 
 export function Industries() {
   return (
@@ -19,6 +19,7 @@ export function Industries() {
         title="The kitchens we keep running"
         intro="From independent restaurants to national franchise groups – we supply and collect across the food industry."
         items={TRADE}
+        tone="surface-2"
       />
 
       {(trust.clientLogos.length > 0 || hasTestimonials()) && (

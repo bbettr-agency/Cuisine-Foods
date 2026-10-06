@@ -9,7 +9,7 @@ import { PlaceholderImage } from "@/components/ui/placeholder-image";
 export function WhyUs() {
   const { why } = home;
   return (
-    <Section alt>
+    <Section>
       <SectionHeading eyebrow={why.eyebrow} title={why.title} />
       <div className="mt-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <Reveal>
