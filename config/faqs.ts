@@ -77,7 +77,7 @@ export const faqs: Record<string, Faq> = {
   "do-both": {
     id: "do-both",
     q: "Do you both supply fresh oil and collect used oil?",
-    a: "Yes – that's our advantage. We're one of the few partners who supply your fresh cooking oil and collect your used oil, so you deal with one company for the oil going in and the oil coming out.",
+    a: "Yes. Cuisine Foods supplies fresh commercial cooking oil and collects used cooking oil, so you have one relationship for both sides of your oil operation – the oil going in and the oil coming out, on one account.",
   },
   "how-start": {
     id: "how-start",

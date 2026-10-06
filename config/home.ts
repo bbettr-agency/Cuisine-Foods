@@ -6,7 +6,7 @@ export const home = {
     eyebrow: "Family-owned · since 2009",
     h1: "Commercial cooking oil, supplied across South Africa.",
     subhead:
-      "Bulk sunflower, palm olein and soya delivered to restaurants, hotels and food manufacturers nationwide – and we collect your used cooking oil when you're done. Supported by regional hubs across South Africa.",
+      "Bulk sunflower, palm olein and soya delivered to restaurants, hotels and food manufacturers – and we collect your used cooking oil when you're done. Run from regional hubs, close to the kitchens we serve.",
     // Two-path fork (the most important conversion decision on the page)
     primary: { label: "Get a Bulk Oil Quote", href: "/request-a-quote?intent=supply", intent: "supply" as const },
     secondary: { label: "Arrange Used-Oil Collection", href: "/request-a-quote?intent=uco", intent: "uco" as const },
@@ -17,7 +17,7 @@ export const home = {
   productLineup: {
     eyebrow: "Our cooking oils",
     title: "Three premium oils for professional kitchens",
-    body: "Palm olein, cooking oil and sunflower – supplied in bulk and delivered on your schedule to commercial kitchens across South Africa.",
+    body: "Palm olein, cooking oil and sunflower – supplied in bulk and delivered on your schedule to professional kitchens.",
     products: [
       // `imageId` matches config/drums.ts; each card holds a landing slot for the
       // travelling hero product of the same id.
@@ -111,6 +111,6 @@ export const home = {
 
   closing: {
     title: "Order oil, or arrange a collection.",
-    body: "Tell us your business, volumes and region and we'll come back quickly with bulk pricing or a collection schedule – nationwide, no obligation, no lock-in.",
+    body: "Tell us your business, volumes and region and we'll come back quickly with bulk pricing or a collection schedule. No obligation, no lock-in.",
   },
 } as const;
