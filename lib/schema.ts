@@ -170,6 +170,7 @@ export function articleSchema(args: {
     headline: args.title,
     description: args.description,
     url: abs(args.path),
+    mainEntityOfPage: { "@type": "WebPage", "@id": abs(args.path) },
     datePublished: args.datePublished,
     dateModified: args.dateModified ?? args.datePublished,
     author: { "@type": "Organization", "@id": ORG_ID, name: site.editorial.authorName },

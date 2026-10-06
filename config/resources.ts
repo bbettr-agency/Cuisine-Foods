@@ -14,6 +14,8 @@ export type Article = {
   faqIds: string[];
   moneyHref: string; // the money page this article supports
   moneyLabel: string;
+  /** Authoritative sources for factual/regulatory/technical claims (E-E-A-T). */
+  sources?: { label: string; url?: string }[];
 };
 
 export const articles: Article[] = [
@@ -32,12 +34,16 @@ export const articles: Article[] = [
     sections: [
       { heading: "Never pour it down the drain", body: "Fats, oils and grease solidify in the sewer, cause blockages, and are prohibited by municipal wastewater by-laws in cities including Johannesburg, Tshwane and Cape Town. Illegal disposal can bring penalties and, for repeat offences, closure." },
       { heading: "Store it safely between collections", body: "Decant cooled used oil into sealed containers kept away from prep areas. A used-oil collector will usually supply free sealed drums so your oil stays contained and clean." },
-      { heading: "Use a used-oil collector who documents it", body: "Your kitchen carries a duty of care for its waste until it's disposed of properly. A used-oil collector removes it, recycles it into biodiesel, and provides safe-disposal documentation you can show an inspector." },
+      { heading: "Use a used-oil collector who documents it", body: "Your kitchen carries a duty of care for its waste until it's disposed of properly. A used-oil collector removes it, sends it for recovery into biodiesel, and provides collection documentation you can show an inspector." },
       { heading: "Get paid for it", body: "Because used cooking oil is a biodiesel feedstock, reputable collectors pay you per litre rather than charging to remove it – so compliant disposal becomes a small revenue line, not a cost." },
     ],
     faqIds: ["uco-legal", "uco-certificate", "uco-free-drums", "uco-pay-rate"],
     moneyHref: "/used-cooking-oil-collection",
     moneyLabel: "Arrange a compliant collection",
+    sources: [
+      { label: "National Environmental Management: Waste Act, 2008 (Act No. 59 of 2008) – DFFE", url: "https://www.dffe.gov.za/sites/default/files/legislations/nema_amendment_act59.pdf" },
+      { label: "Municipal fats, oils & grease (FOG) by-laws – City of Cape Town, City of Johannesburg and City of Tshwane", url: "https://sawic.environment.gov.za" },
+    ],
   },
   {
     slug: "is-it-legal-to-reuse-cooking-oil-in-restaurants",
@@ -124,6 +130,12 @@ export const articles: Article[] = [
     faqIds: ["uco-hazardous", "sawis-register", "uco-legal", "uco-certificate"],
     moneyHref: "/used-cooking-oil-collection/compliance",
     moneyLabel: "See compliant collection",
+    sources: [
+      { label: "National Environmental Management: Waste Act, 2008 (Act No. 59 of 2008) – Department of Forestry, Fisheries & the Environment", url: "https://www.dffe.gov.za/sites/default/files/legislations/nema_amendment_act59.pdf" },
+      { label: "A user-friendly guide to the NEM: Waste Act – SAWIC / DFFE", url: "https://sawic.environment.gov.za/documents/944.pdf" },
+      { label: "South African Waste Information System (SAWIS) – DFFE", url: "https://sawic.environment.gov.za" },
+      { label: "Municipal fats, oils & grease (FOG) by-laws – City of Cape Town, City of Johannesburg and City of Tshwane wastewater/industrial-effluent by-laws" },
+    ],
   },
   {
     slug: "best-oil-for-commercial-deep-frying",

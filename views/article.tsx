@@ -80,6 +80,30 @@ export function ArticleView({ article }: { article: Article }) {
               </Button>
             </div>
           </Reveal>
+          {/* Sources & further reading — authoritative references for factual claims */}
+          {article.sources && article.sources.length > 0 && (
+            <Reveal className="mt-12 border-t border-line pt-8">
+              <h2 className="font-display text-lg font-bold text-ink">Sources &amp; further reading</h2>
+              <ul className="mt-4 space-y-2.5 text-sm leading-relaxed text-ink-soft">
+                {article.sources.map((s) => (
+                  <li key={s.label} className="flex gap-2">
+                    <span aria-hidden className="text-gold-600">•</span>
+                    {s.url ? (
+                      <a href={s.url} target="_blank" rel="noopener noreferrer" className="underline decoration-line underline-offset-2 hover:text-ink hover:decoration-brand-400">
+                        {s.label}
+                      </a>
+                    ) : (
+                      <span>{s.label}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-xs leading-relaxed text-ink-faint">
+                This guide is general information for South African commercial kitchens, not legal advice. Requirements
+                vary by municipality and business – confirm your obligations with your local authority.
+              </p>
+            </Reveal>
+          )}
         </Container>
       </article>
 
