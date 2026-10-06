@@ -3,10 +3,10 @@ import type { FeaturePoint } from "@/config/types";
 
 export const home = {
   hero: {
-    eyebrow: "Family-owned & South African · since 2009",
-    h1: "Premium cooking oil in. Used cooking oil out. One trusted partner.",
+    eyebrow: "Family-owned · since 2009",
+    h1: "Commercial cooking oil, supplied across South Africa.",
     subhead:
-      "Bulk sunflower, palm olein & soya delivered to restaurants, hotels and food manufacturers across Gauteng & the Western Cape – plus free, compliant collection of your used cooking oil.",
+      "Bulk sunflower, palm olein and soya delivered to restaurants, hotels and food manufacturers nationwide – and we collect your used cooking oil when you're done. Supported by regional hubs across South Africa.",
     // Two-path fork (the most important conversion decision on the page)
     primary: { label: "Get a Bulk Oil Quote", href: "/request-a-quote?intent=supply", intent: "supply" as const },
     secondary: { label: "Arrange Used-Oil Collection", href: "/request-a-quote?intent=uco", intent: "uco" as const },
@@ -17,7 +17,7 @@ export const home = {
   productLineup: {
     eyebrow: "Our cooking oils",
     title: "Three premium oils for professional kitchens",
-    body: "Palm olein, cooking oil and sunflower – supplied in bulk, delivered on your schedule across Gauteng & the Western Cape.",
+    body: "Palm olein, cooking oil and sunflower – supplied in bulk and delivered on your schedule to commercial kitchens across South Africa.",
     products: [
       // `imageId` matches config/drums.ts; each card holds a landing slot for the
       // travelling hero product of the same id.
@@ -29,9 +29,9 @@ export const home = {
 
   // Closed-loop framing that headers the two offer cards
   offersHeading: {
-    eyebrow: "The closed loop",
-    title: "One partner for the oil going in – and the oil coming out",
-    body: "Almost no supplier does both. We do, which means one account, one delivery route, and a lower real cost per litre.",
+    eyebrow: "Supply + recovery",
+    title: "Oil in. Used oil out. One commercial partner.",
+    body: "New cooking oil delivered to your kitchen, and your used oil collected and recovered into biodiesel – one account for both, lowering your real cost per litre.",
   },
   offers: [
     {
@@ -65,20 +65,20 @@ export const home = {
   // "Why Cuisine Foods" – two proof columns (reliable supply · compliant collection)
   why: {
     eyebrow: "Why Cuisine Foods",
-    title: "The obvious choice for South Africa's kitchens",
+    title: "The commercial oil partner for South African kitchens",
     columns: [
       {
-        title: "Reliable supply",
+        title: "Reliable supply, nationwide",
         points: [
-          { icon: "truck", title: "You never run dry", body: "Dependable delivery on your schedule keeps the fryer going." },
+          { icon: "truck", title: "You never run dry", body: "Scheduled delivery from regional hubs keeps every kitchen frying – one account across all your sites." },
           { icon: "droplet", title: "Consistent quality", body: "The same clean, pure oil in every batch, handled to strict food-safety standards." },
         ] as FeaturePoint[],
       },
       {
-        title: "Compliant collection",
+        title: "Collection & recovery",
         points: [
-          { icon: "shield-check", title: "Licensed & documented", body: "Safe-disposal documentation that protects you at inspection." },
-          { icon: "banknote", title: "Paid for your waste", body: "We buy back your used oil – lowering your real cost per litre." },
+          { icon: "file-check", title: "Documented & compliant", body: "We collect your used oil and provide safe-disposal documentation for your records." },
+          { icon: "banknote", title: "Paid for your used oil", body: "We buy back your used oil and recover it into biodiesel – lowering your real cost per litre." },
         ] as FeaturePoint[],
       },
     ],
@@ -107,10 +107,10 @@ export const home = {
     ],
   },
 
-  faqIds: ["do-both", "delivery-areas", "uco-pay-rate", "uco-certificate", "min-order", "how-start"],
+  faqIds: ["oils-supplied", "supply-nationwide", "do-both", "who-supplied", "how-start"],
 
   closing: {
-    title: "Ready for a supplier that does both?",
-    body: "Get a bulk oil quote or arrange a free used-oil collection today. No obligation, no lock-in.",
+    title: "Order oil, or arrange a collection.",
+    body: "Tell us your business, volumes and region and we'll come back quickly with bulk pricing or a collection schedule – nationwide, no obligation, no lock-in.",
   },
 } as const;

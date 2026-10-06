@@ -131,6 +131,23 @@ export const faqs: Record<string, Faq> = {
     q: "What does used-oil compliance reporting include for a group?",
     a: "For multi-site operators we consolidate the litres collected and rebate earned per store, plus the safe-disposal documentation each location needs for inspection – one view of used oil across the whole group, so it becomes a managed line item rather than a blind spot.",
   },
+
+  // --- Homepage company/commercial overview ---
+  "oils-supplied": {
+    id: "oils-supplied",
+    q: "What cooking oils do you supply?",
+    a: "Bulk sunflower oil, palm olein, soya oil and all-purpose cooking/frying oil – supplied from 20L containers up to larger formats for high-volume commercial kitchens.",
+  },
+  "supply-nationwide": {
+    id: "supply-nationwide",
+    q: "Do you supply cooking oil across South Africa?",
+    a: "Yes. Cuisine Foods supplies commercial cooking oil to businesses across South Africa, delivered through our regional hubs, with scheduled delivery routes for professional kitchens.",
+  },
+  "who-supplied": {
+    id: "who-supplied",
+    q: "What kinds of businesses do you supply?",
+    a: "Restaurants, hotels, caterers, franchises, food manufacturers and other commercial kitchens – from single sites to multi-site groups that need one account across every location.",
+  },
 };
 
 export const getFaqs = (ids: string[]): Faq[] => ids.map((id) => faqs[id]).filter(Boolean);
