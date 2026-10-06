@@ -8,16 +8,18 @@ export function FaqSection({
   title = "Common questions",
   eyebrow = "FAQ",
   alt = false,
+  className,
 }: {
   ids: string[];
   title?: string;
   eyebrow?: string;
   alt?: boolean;
+  className?: string;
 }) {
   const faqs = getFaqs(ids);
   if (faqs.length === 0) return null;
   return (
-    <Section alt={alt}>
+    <Section alt={alt} className={className}>
       <SectionHeading eyebrow={eyebrow} title={title} align="center" />
       <div className="mt-10">
         <FaqList faqs={faqs} />

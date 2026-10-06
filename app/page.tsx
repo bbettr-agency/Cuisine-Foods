@@ -41,7 +41,7 @@ export default function HomePage() {
       <ClosedLoop />
       <Industries />
       <WhyUs />
-      <FaqSection ids={[...home.faqIds]} alt />
+      <FaqSection ids={[...home.faqIds]} alt className="border-t border-line" />
       <CtaBand title={home.closing.title} body={home.closing.body} />
     </>
   );

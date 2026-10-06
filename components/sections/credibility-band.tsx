@@ -51,13 +51,20 @@ export function CredibilityBand() {
     : `${openNames.join(" & ")}${comingNames.length ? ` – ${comingNames.join(", ")} opening soon` : ""}`;
 
   const supporting = [
-    { k: "Nationwide", v: "Supply & collection across South Africa" },
+    { k: "Nationwide", v: "One partner for supply and collection" },
     { k: "Family-owned", v: "Proudly South African since 2009" },
   ];
 
   return (
-    <section className="border-y border-line bg-surface-2" aria-label="Why Cuisine Foods can be trusted">
-      <Container className="py-12 lg:py-16">
+    <section className="relative bg-surface-2" aria-label="Why Cuisine Foods can be trusted">
+      {/* Semantic anchor for the national-proof band (visually carried by the figures). */}
+      <h2 className="sr-only">Commercial cooking oil supply and used-oil collection across South Africa</h2>
+      {/* Felt top edge separating the band from the product lineup above. */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-500/40 to-transparent" />
+      {/* Warm surface deepening toward the ink footprint below — the bridge from
+          commercial proof into national scale. */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-ink/[0.05]" />
+      <Container className="relative py-12 lg:py-16">
         <motion.div {...trigger} variants={container} className="grid gap-x-10 gap-y-10 lg:grid-cols-[1.25fr_0.95fr_1.1fr] lg:items-center">
           {/* PRIMARY – history */}
           <div>

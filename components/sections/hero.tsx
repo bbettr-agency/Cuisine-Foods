@@ -49,7 +49,7 @@ export function Hero() {
               <a href={telUrl} className="inline-flex items-center gap-2 font-medium hover:text-ink">
                 <Phone className="h-4 w-4 text-brand-600" /> {site.contact.phone.display}
               </a>
-              <span className="text-ink-faint">Nationwide · regional hubs across South Africa</span>
+              <span className="text-ink-faint">Gauteng · Western Cape · KwaZulu-Natal soon</span>
             </div>
           </Reveal>
         </div>

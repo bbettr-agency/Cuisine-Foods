@@ -20,6 +20,7 @@ export function Industries() {
         intro="From independent restaurants to national franchise groups – we supply and collect across the food industry."
         items={TRADE}
         tone="surface-2"
+        className="border-t border-line"
       />
 
       {(trust.clientLogos.length > 0 || hasTestimonials()) && (
