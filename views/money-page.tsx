@@ -137,9 +137,9 @@ function closingFor(page: MoneyPage): { title: string; body: string } {
       body: "Tell us your volumes, sites and area. We'll put together pricing and a delivery schedule built around how you actually operate.",
     };
   }
-  // uco-service
+  // uco-service (UCO pages now use views/uco-service.tsx; kept as a safe default)
   return {
-    title: "Ready to turn your used oil into cash?",
+    title: "Ready to arrange a collection?",
     body: "Free sealed drums, collection on your schedule, and we pay you for eligible oil – with documentation that keeps your kitchen covered.",
   };
 }

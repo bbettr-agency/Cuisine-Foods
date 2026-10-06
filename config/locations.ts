@@ -91,7 +91,7 @@ export const metros: Metro[] = [
     h1: "Cooking Oil Supply & UCO Collection in Pretoria & Centurion",
     metaTitle: "Cooking Oil Supplier Pretoria & Centurion | Cuisine Foods",
     metaDescription:
-      "Local bulk cooking oil supply and used cooking oil collection in Pretoria & Centurion – our Gauteng home base. Fast delivery and collection. Get a quote.",
+      "Local bulk cooking oil supply and used cooking oil collection in Pretoria & Centurion – our Gauteng home base. Local delivery and collection. Get a quote.",
     intro:
       "Centurion is our Gauteng home, so Pretoria and Centurion kitchens get our most local service – bulk oil delivered and used oil collected on a schedule that suits you.",
     suburbs: ["Centurion", "Pretoria East", "Hatfield", "Menlyn", "Montana", "Rosslyn", "Sunderland Ridge"],

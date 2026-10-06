@@ -20,7 +20,7 @@ export const trustBand = {
   // Low-risk reassurances shown as a compact row (proactive objection handling).
   reassurances: [
     "No strict minimum – from 20L",
-    "First delivery this week",
+    "First delivery arranged quickly",
     "No lock-in, no-obligation quote",
   ],
 } as const;

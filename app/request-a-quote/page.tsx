@@ -12,7 +12,7 @@ import { LeadForm } from "@/components/funnel/lead-form";
 
 export const metadata: Metadata = buildMetadata({
   title: "Request a Quote | Bulk Oil or UCO Collection | Cuisine Foods",
-  description: "Request a fast, competitive quote for bulk cooking oil supply or arrange a free used cooking oil collection across Gauteng & the Western Cape.",
+  description: "Request a competitive quote for bulk cooking oil supply or arrange a used cooking oil collection – nationwide, from our regional hubs. No obligation, no lock-in.",
   path: "/request-a-quote",
 });
 
@@ -20,7 +20,7 @@ const reasons = [
   "A competitive written quote, fast",
   "No obligation and no lock-in",
   "One partner for supply and collection",
-  "Serving Gauteng & the Western Cape",
+  "Nationwide, from our regional hubs",
 ];
 
 export default function QuotePage({ searchParams }: { searchParams: { intent?: string; topic?: string; region?: string } }) {
