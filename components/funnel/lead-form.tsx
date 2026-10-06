@@ -25,6 +25,11 @@ const TOPIC_LABELS: Record<string, string> = {
   "palm-olein": "Bulk palm olein",
   "soya-oil": "Bulk soya oil",
   "frying-oil": "Commercial frying oil",
+  restaurants: "Restaurant supply",
+  hotels: "Hotel supply",
+  caterers: "Catering supply",
+  "food-manufacturers": "Food-manufacturing supply",
+  franchises: "Franchise group supply",
 };
 
 /** Multi-step qualifying quote form (OS P6). Step 1 low-friction; step 2 qualifiers. */
