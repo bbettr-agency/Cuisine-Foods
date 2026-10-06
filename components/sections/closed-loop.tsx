@@ -60,8 +60,8 @@ export function ClosedLoop() {
 
       {/* ---- The loop ---- */}
       <div ref={ref} className="relative mx-auto mt-14 max-w-[760px]">
-        {/* Desktop / tablet: the gold oil ring */}
-        <div className="relative hidden sm:block" style={{ aspectRatio: "900 / 520" }}>
+        {/* Desktop: the gold oil ring (needs room for the labels around it) */}
+        <div className="relative hidden lg:block" style={{ aspectRatio: "900 / 520" }}>
           <svg viewBox="0 0 900 520" fill="none" className="absolute inset-0 h-full w-full overflow-visible" aria-hidden>
             <defs>
               <linearGradient id="loop-gold" x1="0" y1="0" x2="1" y2="1">
@@ -115,8 +115,8 @@ export function ClosedLoop() {
           ))}
         </div>
 
-        {/* Mobile: a vertical oil stream that closes back on itself */}
-        <ol className="relative mx-auto max-w-sm space-y-7 border-l-2 border-gold-500/40 pl-7 sm:hidden">
+        {/* Tablet + mobile: a vertical oil stream that closes back on itself */}
+        <ol className="relative mx-auto max-w-sm space-y-7 border-l-2 border-gold-500/40 pl-7 lg:hidden">
           {STAGES.map((s) => (
             <li key={s.label} className="relative">
               <span className="absolute -left-[37px] top-0.5 h-3.5 w-3.5 rounded-full bg-gold-500 ring-4 ring-paper" aria-hidden />
