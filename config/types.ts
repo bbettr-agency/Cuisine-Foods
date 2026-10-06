@@ -54,6 +54,12 @@ export type MoneyPage = {
   specs?: ProductSpec[]; // product datasheet (rendered as a spec table)
   comparison?: ComparisonTable; // optional decision table (e.g. on the frying-oil page)
   calculator?: boolean; // render the UCO value calculator (e.g. on the get-paid page)
+  /** Service-area scope for schema + copy. `national: true` → areaServed = South
+   *  Africa (confirmed national capabilities: supply, UCO collection). Omit for a
+   *  regionally-offered service and set `serviceAreaKey` so areaServed is derived
+   *  from the hubs that actually provide it (e.g. grease-trap, reporting). */
+  national?: boolean;
+  serviceAreaKey?: "greaseTrap" | "complianceReporting";
   resourceLinks?: ResourceLink[]; // supporting guides (content ↔ money interlinking)
   /** Page-specific closing CTA copy. Each commercial page closes in its own voice
    *  rather than repeating one generic band across the site. */

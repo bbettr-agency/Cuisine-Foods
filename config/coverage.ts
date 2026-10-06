@@ -149,6 +149,20 @@ export const openProvinceNames = (): string[] => openHubs().map((h) => h.provinc
 /** All hub province names (for regional service areaServed once KZN opens). */
 export const hubProvinceNames = (): string[] => coverage.hubs.map((h) => h.province);
 
+/** Province names of OPEN hubs that actually offer a given service capability.
+ *  Used for a regional service's areaServed (e.g. grease-trap, reporting) so the
+ *  schema/copy never claims coverage a hub doesn't actually provide. */
+export const serviceAreaNames = (key: keyof HubServices): string[] =>
+  openHubs().filter((h) => h.services[key]).map((h) => h.province);
+
+/** A natural-language list of the open province names ("Gauteng and the Western
+ *  Cape"). Use sparingly in copy — the national message is carried elsewhere. */
+export const openProvincesPhrase = (): string => {
+  const names = openProvinceNames();
+  if (names.length <= 1) return names[0] ?? "South Africa";
+  return `${names.slice(0, -1).join(", ")} and the ${names[names.length - 1]}`;
+};
+
 /** Region options for the lead form (all hubs + a fallback). Consumed in a later phase. */
 export const formRegions = (): { value: string; label: string }[] => [
   ...coverage.hubs.map((h) => ({ value: h.id, label: h.province })),
