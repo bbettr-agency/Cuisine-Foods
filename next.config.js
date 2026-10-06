@@ -9,6 +9,8 @@ const securityHeaders = [
 
 // 301s from the previous (GoHighLevel) site so ranking equity is preserved at launch.
 const redirects = [
+  // Legacy GoHighLevel home → new root (verified from the live old-site nav).
+  { source: "/home", destination: "/", permanent: true },
   { source: "/used-cooking-oil", destination: "/used-cooking-oil-collection", permanent: true },
   { source: "/used-cooking-oil-uco", destination: "/used-cooking-oil-collection", permanent: true },
   { source: "/palm-oil", destination: "/palm-olein", permanent: true },
