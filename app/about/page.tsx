@@ -17,7 +17,7 @@ import { CtaBand } from "@/components/funnel/cta-band";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Cuisine Foods | Family-Owned SA Cooking Oil Partner",
-  description: "A family-owned South African cooking oil partner since 2009 – supplying bulk oil and collecting used cooking oil across Gauteng & the Western Cape.",
+  description: "A family-owned South African cooking oil partner since 2009 – supplying bulk cooking oil and collecting used cooking oil nationwide, from regional hubs in Gauteng and the Western Cape.",
   path: "/about",
 });
 
@@ -38,7 +38,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow={site.ownership}
         h1="One partner for the oil in and the oil out"
-        subhead="Cuisine Foods is a family-owned South African business supplying bulk cooking oil and collecting used cooking oil across Gauteng and the Western Cape – a genuine closed loop for professional kitchens."
+        subhead="Cuisine Foods is a family-owned South African business supplying bulk cooking oil and collecting used cooking oil nationwide – run from regional hubs in Gauteng and the Western Cape, with KwaZulu-Natal opening soon. A genuine closed loop for professional kitchens."
         imageId="about-team"
         crumbs={crumbs}
         primaryLabel="Get a Quote"
@@ -52,8 +52,8 @@ export default function AboutPage() {
             <SectionHeading eyebrow="Our story" title="Supplying South Africa's kitchens since 2009" />
             <div className="mt-5 space-y-4 text-lg leading-relaxed text-ink-soft">
               <p>For more than a decade, our focus has stayed simple: deliver exceptional oil quality, reliable service and consistent <Link href="/bulk-cooking-oil-supply" className="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:decoration-brand-700">bulk cooking oil supply</Link> that keeps professional kitchens running smoothly.</p>
-              <p>From branches in Centurion and Cape Town, we supply sunflower, palm olein and soya to restaurants, caterers, hotels and food manufacturers – and we <Link href="/used-cooking-oil-collection" className="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:decoration-brand-700">collect their used cooking oil</Link>, paying per litre and recycling it into renewable biodiesel.</p>
-              <p>It's a rare model in South Africa: one trusted partner for the oil going into your kitchen and the used oil coming back out.</p>
+              <p>From regional hubs in Centurion and Cape Town, we supply sunflower, palm olein and soya to restaurants, caterers, hotels and food manufacturers – and we <Link href="/used-cooking-oil-collection" className="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:decoration-brand-700">collect their used cooking oil</Link>, pay them for it, and send it for recovery into renewable biodiesel. As our coverage grows, KwaZulu-Natal is next.</p>
+              <p>It's the model we're built around: one trusted partner for the oil going into your kitchen and the used oil coming back out.</p>
             </div>
           </Reveal>
           <Reveal delay={0.08}>
@@ -101,6 +101,10 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
+        <p className="mx-auto mt-8 max-w-xl text-center text-sm text-ink-soft">
+          We deliver nationwide from these hubs, with KwaZulu-Natal opening soon.{" "}
+          <Link href="/locations" className="font-semibold text-brand-700 hover:underline">See our national coverage →</Link>
+        </p>
       </Section>
 
       <Industries />
