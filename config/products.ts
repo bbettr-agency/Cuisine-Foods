@@ -6,7 +6,7 @@ const ucoCrossSell = {
   label: "You fry it – we collect it, and pay you for it",
   href: "/used-cooking-oil-collection",
   blurb:
-    "Frying at volume? We collect your used cooking oil for free, on your schedule – and pay you per litre. See your real cost per litre after buy-back.",
+    "Frying at volume? We collect your used cooking oil on your schedule – and pay you for it. See your real cost per litre after buy-back.",
 };
 
 export const products: MoneyPage[] = [

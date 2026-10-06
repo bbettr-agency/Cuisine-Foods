@@ -56,7 +56,7 @@ export const pillars: Record<string, Pillar> = {
     crossSell: {
       label: "We also collect your used oil – and pay you for it",
       href: "/used-cooking-oil-collection",
-      blurb: "One partner for the oil in and the oil out. Free, compliant collection with a rebate per litre.",
+      blurb: "One partner for the oil in and the oil out. Scheduled collection with a rebate for eligible oil.",
     },
     resourceLinks: [
       { label: "Best oil for commercial deep frying", href: "/resources/best-oil-for-commercial-deep-frying" },
@@ -70,14 +70,14 @@ export const pillars: Record<string, Pillar> = {
     imageId: "uco-pillar",
     eyebrow: "Used Cooking Oil",
     h1: "Used Cooking Oil Collection for Commercial Kitchens",
-    subhead: "Free, documented collection on your schedule – and we pay you per litre.",
+    subhead: "Documented collection on your schedule – and we pay you for it.",
     metaTitle: "Used Cooking Oil Collection | Commercial & Documented | Cuisine Foods",
     metaDescription:
-      "Used cooking oil collection for South African commercial kitchens. We pay per litre, supply sealed drums and provide collection documentation. Arrange collection.",
+      "Used cooking oil collection for South African commercial kitchens. We pay for the oil we collect, supply sealed drums and provide collection documentation. Arrange collection.",
     intro:
-      "We collect your used cooking oil for free, on a schedule that suits you, and pay you per litre – then send it for recovery into renewable biodiesel. Sealed drums supplied, collection documentation included, responsibly handled.",
+      "We collect your used cooking oil on a schedule that suits you and pay you for it – then send it for recovery into renewable biodiesel. Sealed drums supplied, collection documentation included, responsibly handled.",
     keyPoints: [
-      { icon: "banknote", title: "We pay per litre", body: "Your used oil has value – we pay you for every litre we collect." },
+      { icon: "banknote", title: "We pay you", body: "Your used oil has value – we pay you for the oil we collect." },
       { icon: "droplet", title: "Free sealed drums", body: "Clean, sealed storage supplied so your oil stays safe between pickups." },
       { icon: "file-check", title: "Documented collection", body: "A record of each collection to keep on file for inspections." },
     ],
@@ -99,12 +99,12 @@ export const pillars: Record<string, Pillar> = {
       { label: "Used cooking oil regulations in South Africa", href: "/resources/used-cooking-oil-regulations-south-africa" },
       { label: "What is used cooking oil worth per litre?", href: "/resources/used-cooking-oil-price-per-litre" },
     ],
-    primaryCtaLabel: "Arrange Free Collection",
+    primaryCtaLabel: "Arrange Collection",
     kinetic: {
       eyebrow: "The closed loop",
       title: "From your fryer to renewable fuel",
       intro: "We collect it, pay you for it and document it – then it's recovered into biodiesel.",
-      items: ["Documented Collection", "Paid Per Litre", "Sealed Drums", "Responsible Handling", "Renewable Biodiesel"],
+      items: ["Documented Collection", "We Pay You", "Sealed Drums", "Responsible Handling", "Renewable Biodiesel"],
     },
     depth: [
       {
@@ -117,7 +117,7 @@ export const pillars: Record<string, Pillar> = {
       },
       {
         q: "How does collection work?",
-        a: "We drop off clean sealed drums, you fill them between services, and we collect on a schedule that suits you – weekly, monthly or custom – and pay you per litre.",
+        a: "We drop off clean sealed drums, you fill them between services, and we collect on a schedule that suits you – weekly, monthly or custom – and pay you for it.",
       },
       {
         q: "How should I store used oil before collection?",
@@ -125,7 +125,7 @@ export const pillars: Record<string, Pillar> = {
       },
       {
         q: "Can my business be paid for its used oil?",
-        a: "Yes. Eligible used oil earns a rebate per litre – the rate depends on your volume, the oil's quality and your location.",
+        a: "Yes. Eligible used oil earns a rebate – the rate depends on your volume, the oil's quality and your location.",
         href: "/used-cooking-oil-collection/get-paid",
         linkLabel: "See how getting paid works",
       },

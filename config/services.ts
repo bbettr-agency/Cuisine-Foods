@@ -17,24 +17,24 @@ export const ucoServices: MoneyPage[] = [
     imageId: "uco-get-paid",
     eyebrow: "Used Cooking Oil",
     h1: "Get Paid for Your Used Cooking Oil",
-    subhead: "Your used oil has value – we collect it free and pay you per litre.",
-    metaTitle: "Sell Used Cooking Oil | Get Paid Per Litre | Cuisine Foods",
+    subhead: "Your used oil has value – we collect it and pay you for it.",
+    metaTitle: "Sell Used Cooking Oil | Get Paid for Your Oil | Cuisine Foods",
     metaDescription:
-      "Sell your used cooking oil to Cuisine Foods. Free sealed drums, free collection on your schedule and a rebate per litre for commercial kitchens. Arrange collection.",
+      "Sell your used cooking oil to Cuisine Foods. Free sealed drums, collection on your schedule and a rebate for eligible oil from commercial kitchens. Arrange collection.",
     intro:
-      "Used cooking oil isn't waste – it's a feedstock for renewable biodiesel, and it has real value. We collect yours for free, on a schedule that suits you, and pay you per litre. No cost to remove it, and a rebate on every collection.",
+      "Used cooking oil isn't waste – it's a feedstock for renewable biodiesel, and it has real value. We collect yours on a schedule that suits you and pay you for it. No cost to remove it, and a rebate on eligible oil.",
     national: true,
     keyPoints: [
-      { icon: "banknote", title: "Paid per litre", body: "We pay you for every litre collected – rates depend on volume and quality. Ask for today's rate." },
+      { icon: "banknote", title: "You get paid", body: "We pay you for the oil we collect – the rate depends on volume and quality. Ask for today's rate." },
       { icon: "droplet", title: "Free sealed drums", body: "We supply clean, sealed storage drums so your oil stays contained and safe." },
-      { icon: "truck", title: "Free collection", body: "No collection fee – weekly, monthly or a schedule you choose." },
+      { icon: "truck", title: "On your schedule", body: "Weekly, monthly or a schedule you choose – collection that fits your kitchen." },
     ],
     sections: [
       {
         heading: "How your rebate works",
         body:
-          "Your rate per litre depends on the volume you produce and the quality of the oil. Tell us roughly how many litres you generate a week and we'll confirm a rate and a collection schedule. Larger and cleaner volumes earn more.",
-        answers: "objection: how much will you pay / is it really free",
+          "Your rate depends on the volume you produce and the quality of the oil. Tell us roughly how many litres you generate a week and we'll confirm a rate and a collection schedule. Larger and cleaner volumes earn more.",
+        answers: "objection: how much will you pay",
       },
       {
         heading: "Lower your real cost per litre",
@@ -149,7 +149,8 @@ export const ucoServices: MoneyPage[] = [
     faqIds: ["grease-why", "grease-frequency", "grease-included", "uco-legal", "uco-schedule"],
     relatedSlugs: ["compliance", "get-paid"],
     crossSell: supplyCrossSell,
-    primaryCtaLabel: cta.ucoArrange,
+    primaryCtaLabel: cta.greaseTrap,
+    quoteTopic: "grease-trap-cleaning",
     ppcReady: false,
     // Regional service — areaServed derives from the hubs that actually offer it.
     serviceAreaKey: "greaseTrap",

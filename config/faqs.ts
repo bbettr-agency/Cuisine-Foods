@@ -36,7 +36,7 @@ export const faqs: Record<string, Faq> = {
   "uco-pay-rate": {
     id: "uco-pay-rate",
     q: "How much do you pay for used cooking oil?",
-    a: "We pay per litre, with the rate depending on the volume you produce and the quality of the oil. Larger, cleaner volumes earn more – ask us for today's rate for your kitchen.",
+    a: "We pay you for the used oil we collect, with the rate depending on the volume you produce and the quality of the oil. Larger, cleaner volumes earn more – ask us for today's rate for your kitchen.",
   },
   "uco-free-drums": {
     id: "uco-free-drums",

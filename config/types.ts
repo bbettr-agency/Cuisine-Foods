@@ -60,6 +60,9 @@ export type MoneyPage = {
    *  from the hubs that actually provide it (e.g. grease-trap, reporting). */
   national?: boolean;
   serviceAreaKey?: "greaseTrap" | "complianceReporting";
+  /** Extra lead context passed to the quote form (e.g. "grease-trap-cleaning"),
+   *  so an enquiry arrives tagged with the specific service. */
+  quoteTopic?: string;
   resourceLinks?: ResourceLink[]; // supporting guides (content ↔ money interlinking)
   /** Page-specific closing CTA copy. Each commercial page closes in its own voice
    *  rather than repeating one generic band across the site. */

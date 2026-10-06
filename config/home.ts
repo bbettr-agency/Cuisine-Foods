@@ -50,15 +50,15 @@ export const home = {
     {
       intent: "uco" as const,
       title: "Used Cooking Oil Collection",
-      body: "Free, compliant collection on your schedule – and we pay you per litre.",
+      body: "Collection on your schedule – and we pay you for the used oil we collect.",
       href: "/used-cooking-oil-collection",
-      points: ["We pay per litre", "Free sealed drums & collection", "Safe-disposal documentation"],
+      points: ["We pay you for it", "Free sealed drums", "Collection documentation"],
       productLinks: [
         { label: "Get paid", href: "/used-cooking-oil-collection/get-paid" },
         { label: "Compliance", href: "/used-cooking-oil-collection/compliance" },
         { label: "Recycling", href: "/cooking-oil-recycling" },
       ],
-      cta: "Arrange Free Collection",
+      cta: "Arrange Collection",
     },
   ],
 

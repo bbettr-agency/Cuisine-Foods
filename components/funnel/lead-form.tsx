@@ -16,12 +16,19 @@ const inputCls =
   "w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink-faint focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30";
 const labelCls = "mb-1.5 block text-sm font-medium text-ink";
 
+/** Map a quote `topic` slug to a human label pre-seeded into the message field,
+ *  so a service-specific enquiry (e.g. grease-trap) arrives tagged. */
+const TOPIC_LABELS: Record<string, string> = {
+  "grease-trap-cleaning": "Grease-trap cleaning",
+};
+
 /** Multi-step qualifying quote form (OS P6). Step 1 low-friction; step 2 qualifiers. */
-export function LeadForm({ defaultIntent = "supply" }: { defaultIntent?: CtaIntent }) {
+export function LeadForm({ defaultIntent = "supply", topic }: { defaultIntent?: CtaIntent; topic?: string }) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const topicLabel = topic ? TOPIC_LABELS[topic] : undefined;
   const [form, setForm] = useState({
     intent: defaultIntent === "uco" ? "uco" : "supply",
     name: "",
@@ -32,7 +39,8 @@ export function LeadForm({ defaultIntent = "supply" }: { defaultIntent?: CtaInte
     volume: "",
     sites: "",
     area: "",
-    message: "",
+    topic: topic ?? "",
+    message: topicLabel ? `Enquiry about: ${topicLabel}.` : "",
     consent: false,
   });
 

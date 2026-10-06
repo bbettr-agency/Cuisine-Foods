@@ -12,7 +12,8 @@ export const cta = {
   supplyQuote: "Get a Bulk Oil Quote",
   ucoArrange: "Arrange Used-Oil Collection",
   ucoGetPaid: "Get Paid for Your Used Oil",
-  ucoFreeCollection: "Arrange Free Collection",
+  ucoFreeCollection: "Arrange Collection",
+  greaseTrap: "Request Grease-Trap Service",
   call: "Call Now",
   whatsapp: "WhatsApp Us",
   quote: "Request a Quote",
@@ -29,6 +30,7 @@ export const whatsappPrefill: Record<string, string> = {
   supply: "Hi Cuisine Foods, I'd like a quote on bulk cooking oil supply.",
   uco: "Hi Cuisine Foods, I'd like to arrange used cooking oil collection.",
   ucoGetPaid: "Hi Cuisine Foods, I'd like to get paid for my used cooking oil.",
+  greaseTrap: "Hi Cuisine Foods, I'd like to arrange grease-trap cleaning for my kitchen.",
 };
 
 /** tel: link for click-to-call. */

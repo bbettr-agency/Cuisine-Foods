@@ -19,7 +19,7 @@ export const headerNav: NavGroup[] = [
     label: "Used Cooking Oil",
     href: "/used-cooking-oil-collection",
     links: [
-      { label: "UCO Collection", href: "/used-cooking-oil-collection", description: "Free, compliant, on schedule" },
+      { label: "UCO Collection", href: "/used-cooking-oil-collection", description: "Documented, on your schedule" },
       { label: "Get Paid for Your Used Oil", href: "/used-cooking-oil-collection/get-paid", description: "What your oil is worth" },
       { label: "Compliance & Certificates", href: "/used-cooking-oil-collection/compliance", description: "Your protection at inspection" },
       { label: "Grease-Trap Cleaning", href: "/grease-trap-cleaning", description: "Keep your kitchen compliant" },

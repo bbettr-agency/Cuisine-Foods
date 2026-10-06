@@ -5,7 +5,7 @@ import { cta } from "@/config/conversion";
 const ucoCrossSell = {
   label: "We also collect your used oil – and pay you for it",
   href: "/used-cooking-oil-collection",
-  blurb: "One partner for the oil in and the oil out. Free, compliant collection with a rebate per litre.",
+  blurb: "One partner for the oil in and the oil out. Scheduled collection with a rebate for eligible oil.",
 };
 
 const base = {

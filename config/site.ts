@@ -53,7 +53,7 @@ export const site = {
   // Verified positioning from research (client's own words).
   tagline: "Premium cooking oil in. Used cooking oil out. One trusted partner.",
   shortDescription:
-    "Bulk sunflower, palm olein & soya delivered to South African kitchens – plus free, compliant used cooking oil collection.",
+    "Bulk sunflower, palm olein & soya delivered to South African kitchens – plus scheduled used cooking oil collection.",
   foundedYear: 2009, // PENDING reconciliation (site also says "15+ years")
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuisinefoods.co.za",
   locale: "en_ZA",

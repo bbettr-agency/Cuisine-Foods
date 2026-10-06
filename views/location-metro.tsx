@@ -89,9 +89,9 @@ export function LocationMetroView({ metro }: { metro: Metro }) {
           </div>
           <div className="card p-7">
             <p className="flex items-center gap-2 font-display text-lg font-bold text-ink"><MapPin className="h-5 w-5 text-brand-600" /> Used-oil collection</p>
-            <p className="mt-2 text-sm text-ink-soft">Free, compliant collection in {metro.name} – paid per litre.</p>
+            <p className="mt-2 text-sm text-ink-soft">Scheduled used-oil collection in {metro.name} – we pay you for it.</p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <Button href="/request-a-quote?intent=uco" variant="gold">Arrange Free Collection</Button>
+              <Button href="/request-a-quote?intent=uco" variant="gold">Arrange Collection</Button>
               <Link href="/used-cooking-oil-collection" className="text-sm font-semibold text-brand-700 hover:underline">UCO collection →</Link>
             </div>
           </div>

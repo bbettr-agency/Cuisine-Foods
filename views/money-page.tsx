@@ -136,7 +136,7 @@ function closingFor(page: MoneyPage): { title: string; body: string } {
   // uco-service
   return {
     title: "Ready to turn your used oil into cash?",
-    body: "Free sealed drums, collection on your schedule, paid per litre – with the documentation that keeps your kitchen compliant.",
+    body: "Free sealed drums, collection on your schedule, and we pay you for eligible oil – with documentation that keeps your kitchen covered.",
   };
 }
 

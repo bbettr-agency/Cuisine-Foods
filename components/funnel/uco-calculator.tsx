@@ -67,7 +67,7 @@ export function UcoCalculator() {
               <p className="text-sm text-ink-soft">That&apos;s roughly</p>
               <p className="mt-1 font-display text-3xl font-bold text-brand-700">{perMonth} L<span className="text-lg font-semibold text-ink-soft"> / month</span></p>
               <p className="mt-2 text-xs leading-relaxed text-ink-faint">
-                Your rate per litre depends on volume, the oil&apos;s quality and your location. Send us your volume and
+                Your rate depends on volume, the oil&apos;s quality and your location. Send us your volume and
                 we&apos;ll come back with today&apos;s rate for your kitchen.
               </p>
             </>

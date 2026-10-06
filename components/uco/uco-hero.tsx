@@ -24,6 +24,7 @@ export function UcoHero({
   primaryHref,
   secondary,
   note,
+  waMessage,
 }: {
   eyebrow: string;
   h1: string;
@@ -34,8 +35,9 @@ export function UcoHero({
   primaryHref?: string;
   secondary?: { label: string; href: string };
   note?: string;
+  waMessage?: string;
 }) {
-  const waMsg = intent === "uco" ? whatsappPrefill.uco : whatsappPrefill.general;
+  const waMsg = waMessage ?? (intent === "uco" ? whatsappPrefill.uco : whatsappPrefill.general);
   const href = primaryHref ?? `/request-a-quote?intent=${intent}`;
 
   return (

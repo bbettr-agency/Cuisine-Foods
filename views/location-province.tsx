@@ -56,9 +56,9 @@ export function LocationProvinceView({ province }: { province: Province }) {
           </Reveal>
           <Reveal className="card p-7 sm:p-8">
             <h2 className="font-display text-xl font-bold text-ink">Used cooking oil collection in {province.name}</h2>
-            <p className="mt-2 text-ink-soft">Free, compliant collection across {province.name} – we pay you per litre and provide safe-disposal documentation.</p>
+            <p className="mt-2 text-ink-soft">Scheduled used-oil collection across {province.name} – we pay you for it and provide collection documentation.</p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
-              <Button href="/request-a-quote?intent=uco" variant="gold">Arrange Free Collection</Button>
+              <Button href="/request-a-quote?intent=uco" variant="gold">Arrange Collection</Button>
               <Link href="/used-cooking-oil-collection" className="text-sm font-semibold text-brand-700 hover:underline">Explore UCO collection →</Link>
             </div>
           </Reveal>
