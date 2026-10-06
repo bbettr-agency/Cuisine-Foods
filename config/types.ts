@@ -63,6 +63,10 @@ export type MoneyPage = {
   /** Extra lead context passed to the quote form (e.g. "grease-trap-cleaning"),
    *  so an enquiry arrives tagged with the specific service. */
   quoteTopic?: string;
+  /** Overrides the JSON-LD type. Defaults to Product for `kind: "product"`,
+   *  Service otherwise. Set "service" for a category page with no single SKU
+   *  (e.g. frying-oil) so we don't fabricate a Product. */
+  schemaKind?: "product" | "service";
   resourceLinks?: ResourceLink[]; // supporting guides (content ↔ money interlinking)
   /** Page-specific closing CTA copy. Each commercial page closes in its own voice
    *  rather than repeating one generic band across the site. */

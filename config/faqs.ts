@@ -148,6 +148,23 @@ export const faqs: Record<string, Faq> = {
     q: "What kinds of businesses do you supply?",
     a: "Restaurants, hotels, caterers, franchises, food manufacturers and other commercial kitchens – from single sites to multi-site groups that need one account across every location.",
   },
+
+  // --- Per-product supply FAQs (answer-engine friendly, tailored) ---
+  "supply-sunflower": {
+    id: "supply-sunflower",
+    q: "Do you supply sunflower oil to businesses?",
+    a: "Yes. Cuisine Foods supplies 100% pure bulk sunflower oil to restaurants, caterers, food manufacturers and other commercial kitchens – from 20L with no strict minimum, with nationwide delivery from our regional hubs.",
+  },
+  "supply-palm": {
+    id: "supply-palm",
+    q: "Do you supply palm olein to commercial kitchens?",
+    a: "Yes. We supply RBD palm olein in bulk for high-volume commercial frying – prized for its heat stability and long fry-life – from 20L, delivered nationwide.",
+  },
+  "supply-soya": {
+    id: "supply-soya",
+    q: "Do you supply soya oil in bulk?",
+    a: "Yes. We supply refined bulk soya oil to food manufacturers, caterers and high-volume kitchens – neutral in flavour and cost-effective at volume, with nationwide delivery.",
+  },
 };
 
 export const getFaqs = (ids: string[]): Faq[] => ids.map((id) => faqs[id]).filter(Boolean);

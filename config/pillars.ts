@@ -32,11 +32,11 @@ export const pillars: Record<string, Pillar> = {
     intent: "supply",
     imageId: "supply-pillar",
     eyebrow: "Bulk Cooking Oil Supply",
-    h1: "Bulk Cooking Oil Supplier – Gauteng & Western Cape",
+    h1: "Bulk Cooking Oil Supplier for South African Kitchens",
     subhead: "Sunflower, palm olein & soya, delivered reliably to professional kitchens.",
     metaTitle: "Bulk Cooking Oil Supplier | Sunflower, Palm Olein & Soya | Cuisine Foods",
     metaDescription:
-      "Reliable bulk cooking oil supply – sunflower, palm olein & soya – for restaurants, caterers & manufacturers across Gauteng & the Western Cape. Get a bulk quote.",
+      "Reliable bulk cooking oil supply – sunflower, palm olein & soya – for restaurants, caterers & manufacturers, with nationwide delivery from our regional hubs. Get a bulk quote.",
     intro:
       "For more than a decade we've kept South African kitchens supplied with premium bulk cooking oil. Consistent quality, dependable delivery and competitive bulk pricing – from 20L, with no strict minimum.",
     keyPoints: [

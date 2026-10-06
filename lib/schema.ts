@@ -126,14 +126,8 @@ export function productSchema(args: { name: string; description: string; path: s
     url: abs(args.path),
     ...(args.image ? { image: abs(args.image) } : {}),
     brand: { "@type": "Brand", name: site.name },
-    // Quote-based B2B: no price/rating fabricated.
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "ZAR",
-      availability: "https://schema.org/InStock",
-      url: abs("/request-a-quote"),
-      seller: { "@id": ORG_ID },
-    },
+    // Quote-based B2B: no price, availability, rating or Offer fabricated.
+    // A truthful Product node (name/brand/description/image) only.
   };
 }
 

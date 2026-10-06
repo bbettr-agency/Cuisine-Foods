@@ -21,13 +21,13 @@ export const products: MoneyPage[] = [
     specs: [
       { label: "Type", value: "100% pure, refined sunflower oil" },
       { label: "Best for", value: "Everyday frying, baking, cooking & dressings" },
-      { label: "Approx. smoke point", value: "~225 °C (refined)" },
       { label: "Colour", value: "Light, bright" },
       { label: "Packaging", value: "From 20L containers, no strict minimum; larger formats on request" },
     ],
     metaTitle: "Bulk Sunflower Oil Supplier | 20L | Cuisine Foods",
     metaDescription:
-      "100% pure bulk sunflower oil for restaurants, caterers & food manufacturers. Reliable delivery across Gauteng & the Western Cape. Get a bulk quote.",
+      "100% pure bulk sunflower oil for restaurants, caterers & food manufacturers, with nationwide delivery from our regional hubs. Get a bulk quote.",
+    quoteTopic: "sunflower-oil",
     intro:
       "High-quality, 100% pure sunflower oil supplied in bulk to restaurants, caterers, food manufacturers and commercial kitchens. Bright in colour, clean in flavour, with a high smoke point that stands up to everyday frying, baking and cooking.",
     keyPoints: [
@@ -49,7 +49,7 @@ export const products: MoneyPage[] = [
         answers: "objection: price / hidden costs",
       },
     ],
-    faqIds: ["min-order", "delivery-areas", "bulk-pricing", "product-packaging"],
+    faqIds: ["supply-sunflower", "min-order", "delivery-areas", "bulk-pricing", "product-packaging"],
     relatedSlugs: ["palm-olein", "soya-oil", "frying-oil"],
     crossSell: ucoCrossSell,
     primaryCtaLabel: cta.supplyQuote,
@@ -68,12 +68,12 @@ export const products: MoneyPage[] = [
       { label: "Best for", value: "High-volume commercial deep frying" },
       { label: "Heat stability", value: "Excellent – the most heat-stable of the three" },
       { label: "Fry-life", value: "Longest – fewer oil changes, lower total cost" },
-      { label: "Approx. smoke point", value: "~230 °C" },
       { label: "Packaging", value: "From 20L containers, no strict minimum; larger formats on request" },
     ],
     metaTitle: "Bulk Palm Olein Supplier | Heat-Stable Frying Oil | Cuisine Foods",
     metaDescription:
-      "Premium RBD palm olein delivered in bulk. Exceptional heat stability and long fry-life for commercial fryers. Serving Gauteng & the Western Cape. Get a quote.",
+      "Premium RBD palm olein delivered in bulk. Exceptional heat stability and long fry-life for commercial fryers, with nationwide delivery. Get a quote.",
+    quoteTopic: "palm-olein",
     intro:
       "Palm olein is the liquid fraction of palm oil and the most heat-stable of the common commercial frying oils. We deliver premium RBD palm olein in bulk to restaurants, food manufacturers, caterers and high-volume frying operations. Because it lasts longer in the fryer, palm olein lowers your total oil usage – and combined with our used-oil buy-back, your real cost per litre drops further.",
     keyPoints: [
@@ -95,7 +95,7 @@ export const products: MoneyPage[] = [
         answers: "objection: reliable delivery",
       },
     ],
-    faqIds: ["min-order", "delivery-areas", "bulk-pricing", "palm-vs-sunflower"],
+    faqIds: ["supply-palm", "min-order", "delivery-areas", "bulk-pricing", "palm-vs-sunflower"],
     relatedSlugs: ["sunflower-oil", "soya-oil", "frying-oil"],
     resourceLinks: [
       { label: "Best oil for commercial deep frying", href: "/resources/best-oil-for-commercial-deep-frying", blurb: "How palm olein compares" },
@@ -116,12 +116,12 @@ export const products: MoneyPage[] = [
       { label: "Type", value: "Refined soya (soybean) oil" },
       { label: "Best for", value: "Frying, baking, sauces, dressings & processed foods" },
       { label: "Flavour", value: "Neutral – lets natural flavours through" },
-      { label: "Approx. smoke point", value: "~234 °C (refined)" },
       { label: "Packaging", value: "From 20L containers, no strict minimum; larger formats on request" },
     ],
     metaTitle: "Bulk Soya Oil Supplier | Food Industry | Cuisine Foods",
     metaDescription:
-      "Cost-effective bulk soya oil for food manufacturers, caterers & high-volume kitchens. Neutral flavour, consistent quality. Gauteng & Western Cape. Get a quote.",
+      "Cost-effective bulk soya oil for food manufacturers, caterers & high-volume kitchens. Neutral flavour, consistent quality, nationwide delivery. Get a quote.",
+    quoteTopic: "soya-oil",
     intro:
       "Widely used across the food industry – for frying, baking, sauces, dressings and processed foods. A versatile, cost-effective, neutral-flavoured oil supplied in bulk with consistent quality.",
     keyPoints: [
@@ -141,7 +141,7 @@ export const products: MoneyPage[] = [
         answers: "objection: volume / spec",
       },
     ],
-    faqIds: ["min-order", "delivery-areas", "bulk-pricing", "product-packaging"],
+    faqIds: ["supply-soya", "min-order", "delivery-areas", "bulk-pricing", "product-packaging"],
     relatedSlugs: ["sunflower-oil", "palm-olein", "frying-oil"],
     crossSell: ucoCrossSell,
     primaryCtaLabel: cta.supplyQuote,
@@ -163,13 +163,14 @@ export const products: MoneyPage[] = [
         ["Heat stability", "High", "Highest", "High"],
         ["Fry-life", "Good", "Longest", "Good"],
         ["Flavour", "Clean, neutral", "Neutral", "Neutral"],
-        ["Approx. smoke point", "~225 °C", "~230 °C", "~234 °C"],
         ["Typical buyer", "Restaurants, bakeries", "QSR, takeaways, busy fryers", "Manufacturers, caterers"],
       ],
     },
     metaTitle: "Frying Oil Supplier | Long-Life Commercial Frying Oil | Cuisine Foods",
     metaDescription:
-      "The right frying oil for your kitchen – palm olein for heat stability, sunflower for versatility. Bulk supply across Gauteng & the Western Cape. Get a quote.",
+      "The right frying oil for your kitchen – palm olein for heat stability, sunflower for versatility. Bulk supply with nationwide delivery. Get a quote.",
+    quoteTopic: "frying-oil",
+    schemaKind: "service",
     intro:
       "Not sure which frying oil to order? It depends on how you fry. Here's how to choose between palm olein and sunflower for a commercial fryer – and how to get the longest, cleanest fry-life from whichever you pick.",
     keyPoints: [
