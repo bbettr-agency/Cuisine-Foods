@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/", 1.0],
     ["/bulk-cooking-oil-supply", 0.9],
     ["/used-cooking-oil-collection", 0.9],
+    ["/locations", 0.6],
     ["/about", 0.6],
     ["/contact", 0.6],
     ["/request-a-quote", 0.7],

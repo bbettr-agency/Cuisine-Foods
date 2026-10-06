@@ -55,10 +55,10 @@ export const searchIntent: SearchIntentEntry[] = [
   { route: "/western-cape", primaryIntent: "cooking oil supplier & UCO collection in the Western Cape", cluster: "location", geoLevel: "province", role: "province", notes: "Province-wide — 'Cape Town' is reserved for the metro page." },
   { route: "/western-cape/cape-town", primaryIntent: "cooking oil supplier Cape Town", cluster: "location", geoLevel: "metro", role: "metro" },
   { route: "/western-cape/northern-suburbs", primaryIntent: "cooking oil supplier Cape Town Northern Suburbs", cluster: "location", geoLevel: "metro", role: "metro" },
-  { route: "/kwazulu-natal", primaryIntent: "cooking oil supplier & UCO collection in KwaZulu-Natal", cluster: "location", geoLevel: "province", role: "province", notes: "PENDING hub facts; coming-soon. Metro pages (e.g. Durban) deferred until justified." },
+  { route: "/kwazulu-natal", primaryIntent: "cooking oil supplier & UCO collection in KwaZulu-Natal", cluster: "location", geoLevel: "province", role: "province", notes: "Coming-soon page, NOINDEX until coverage status flips to open (no verified local facts yet). Metro pages (e.g. Durban) deferred until justified." },
 
   // --- Network / coverage (UX + internal-linking hub; NOT a national head-term target) ---
-  { route: "/locations", primaryIntent: "Cuisine Foods coverage / branches / nationwide network", cluster: "location", geoLevel: "national", role: "coverage-hub", notes: "UX + internal-linking. Must NOT compete with the homepage for 'cooking oil supplier South Africa'. Planned (Phase 2/3)." },
+  { route: "/locations", primaryIntent: "Cuisine Foods coverage / branches / nationwide network", cluster: "location", geoLevel: "national", role: "coverage-hub", notes: "UX + internal-linking. Must NOT compete with the homepage for 'cooking oil supplier South Africa'. Built (Phase 3C) — coverage map + regional chapters + 'beyond our hubs'." },
 
   // --- Company / conversion / resources ---
   { route: "/about", primaryIntent: "about Cuisine Foods (company/entity)", cluster: "company", geoLevel: "n/a", role: "company" },

@@ -21,7 +21,7 @@ export const headerNav: NavGroup[] = [
     links: [
       { label: "UCO Collection", href: "/used-cooking-oil-collection", description: "Documented, on your schedule" },
       { label: "Get Paid for Your Used Oil", href: "/used-cooking-oil-collection/get-paid", description: "What your oil is worth" },
-      { label: "Compliance & Certificates", href: "/used-cooking-oil-collection/compliance", description: "Your protection at inspection" },
+      { label: "Compliance & Documentation", href: "/used-cooking-oil-collection/compliance", description: "Your protection at inspection" },
       { label: "Grease-Trap Cleaning", href: "/grease-trap-cleaning", description: "Keep your kitchen compliant" },
       { label: "UCO Compliance Reporting", href: "/uco-compliance-reporting", description: "For franchises & groups" },
       { label: "Cooking Oil Recycling", href: "/cooking-oil-recycling", description: "Into renewable biodiesel" },
@@ -29,13 +29,16 @@ export const headerNav: NavGroup[] = [
   },
   {
     label: "Locations",
+    href: "/locations",
     links: [
+      { label: "Nationwide Coverage", href: "/locations", description: "Our regional hubs & national network" },
       { label: "Gauteng", href: "/gauteng", description: "Johannesburg · Pretoria · Centurion" },
       { label: "– Johannesburg", href: "/gauteng/johannesburg" },
       { label: "– Pretoria & Centurion", href: "/gauteng/pretoria" },
       { label: "Western Cape", href: "/western-cape", description: "Cape Town & surrounds" },
       { label: "– Cape Town", href: "/western-cape/cape-town" },
       { label: "– Northern Suburbs", href: "/western-cape/northern-suburbs" },
+      { label: "KwaZulu-Natal", href: "/kwazulu-natal", description: "Opening soon" },
     ],
   },
   {
@@ -71,7 +74,7 @@ export const footerNav: NavGroup[] = [
     links: [
       { label: "UCO Collection", href: "/used-cooking-oil-collection" },
       { label: "Get Paid for Used Oil", href: "/used-cooking-oil-collection/get-paid" },
-      { label: "Compliance & Certificates", href: "/used-cooking-oil-collection/compliance" },
+      { label: "Compliance & Documentation", href: "/used-cooking-oil-collection/compliance" },
       { label: "Grease-Trap Cleaning", href: "/grease-trap-cleaning" },
       { label: "UCO Compliance Reporting", href: "/uco-compliance-reporting" },
       { label: "Cooking Oil Recycling", href: "/cooking-oil-recycling" },
@@ -80,12 +83,14 @@ export const footerNav: NavGroup[] = [
   {
     label: "Locations",
     links: [
+      { label: "Nationwide Coverage", href: "/locations" },
       { label: "Gauteng", href: "/gauteng" },
       { label: "Johannesburg", href: "/gauteng/johannesburg" },
       { label: "Pretoria & Centurion", href: "/gauteng/pretoria" },
       { label: "Western Cape", href: "/western-cape" },
       { label: "Cape Town", href: "/western-cape/cape-town" },
       { label: "Northern Suburbs", href: "/western-cape/northern-suburbs" },
+      { label: "KwaZulu-Natal (soon)", href: "/kwazulu-natal" },
     ],
   },
   {

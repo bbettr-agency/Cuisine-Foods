@@ -22,6 +22,7 @@ import { FaqSection } from "@/components/sections/faq-section";
 export function LocationMetroView({ metro }: { metro: Metro }) {
   const province = getProvince(metro.provinceSlug)!;
   const path = `/${province.slug}/${metro.slug}`;
+  const regionQ = `&region=${encodeURIComponent(metro.name)}`;
   const crumbs = [
     { name: "Home", path: "/" },
     { name: province.name, path: `/${province.slug}` },
@@ -83,7 +84,7 @@ export function LocationMetroView({ metro }: { metro: Metro }) {
             <p className="flex items-center gap-2 font-display text-lg font-bold text-ink"><Truck className="h-5 w-5 text-brand-600" /> Bulk oil supply</p>
             <p className="mt-2 text-sm text-ink-soft">Sunflower, palm olein & soya delivered across {metro.name}.</p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <Button href="/request-a-quote?intent=supply">Get a Bulk Oil Quote</Button>
+              <Button href={`/request-a-quote?intent=supply${regionQ}`}>Get a Bulk Oil Quote</Button>
               <Link href="/bulk-cooking-oil-supply" className="text-sm font-semibold text-brand-700 hover:underline">Bulk oil supply →</Link>
             </div>
           </div>
@@ -91,7 +92,7 @@ export function LocationMetroView({ metro }: { metro: Metro }) {
             <p className="flex items-center gap-2 font-display text-lg font-bold text-ink"><MapPin className="h-5 w-5 text-brand-600" /> Used-oil collection</p>
             <p className="mt-2 text-sm text-ink-soft">Scheduled used-oil collection in {metro.name} – we pay you for it.</p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <Button href="/request-a-quote?intent=uco" variant="gold">Arrange Collection</Button>
+              <Button href={`/request-a-quote?intent=uco${regionQ}`} variant="gold">Arrange Collection</Button>
               <Link href="/used-cooking-oil-collection" className="text-sm font-semibold text-brand-700 hover:underline">UCO collection →</Link>
             </div>
           </div>
@@ -103,6 +104,7 @@ export function LocationMetroView({ metro }: { metro: Metro }) {
         title={`Your local partner in ${metro.name}`}
         body={`Bulk oil delivered and used oil collected across ${metro.name} and surrounds. Get a quote today.`}
         primaryLabel="Get a Quote"
+        primaryHref={`/request-a-quote?intent=supply${regionQ}`}
       />
     </>
   );

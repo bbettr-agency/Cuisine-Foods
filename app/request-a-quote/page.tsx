@@ -23,9 +23,10 @@ const reasons = [
   "Serving Gauteng & the Western Cape",
 ];
 
-export default function QuotePage({ searchParams }: { searchParams: { intent?: string; topic?: string } }) {
+export default function QuotePage({ searchParams }: { searchParams: { intent?: string; topic?: string; region?: string } }) {
   const intent: CtaIntent = searchParams.intent === "uco" ? "uco" : "supply";
   const topic = typeof searchParams.topic === "string" ? searchParams.topic : undefined;
+  const region = typeof searchParams.region === "string" ? searchParams.region : undefined;
   const crumbs = [{ name: "Home", path: "/" }, { name: "Request a Quote", path: "/request-a-quote" }];
   return (
     <>
@@ -47,7 +48,7 @@ export default function QuotePage({ searchParams }: { searchParams: { intent?: s
             </ul>
           </div>
           <Reveal>
-            <LeadForm defaultIntent={intent} topic={topic} />
+            <LeadForm defaultIntent={intent} topic={topic} region={region} />
           </Reveal>
         </div>
       </Section>

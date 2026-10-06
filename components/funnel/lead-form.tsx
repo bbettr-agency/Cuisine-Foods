@@ -28,7 +28,7 @@ const TOPIC_LABELS: Record<string, string> = {
 };
 
 /** Multi-step qualifying quote form (OS P6). Step 1 low-friction; step 2 qualifiers. */
-export function LeadForm({ defaultIntent = "supply", topic }: { defaultIntent?: CtaIntent; topic?: string }) {
+export function LeadForm({ defaultIntent = "supply", topic, region }: { defaultIntent?: CtaIntent; topic?: string; region?: string }) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
@@ -43,7 +43,7 @@ export function LeadForm({ defaultIntent = "supply", topic }: { defaultIntent?: 
     businessType: "",
     volume: "",
     sites: "",
-    area: "",
+    area: region ?? "",
     topic: topic ?? "",
     message: topicLabel ? `Enquiry about: ${topicLabel}.` : "",
     consent: false,
