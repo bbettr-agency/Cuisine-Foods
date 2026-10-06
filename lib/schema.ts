@@ -1,5 +1,6 @@
 /** JSON-LD builders. Emitted per page via <JsonLd>. No fabricated ratings/reviews. */
 import { site } from "@/config/site";
+import { coverage } from "@/config/coverage";
 import type { Faq } from "@/config/faqs";
 
 const origin = site.url.replace(/\/$/, "");
@@ -27,7 +28,8 @@ export function organizationSchema() {
     description: site.shortDescription,
     foundingDate: String(site.foundedYear),
     knowsAbout: [...site.entity.knowsAbout],
-    areaServed: site.provincesServed.map((n) => ({ "@type": "AdministrativeArea", name: n })),
+    // National entity: Cuisine serves South Africa, supported by regional hubs.
+    areaServed: { "@type": "Country", name: coverage.country },
     location: site.branches.map((b) => ({ "@id": branchId(b.id) })),
     sameAs: orgSameAs(),
     contactPoint: {
@@ -87,16 +89,26 @@ export function serviceSchema(args: {
   areaServed?: string[];
   /** "AdministrativeArea" (province) or "City" (metro, nested in SA). */
   placeType?: "AdministrativeArea" | "City";
+  /** National services (supply, UCO collection) → areaServed = South Africa.
+   *  Omit/false for regional services (e.g. grease-trap) so they are not
+   *  misrepresented as nationwide. Default preserves the existing behaviour. */
+  national?: boolean;
 }) {
-  const placeType = args.placeType ?? "AdministrativeArea";
-  const names = args.areaServed ?? site.provincesServed;
-  return {
+  const base = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: args.name,
     description: args.description,
     url: abs(args.path),
     provider: { "@id": ORG_ID },
+  };
+  if (args.national) {
+    return { ...base, areaServed: { "@type": "Country", name: coverage.country } };
+  }
+  const placeType = args.placeType ?? "AdministrativeArea";
+  const names = args.areaServed ?? site.provincesServed;
+  return {
+    ...base,
     areaServed: names.map((n) =>
       placeType === "City"
         ? { "@type": "City", name: n, containedInPlace: { "@type": "Country", name: "South Africa" } }

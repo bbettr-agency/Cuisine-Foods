@@ -5,8 +5,15 @@
  * surfaced only through the progressive trust system (config/trust.ts).
  */
 
+import { physicalHubs, openProvinceNames, type Hub } from "@/config/coverage";
+
+/**
+ * Branch = the presentation shape consumed by schema + branch cards. It is now
+ * DERIVED from the canonical hubs in config/coverage.ts (see `branches` below) —
+ * addresses/geo are no longer duplicated here.
+ */
 export type Branch = {
-  id: "gauteng" | "western-cape";
+  id: Hub["id"];
   label: string;
   province: string;
   street: string;
@@ -14,12 +21,31 @@ export type Branch = {
   city: string;
   postalCode: string;
   region: string; // ISO-ish region for schema
-  lat: number; // geo for LocalBusiness schema (approx – refine when confirmed)
+  lat: number; // geo for LocalBusiness schema
   lng: number;
   gbpUrl?: string; // Google Business Profile URL – add once the profile is live
   mapEmbed: string; // Google Maps embed src
   mapLink: string;
 };
+
+/** Map a verified physical hub to the Branch shape the app/schema expect. */
+function hubToBranch(h: Hub): Branch {
+  return {
+    id: h.id,
+    label: h.name,
+    province: h.province,
+    street: h.address!.street,
+    suburb: h.address!.suburb,
+    city: h.address!.city,
+    postalCode: h.address!.postalCode,
+    region: h.address!.region,
+    lat: h.geo!.lat,
+    lng: h.geo!.lng,
+    gbpUrl: h.gbpUrl,
+    mapEmbed: h.map!.embed,
+    mapLink: h.map!.link,
+  };
+}
 
 export const site = {
   name: "Cuisine Foods",
@@ -46,41 +72,14 @@ export const site = {
     // linkedin: "", // PENDING
   },
 
-  branches: [
-    {
-      id: "gauteng",
-      label: "Gauteng",
-      province: "Gauteng",
-      street: "591 Barolong Street, Icon Park, Sunderland Ridge",
-      suburb: "Sunderland Ridge",
-      city: "Centurion",
-      postalCode: "0157",
-      region: "GP",
-      lat: -25.8665,
-      lng: 28.1466,
-      mapEmbed:
-        "https://www.google.com/maps?q=591+Barolong+Street,+Sunderland+Ridge,+Centurion&output=embed",
-      mapLink: "https://www.google.com/maps/search/?api=1&query=591+Barolong+Street+Sunderland+Ridge+Centurion",
-    },
-    {
-      id: "western-cape",
-      label: "Western Cape",
-      province: "Western Cape",
-      street: "34B Station Road, Montague Gardens",
-      suburb: "Montague Gardens",
-      city: "Cape Town",
-      postalCode: "7441",
-      region: "WC",
-      lat: -33.8741,
-      lng: 18.5169,
-      mapEmbed:
-        "https://www.google.com/maps?q=34B+Station+Road,+Montague+Gardens,+Cape+Town&output=embed",
-      mapLink: "https://www.google.com/maps/search/?api=1&query=34B+Station+Road+Montague+Gardens+Cape+Town",
-    },
-  ] as Branch[],
+  // Physical branches — DERIVED from the canonical, verified hubs in
+  // config/coverage.ts (open hubs with confirmed address/geo). KZN is excluded
+  // until its facts are confirmed, so no fabricated branch is ever emitted.
+  branches: physicalHubs().map(hubToBranch) as Branch[],
 
-  // The two provinces we target as SEO pillars.
-  provincesServed: ["Gauteng", "Western Cape"],
+  // Provinces with a live physical hub. Note: the national service area itself is
+  // South Africa (see lib/schema.ts) — this is the open-hub province list.
+  provincesServed: openProvinceNames(),
 
   /**
    * UCO buy-back rate range (R/litre) used by the value calculator. This is an
