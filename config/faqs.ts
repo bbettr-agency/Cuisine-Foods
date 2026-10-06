@@ -165,6 +165,33 @@ export const faqs: Record<string, Faq> = {
     q: "Do you supply soya oil in bulk?",
     a: "Yes. We supply refined bulk soya oil to food manufacturers, caterers and high-volume kitchens – neutral in flavour and cost-effective at volume, with nationwide delivery.",
   },
+
+  // --- Buyer-segment FAQs (answer-engine friendly, one per industry) ---
+  "supply-restaurants": {
+    id: "supply-restaurants",
+    q: "Does Cuisine Foods supply cooking oil to restaurants?",
+    a: "Yes. We supply restaurants with bulk sunflower, palm olein and soya on a delivery schedule that fits your service, and we collect and pay for your used oil too – from 20L, with no strict minimum.",
+  },
+  "supply-hotels": {
+    id: "supply-hotels",
+    q: "Can Cuisine Foods supply a hotel's kitchens?",
+    a: "Yes. We supply bulk cooking oil across a hotel's outlets – restaurants, banqueting and service kitchens – on one account, and collect the used oil with documentation for your compliance file.",
+  },
+  "supply-caterers": {
+    id: "supply-caterers",
+    q: "Does Cuisine Foods supply catering businesses?",
+    a: "Yes. We supply caterers with flexible bulk oil quoted to your event calendar, in 20L with no strict minimum, and collect the used oil afterwards.",
+  },
+  "supply-manufacturers": {
+    id: "supply-manufacturers",
+    q: "Can food manufacturers buy bulk oil from Cuisine Foods?",
+    a: "Yes. We supply consistent bulk sunflower, soya and palm olein for production, in 20L up to larger formats, and we can take the used and residue oil off your line. Tell us your requirement and we'll quote.",
+  },
+  "supply-franchises": {
+    id: "supply-franchises",
+    q: "Can Cuisine Foods supply a franchise group?",
+    a: "Yes. We can supply every outlet, collect the used oil, and bring the documentation together for head office – one supply and collection relationship across the group rather than one per site.",
+  },
 };
 
 export const getFaqs = (ids: string[]): Faq[] => ids.map((id) => faqs[id]).filter(Boolean);

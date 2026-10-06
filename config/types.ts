@@ -60,6 +60,15 @@ export type MoneyPage = {
    *  from the hubs that actually provide it (e.g. grease-trap, reporting). */
   national?: boolean;
   serviceAreaKey?: "greaseTrap" | "complianceReporting";
+  // --- Buyer-page (industry) fields, consumed by views/buyer-view.tsx ---
+  /** The operational reality / business problem this buyer faces (hero support). */
+  operational?: string;
+  /** Oil-selection routing for this buyer — use-case guidance, no fabricated specs. */
+  oilGuidance?: { label: string; href: string; when: string }[];
+  /** Multi-site value block — only where it genuinely applies (franchises, hotels, manufacturers). */
+  multiSite?: { title: string; body: string; href?: string; linkLabel?: string };
+  /** Industry-specific UCO framing; omit where used oil is not relevant to the operation. */
+  ucoAngle?: { title: string; body: string };
   /** Extra lead context passed to the quote form (e.g. "grease-trap-cleaning"),
    *  so an enquiry arrives tagged with the specific service. */
   quoteTopic?: string;
