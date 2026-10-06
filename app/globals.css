@@ -146,6 +146,19 @@
   transform-origin: center bottom;
 }
 
+/* ---- Closed Loop: oil flowing continuously around the loop ----
+   A subtle dashed overlay on the loop stroke drifts along its own length, so the
+   gold line reads as moving oil rather than a static ring. Neutralised by the
+   global prefers-reduced-motion rule above (freezes to faint static dashes). */
+@keyframes oilFlow {
+  to { stroke-dashoffset: -480; }
+}
+.oil-flow {
+  stroke-dasharray: 2 22;
+  stroke-linecap: round;
+  animation: oilFlow 7s linear infinite;
+}
+
 /* ============================================================
    SUNFLOWER OIL PAGE — bespoke motion (prototype, /sunflower-oil only)
    ============================================================ */
