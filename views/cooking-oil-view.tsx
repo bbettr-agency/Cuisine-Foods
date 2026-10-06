@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Pillar } from "@/config/pillars";
 import { getFaqs } from "@/config/faqs";
+import { openProvincesPhrase } from "@/config/coverage";
 import { faqPageSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
@@ -48,9 +49,19 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
   const specs = [
     { label: "The range", value: "Sunflower · Palm olein · Soya" },
     { label: "Formats", value: "From 20L, no strict minimum" },
-    { label: "Delivery", value: "Daily, weekly or monthly" },
-    { label: "Coverage", value: "Gauteng & Western Cape" },
+    { label: "Delivery", value: "Nationwide; daily, weekly or monthly" },
+    { label: "Hubs", value: openProvincesPhrase() },
     { label: "Buy-back", value: "We collect & pay for used oil" },
+  ];
+
+  const quoteHref = `/request-a-quote?intent=${pillar.intent}&topic=bulk-cooking-oil`;
+
+  // Use-case routing — helps a buyer choose the right conversation, no fake specs.
+  const chooser = [
+    { name: "Sunflower oil", href: "/sunflower-oil", when: "Your everyday all-rounder — one clean oil for frying, baking and cooking." },
+    { name: "Palm olein", href: "/palm-olein", when: "The workhorse for high-volume deep frying — exceptional heat stability and a long fry-life." },
+    { name: "Soya oil", href: "/soya-oil", when: "A cost-effective, neutral oil for manufacturers and high-volume kitchens." },
+    { name: "Still deciding?", href: "/frying-oil", when: "Compare the oils for your fryer in the frying-oil guide." },
   ];
 
   const apps = [
@@ -62,7 +73,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
 
   return (
     <>
-      <JsonLd data={[breadcrumbSchema(crumbs), serviceSchema({ name: pillar.h1, description: pillar.metaDescription, path }), ...(faqs.length ? [faqPageSchema(faqs)] : [])]} />
+      <JsonLd data={[breadcrumbSchema(crumbs), serviceSchema({ name: pillar.h1, description: pillar.metaDescription, path, national: true }), ...(faqs.length ? [faqPageSchema(faqs)] : [])]} />
 
       <CookingHero
         eyebrow={pillar.eyebrow}
@@ -71,7 +82,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
         crumbs={crumbs}
         intent={pillar.intent}
         primaryLabel={pillar.primaryCtaLabel}
-        primaryHref={`/request-a-quote?intent=${pillar.intent}`}
+        primaryHref={quoteHref}
       />
 
       <Section>
@@ -87,6 +98,31 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
 
       {/* Where the oil goes */}
       <CookingApplications heading="Across professional kitchens" items={apps} />
+
+      {/* Which oil? — use-case routing, not a spec comparison */}
+      <Section>
+        <SectionHeading
+          eyebrow="Which oil?"
+          title="Not sure which oil to order?"
+          intro="It comes down to how your kitchen cooks. Here's the quickest way to point you at the right one – or we'll talk it through on your quote."
+        />
+        <RevealGroup className="mt-10 grid gap-4 sm:grid-cols-2">
+          {chooser.map((c) => (
+            <Reveal as="div" key={c.href}>
+              <Link
+                href={c.href}
+                className="group flex h-full flex-col rounded-[var(--radius)] border border-line bg-surface p-6 transition-all duration-200 hover:border-gold-500/50 hover:shadow-soft"
+              >
+                <p className="flex items-center gap-1 font-display text-lg font-bold text-ink">
+                  {c.name}
+                  <ArrowRight className="h-4 w-4 text-gold-600 opacity-0 transition-opacity group-hover:opacity-100" />
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{c.when}</p>
+              </Link>
+            </Reveal>
+          ))}
+        </RevealGroup>
+      </Section>
 
       {/* Spokes – the hub's job, kept intact */}
       <Section alt>
@@ -123,7 +159,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
         title="cooking oil?"
         body="Tell us your monthly volume and delivery area – we'll come back quickly with bulk pricing and a reliable supply schedule for your kitchen or production line."
         primaryLabel={pillar.primaryCtaLabel}
-        primaryHref={`/request-a-quote?intent=${pillar.intent}`}
+        primaryHref={quoteHref}
       />
     </>
   );

@@ -67,7 +67,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
         crumbs={crumbs}
         intent={page.intent}
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={`/request-a-quote?intent=${page.intent}`}
+        primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
       />
 
       {/* Breathing intro – value first, then the key points */}
@@ -125,7 +125,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
         title={`${page.h1.toLowerCase()}?`}
         body="Tell us your monthly volume and delivery area – we'll come back quickly with pricing and a delivery schedule that fits your kitchen."
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={`/request-a-quote?intent=${page.intent}`}
+        primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
       />
     </>
   );

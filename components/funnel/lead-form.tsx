@@ -20,6 +20,11 @@ const labelCls = "mb-1.5 block text-sm font-medium text-ink";
  *  so a service-specific enquiry (e.g. grease-trap) arrives tagged. */
 const TOPIC_LABELS: Record<string, string> = {
   "grease-trap-cleaning": "Grease-trap cleaning",
+  "bulk-cooking-oil": "Bulk cooking oil supply",
+  "sunflower-oil": "Bulk sunflower oil",
+  "palm-olein": "Bulk palm olein",
+  "soya-oil": "Bulk soya oil",
+  "frying-oil": "Commercial frying oil",
 };
 
 /** Multi-step qualifying quote form (OS P6). Step 1 low-friction; step 2 qualifiers. */

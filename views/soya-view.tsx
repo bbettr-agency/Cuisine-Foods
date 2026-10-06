@@ -70,7 +70,7 @@ export function SoyaView({ page }: { page: MoneyPage }) {
         crumbs={crumbs}
         intent={page.intent}
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={`/request-a-quote?intent=${page.intent}`}
+        primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
       />
 
       <Section>
@@ -119,7 +119,7 @@ export function SoyaView({ page }: { page: MoneyPage }) {
         title={`${page.h1.toLowerCase()}?`}
         body="Tell us your monthly volume and delivery area – we'll come back quickly with pricing and a consistent supply schedule for your kitchen or production line."
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={`/request-a-quote?intent=${page.intent}`}
+        primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
       />
     </>
   );
