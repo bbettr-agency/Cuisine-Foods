@@ -8,14 +8,15 @@ import { faqPageSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Section } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { FeatureGrid } from "@/components/shared/feature-grid";
 import { Icon } from "@/components/ui/icon";
 import { Reveal, RevealGroup } from "@/components/ui/reveal";
 import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
-import { CookingHero } from "@/components/cooking/hero";
+import { ProductHero } from "@/components/product/product-hero";
+import { ProductIntro } from "@/components/product/product-intro";
+import { LivingBotanical } from "@/components/cooking/botanical";
 import { CookingTheatre, type CookState } from "@/components/cooking/theatre";
 import { CookingSpecs } from "@/components/cooking/specs";
 import { CookingApplications } from "@/components/cooking/applications";
@@ -75,7 +76,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
     <>
       <JsonLd data={[breadcrumbSchema(crumbs), serviceSchema({ name: pillar.h1, description: pillar.metaDescription, path, national: true }), ...(faqs.length ? [faqPageSchema(faqs)] : [])]} />
 
-      <CookingHero
+      <ProductHero
         eyebrow={pillar.eyebrow}
         h1={pillar.h1}
         subhead={pillar.subhead}
@@ -83,12 +84,16 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
         intent={pillar.intent}
         primaryLabel={pillar.primaryCtaLabel}
         primaryHref={quoteHref}
+        packshot={{ src: "/images/website/product-cooking.png", w: 869, h: 1046, alt: "Cuisine Foods 100% pure cooking oil – 20L bucket" }}
+        packshotWidthClass="w-[68%] max-w-[310px] lg:max-w-[400px]"
+        motif={<div className="living-art h-full w-full"><LivingBotanical className="h-full w-full" /></div>}
+        motifClassName="right-[-6%] top-[0%] h-[92%] w-[80%] opacity-55 lg:opacity-65"
+        specs={specs}
+        accent="gold"
       />
 
-      <Section>
-        <SectionHeading eyebrow={pillar.eyebrow} title="Why Cuisine Foods" intro={pillar.intro} />
-        <div className="mt-10"><FeatureGrid points={pillar.keyPoints} /></div>
-      </Section>
+      {/* Why Cuisine Foods – editorial intro with the verified points */}
+      <ProductIntro eyebrow="Why Cuisine Foods" lead={pillar.intro} points={pillar.keyPoints} />
 
       {/* THE SIGNATURE – the Living Label */}
       <CookingTheatre states={states} />

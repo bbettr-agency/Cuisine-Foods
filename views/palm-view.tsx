@@ -6,13 +6,14 @@ import { faqPageSchema, breadcrumbSchema, productSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { Section } from "@/components/ui/container";
-import { FeatureGrid } from "@/components/shared/feature-grid";
 import { TrustBand } from "@/components/sections/trust-band";
 import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
-import { PalmHero } from "@/components/palm/hero";
+import { ProductHero } from "@/components/product/product-hero";
+import { ProductIntro } from "@/components/product/product-intro";
+import { PalmBotanical } from "@/components/palm/frond";
 import { PalmTheatre, type PalmState } from "@/components/palm/theatre";
 import { PalmSpecs } from "@/components/palm/specs";
 import { PalmApplications } from "@/components/palm/applications";
@@ -56,11 +57,18 @@ export function PalmView({ page }: { page: MoneyPage }) {
 
   const appItems = ["Restaurants", "Takeaways", "QSR", "Caterers", "Food Manufacturers"];
 
+  const heroSpecs = [
+    { label: "Type", value: "RBD palm olein" },
+    { label: "Best for", value: "High-volume deep frying" },
+    { label: "Heat stability", value: "Excellent – the most heat-stable" },
+    { label: "Fry-life", value: "Longest of the three" },
+  ];
+
   return (
     <>
       <JsonLd data={schema} />
 
-      <PalmHero
+      <ProductHero
         eyebrow={page.eyebrow}
         h1={page.h1}
         subhead={page.subhead}
@@ -68,12 +76,16 @@ export function PalmView({ page }: { page: MoneyPage }) {
         intent={page.intent}
         primaryLabel={page.primaryCtaLabel}
         primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
+        packshot={{ src: "/images/website/product-palm.png", w: 827, h: 1027, alt: "Cuisine Foods 100% pure palm olein – bulk pail" }}
+        packshotWidthClass="w-[64%] max-w-[290px] lg:max-w-[370px]"
+        motif={<div className="palm-canopy h-full w-full"><PalmBotanical className="h-full w-full" /></div>}
+        motifClassName="right-[-10%] top-[-2%] h-[86%] w-[92%] opacity-45 lg:opacity-55"
+        specs={heroSpecs}
+        accent="gold"
       />
 
-      <Section>
-        <MaskUp as="p" className="max-w-prose text-xl leading-relaxed text-ink-soft">{page.intro}</MaskUp>
-        <div className="mt-10"><FeatureGrid points={page.keyPoints} /></div>
-      </Section>
+      {/* Breathing intro – value first, then the verified points as editorial content */}
+      <ProductIntro lead={page.intro} points={page.keyPoints} />
 
       {/* THE SIGNATURE – Palm Unfurl */}
       <PalmTheatre states={states} />
@@ -86,7 +98,7 @@ export function PalmView({ page }: { page: MoneyPage }) {
       {/* Story content – varied motion vocabulary */}
       <Section alt>
         <div className="mx-auto max-w-3xl space-y-16">
-          {page.sections.map((s, i) => (
+          {page.sections.map((s) => (
             <div key={s.heading}>
               <h2 className="text-h2 text-ink"><MaskUp as="span">{s.heading}</MaskUp></h2>
               <DrawLine className="mt-4 max-w-[120px]" />
@@ -95,7 +107,6 @@ export function PalmView({ page }: { page: MoneyPage }) {
                   {[<p key="b" className="max-w-prose text-lg leading-relaxed text-ink-soft">{s.body}</p>]}
                 </RevealStagger>
               )}
-              {i === 0 && <div className="mt-6"><FeatureGrid points={page.keyPoints} columns={3} /></div>}
             </div>
           ))}
         </div>

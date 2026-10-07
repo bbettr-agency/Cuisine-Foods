@@ -5,14 +5,15 @@ import { hrefFor, resolveRelated } from "@/lib/registry";
 import { faqPageSchema, breadcrumbSchema, productSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
-import { Section, Container } from "@/components/ui/container";
-import { FeatureGrid } from "@/components/shared/feature-grid";
+import { Section } from "@/components/ui/container";
 import { TrustBand } from "@/components/sections/trust-band";
 import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
-import { SunflowerHero } from "@/components/sunflower/hero";
+import { ProductHero } from "@/components/product/product-hero";
+import { ProductIntro } from "@/components/product/product-intro";
+import { SunflowerBotanical } from "@/components/sunflower/botanical";
 import { SunflowerTheatre, type TheatreState } from "@/components/sunflower/theatre";
 import { SunflowerSpecs } from "@/components/sunflower/specs";
 import { KineticStrip } from "@/components/sunflower/kinetic-strip";
@@ -56,11 +57,18 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
 
   const kineticItems = ["Restaurants", "Caterers", "Food Manufacturers", "Commercial Kitchens"];
 
+  const heroSpecs = [
+    { label: "Type", value: "100% pure, refined" },
+    { label: "Best for", value: "Frying, baking & dressings" },
+    { label: "Smoke point", value: "High" },
+    { label: "Formats", value: "From 20L, no strict minimum" },
+  ];
+
   return (
     <>
       <JsonLd data={schema} />
 
-      <SunflowerHero
+      <ProductHero
         eyebrow={page.eyebrow}
         h1={page.h1}
         subhead={page.subhead}
@@ -68,17 +76,16 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
         intent={page.intent}
         primaryLabel={page.primaryCtaLabel}
         primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
+        packshot={{ src: "/images/website/product-sunflower.png", w: 837, h: 1024, alt: "Cuisine Foods 100% pure sunflower oil – bulk pail" }}
+        packshotWidthClass="w-[66%] max-w-[300px] lg:max-w-[380px]"
+        motif={<div className="sf-botanical h-full w-full"><SunflowerBotanical className="h-full w-full" /></div>}
+        motifClassName="right-[-4%] top-[4%] h-[72%] w-[72%] opacity-50 lg:opacity-60"
+        specs={heroSpecs}
+        accent="gold"
       />
 
-      {/* Breathing intro – value first, then the key points */}
-      <Section>
-        <MaskUp as="p" className="max-w-prose text-xl leading-relaxed text-ink-soft">
-          {page.intro}
-        </MaskUp>
-        <div className="mt-10">
-          <FeatureGrid points={page.keyPoints} />
-        </div>
-      </Section>
+      {/* Breathing intro – value first, then the verified points as editorial content */}
+      <ProductIntro lead={page.intro} points={page.keyPoints} />
 
       {/* THE SIGNATURE – Sunflower Product Theatre */}
       <SunflowerTheatre states={states} />
@@ -92,7 +99,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
       {/* Story content – varied motion vocabulary */}
       <Section alt>
         <div className="mx-auto max-w-3xl space-y-16">
-          {page.sections.map((s, i) => (
+          {page.sections.map((s) => (
             <div key={s.heading}>
               <h2 className="text-h2 text-ink">
                 <MaskUp as="span">{s.heading}</MaskUp>
@@ -103,7 +110,6 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
                   {[<p key="b" className="max-w-prose text-lg leading-relaxed text-ink-soft">{s.body}</p>]}
                 </RevealStagger>
               )}
-              {i === 0 && <div className="mt-6"><FeatureGrid points={page.keyPoints} columns={3} /></div>}
             </div>
           ))}
         </div>
