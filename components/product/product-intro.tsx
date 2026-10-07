@@ -39,8 +39,8 @@ export function ProductIntro({
         };
 
   return (
-    <Section className={className}>
-      <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+    <Section className={cn("py-14 lg:py-20", className)}>
+      <div className="grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         {/* Lead — large editorial statement */}
         <div className="max-w-xl">
           {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
@@ -62,7 +62,7 @@ export function ProductIntro({
           {points.map((p, i) => (
             <motion.li
               key={p.title}
-              className={cn("flex gap-5 py-6", i > 0 && "border-t border-line")}
+              className={cn("flex gap-5 py-5", i > 0 && "border-t border-line")}
               {...item(i)}
             >
               <span className="flex shrink-0 items-start gap-3">

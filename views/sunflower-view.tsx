@@ -5,20 +5,18 @@ import { hrefFor, resolveRelated } from "@/lib/registry";
 import { faqPageSchema, breadcrumbSchema, productSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
-import { Section } from "@/components/ui/container";
 import { TrustBand } from "@/components/sections/trust-band";
-import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
 import { ProductHero } from "@/components/product/product-hero";
 import { ProductIntro } from "@/components/product/product-intro";
+import { ClosedLoopBand } from "@/components/product/closed-loop-band";
 import { SunflowerBotanical } from "@/components/sunflower/botanical";
 import { SunflowerTheatre, type TheatreState } from "@/components/sunflower/theatre";
 import { SunflowerSpecs } from "@/components/sunflower/specs";
 import { KineticStrip } from "@/components/sunflower/kinetic-strip";
 import { SunflowerCta } from "@/components/sunflower/cta";
-import { MaskUp, DrawLine, RevealStagger } from "@/components/sunflower/motion-kit";
 
 /**
  * SunflowerView – the bespoke, motion-forward /sunflower-oil experience.
@@ -96,36 +94,15 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
       {/* Mid-page trust band (approved, kept) */}
       <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
 
-      {/* Story content – varied motion vocabulary */}
-      <Section alt>
-        <div className="mx-auto max-w-3xl space-y-16">
-          {page.sections.map((s) => (
-            <div key={s.heading}>
-              <h2 className="text-h2 text-ink">
-                <MaskUp as="span">{s.heading}</MaskUp>
-              </h2>
-              <DrawLine className="mt-4 max-w-[120px]" />
-              {s.body && (
-                <RevealStagger className="mt-4">
-                  {[<p key="b" className="max-w-prose text-lg leading-relaxed text-ink-soft">{s.body}</p>]}
-                </RevealStagger>
-              )}
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Kinetic commercial-use strip */}
+      {/* Kinetic commercial-use strip – where sunflower is used */}
       <KineticStrip items={kineticItems} />
 
-      {/* Closed-loop cross-sell (approved, kept) */}
-      <Section>
-        <CrossSell label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
-      </Section>
+      {/* Closed loop – supply leads naturally into used-oil recovery */}
+      <ClosedLoopBand label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
 
-      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} />}
+      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} variant="rail" />}
 
-      <FaqSection ids={page.faqIds} alt />
+      <FaqSection ids={page.faqIds} className="py-14 lg:py-20" />
 
       <SunflowerCta
         title={`${page.h1.toLowerCase()}?`}

@@ -10,12 +10,12 @@ import { Section } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Icon } from "@/components/ui/icon";
 import { Reveal, RevealGroup } from "@/components/ui/reveal";
-import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
 import { ProductHero } from "@/components/product/product-hero";
 import { ProductIntro } from "@/components/product/product-intro";
+import { ClosedLoopBand } from "@/components/product/closed-loop-band";
 import { LivingBotanical } from "@/components/cooking/botanical";
 import { CookingTheatre, type CookState } from "@/components/cooking/theatre";
 import { CookingSpecs } from "@/components/cooking/specs";
@@ -152,13 +152,12 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
         </RevealGroup>
       </Section>
 
-      <Section>
-        <CrossSell label={pillar.crossSell.label} href={pillar.crossSell.href} blurb={pillar.crossSell.blurb} />
-      </Section>
+      {/* Closed loop – supply leads naturally into used-oil recovery */}
+      <ClosedLoopBand label={pillar.crossSell.label} href={pillar.crossSell.href} blurb={pillar.crossSell.blurb} />
 
-      {pillar.resourceLinks && pillar.resourceLinks.length > 0 && <RelatedLinks title="Guides & resources" items={pillar.resourceLinks} />}
+      {pillar.resourceLinks && pillar.resourceLinks.length > 0 && <RelatedLinks title="Guides & resources" items={pillar.resourceLinks} variant="rail" />}
 
-      <FaqSection ids={pillar.faqIds} alt />
+      <FaqSection ids={pillar.faqIds} className="py-14 lg:py-20" />
 
       <CookingCta
         title="cooking oil?"

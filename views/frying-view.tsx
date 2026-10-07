@@ -9,7 +9,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { ComparisonTableView } from "@/components/shared/data-tables";
 import { ContentSections } from "@/components/sections/content-sections";
 import { TrustBand } from "@/components/sections/trust-band";
-import { CrossSell } from "@/components/funnel/cross-sell";
+import { ClosedLoopBand } from "@/components/product/closed-loop-band";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 import { Reveal } from "@/components/ui/reveal";
@@ -81,13 +81,12 @@ export function FryingView({ page }: { page: MoneyPage }) {
       {/* How to choose / extend fry-life — the guidance content */}
       <ContentSections sections={page.sections} />
 
-      <Section>
-        <CrossSell label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
-      </Section>
+      {/* Closed loop – whichever oil they choose, we can collect the used oil */}
+      <ClosedLoopBand label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
 
-      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} />}
+      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} variant="rail" />}
 
-      <FaqSection ids={page.faqIds} alt />
+      <FaqSection ids={page.faqIds} className="py-14 lg:py-20" />
 
       <FryingCta
         title="Not sure which frying oil to order?"

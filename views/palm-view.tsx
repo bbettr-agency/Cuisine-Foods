@@ -5,20 +5,18 @@ import { hrefFor, resolveRelated } from "@/lib/registry";
 import { faqPageSchema, breadcrumbSchema, productSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
-import { Section } from "@/components/ui/container";
 import { TrustBand } from "@/components/sections/trust-band";
-import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
 import { ProductHero } from "@/components/product/product-hero";
 import { ProductIntro } from "@/components/product/product-intro";
+import { ClosedLoopBand } from "@/components/product/closed-loop-band";
 import { PalmBotanical } from "@/components/palm/frond";
 import { PalmTheatre, type PalmState } from "@/components/palm/theatre";
 import { PalmSpecs } from "@/components/palm/specs";
 import { PalmApplications } from "@/components/palm/applications";
 import { PalmCta } from "@/components/palm/cta";
-import { MaskUp, DrawLine, RevealStagger } from "@/components/sunflower/motion-kit";
 
 /**
  * PalmView – the bespoke, motion-forward /palm-olein experience ("The Unfurl").
@@ -95,33 +93,15 @@ export function PalmView({ page }: { page: MoneyPage }) {
 
       <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
 
-      {/* Story content – varied motion vocabulary */}
-      <Section alt>
-        <div className="mx-auto max-w-3xl space-y-16">
-          {page.sections.map((s) => (
-            <div key={s.heading}>
-              <h2 className="text-h2 text-ink"><MaskUp as="span">{s.heading}</MaskUp></h2>
-              <DrawLine className="mt-4 max-w-[120px]" />
-              {s.body && (
-                <RevealStagger className="mt-4">
-                  {[<p key="b" className="max-w-prose text-lg leading-relaxed text-ink-soft">{s.body}</p>]}
-                </RevealStagger>
-              )}
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Kinetic applications */}
+      {/* Kinetic applications – where Palm Olein is used */}
       <PalmApplications items={appItems} />
 
-      <Section>
-        <CrossSell label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
-      </Section>
+      {/* Closed loop – supply leads naturally into used-oil recovery */}
+      <ClosedLoopBand label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
 
-      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} />}
+      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} variant="rail" />}
 
-      <FaqSection ids={page.faqIds} alt />
+      <FaqSection ids={page.faqIds} className="py-14 lg:py-20" />
 
       <PalmCta
         title={`${page.h1.toLowerCase()}?`}
