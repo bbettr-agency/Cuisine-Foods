@@ -12,9 +12,9 @@ import { TrustBand } from "@/components/sections/trust-band";
 import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
-import { CtaBand } from "@/components/funnel/cta-band";
 import { Reveal } from "@/components/ui/reveal";
 import { FryingHero, type FryingRoute } from "@/components/product/frying-hero";
+import { FryingCta } from "@/components/product/frying-cta";
 
 /**
  * FryingView — the /frying-oil decision page. Not a SKU: it routes a buyer to the
@@ -89,12 +89,16 @@ export function FryingView({ page }: { page: MoneyPage }) {
 
       <FaqSection ids={page.faqIds} alt />
 
-      <CtaBand
-        intent={page.intent}
+      <FryingCta
         title="Not sure which frying oil to order?"
         body="Tell us how your kitchen fries and your monthly volume – we'll recommend the right oil and come back with bulk pricing and a delivery schedule."
         primaryLabel={page.primaryCtaLabel}
         primaryHref={quoteHref}
+        choices={[
+          { name: "Palm olein", tag: "High-volume", href: "/palm-olein" },
+          { name: "Sunflower oil", tag: "Versatile", href: "/sunflower-oil" },
+          { name: "Soya oil", tag: "Cost-effective", href: "/soya-oil" },
+        ]}
       />
     </>
   );

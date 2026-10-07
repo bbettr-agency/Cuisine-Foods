@@ -22,16 +22,22 @@ export function PlaceholderImage({
   className,
   rounded = true,
   sizes = "(max-width: 768px) 100vw, 50vw",
+  aspectClass,
+  objectPosition,
 }: {
   id: string;
   className?: string;
   rounded?: boolean;
   sizes?: string;
+  /** Override the manifest ratio with explicit aspect classes (e.g. responsive). */
+  aspectClass?: string;
+  /** CSS object-position for the cover crop (e.g. "50% 42%"). */
+  objectPosition?: string;
 }) {
   const slot = getImage(id);
   const shell = cn(
     "relative w-full overflow-hidden bg-surface-2",
-    ratioClass[slot.ratio] ?? "aspect-[3/2]",
+    aspectClass ?? ratioClass[slot.ratio] ?? "aspect-[3/2]",
     rounded && "rounded-[var(--radius)]",
     "border border-line",
     className,
@@ -47,6 +53,7 @@ export function PlaceholderImage({
           priority={slot.priority}
           sizes={sizes}
           className="object-cover"
+          style={objectPosition ? { objectPosition } : undefined}
         />
       </div>
     );

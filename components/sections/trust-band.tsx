@@ -3,7 +3,6 @@ import { trustBand } from "@/config/commercial";
 import { enabledCerts } from "@/config/trust";
 import { cta, whatsappUrl, whatsappPrefill } from "@/config/conversion";
 import type { CtaIntent } from "@/config/conversion";
-import { Section } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Reveal, RevealGroup } from "@/components/ui/reveal";
@@ -26,14 +25,23 @@ export function TrustBand({
   const waMsg = intent === "uco" ? whatsappPrefill.uco : intent === "supply" ? whatsappPrefill.supply : whatsappPrefill.general;
 
   return (
-    <Section>
-      <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
-        {/* Real operations photography – proves the fleet, the team, the scale */}
-        <Reveal className="order-2 lg:order-1">
-          <PlaceholderImage id="trust-operations" sizes="(max-width: 1024px) 100vw, 46vw" className="shadow-soft" />
+    <section className="section">
+      {/* Wider editorial canvas than the default grid so the real proof photo can command the composition */}
+      <div className="mx-auto w-full max-w-[1360px] px-5 sm:px-8 lg:px-10">
+      <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
+        {/* Real operations photography – large editorial proof of the fleet, the team, the scale.
+            Leads on mobile (prominence) and sits left on desktop. */}
+        <Reveal className="order-1">
+          <PlaceholderImage
+            id="trust-operations"
+            aspectClass="aspect-[4/3]"
+            objectPosition="50% 42%"
+            sizes="(max-width: 1024px) 100vw, 58vw"
+            className="shadow-soft"
+          />
         </Reveal>
 
-        <div className="order-1 lg:order-2">
+        <div className="order-2 lg:max-w-xl">
           <Reveal>
             <p className="eyebrow mb-3">{trustBand.eyebrow}</p>
             <h2 className="text-h2 text-ink">{trustBand.headline}</h2>
@@ -81,6 +89,7 @@ export function TrustBand({
           </Reveal>
         </div>
       </div>
-    </Section>
+      </div>
+    </section>
   );
 }
