@@ -10,7 +10,7 @@ import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
 import { ProductHero } from "@/components/product/product-hero";
-import { ProductIntro } from "@/components/product/product-intro";
+import { ProductLede } from "@/components/product/product-lede";
 import { ClosedLoopBand } from "@/components/product/closed-loop-band";
 import { SunflowerBotanical } from "@/components/sunflower/botanical";
 import { SunflowerTheatre, type TheatreState } from "@/components/sunflower/theatre";
@@ -80,10 +80,15 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
         motifClassName="right-[-4%] top-[4%] h-[72%] w-[72%] opacity-50 lg:opacity-60"
         specs={heroSpecs}
         accent="gold"
+        specsLayout="grid"
       />
 
-      {/* Breathing intro – value first, then the verified points as editorial content */}
-      <ProductIntro lead={page.intro} points={page.keyPoints} />
+      {/* Compact editorial intro – bridges hero → BLOOM */}
+      <ProductLede
+        eyebrow="Refined Sunflower Oil"
+        headline="Pure versatility. Every day."
+        body={page.intro}
+      />
 
       {/* THE SIGNATURE – Sunflower Product Theatre */}
       <SunflowerTheatre states={states} />
@@ -92,7 +97,7 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
       <SunflowerSpecs specs={page.specs ?? []} title={`${page.h1} at a glance`} />
 
       {/* Mid-page trust band (approved, kept) */}
-      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
+      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} reversed />
 
       {/* Kinetic commercial-use strip – where sunflower is used */}
       <KineticStrip items={kineticItems} />

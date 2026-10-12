@@ -10,7 +10,7 @@ import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
 import { ProductHero } from "@/components/product/product-hero";
-import { ProductIntro } from "@/components/product/product-intro";
+import { ProductLede } from "@/components/product/product-lede";
 import { ClosedLoopBand } from "@/components/product/closed-loop-band";
 import { SoyaRibbon } from "@/components/soya/ribbon";
 import { SoyaTheatre, type SoyaState } from "@/components/soya/theatre";
@@ -83,10 +83,15 @@ export function SoyaView({ page }: { page: MoneyPage }) {
         motifClassName="right-[-10%] top-1/2 h-[86%] w-[58%] -translate-y-1/2 opacity-70 lg:opacity-80"
         specs={heroSpecs}
         accent="gold"
+        specsLayout="grid"
       />
 
-      {/* Breathing intro – value first, then the verified points as editorial content */}
-      <ProductIntro lead={page.intro} points={page.keyPoints} />
+      {/* Compact editorial intro – bridges hero → POUR */}
+      <ProductLede
+        eyebrow="Refined Soya Oil"
+        headline="Versatility at commercial scale."
+        body={page.intro}
+      />
 
       {/* THE SIGNATURE – Soya Pour */}
       <SoyaTheatre states={states} />
@@ -94,7 +99,7 @@ export function SoyaView({ page }: { page: MoneyPage }) {
       {/* Liquid data specifications */}
       <SoyaSpecs specs={page.specs ?? []} title={`${page.h1} at a glance`} />
 
-      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
+      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} reversed />
 
       {/* Flowing applications – across the food industry */}
       <SoyaApplications heading="Across the food industry" items={apps} />

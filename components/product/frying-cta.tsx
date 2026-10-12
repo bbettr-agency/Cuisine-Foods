@@ -61,20 +61,20 @@ export function FryingCta({
                 <MaskUp as="span">{title}</MaskUp>
               </h2>
               <p className="mt-5 max-w-lg text-base leading-relaxed text-brand-100">{body}</p>
-              <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+              <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <div ref={wrapRef} onMouseMove={onMove} onMouseLeave={reset} className="relative">
                   <motion.div style={reduce ? undefined : { x, y }}>
                     <Link
                       href={primaryHref}
-                      className="group inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-base font-semibold tracking-tight text-ink shadow-soft transition-colors duration-200 hover:bg-gold-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-300 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                      className="group inline-flex min-h-[44px] items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gold-500 px-7 py-3.5 text-base font-semibold tracking-tight text-ink shadow-soft transition-colors duration-200 hover:bg-gold-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-300 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                     >
                       {primaryLabel}
-                      <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-out-expo group-hover:translate-x-1" />
+                      <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out-expo group-hover:translate-x-1" />
                     </Link>
                   </motion.div>
                 </div>
-                <Button href={whatsappUrl(whatsappPrefill.supply)} variant="onDark" size="lg" external>{cta.whatsapp}</Button>
-                <Button href={telUrl} variant="ghost" size="lg" className="text-paper hover:bg-white/10"><Phone className="h-4 w-4" /> {cta.call}</Button>
+                <Button href={whatsappUrl(whatsappPrefill.supply)} variant="onDark" size="lg" className="whitespace-nowrap" external>{cta.whatsapp}</Button>
+                <Button href={telUrl} variant="ghost" size="lg" className="whitespace-nowrap text-paper hover:bg-white/10"><Phone className="h-4 w-4 shrink-0" /> {cta.call}</Button>
               </div>
             </div>
 

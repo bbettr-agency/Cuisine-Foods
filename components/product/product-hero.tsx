@@ -46,6 +46,7 @@ export function ProductHero({
   accent = "gold",
   waMessage,
   packshotWidthClass = "w-[66%] max-w-[300px] lg:max-w-[380px]",
+  specsLayout = "rail",
 }: {
   eyebrow: string;
   h1: string;
@@ -62,6 +63,8 @@ export function ProductHero({
   accent?: "gold" | "brand";
   waMessage?: string;
   packshotWidthClass?: string;
+  /** "rail" = the wrapping left-aligned strip (default); "grid" = full-width, four equal centred columns. */
+  specsLayout?: "rail" | "grid";
 }) {
   const reduce = useReducedMotion();
   const zoneRef = useRef<HTMLDivElement>(null);
@@ -208,7 +211,25 @@ export function ProductHero({
         </div>
 
         {/* SPEC RAIL — verified facts, integrated as editorial type (no card grid) */}
-        {railSpecs.length > 0 && (
+        {railSpecs.length > 0 && specsLayout === "grid" && (
+          <motion.dl
+            className={cn(
+              "relative z-10 mt-2 grid grid-cols-2 gap-x-6 gap-y-7 border-t pb-10 pt-7 sm:grid-cols-4 lg:mt-0",
+              dark ? "border-white/10" : "border-line",
+            )}
+            {...rise(0.3)}
+          >
+            {railSpecs.map((s) => (
+              <div key={s.label} className="flex flex-col items-center gap-2 px-2 text-center">
+                <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-gold-500" />
+                <dt className={`text-[0.68rem] font-semibold uppercase tracking-[0.15em] ${dark ? "text-gold-400" : "text-gold-700"}`}>{s.label}</dt>
+                <dd className={`text-sm leading-snug ${dark ? "text-paper/85" : "text-ink"}`}>{s.value}</dd>
+              </div>
+            ))}
+          </motion.dl>
+        )}
+
+        {railSpecs.length > 0 && specsLayout === "rail" && (
           <motion.dl
             className={cn(
               "relative z-10 mt-2 flex flex-wrap gap-x-10 gap-y-6 border-t pb-10 pt-6 lg:mt-0",

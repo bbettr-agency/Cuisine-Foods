@@ -10,7 +10,7 @@ import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
 import { ProductHero } from "@/components/product/product-hero";
-import { ProductIntro } from "@/components/product/product-intro";
+import { ProductLede } from "@/components/product/product-lede";
 import { ClosedLoopBand } from "@/components/product/closed-loop-band";
 import { PalmBotanical } from "@/components/palm/frond";
 import { PalmTheatre, type PalmState } from "@/components/palm/theatre";
@@ -80,10 +80,15 @@ export function PalmView({ page }: { page: MoneyPage }) {
         motifClassName="right-[-10%] top-[-2%] h-[86%] w-[92%] opacity-45 lg:opacity-55"
         specs={heroSpecs}
         accent="gold"
+        specsLayout="grid"
       />
 
-      {/* Breathing intro – value first, then the verified points as editorial content */}
-      <ProductIntro lead={page.intro} points={page.keyPoints} />
+      {/* Compact editorial intro – bridges hero → UNFURL */}
+      <ProductLede
+        eyebrow="RBD Palm Olein"
+        headline="Built for the heat of commercial frying."
+        body={page.intro}
+      />
 
       {/* THE SIGNATURE – Palm Unfurl */}
       <PalmTheatre states={states} />
@@ -91,7 +96,7 @@ export function PalmView({ page }: { page: MoneyPage }) {
       {/* Interactive specifications */}
       <PalmSpecs specs={page.specs ?? []} title={`${page.h1} at a glance`} />
 
-      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
+      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} reversed />
 
       {/* Kinetic applications – where Palm Olein is used */}
       <PalmApplications items={appItems} />

@@ -76,7 +76,7 @@ export function FryingView({ page }: { page: MoneyPage }) {
       </Section>
 
       {/* Mid-page trust band — proof + inline CTA */}
-      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
+      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} reversed />
 
       {/* How to choose / extend fry-life — the guidance content */}
       <ContentSections sections={page.sections} />
