@@ -5,19 +5,18 @@ import { hrefFor, resolveRelated } from "@/lib/registry";
 import { faqPageSchema, breadcrumbSchema, productSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
-import { Section } from "@/components/ui/container";
-import { FeatureGrid } from "@/components/shared/feature-grid";
 import { TrustBand } from "@/components/sections/trust-band";
-import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
-import { SoyaHero } from "@/components/soya/hero";
+import { ProductHero } from "@/components/product/product-hero";
+import { ProductLede } from "@/components/product/product-lede";
+import { ClosedLoopBand } from "@/components/product/closed-loop-band";
+import { SoyaRibbon } from "@/components/soya/ribbon";
 import { SoyaTheatre, type SoyaState } from "@/components/soya/theatre";
 import { SoyaSpecs } from "@/components/soya/specs";
 import { SoyaApplications } from "@/components/soya/applications";
 import { SoyaCta } from "@/components/soya/cta";
-import { MaskUp, DrawLine, RevealStagger } from "@/components/sunflower/motion-kit";
 
 /**
  * SoyaView – the bespoke, motion-forward /soya-oil experience ("The Pour").
@@ -59,11 +58,18 @@ export function SoyaView({ page }: { page: MoneyPage }) {
     { title: "High-volume use", body: "Cost-effective at volume, supplied on your schedule." },
   ];
 
+  const heroSpecs = [
+    { label: "Type", value: "Refined soya (soybean) oil" },
+    { label: "Best for", value: "Frying, baking & processed foods" },
+    { label: "Flavour", value: "Neutral" },
+    { label: "Formats", value: "From 20L, no strict minimum" },
+  ];
+
   return (
     <>
       <JsonLd data={schema} />
 
-      <SoyaHero
+      <ProductHero
         eyebrow={page.eyebrow}
         h1={page.h1}
         subhead={page.subhead}
@@ -71,12 +77,21 @@ export function SoyaView({ page }: { page: MoneyPage }) {
         intent={page.intent}
         primaryLabel={page.primaryCtaLabel}
         primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
+        packshot={{ src: "/images/website/product-cooking.png", w: 869, h: 1046, alt: "Cuisine Foods soya oil – bulk pail" }}
+        packshotWidthClass="w-[62%] max-w-[280px] lg:max-w-[360px]"
+        motif={<SoyaRibbon className="h-full w-full" />}
+        motifClassName="right-[-10%] top-1/2 h-[86%] w-[58%] -translate-y-1/2 opacity-70 lg:opacity-80"
+        specs={heroSpecs}
+        accent="gold"
+        specsLayout="grid"
       />
 
-      <Section>
-        <MaskUp as="p" className="max-w-prose text-xl leading-relaxed text-ink-soft">{page.intro}</MaskUp>
-        <div className="mt-10"><FeatureGrid points={page.keyPoints} /></div>
-      </Section>
+      {/* Compact editorial intro – bridges hero → POUR */}
+      <ProductLede
+        eyebrow="Refined Soya Oil"
+        headline="Versatility at commercial scale."
+        body={page.intro}
+      />
 
       {/* THE SIGNATURE – Soya Pour */}
       <SoyaTheatre states={states} />
@@ -84,36 +99,17 @@ export function SoyaView({ page }: { page: MoneyPage }) {
       {/* Liquid data specifications */}
       <SoyaSpecs specs={page.specs ?? []} title={`${page.h1} at a glance`} />
 
-      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
+      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} reversed />
 
-      {/* Story content – varied motion vocabulary */}
-      <Section alt>
-        <div className="mx-auto max-w-3xl space-y-16">
-          {page.sections.map((s, i) => (
-            <div key={s.heading}>
-              <h2 className="text-h2 text-ink"><MaskUp as="span">{s.heading}</MaskUp></h2>
-              <DrawLine className="mt-4 max-w-[120px]" />
-              {s.body && (
-                <RevealStagger className="mt-4">
-                  {[<p key="b" className="max-w-prose text-lg leading-relaxed text-ink-soft">{s.body}</p>]}
-                </RevealStagger>
-              )}
-              {i === 0 && <div className="mt-6"><FeatureGrid points={page.keyPoints} columns={3} /></div>}
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Flowing applications */}
+      {/* Flowing applications – across the food industry */}
       <SoyaApplications heading="Across the food industry" items={apps} />
 
-      <Section>
-        <CrossSell label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
-      </Section>
+      {/* Closed loop – supply leads naturally into used-oil recovery */}
+      <ClosedLoopBand label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
 
-      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} />}
+      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} variant="rail" />}
 
-      <FaqSection ids={page.faqIds} alt />
+      <FaqSection ids={page.faqIds} className="py-14 lg:py-20" />
 
       <SoyaCta
         title={`${page.h1.toLowerCase()}?`}

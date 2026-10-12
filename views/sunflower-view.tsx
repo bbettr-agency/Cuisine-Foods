@@ -5,19 +5,18 @@ import { hrefFor, resolveRelated } from "@/lib/registry";
 import { faqPageSchema, breadcrumbSchema, productSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
-import { Section, Container } from "@/components/ui/container";
-import { FeatureGrid } from "@/components/shared/feature-grid";
 import { TrustBand } from "@/components/sections/trust-band";
-import { CrossSell } from "@/components/funnel/cross-sell";
 import { RelatedLinks } from "@/components/sections/related-links";
 import { FaqSection } from "@/components/sections/faq-section";
 
-import { SunflowerHero } from "@/components/sunflower/hero";
+import { ProductHero } from "@/components/product/product-hero";
+import { ProductLede } from "@/components/product/product-lede";
+import { ClosedLoopBand } from "@/components/product/closed-loop-band";
+import { SunflowerBotanical } from "@/components/sunflower/botanical";
 import { SunflowerTheatre, type TheatreState } from "@/components/sunflower/theatre";
 import { SunflowerSpecs } from "@/components/sunflower/specs";
 import { KineticStrip } from "@/components/sunflower/kinetic-strip";
 import { SunflowerCta } from "@/components/sunflower/cta";
-import { MaskUp, DrawLine, RevealStagger } from "@/components/sunflower/motion-kit";
 
 /**
  * SunflowerView – the bespoke, motion-forward /sunflower-oil experience.
@@ -56,11 +55,18 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
 
   const kineticItems = ["Restaurants", "Caterers", "Food Manufacturers", "Commercial Kitchens"];
 
+  const heroSpecs = [
+    { label: "Type", value: "100% pure, refined" },
+    { label: "Best for", value: "Frying, baking & dressings" },
+    { label: "Smoke point", value: "High" },
+    { label: "Formats", value: "From 20L, no strict minimum" },
+  ];
+
   return (
     <>
       <JsonLd data={schema} />
 
-      <SunflowerHero
+      <ProductHero
         eyebrow={page.eyebrow}
         h1={page.h1}
         subhead={page.subhead}
@@ -68,17 +74,21 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
         intent={page.intent}
         primaryLabel={page.primaryCtaLabel}
         primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
+        packshot={{ src: "/images/website/product-sunflower.png", w: 837, h: 1024, alt: "Cuisine Foods 100% pure sunflower oil – bulk pail" }}
+        packshotWidthClass="w-[66%] max-w-[300px] lg:max-w-[380px]"
+        motif={<div className="sf-botanical h-full w-full"><SunflowerBotanical className="h-full w-full" /></div>}
+        motifClassName="right-[-4%] top-[4%] h-[72%] w-[72%] opacity-50 lg:opacity-60"
+        specs={heroSpecs}
+        accent="gold"
+        specsLayout="grid"
       />
 
-      {/* Breathing intro – value first, then the key points */}
-      <Section>
-        <MaskUp as="p" className="max-w-prose text-xl leading-relaxed text-ink-soft">
-          {page.intro}
-        </MaskUp>
-        <div className="mt-10">
-          <FeatureGrid points={page.keyPoints} />
-        </div>
-      </Section>
+      {/* Compact editorial intro – bridges hero → BLOOM */}
+      <ProductLede
+        eyebrow="Refined Sunflower Oil"
+        headline="Pure versatility. Every day."
+        body={page.intro}
+      />
 
       {/* THE SIGNATURE – Sunflower Product Theatre */}
       <SunflowerTheatre states={states} />
@@ -87,39 +97,17 @@ export function SunflowerView({ page }: { page: MoneyPage }) {
       <SunflowerSpecs specs={page.specs ?? []} title={`${page.h1} at a glance`} />
 
       {/* Mid-page trust band (approved, kept) */}
-      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} />
+      <TrustBand intent={page.intent} ctaLabel={page.primaryCtaLabel} reversed />
 
-      {/* Story content – varied motion vocabulary */}
-      <Section alt>
-        <div className="mx-auto max-w-3xl space-y-16">
-          {page.sections.map((s, i) => (
-            <div key={s.heading}>
-              <h2 className="text-h2 text-ink">
-                <MaskUp as="span">{s.heading}</MaskUp>
-              </h2>
-              <DrawLine className="mt-4 max-w-[120px]" />
-              {s.body && (
-                <RevealStagger className="mt-4">
-                  {[<p key="b" className="max-w-prose text-lg leading-relaxed text-ink-soft">{s.body}</p>]}
-                </RevealStagger>
-              )}
-              {i === 0 && <div className="mt-6"><FeatureGrid points={page.keyPoints} columns={3} /></div>}
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Kinetic commercial-use strip */}
+      {/* Kinetic commercial-use strip – where sunflower is used */}
       <KineticStrip items={kineticItems} />
 
-      {/* Closed-loop cross-sell (approved, kept) */}
-      <Section>
-        <CrossSell label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
-      </Section>
+      {/* Closed loop – supply leads naturally into used-oil recovery */}
+      <ClosedLoopBand label={page.crossSell.label} href={page.crossSell.href} blurb={page.crossSell.blurb} />
 
-      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} />}
+      {allRelated.length > 0 && <RelatedLinks title="Related pages & guides" items={allRelated} variant="rail" />}
 
-      <FaqSection ids={page.faqIds} alt />
+      <FaqSection ids={page.faqIds} className="py-14 lg:py-20" />
 
       <SunflowerCta
         title={`${page.h1.toLowerCase()}?`}

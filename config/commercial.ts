@@ -8,19 +8,19 @@ import type { FeaturePoint } from "@/config/types";
 
 export const trustBand = {
   eyebrow: "Why Cuisine Foods",
-  headline: "The reliable, compliant partner for South Africa's kitchens",
+  headline: "The reliable supply-and-collection partner for South Africa's kitchens",
   differentiator:
-    "One partner for the oil going in and the oil coming out – delivered on time, kitchen after kitchen.",
+    "One partner for the oil going in and the oil coming out – planned around how your kitchen runs.",
   points: [
-    { icon: "truck", title: "On-time, every time", body: "Dependable scheduled delivery so a busy kitchen never runs dry." },
-    { icon: "droplet", title: "Consistent quality", body: "The same clean, pure oil every batch, to strict food-safety standards." },
-    { icon: "banknote", title: "Lower real cost", body: "We buy back your used oil, cutting your true cost per litre." },
-    { icon: "shield-check", title: "Responsibly handled", body: "Compliant used-oil collection with documentation for your records." },
+    { icon: "truck", title: "Reliable scheduled supply", body: "Delivery planned around your kitchen, so you're not caught short mid-service." },
+    { icon: "droplet", title: "Consistent quality", body: "Clean, consistent oil, handled with care from batch to batch." },
+    { icon: "banknote", title: "Lower real cost", body: "We buy back your used oil, which lowers your true cost per litre." },
+    { icon: "shield-check", title: "Responsibly handled", body: "Used-oil collection with collection documentation for your records." },
   ] as FeaturePoint[],
   // Low-risk reassurances shown as a compact row (proactive objection handling).
   reassurances: [
     "No strict minimum – from 20L",
-    "First delivery arranged quickly",
+    "Delivery planned around your operation",
     "No lock-in, no-obligation quote",
   ],
 } as const;
