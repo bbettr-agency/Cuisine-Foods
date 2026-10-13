@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "gold" | "dark" | "onDark" | "outline" | "ghost" | "whatsapp";
+type Variant = "primary" | "gold" | "dark" | "onDark" | "outline" | "outlineInk" | "ghost" | "whatsapp";
 type Size = "md" | "lg";
 
 const base =
@@ -16,6 +16,8 @@ const variants: Record<Variant, string> = {
   // Light outline for use on dark/near-black sections.
   onDark: "border border-paper/30 text-paper hover:bg-white/10",
   outline: "border border-ink/20 text-ink hover:border-ink/40 hover:bg-surface-2",
+  // Premium, clearly-visible secondary on LIGHT backgrounds – subordinate to the gold primary.
+  outlineInk: "border border-ink/30 text-ink hover:border-ink/55 hover:bg-ink/[0.04]",
   ghost: "text-ink hover:bg-surface-2",
   whatsapp: "bg-ink text-paper hover:bg-ink/90 shadow-soft",
 };

@@ -58,7 +58,7 @@ export function FryingHero({
             <motion.p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl" {...rise(0.12)}>{subhead}</motion.p>
             <motion.div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" {...rise(0.2)}>
               <Button href={primaryHref} variant="primary" size="lg">{primaryLabel}</Button>
-              <Button href={whatsappUrl(whatsappPrefill.supply)} variant="whatsapp" size="lg" external>{cta.whatsapp}</Button>
+              <Button href={whatsappUrl(whatsappPrefill.supply)} variant="outlineInk" size="lg" external>{cta.whatsapp}</Button>
               <a href={telUrl} className="inline-flex items-center gap-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink">
                 <Phone className="h-4 w-4 text-gold-500" /> {site.contact.phone.display}
               </a>
