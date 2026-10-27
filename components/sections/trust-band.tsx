@@ -75,7 +75,7 @@ export function TrustBand({
 
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href={`/request-a-quote?intent=${intent}`}>{ctaLabel}</Button>
-              <Button href={whatsappUrl(waMsg)} variant="whatsapp" external>{cta.whatsapp}</Button>
+              <Button href={whatsappUrl(waMsg)} variant="outlineInk" external>{cta.whatsapp}</Button>
             </div>
 
             {/* Progressive: renders only when real certifications are confirmed */}
