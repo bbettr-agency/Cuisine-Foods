@@ -63,7 +63,7 @@ export function BuyerView({ page }: { page: MoneyPage }) {
             <Reveal delay={0.08}>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <Button href={quoteHref} variant="primary" size="lg">{page.primaryCtaLabel}</Button>
-                <Button href={whatsappUrl(whatsappPrefill.supply)} variant="whatsapp" size="lg" external>{cta.whatsapp}</Button>
+                <Button href={whatsappUrl(whatsappPrefill.supply)} variant="outlineInk" size="lg" external>{cta.whatsapp}</Button>
                 <a href={telUrl} className="inline-flex items-center gap-2 text-sm font-medium text-ink-soft hover:text-ink">
                   <Phone className="h-4 w-4 text-brand-600" /> {cta.call}
                 </a>

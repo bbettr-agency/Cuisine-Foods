@@ -140,7 +140,7 @@ export function ProductHero({
               {...rise(0.2)}
             >
               <Button href={primaryHref} variant="primary" size="lg">{primaryLabel}</Button>
-              <Button href={whatsappUrl(waMsg)} variant="whatsapp" size="lg" external>{cta.whatsapp}</Button>
+              <Button href={whatsappUrl(waMsg)} variant="outlineInk" size="lg" external>{cta.whatsapp}</Button>
               <a
                 href={telUrl}
                 className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${dark ? "text-paper/70 hover:text-paper" : "text-ink-soft hover:text-ink"}`}

@@ -17,7 +17,7 @@
   --surface-2: 245 240 231;  /* #F5F0E7 deeper cream (alt sections) */
   --ink: 23 20 15;           /* #17140F warm near-black — headings/text/strong */
   --ink-soft: 74 68 58;      /* #4A443A muted body */
-  --ink-faint: 138 130 116;  /* #8A8274 captions */
+  --ink-faint: 112 104 90;   /* #70685A captions — WCAG AA on paper/surface-2/white (≥4.5:1) */
   --line: 230 224 212;       /* #E6E0D4 warm hairlines */
 
   /* Gold — the logo gold. Muted metallic (not bright yellow / mustard).

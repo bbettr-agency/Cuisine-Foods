@@ -47,7 +47,7 @@ export function PageHero({
           <Reveal delay={0.08}>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Button href={href} variant="primary" size="lg">{primaryLabel}</Button>
-              <Button href={whatsappUrl(waMsg)} variant="whatsapp" size="lg" external>{cta.whatsapp}</Button>
+              <Button href={whatsappUrl(waMsg)} variant="outlineInk" size="lg" external>{cta.whatsapp}</Button>
               <a href={telUrl} className="inline-flex items-center gap-2 text-sm font-medium text-ink-soft hover:text-ink">
                 <Phone className="h-4 w-4 text-brand-600" /> {cta.call}
               </a>
