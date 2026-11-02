@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowDownRight, Check } from "lucide-react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { home } from "@/config/home";
 import { Section } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -15,21 +15,25 @@ import { Reveal, RevealGroup } from "@/components/ui/reveal";
  * oil stream (the same gold-liquid language as the product pages). Creative
  * direction: OIL ITSELF.
  *
- * ONE-WAY FLOW (corrected): the stream has a clear beginning (fresh oil in) and a
- * clear end (recovered for biodiesel). It is deliberately NOT a closed ring —
- * used cooking oil recovered for biodiesel does not become fresh edible oil
- * again, so the stream must never visually reconnect the biodiesel stage back to
- * the fresh-oil stage. The arc is drawn 270° (top → right → bottom → left),
- * leaving the top-left quadrant open, and a subtle outward arrow at the final
- * stage signals that the recovered oil moves onward into the biodiesel supply
- * chain — it exits, it doesn't loop. "One account for both" (supply + collection)
- * is the payoff in the middle. Below, the two commercial pathways are unchanged.
+ * ONE-WAY FLOW: the stream has a clear beginning (fresh oil in) and a clear end
+ * (recovered for biodiesel). It is deliberately NOT a closed ring — used cooking
+ * oil recovered for biodiesel does not become fresh edible oil again, so the
+ * stream must never visually reconnect the biodiesel stage back to the fresh-oil
+ * stage. The arc is drawn 270° (top → right → bottom → left), leaving the
+ * top-left quadrant open, and an outward arrow at the final stage signals that
+ * the recovered oil moves onward into the biodiesel supply chain. "One account
+ * for both" (supply + collection) is the payoff in the middle.
  *
- * Motion is restrained: the stream draws once on scroll (scrubbed, so a fast
- * scroll still lands on the finished arc, never a half-drawn one), the onward
- * arrow settles in at the end, a faint oil-flow drift suggests one-way movement,
- * and labels fade in. Reduced-motion / SSR render the completed arc statically
- * via a mounted-gate. No workflow UI, no timeline, no reset.
+ * MOTION (time-based, scroll-TRIGGERED): the heading, the stage labels and the
+ * centre payoff are present immediately. When the section scrolls into view
+ * (whileInView, once), a short deliberate pause (~0.6s) passes and THEN the gold
+ * line draws smoothly through the four stages — so the visitor actually sees it
+ * travel from the start rather than arriving to a half-finished line. The draw is
+ * a one-shot time animation (not scrubbed to scroll offset), so it always plays
+ * from the beginning at any scroll speed, never requires scrolling backwards, and
+ * adds no extra page height or scroll-jacking. The flowing droplets fade in with
+ * the line; the onward arrow settles in once the line reaches biodiesel. Reduced-
+ * motion / SSR render the completed one-way pathway immediately, no animation.
  */
 
 // The four stages placed along the open arc (percentages of the 900 × 520 SVG
@@ -47,11 +51,19 @@ const STAGES: { label: string; x: number; y: number; side: "up" | "right" | "dow
 // intentionally left undrawn so the flow never returns to its start.
 const FLOW_PATH = "M 450 75 A 330 175 0 0 1 780 250 A 330 175 0 0 1 450 425 A 330 175 0 0 1 120 250";
 
-// A short tangential wisp that continues PAST the final stage and exits outward
-// (left / slightly down — away from the fresh-oil stage), with an arrowhead:
+// A short tangential shaft + filled arrowhead that continues PAST the final stage
+// and exits outward (left / slightly down — away from the fresh-oil stage):
 // "onward into the biodiesel supply chain", not back round.
-const ONWARD_SHAFT = "M 120 250 L 46 263";
-const ONWARD_HEAD = "M 57 267 L 46 263 L 55 256";
+const ONWARD_SHAFT = "M 120 250 L 56 261";
+const ONWARD_HEAD = "40,264 57,267 55,255";
+
+// Draw timing: a short deliberate pause so the labels register first, then a
+// smooth travel through the four stages. The droplets join the line; the onward
+// arrow settles once the line has reached biodiesel.
+const EASE = [0.65, 0, 0.35, 1] as const;
+const streamV = { hidden: { pathLength: 0 }, shown: { pathLength: 1, transition: { delay: 0.6, duration: 1.8, ease: EASE } } };
+const dropletsV = { hidden: { opacity: 0 }, shown: { opacity: 1, transition: { delay: 0.7, duration: 1.2, ease: "easeOut" } } };
+const onwardV = { hidden: { opacity: 0 }, shown: { opacity: 1, transition: { delay: 2.4, duration: 0.45, ease: "easeOut" } } };
 
 export function ClosedLoop() {
   const { offersHeading, offers } = home;
@@ -59,20 +71,16 @@ export function ClosedLoop() {
   const reduce = useReducedMotion();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+  // Only animate on a mounted, motion-allowed client; otherwise render the
+  // completed one-way pathway statically (SSR / no-JS / reduced motion).
   const live = mounted && !reduce;
-
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.85", "center center"] });
-  const draw = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
-  const labelsO = useTransform(scrollYProgress, [0.4, 0.85], [0, 1]);
-  const exitO = useTransform(scrollYProgress, [0.72, 0.92], [0, 1]);
 
   return (
     <Section className="relative border-t border-line">
       <SectionHeading eyebrow={offersHeading.eyebrow} title={offersHeading.title} intro={offersHeading.body} align="center" />
 
       {/* ---- The one-way oil stream ---- */}
-      <div ref={ref} className="relative mx-auto mt-14 max-w-[760px]">
+      <div className="relative mx-auto mt-14 max-w-[760px]">
         {/* Desktop: the gold oil stream (needs room for the labels around it) */}
         <div className="relative hidden lg:block" style={{ aspectRatio: "900 / 520" }}>
           <svg viewBox="0 0 900 520" fill="none" className="absolute inset-0 h-full w-full overflow-visible" aria-hidden>
@@ -83,43 +91,42 @@ export function ClosedLoop() {
                 <stop offset="1" stopColor="rgb(var(--gold-600))" />
               </linearGradient>
             </defs>
-            {/* faint open arc behind (so the composition reads intentionally open, never broken) */}
+            {/* faint open arc behind — always visible, so the composition reads intentionally open during the pause */}
             <path d={FLOW_PATH} stroke="rgb(var(--gold-500))" strokeOpacity={0.14} strokeWidth={2} />
-            {/* the drawn oil stream */}
-            <motion.path
-              d={FLOW_PATH}
-              stroke="url(#loop-gold)"
-              strokeWidth={2.5}
-              strokeLinecap="round"
-              style={live ? { pathLength: draw } : { pathLength: 1 }}
-            />
-            {/* flowing oil droplets along the stream (one-way) */}
-            <path d={FLOW_PATH} className="oil-flow" stroke="rgb(var(--gold-300))" strokeOpacity={0.9} strokeWidth={3.5} />
-            {/* onward wisp + arrowhead: the recovered oil exits toward the biodiesel supply chain */}
-            <motion.g
-              stroke="rgb(var(--gold-600))"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={live ? { opacity: exitO } : { opacity: 1 }}
-            >
-              <path d={ONWARD_SHAFT} />
-              <path d={ONWARD_HEAD} fill="none" />
-            </motion.g>
+
+            {live ? (
+              // Scroll-triggered, time-based draw: pause, then travel through the four stages.
+              <motion.g initial="hidden" whileInView="shown" viewport={{ once: true, amount: 0.4 }}>
+                <motion.path d={FLOW_PATH} stroke="url(#loop-gold)" strokeWidth={2.5} strokeLinecap="round" variants={streamV} />
+                <motion.path d={FLOW_PATH} className="oil-flow" stroke="rgb(var(--gold-300))" strokeOpacity={0.9} strokeWidth={3.5} variants={dropletsV} />
+                <motion.g variants={onwardV}>
+                  <path d={ONWARD_SHAFT} stroke="rgb(var(--gold-600))" strokeWidth={2.5} strokeLinecap="round" />
+                  <polygon points={ONWARD_HEAD} fill="rgb(var(--gold-600))" />
+                </motion.g>
+              </motion.g>
+            ) : (
+              // Static completed pathway (SSR / no-JS / reduced motion).
+              <g>
+                <path d={FLOW_PATH} stroke="url(#loop-gold)" strokeWidth={2.5} strokeLinecap="round" />
+                <path d={FLOW_PATH} className="oil-flow" stroke="rgb(var(--gold-300))" strokeOpacity={0.9} strokeWidth={3.5} />
+                <path d={ONWARD_SHAFT} stroke="rgb(var(--gold-600))" strokeWidth={2.5} strokeLinecap="round" />
+                <polygon points={ONWARD_HEAD} fill="rgb(var(--gold-600))" />
+              </g>
+            )}
           </svg>
 
-          {/* center payoff */}
+          {/* center payoff (present immediately) */}
           <div className="absolute left-1/2 top-1/2 w-[46%] -translate-x-1/2 -translate-y-1/2 text-center">
             <p className="font-display text-2xl font-bold leading-tight text-ink">One account for both</p>
             <p className="mt-1.5 text-sm leading-snug text-ink-soft">the oil going in, and the oil coming out</p>
           </div>
 
-          {/* stage labels on the stream */}
+          {/* stage labels on the stream (present immediately during the pause) */}
           {STAGES.map((s) => (
-            <motion.div
+            <div
               key={s.label}
               className="absolute -translate-x-1/2 -translate-y-1/2"
-              style={{ left: `${s.x}%`, top: `${s.y}%`, ...(live ? { opacity: labelsO } : undefined) }}
+              style={{ left: `${s.x}%`, top: `${s.y}%` }}
             >
               <span className="relative flex items-center justify-center">
                 <span className="h-3 w-3 rounded-full bg-gold-500 ring-4 ring-paper" />
@@ -138,11 +145,11 @@ export function ClosedLoop() {
                 {s.label}
                 {s.onward && (
                   <span className="mt-1 flex items-center justify-end gap-1 text-[11px] font-medium text-ink-faint">
-                    onward to the biodiesel supply chain <ArrowDownRight className="h-3 w-3 shrink-0" aria-hidden />
+                    Onward into the biodiesel supply chain <ArrowDownRight className="h-3 w-3 shrink-0" aria-hidden />
                   </span>
                 )}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -158,7 +165,7 @@ export function ClosedLoop() {
             <span className="absolute -left-[41px] top-0 flex h-5 w-5 items-center justify-center rounded-full bg-gold-500/15" aria-hidden>
               <ArrowDownRight className="h-3 w-3 text-gold-700" />
             </span>
-            <span className="text-sm font-medium text-ink-soft">onward into the biodiesel supply chain</span>
+            <span className="text-sm font-medium text-ink-soft">Onward into the biodiesel supply chain</span>
           </li>
         </ol>
       </div>
