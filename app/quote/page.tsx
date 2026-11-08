@@ -178,7 +178,7 @@ export default function QuotePage() {
             <h2 className="mt-2 font-display text-3xl font-extrabold text-ink">A few quick questions. One real quote.</h2>
             <p className="mx-auto mt-3 max-w-xl text-ink-soft">A regional rep will call you with pricing for your volume and delivery area — usually within one business day.</p>
           </div>
-          <div className="mt-8 overflow-hidden rounded-[25px] bg-surface shadow-soft">
+          <div className="mt-8">
             <GhlQuoteEmbed />
           </div>
         </div>
