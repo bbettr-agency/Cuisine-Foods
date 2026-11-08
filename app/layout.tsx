@@ -10,6 +10,7 @@ import { Header } from "@/components/funnel/header";
 import { Footer } from "@/components/funnel/footer";
 import { FloatingWhatsApp } from "@/components/funnel/floating-whatsapp";
 import { StickyMobileCTA } from "@/components/funnel/sticky-mobile-cta";
+import { ChromeGate } from "@/components/funnel/chrome-gate";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap", weight: ["600", "700", "800"] });
@@ -48,11 +49,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-700 focus:px-4 focus:py-2 focus:text-paper">
           Skip to content
         </a>
-        <Header />
-        <main id="main" className="pb-16 lg:pb-0">{children}</main>
-        <Footer />
-        <FloatingWhatsApp />
-        <StickyMobileCTA />
+        <ChromeGate
+          header={<Header />}
+          footer={<Footer />}
+          floating={<FloatingWhatsApp />}
+          sticky={<StickyMobileCTA />}
+        >
+          {children}
+        </ChromeGate>
       </body>
     </html>
   );
