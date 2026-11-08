@@ -4,7 +4,7 @@ import { site } from "@/config/site";
 import { telUrl, whatsappUrl, whatsappPrefill } from "@/config/conversion";
 import { PlaceholderImage } from "@/components/ui/placeholder-image";
 import { GhlQuoteEmbed } from "@/components/funnel/ghl-quote-embed";
-import { StickyQuoteCta } from "@/components/funnel/sticky-quote-cta";
+import { FunnelHeader } from "@/components/funnel/funnel-header";
 
 /**
  * /quote — PAID-ADS landing page (Meta Ads & other paid traffic). Unlisted:
@@ -61,6 +61,8 @@ const FAQS = [
 export default function QuotePage() {
   return (
     <div className="bg-paper text-ink">
+      <FunnelHeader />
+
       {/* ---- Hero ---- */}
       <section className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ background: "radial-gradient(60% 55% at 15% 0%, rgb(var(--gold-100) / 0.8) 0%, transparent 60%)" }} />
@@ -169,7 +171,7 @@ export default function QuotePage() {
       </section>
 
       {/* ---- The form ---- */}
-      <section id="quote-form" className="scroll-mt-4 border-t border-line bg-surface-2/50">
+      <section id="quote-form" className="scroll-mt-20 border-t border-line bg-surface-2/50">
         <div className="mx-auto w-full max-w-3xl px-5 py-12 sm:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-wide text-gold-700">Get your custom quote</p>
@@ -215,9 +217,6 @@ export default function QuotePage() {
         </div>
       </section>
 
-      {/* extra space so the mobile sticky CTA never overlaps the last content */}
-      <div className="h-20 lg:hidden" aria-hidden />
-      <StickyQuoteCta />
     </div>
   );
 }
