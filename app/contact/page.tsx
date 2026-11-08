@@ -10,7 +10,7 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
-import { LeadForm } from "@/components/funnel/lead-form";
+import { ContactForm } from "@/components/funnel/contact-form";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Cuisine Foods | Gauteng & Western Cape",
@@ -47,10 +47,10 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Quote form */}
+          {/* Contact form */}
           <Reveal>
-            <div id="quote">
-              <LeadForm defaultIntent="supply" />
+            <div id="contact-form">
+              <ContactForm />
             </div>
           </Reveal>
         </div>

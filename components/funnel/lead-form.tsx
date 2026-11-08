@@ -52,6 +52,7 @@ export function LeadForm({ defaultIntent = "supply", topic, region }: { defaultI
     topic: topic ?? "",
     message: topicLabel ? `Enquiry about: ${topicLabel}.` : "",
     consent: false,
+    website: "", // honeypot – must stay empty
   });
 
   const set = (k: string, v: string | boolean) => setForm((f) => ({ ...f, [k]: v }));
@@ -84,6 +85,12 @@ export function LeadForm({ defaultIntent = "supply", topic, region }: { defaultI
 
   return (
     <form onSubmit={submit} className="card p-6 shadow-soft sm:p-8" noValidate>
+      {/* Honeypot – hidden from users; bots that fill it are dropped server-side */}
+      <div aria-hidden className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden" tabIndex={-1}>
+        <label htmlFor="website">Leave this field empty</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => set("website", e.target.value)} />
+      </div>
+
       {/* Intent fork */}
       <fieldset className="mb-6">
         <legend className={labelCls}>What can we help with?</legend>
