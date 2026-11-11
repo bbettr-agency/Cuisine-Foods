@@ -23,9 +23,12 @@ export function ChromeGate({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const bare =
-    pathname === "/quote" || pathname?.startsWith("/quote/") ||
-    pathname === "/collect" || pathname?.startsWith("/collect/");
+  // Paid-ads funnels are distraction-free: no site chrome at all.
+  const bare = pathname === "/quote" || pathname?.startsWith("/quote/");
+  // Form-centric pages render full chrome, but we drop the global sticky
+  // Call/WhatsApp bar so it never overlaps the embedded enquiry form's lower
+  // fields or submit button. The floating WhatsApp button (corner) stays.
+  const hideSticky = pathname === "/contact" || pathname === "/request-a-quote";
 
   if (bare) {
     return <main id="main">{children}</main>;
@@ -34,12 +37,12 @@ export function ChromeGate({
   return (
     <>
       {header}
-      <main id="main" className="pb-16 lg:pb-0">
+      <main id="main" className={hideSticky ? "" : "pb-16 lg:pb-0"}>
         {children}
       </main>
       {footer}
       {floating}
-      {sticky}
+      {!hideSticky && sticky}
     </>
   );
 }

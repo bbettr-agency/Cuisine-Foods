@@ -10,7 +10,7 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
-import { ContactForm } from "@/components/funnel/contact-form";
+import { GhlFormPanel } from "@/components/funnel/ghl-form-panel";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Cuisine Foods | Gauteng & Western Cape",
@@ -47,10 +47,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Contact form */}
+          {/* Enquiry form (official GHL embed) */}
           <Reveal>
             <div id="contact-form">
-              <ContactForm />
+              <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">Request a quote or send a message</h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">Prefer to type it out? Fill this in and a regional rep will come back quickly – usually within one business day.</p>
+              <GhlFormPanel className="mt-6 lg:mx-0" />
             </div>
           </Reveal>
         </div>

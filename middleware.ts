@@ -11,12 +11,9 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const isCanonical = host === "cuisinefoods.co.za" || host === "www.cuisinefoods.co.za";
   const path = request.nextUrl.pathname;
-  // The /quote and /collect ads funnels must never be indexed on ANY host (they
-  // are unlisted, paid-traffic only). Everything else: only non-canonical hosts
-  // are noindexed.
-  const isAdFunnel =
-    path === "/quote" || path.startsWith("/quote/") ||
-    path === "/collect" || path.startsWith("/collect/");
+  // The /quote ads funnel must never be indexed on ANY host (it is unlisted,
+  // paid-traffic only). Everything else: only non-canonical hosts are noindexed.
+  const isAdFunnel = path === "/quote" || path.startsWith("/quote/");
   const response = NextResponse.next();
   if (!isCanonical || isAdFunnel) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow");

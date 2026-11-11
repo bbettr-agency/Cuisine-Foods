@@ -6,9 +6,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Container, Section } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal } from "@/components/ui/reveal";
-import { LeadForm } from "@/components/funnel/lead-form";
+import { GhlFormPanel } from "@/components/funnel/ghl-form-panel";
 
 export const metadata: Metadata = buildMetadata({
   title: "Request a Quote | Bulk Oil or UCO Collection | Cuisine Foods",
@@ -23,34 +21,51 @@ const reasons = [
   "Nationwide, from our regional hubs",
 ];
 
-export default function QuotePage({ searchParams }: { searchParams: { intent?: string; topic?: string; region?: string } }) {
+const copy = {
+  supply: {
+    eyebrow: "Request a quote",
+    title: "Get your bulk oil quote",
+    intro:
+      "Tell us a little about your kitchen and a regional rep will come back with pricing for your volume and delivery area – usually within one business day.",
+  },
+  uco: {
+    eyebrow: "Arrange a collection",
+    title: "Arrange your used-oil collection",
+    intro:
+      "Tell us a little about your site and we'll arrange a used cooking oil collection from your nearest regional hub.",
+  },
+} as const;
+
+export default function QuotePage({ searchParams }: { searchParams: { intent?: string } }) {
   const intent: CtaIntent = searchParams.intent === "uco" ? "uco" : "supply";
-  const topic = typeof searchParams.topic === "string" ? searchParams.topic : undefined;
-  const region = typeof searchParams.region === "string" ? searchParams.region : undefined;
+  const c = copy[intent];
   const crumbs = [{ name: "Home", path: "/" }, { name: "Request a Quote", path: "/request-a-quote" }];
   return (
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <Container className="pt-10 lg:pt-16"><Breadcrumbs items={crumbs} /></Container>
       <Section className="pt-4">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-          <div>
-            <SectionHeading
-              eyebrow="Request a quote"
-              title={intent === "uco" ? "Arrange your used-oil collection" : "Get your bulk oil quote"}
-              intro="Tell us a little about your kitchen and we'll come back quickly with pricing and next steps."
-              as="h1"
-            />
-            <ul className="mt-8 space-y-3">
-              {reasons.map((r) => (
-                <li key={r} className="flex items-start gap-3 text-ink"><Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" /> {r}</li>
-              ))}
-            </ul>
-          </div>
-          <Reveal>
-            <LeadForm defaultIntent={intent} topic={topic} region={region} />
-          </Reveal>
+        {/* Intent-aware header */}
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-wide text-gold-700">{c.eyebrow}</p>
+          <h1 className="mt-2 font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">{c.title}</h1>
+          <p className="mx-auto mt-4 max-w-xl text-ink-soft">{c.intro}</p>
         </div>
+
+        {/* Reassurance points */}
+        <ul className="mx-auto mt-8 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-2">
+          {reasons.map((r) => (
+            <li key={r} className="flex items-start gap-2.5 text-sm text-ink">
+              <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" /> {r}
+            </li>
+          ))}
+        </ul>
+
+        {/* Official GHL enquiry form */}
+        <GhlFormPanel
+          className="mt-10 sm:mt-12"
+          reassurance="No obligation. Your details are only used to prepare your quote."
+        />
       </Section>
     </>
   );
