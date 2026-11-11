@@ -37,7 +37,8 @@ export function SoyaTheatre({ states }: { states: SoyaState[] }) {
         {live ? <SoyaPinned states={states} /> : <SoyaStatic states={states} />}
       </div>
       <div className="lg:hidden">
-        {live ? <SoyaMobile states={states} /> : <SoyaStatic states={states} mobile />}
+        {/* Mobile: always the readable static layout — text stays legible (no scroll-pinned fade). */}
+        <SoyaStatic states={states} mobile />
       </div>
     </section>
   );

@@ -75,6 +75,41 @@ export function UcoPillarView({ pillar }: { pillar: Pillar }) {
         </div>
       </Section>
 
+      {/* Educational trust section — why responsible collection matters (eNCA Checkpoint context). Accurate, no endorsement/branding. */}
+      <Section className="border-t border-line">
+        <div className="mx-auto max-w-prose">
+          <Reveal>
+            <p className="eyebrow mb-3">Why it matters</p>
+            <h2 className="text-h2 text-ink">Why responsible used cooking oil collection matters</h2>
+            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+              Used cooking oil should never find its way back into the food chain. When spent fryer oil is dumped, sold
+              informally or repurposed, it can end up in products that people – sometimes children – eat, which is a real
+              food-safety risk.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+              In October 2026, an eNCA <em>Checkpoint</em> investigation raised concerns that a product sold to the public
+              appeared to be made from discarded fryer residue – a reminder of why used oil needs to be collected,
+              documented and kept out of the food chain.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+              That is the point of responsible collection. The used oil we collect is documented and directed into the
+              recovery supply chain for biodiesel – not returned to kitchens or the food chain.
+            </p>
+            <a
+              href="https://www.enca.com/shows/checkpoint-lalaza-ii-11-october-2026"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 transition-all hover:gap-2 hover:text-brand-800"
+            >
+              Watch the eNCA Checkpoint report <ArrowUpRight className="h-4 w-4" />
+            </a>
+            <p className="mt-4 text-xs leading-relaxed text-ink-faint">
+              Linked for context only. The eNCA report is independent journalism; it does not reference or endorse Cuisine Foods.
+            </p>
+          </Reveal>
+        </div>
+      </Section>
+
       {/* Commercial depth — plain answers that route into the cluster */}
       {pillar.depth && pillar.depth.length > 0 && (
         <Section>

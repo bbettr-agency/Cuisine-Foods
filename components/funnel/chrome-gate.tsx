@@ -23,7 +23,9 @@ export function ChromeGate({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const bare = pathname === "/quote" || pathname?.startsWith("/quote/");
+  const bare =
+    pathname === "/quote" || pathname?.startsWith("/quote/") ||
+    pathname === "/collect" || pathname?.startsWith("/collect/");
 
   if (bare) {
     return <main id="main">{children}</main>;

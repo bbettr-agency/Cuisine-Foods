@@ -4,20 +4,27 @@ import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 /**
- * StickyQuoteCta — a mobile-only sticky "Get my quote" bar for the ads funnel.
- * It hides itself while the embedded form is on screen, so it never covers the
- * form or its controls, and reappears once the visitor scrolls past it.
+ * StickyQuoteCta — a mobile-only sticky CTA bar for an ads funnel (/quote,
+ * /collect). It hides itself while the embedded form is on screen, so it never
+ * covers the form or its controls, and reappears once the visitor scrolls past
+ * it. Defaults to the quote funnel. Respects the iPhone safe-area inset.
  */
-export function StickyQuoteCta() {
+export function StickyQuoteCta({
+  label = "Get my quote",
+  targetId = "quote-form",
+}: {
+  label?: string;
+  targetId?: string;
+} = {}) {
   const [atForm, setAtForm] = useState(false);
 
   useEffect(() => {
-    const el = document.getElementById("quote-form");
+    const el = document.getElementById(targetId);
     if (!el) return;
     const io = new IntersectionObserver(([entry]) => setAtForm(entry.isIntersecting), { threshold: 0.03 });
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [targetId]);
 
   return (
     <div
@@ -26,10 +33,10 @@ export function StickyQuoteCta() {
       }`}
     >
       <a
-        href="#quote-form"
+        href={`#${targetId}`}
         className="flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full bg-gold-500 text-base font-semibold text-ink shadow-lift transition-colors hover:bg-gold-600"
       >
-        Get my quote <ArrowRight className="h-4 w-4" />
+        {label} <ArrowRight className="h-4 w-4" />
       </a>
     </div>
   );

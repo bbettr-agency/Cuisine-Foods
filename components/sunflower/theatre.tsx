@@ -50,7 +50,8 @@ export function SunflowerTheatre({ states }: { states: TheatreState[] }) {
         {live ? <TheatrePinned states={states} /> : <TheatreStatic states={states} />}
       </div>
       <div className="lg:hidden">
-        {live ? <MobileTheatre states={states} /> : <TheatreStatic states={states} mobile />}
+        {/* Mobile: always the readable static layout — text stays legible (no scroll-pinned fade). */}
+        <TheatreStatic states={states} mobile />
       </div>
     </section>
   );
