@@ -25,7 +25,7 @@ export default function ContactPage() {
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <Container className="pt-10 lg:pt-16"><Breadcrumbs items={crumbs} /></Container>
       <Section className="pt-4">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mx-auto max-w-3xl">
           {/* Contact details */}
           <div>
             <SectionHeading eyebrow="Contact" title="Let's talk oil – in and out" intro="Bulk supply or used-oil collection, we'll come back quickly. WhatsApp is usually fastest." as="h1" />
@@ -47,9 +47,9 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Quote form */}
+          {/* Quote form – full-width block (same width as the /quote funnel) so the GHL form lays out two fields per row. */}
           <Reveal>
-            <div id="quote">
+            <div id="quote" className="mt-12">
               <GhlQuoteEmbed />
             </div>
           </Reveal>

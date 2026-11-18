@@ -31,22 +31,23 @@ export default function QuotePage({ searchParams }: { searchParams: { intent?: s
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <Container className="pt-10 lg:pt-16"><Breadcrumbs items={crumbs} /></Container>
       <Section className="pt-4">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-          <div>
-            <SectionHeading
-              eyebrow="Request a quote"
-              title={intent === "uco" ? "Arrange your used-oil collection" : "Get your bulk oil quote"}
-              intro="Tell us a little about your kitchen and we'll come back quickly with pricing and next steps."
-              as="h1"
-            />
-            <ul className="mt-8 space-y-3">
-              {reasons.map((r) => (
-                <li key={r} className="flex items-start gap-3 text-ink"><Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" /> {r}</li>
-              ))}
-            </ul>
-          </div>
+        <div className="mx-auto max-w-3xl">
+          <SectionHeading
+            eyebrow="Request a quote"
+            title={intent === "uco" ? "Arrange your used-oil collection" : "Get your bulk oil quote"}
+            intro="Tell us a little about your kitchen and we'll come back quickly with pricing and next steps."
+            as="h1"
+          />
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            {reasons.map((r) => (
+              <li key={r} className="flex items-start gap-3 text-ink"><Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" /> {r}</li>
+            ))}
+          </ul>
+          {/* Full-width block (same width as the /quote funnel) so the GHL form lays out two fields per row. */}
           <Reveal>
-            <GhlQuoteEmbed />
+            <div id="quote" className="mt-10">
+              <GhlQuoteEmbed />
+            </div>
           </Reveal>
         </div>
       </Section>
