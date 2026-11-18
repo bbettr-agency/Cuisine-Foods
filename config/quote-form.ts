@@ -37,7 +37,7 @@ export const quoteFormCopy = {
   },
   failure: {
     title: "We couldn't send your request.",
-    body: "Nothing was submitted. Please try again, or reach our team directly.",
+    body: "Nothing was submitted. Please use our standard form, or reach our team directly.",
     notConnected: "Our online form isn't connected yet. Nothing was submitted – please reach our team directly.",
   },
 } as const;

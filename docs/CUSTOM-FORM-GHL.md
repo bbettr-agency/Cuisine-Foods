@@ -11,7 +11,7 @@ as the fallback and is not modified.
 
 | # | Item | Exact value |
 |---|---|---|
-| 1 | New tag | `cuisine-custom-form-submitted` |
+| 1 | New tag – **created** (ID `ehaX4cL4kyPhX2dLwNfT`) | `cuisine-custom-form-submitted` |
 | 2 | New contact custom field | Name **Estimated used oil per month**, type **Dropdown (Single)** – one estimate per enquiry; the server sends it as a plain value. Options, exactly: `Less than 20 L`, `20–50 L`, `51–100 L`, `101–200 L`, `201–500 L`, `More than 500 L`, `Not sure` (the dashes are en dashes). |
 | 3 | Additional workflow trigger | **Contact Tag → Tag Added → `cuisine-custom-form-submitted`**, added *next to* the existing Form Submitted trigger. No action, filter or setting downstream is changed. |
 | 4 | Private Integration token | Runtime scopes: View Contacts, Edit Contacts. Nothing else. (Creating items 1–2 through the API would additionally need Edit Tags and Edit Custom Fields; creating them by hand needs no token change.) |
@@ -51,20 +51,22 @@ re-runs the workflow – which could open a second opportunity or re-assign a re
 the two settings in §2 (3) and (4). Those are unverified, so the form does the conservative thing:
 
 - **New contact** (email and phone both unknown to GHL): contact saved, tag applied once.
-- **Existing contact**: fields and tags are left untouched. The new enquiry is added as a
-  **task** on the contact ("Repeat website enquiry – …", due in 24 hours, assigned to the
-  contact's owner when there is one) with the answers in the task body.
+- **Existing contact**: handling is **disabled**. Nothing is written to GHL – no field, tag,
+  note or task. The visitor gets the same generic "we couldn't send your request" message
+  used for any failure; the buy funnel offers the official GHL form on the spot, the collect
+  funnel shows WhatsApp and phone. The official form then behaves exactly as it does today.
 
-The visitor sees the same thank-you in both cases, so the form does not reveal whether an
-email or phone number is already on file. (Response time can still differ slightly.)
+No message says whether a contact exists. Limit of this interim approach: a new contact
+succeeds and an existing one does not, so someone probing with known details could still
+infer it. Closing that fully needs an approved way to accept repeat enquiries.
 
-Consequence to accept or change: a returning contact does NOT re-run the lead workflow – the
-rep is alerted by the task instead. Alternatives once §2 (3) and (4) are known:
+Candidates to test before choosing (none is enabled):
 
-| Option | Behaviour | Use when |
+| Option | Behaviour | Needs verifying first |
 |---|---|---|
-| A (current) | Task on the existing contact, nothing else changed | Until verified, or permanently |
+| A (current) | Existing contacts are sent to the official form | – |
 | B | Update the contact, remove + re-apply the tag | Re-entry is on AND the opportunity action does not allow duplicates |
+| C | Leave the contact unchanged, add a task for its owner | Task API permission; how reps are notified of tasks |
 
 ## 4. Meta Pixel (prepared, off)
 
@@ -95,15 +97,15 @@ optional `NEXT_PUBLIC_META_PIXEL_ENABLED`. Without `GHL_API_TOKEN` the form refu
 2. Control: one internal test lead through the official form; record fields, tags, workflow
    history, owner, opportunity (pipeline + stage), notifications.
 3. Custom form, new internal identity: compare with the control item by item.
-4. Same identity again: expect the same thank-you, ONE new task on the contact, no change to its
-   fields, tags, workflow history or opportunities.
+4. Same identity again: expect the generic failure message and the offer of the official
+   form, and NO change at all in GHL.
 5. One test each for Gauteng, Western Cape and North-West routing.
 6. One used-oil test: new field populated, routing as expected.
 7. Wrong token on Preview: form reports failure, nothing saved.
 8. Delete test contacts and opportunities.
 
-Never yet exercised against the live API: the contact save, the custom-field write format, the
-tag call and the task call. Steps 3 and 4 are the first time they run.
+Never yet exercised against the live API: the contact save, the custom-field write format and
+the tag call. Step 3 is the first time they run.
 
 ## 8. Known differences from the official form
 
