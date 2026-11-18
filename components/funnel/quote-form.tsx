@@ -26,7 +26,7 @@ const inputCls =
   "w-full min-h-[52px] rounded-xl border border-line bg-surface px-4 text-base text-ink outline-none transition-colors placeholder:text-ink-faint focus:border-gold-600 focus:ring-2 focus:ring-gold-500/30 aria-[invalid=true]:border-red-600";
 const labelCls = "block text-sm font-semibold text-ink";
 
-type Status = "idle" | "sending" | "done" | "error" | "not_connected" | "use_standard";
+type Status = "idle" | "sending" | "done" | "error" | "not_connected";
 
 export function QuoteForm({ service, onUseStandardForm }: { service: QuoteService; onUseStandardForm?: () => void }) {
   const uid = useId();
@@ -124,7 +124,7 @@ export function QuoteForm({ service, onUseStandardForm }: { service: QuoteServic
         setStep(firstBad >= 0 ? firstBad : 0);
         setStatus("idle");
       } else {
-        setStatus(data.code === "not_configured" ? "not_connected" : data.code === "use_standard_form" ? "use_standard" : "error");
+        setStatus(data.code === "not_configured" ? "not_connected" : "error");
       }
     } catch {
       setStatus("error");
@@ -146,7 +146,7 @@ export function QuoteForm({ service, onUseStandardForm }: { service: QuoteServic
     );
   }
 
-  const failed = status === "error" || status === "not_connected" || status === "use_standard";
+  const failed = status === "error" || status === "not_connected";
 
   return (
     <div ref={topRef} tabIndex={-1} className={cn(card, "outline-none")}>
@@ -232,7 +232,7 @@ export function QuoteForm({ service, onUseStandardForm }: { service: QuoteServic
         {failed && (
           <div role="alert" className="mt-6 rounded-2xl border border-red-700/30 bg-red-50 p-4 text-sm text-ink">
             <p className="font-semibold">{copy.failure.title}</p>
-            <p className="mt-1 text-ink-soft">{status === "not_connected" ? copy.failure.notConnected : status === "use_standard" ? copy.failure.useStandard : copy.failure.body}</p>
+            <p className="mt-1 text-ink-soft">{status === "not_connected" ? copy.failure.notConnected : copy.failure.body}</p>
             <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 font-semibold">
               <a href={whatsappUrl(whatsappPrefill[service === "collect" ? "uco" : "supply"])} target="_blank" rel="noopener noreferrer" className="underline decoration-gold-500 decoration-2 underline-offset-4">WhatsApp us</a>
               <a href={telUrl} className="inline-flex items-center gap-1.5 underline decoration-gold-500 decoration-2 underline-offset-4"><Phone className="h-4 w-4" /> {site.contact.phone.display}</a>

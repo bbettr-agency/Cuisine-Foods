@@ -93,18 +93,20 @@ export function validate(p: QuotePayload): QuoteErrors {
 }
 
 /**
- * Maps a validated payload onto the EXISTING GHL custom fields (multi-select
- * type, so every value is sent as a one-item list). `ucoVolumeFieldId` is the
- * new collection field's ID, once it exists.
+ * Maps a validated payload onto the GHL custom fields. The EXISTING fields are
+ * multi-select type, so their value is sent as a one-item list. The new used-oil
+ * field (`ucoVolumeFieldId`, once it exists) is a single dropdown: a plain string.
  */
-export function toGhlCustomFields(p: QuotePayload, ucoVolumeFieldId?: string): { id: string; field_value: string[] }[] {
-  const out: { id: string; field_value: string[] }[] = [
+export type GhlFieldValue = { id: string; field_value: string | string[] };
+
+export function toGhlCustomFields(p: QuotePayload, ucoVolumeFieldId?: string): GhlFieldValue[] {
+  const out: GhlFieldValue[] = [
     { id: ghlFields.businessType.id, field_value: [p.businessType] },
     { id: ghlFields.oilType.id, field_value: [p.oilType] },
     { id: ghlFields.province.id, field_value: [p.province] },
   ];
   if (p.service === "collect") {
-    if (ucoVolumeFieldId) out.push({ id: ucoVolumeFieldId, field_value: [p.volume] });
+    if (ucoVolumeFieldId) out.push({ id: ucoVolumeFieldId, field_value: p.volume });
   } else {
     out.push({ id: ghlFields.volume.id, field_value: [p.volume] });
   }

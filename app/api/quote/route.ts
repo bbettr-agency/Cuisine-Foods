@@ -1,25 +1,29 @@
 import { NextResponse } from "next/server";
 import { GHL_LOCATION_ID } from "@/config/ghl-fields";
 import { ATTRIBUTION_KEYS, DEFAULT_TRIGGER_TAG } from "@/config/quote-form";
-import { normalisePhone, parsePayload, toGhlCustomFields, validate } from "@/lib/quote-validate";
+import { normalisePhone, parsePayload, toGhlCustomFields, validate, type QuotePayload } from "@/lib/quote-validate";
 
 /**
  * POST /api/quote — the custom multi-step form's server side.
  *
- * NEW contacts only (for now): it first asks GHL whether the email or phone
- * already belongs to a contact. If not, it saves the enquiry with the Contacts
- * API and applies the trigger tag that starts the existing lead workflow. It
- * creates NO opportunity itself – the workflow does, as it does for the official form.
+ * It first asks GHL whether the email or phone already belongs to a contact.
  *
- * RETURNING contacts are deliberately NOT written and NOT re-tagged: how the
- * existing workflow re-enters and whether it would open a second opportunity is
- * unverified. They get code "use_standard_form" and are handed to the official
- * GHL form, which behaves exactly as it does today. (See docs/CUSTOM-FORM-GHL.md.)
+ *  - NEW contact: saved with the Contacts API, then the trigger tag is applied,
+ *    which starts the existing lead workflow. No opportunity is created here –
+ *    the workflow does that, as it does for the official form.
+ *  - RETURNING contact: the contact's fields and tags are left exactly as they
+ *    are (how the workflow re-enters, and whether it would open a second
+ *    opportunity, is unverified). The new enquiry is recorded as a TASK on the
+ *    contact for its assigned rep, so it is never lost.
+ *
+ * Both cases answer the browser identically (ok:true), so the form never
+ * reveals whether an email or phone number is already known. See
+ * docs/CUSTOM-FORM-GHL.md.
  *
  * Rules this route keeps:
  *  - The API token lives only in server environment variables (GHL_API_TOKEN).
  *  - It answers ok:true ONLY when the contact was saved AND the tag was applied.
- *  - It never removes or re-applies a tag on an existing contact.
+ *  - It never changes the fields or tags of an existing contact.
  *  - It never logs customer details – only step names and HTTP status codes.
  *  - Without a token (previews, before go-live) it refuses honestly (503).
  */
@@ -32,18 +36,33 @@ const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
 const hits = new Map<string, number[]>(); // best-effort, per server instance
 
+type Found = { id: string; assignedTo?: string };
+
 /** GHL matches duplicates on email, then phone – so we look up both. null = lookup failed. */
-async function contactExists(token: string, email: string, phone: string): Promise<boolean | null> {
+async function findContact(token: string, email: string, phone: string): Promise<Found | false | null> {
   for (const query of [`email=${encodeURIComponent(email)}`, `number=${encodeURIComponent(phone)}`]) {
     const res = await ghl(token, "GET", `/contacts/search/duplicate?locationId=${GHL_LOCATION_ID}&${query}`);
     if (!res.ok) {
       console.error("[quote] duplicate lookup failed", res.status);
       return null;
     }
-    const data = (await res.json()) as { contact?: { id?: string } | null };
-    if (data.contact?.id) return true;
+    const data = (await res.json()) as { contact?: { id?: string; assignedTo?: string } | null };
+    if (data.contact?.id) return { id: data.contact.id, assignedTo: data.contact.assignedTo || undefined };
   }
   return false;
+}
+
+/** The new enquiry of a returning contact, as plain text for the rep's task. */
+function enquirySummary(p: QuotePayload, phone: string): string {
+  return [
+    `Service: ${p.service === "collect" ? "Used oil collection" : "Bulk oil quote"}`,
+    `Business: ${p.businessName} (${p.businessType})`,
+    `Contact: ${p.firstName} · ${phone} · ${p.email}`,
+    `Oil type: ${p.oilType}`,
+    `${p.service === "collect" ? "Used oil per month" : "Monthly volume"}: ${p.volume}`,
+    `Location: ${[p.province, p.region, p.area].filter(Boolean).join(" › ").replace(/[\u2060\u200b]/g, "")}`,
+    "Submitted through the website form by an existing contact. Contact fields and tags were not changed.",
+  ].join("\n");
 }
 
 /** Keeps only the allow-listed attribution keys, as short plain strings. */
@@ -114,15 +133,28 @@ export async function POST(request: Request) {
   const attribution = cleanAttribution(raw.attribution);
 
   try {
-    // 1) Returning contact? Leave GHL untouched and hand over to the official form.
-    const exists = await contactExists(token, payload.email, phone);
-    if (exists === null) return fail(502, "upstream");
-    if (exists) return fail(409, "use_standard_form");
+    // 1) Returning contact? Record the enquiry as a task; touch nothing else. Same answer as a new contact.
+    const found = await findContact(token, payload.email, phone);
+    if (found === null) return fail(502, "upstream");
+    if (found) {
+      const task = await ghl(token, "POST", `/contacts/${found.id}/tasks`, {
+        title: `Repeat website enquiry – ${payload.service === "collect" ? "used oil collection" : "bulk oil quote"}`,
+        body: enquirySummary(payload, phone),
+        dueDate: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+        completed: false,
+        ...(found.assignedTo ? { assignedTo: found.assignedTo } : {}),
+      });
+      if (!task.ok) {
+        console.error("[quote] repeat-enquiry task failed", task.status);
+        return fail(502, "upstream");
+      }
+      return NextResponse.json({ ok: true });
+    }
 
     // 2) Save the new contact. "Business Name" goes to last name, as the official form does.
     const customFields = toGhlCustomFields(payload, ucoFieldId);
     if (attributionFieldId && Object.keys(attribution).length > 0) {
-      customFields.push({ id: attributionFieldId, field_value: [new URLSearchParams(attribution).toString()] });
+      customFields.push({ id: attributionFieldId, field_value: new URLSearchParams(attribution).toString().slice(0, 1500) });
     }
     const saved = await ghl(token, "POST", "/contacts/upsert", {
       locationId: GHL_LOCATION_ID,

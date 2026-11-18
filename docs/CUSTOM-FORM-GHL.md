@@ -12,12 +12,16 @@ as the fallback and is not modified.
 | # | Item | Exact value |
 |---|---|---|
 | 1 | New tag | `cuisine-custom-form-submitted` |
-| 2 | New contact custom field | Name **Estimated used oil per month**, type Dropdown (multiple options, to match the existing fields). Options, exactly: `Less than 20 L`, `20–50 L`, `51–100 L`, `101–200 L`, `201–500 L`, `More than 500 L`, `Not sure` (the dashes are en dashes). |
+| 2 | New contact custom field | Name **Estimated used oil per month**, type **Dropdown (Single)** – one estimate per enquiry; the server sends it as a plain value. Options, exactly: `Less than 20 L`, `20–50 L`, `51–100 L`, `101–200 L`, `201–500 L`, `More than 500 L`, `Not sure` (the dashes are en dashes). |
 | 3 | Additional workflow trigger | **Contact Tag → Tag Added → `cuisine-custom-form-submitted`**, added *next to* the existing Form Submitted trigger. No action, filter or setting downstream is changed. |
-| 4 | Private Integration token | Scopes: View Contacts, Edit Contacts. Nothing else. |
+| 4 | Private Integration token | Runtime scopes: View Contacts, Edit Contacts. Nothing else. (Creating items 1–2 through the API would additionally need Edit Tags and Edit Custom Fields; creating them by hand needs no token change.) |
 
-Optional, only if campaign attribution should be stored on the contact: one single-line text
-field (e.g. "Website attribution"). Without it attribution is captured but not stored.
+Approved in principle, NOT created yet: one attribution field. Recommended type **Multi Line
+(Large Text)**, name e.g. "Website attribution". The server writes one line such as
+`utm_source=facebook&utm_campaign=…&fbclid=…`, capped at 1,500 characters. GHL publishes no
+official character limit; community reports put multi-line fields at roughly 12,000 and give
+no figure for single-line, which is why multi-line is recommended. A field's type cannot be
+changed after creation. Compatibility is confirmed only by the first test write (§7).
 
 ## 2. Which workflows get the new trigger
 
@@ -47,17 +51,20 @@ re-runs the workflow – which could open a second opportunity or re-assign a re
 the two settings in §2 (3) and (4). Those are unverified, so the form does the conservative thing:
 
 - **New contact** (email and phone both unknown to GHL): contact saved, tag applied once.
-- **Existing contact**: nothing is written and no tag is touched. The API answers
-  `use_standard_form`; the buy funnel offers the official GHL form on the spot, the collect
-  funnel shows WhatsApp and phone. The official form then behaves exactly as it does today.
+- **Existing contact**: fields and tags are left untouched. The new enquiry is added as a
+  **task** on the contact ("Repeat website enquiry – …", due in 24 hours, assigned to the
+  contact's owner when there is one) with the answers in the task body.
 
-Options once §2 (3) and (4) are known:
+The visitor sees the same thank-you in both cases, so the form does not reveal whether an
+email or phone number is already on file. (Response time can still differ slightly.)
+
+Consequence to accept or change: a returning contact does NOT re-run the lead workflow – the
+rep is alerted by the task instead. Alternatives once §2 (3) and (4) are known:
 
 | Option | Behaviour | Use when |
 |---|---|---|
-| A (current) | Existing contacts go to the official form | Until verified |
+| A (current) | Task on the existing contact, nothing else changed | Until verified, or permanently |
 | B | Update the contact, remove + re-apply the tag | Re-entry is on AND the opportunity action does not allow duplicates |
-| C | Update the contact, add an internal note / task for the owner, no tag | Re-entry is off, or duplicates would be created |
 
 ## 4. Meta Pixel (prepared, off)
 
@@ -88,14 +95,15 @@ optional `NEXT_PUBLIC_META_PIXEL_ENABLED`. Without `GHL_API_TOKEN` the form refu
 2. Control: one internal test lead through the official form; record fields, tags, workflow
    history, owner, opportunity (pipeline + stage), notifications.
 3. Custom form, new internal identity: compare with the control item by item.
-4. Same identity again: expect `use_standard_form`, no change in GHL.
+4. Same identity again: expect the same thank-you, ONE new task on the contact, no change to its
+   fields, tags, workflow history or opportunities.
 5. One test each for Gauteng, Western Cape and North-West routing.
 6. One used-oil test: new field populated, routing as expected.
 7. Wrong token on Preview: form reports failure, nothing saved.
 8. Delete test contacts and opportunities.
 
-Never yet exercised against the live API: the contact save, the custom-field write format and
-the tag call. Step 3 is the first time they run.
+Never yet exercised against the live API: the contact save, the custom-field write format, the
+tag call and the task call. Steps 3 and 4 are the first time they run.
 
 ## 8. Known differences from the official form
 
