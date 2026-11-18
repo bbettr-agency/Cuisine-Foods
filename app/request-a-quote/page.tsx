@@ -8,7 +8,7 @@ import { Container, Section } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { LeadForm } from "@/components/funnel/lead-form";
+import { GhlQuoteEmbed } from "@/components/funnel/ghl-quote-embed";
 
 export const metadata: Metadata = buildMetadata({
   title: "Request a Quote | Bulk Oil or UCO Collection | Cuisine Foods",
@@ -25,8 +25,6 @@ const reasons = [
 
 export default function QuotePage({ searchParams }: { searchParams: { intent?: string; topic?: string; region?: string } }) {
   const intent: CtaIntent = searchParams.intent === "uco" ? "uco" : "supply";
-  const topic = typeof searchParams.topic === "string" ? searchParams.topic : undefined;
-  const region = typeof searchParams.region === "string" ? searchParams.region : undefined;
   const crumbs = [{ name: "Home", path: "/" }, { name: "Request a Quote", path: "/request-a-quote" }];
   return (
     <>
@@ -48,7 +46,7 @@ export default function QuotePage({ searchParams }: { searchParams: { intent?: s
             </ul>
           </div>
           <Reveal>
-            <LeadForm defaultIntent={intent} topic={topic} region={region} />
+            <GhlQuoteEmbed />
           </Reveal>
         </div>
       </Section>

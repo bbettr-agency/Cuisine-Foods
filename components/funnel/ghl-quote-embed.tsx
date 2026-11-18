@@ -5,7 +5,7 @@ import Script from "next/script";
 /**
  * GhlQuoteEmbed — the official GoHighLevel quote form, embedded exactly as
  * supplied (form id 5qCMWMxLFGwkpxTkDvRg). The fields and submission are owned by
- * GHL; we do NOT recreate them or route them through /api/lead. GHL's
+ * GHL; this is the ONLY form on the site – we do NOT recreate its fields. GHL's
  * form_embed.js resizes the iframe via postMessage as the visitor moves through
  * the steps. The iframe starts at the form's declared height so no field is
  * clipped before the script runs.
