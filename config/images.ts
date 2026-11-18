@@ -155,6 +155,11 @@ export const images: Record<string, ImageSlot> = {
   "metro-pretoria": { id: "metro-pretoria", file: "pretoria-delivery-crew.jpg", src: `${W}/pretoria-delivery-crew.jpg`, alt: "Cuisine Foods delivery crew serving Pretoria and Centurion from the Centurion branch", ratio: "4/3", page: "Pretoria & Centurion", shot: "Crew in the cab – the home-branch team." },
   "metro-cape-town": { id: "metro-cape-town", file: "cape-town-oil-loading.jpg", src: `${W}/cape-town-oil-loading.jpg`, alt: "Loading bulk cooking oil for delivery across Cape Town", ratio: "3/4", page: "Cape Town", shot: "Loading for the Cape Town run." },
   "metro-northern-suburbs": { id: "metro-northern-suburbs", file: "northern-suburbs-delivery.jpg", src: `${W}/northern-suburbs-delivery.jpg`, alt: "Cuisine Foods delivery to Cape Town's Northern Suburbs", ratio: "3/4", page: "Northern Suburbs", shot: "Delivery run – Bellville/Durbanville area." },
+  /* ---- /quote ads funnels: same shoot files, captions written for the funnel context ---- */
+  "funnel-collect-drum": { id: "funnel-collect-drum", file: "used-cooking-oil-collection-drum.jpg", src: `${W}/used-cooking-oil-collection-drum.jpg`, alt: "Cuisine Foods branded used cooking oil collection drum beside sealed containers", ratio: "4/3", page: "Quote funnel – collection", shot: "Branded UCO collection drum + sealed containers." },
+  "funnel-collect-onsite": { id: "funnel-collect-onsite", file: "uco-collection-drums.jpg", src: `${W}/uco-collection-drums.jpg`, alt: "A Cuisine Foods used cooking oil drum and containers at a commercial kitchen", ratio: "3/4", page: "Quote funnel – collection", shot: "Collection drum on site." },
+  "funnel-collect-documentation": { id: "funnel-collect-documentation", file: "uco-collection-documentation.jpg", src: `${W}/uco-collection-documentation.jpg`, alt: "Paperwork being completed against a Cuisine Foods branded vehicle", ratio: "4/3", page: "Quote funnel – collection", shot: "Paperwork at the vehicle." },
+  "funnel-collect-vehicle": { id: "funnel-collect-vehicle", file: "hero-branded-delivery-truck.jpg", src: `${W}/hero-branded-delivery-truck.jpg`, alt: "A Cuisine Foods branded truck on the road", ratio: "4/3", page: "Quote funnel – collection", shot: "Branded truck – the onward journey." },
 };
 
 export function getImage(id: string): ImageSlot {

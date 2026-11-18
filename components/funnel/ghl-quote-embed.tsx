@@ -8,15 +8,31 @@ import Script from "next/script";
  * GHL; this is the ONLY form on the site – we do NOT recreate its fields. GHL's
  * form_embed.js resizes the iframe via postMessage as the visitor moves through
  * the steps. The iframe starts at the form's declared height so no field is
- * clipped before the script runs.
+ * clipped before the script runs. The script also hands the landing page's URL
+ * parameters (UTMs, click ids) to the form, which is how GHL records attribution.
  */
-export function GhlQuoteEmbed() {
+const FORM_URL = "https://link.bbettragency.com/widget/form/5qCMWMxLFGwkpxTkDvRg";
+
+export function GhlQuoteEmbed({
+  prefill,
+  title = "Cuisine Foods — request a bulk cooking oil quote",
+}: {
+  /**
+   * Optional GHL field query keys → values, passed on the form URL so the official
+   * form opens with that answer preselected (GHL's own prefill feature — the form,
+   * its fields, logic and workflows are untouched and the visitor can change it).
+   */
+  prefill?: Record<string, string>;
+  title?: string;
+} = {}) {
+  const query = prefill ? new URLSearchParams(prefill).toString() : "";
+  const src = query ? `${FORM_URL}?${query}` : FORM_URL;
   return (
     <>
       <iframe
-        src="https://link.bbettragency.com/widget/form/5qCMWMxLFGwkpxTkDvRg"
+        src={src}
         id="inline-5qCMWMxLFGwkpxTkDvRg"
-        title="Cuisine Foods — request a bulk cooking oil quote"
+        title={title}
         className="block w-full"
         style={{ width: "100%", height: "1729px", border: "none", borderRadius: "25px" }}
         data-layout="{'id':'INLINE'}"
