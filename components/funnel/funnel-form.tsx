@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { QuoteService } from "@/config/quote-form";
 import { QuoteForm } from "@/components/funnel/quote-form";
 import { GhlQuoteEmbed } from "@/components/funnel/ghl-quote-embed";
+import { MetaPixel } from "@/components/funnel/meta-pixel";
 
 /**
  * FunnelForm — decides which form a funnel shows.
@@ -20,12 +21,19 @@ import { GhlQuoteEmbed } from "@/components/funnel/ghl-quote-embed";
 const FORM_MODE: "custom" | "ghl" = "custom";
 
 export function FunnelForm({ service, embedTitle }: { service: QuoteService; embedTitle: string }) {
-  const [mode, setMode] = useState<"custom" | "ghl">(FORM_MODE);
+  // null until we know which form this visit gets, so the pixel never loads next to the embed.
+  const [mode, setMode] = useState<"custom" | "ghl" | null>(null);
 
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).get("form") === "ghl") setMode("ghl");
+    setMode(new URLSearchParams(window.location.search).get("form") === "ghl" ? "ghl" : FORM_MODE);
   }, []);
 
+  // The official embed fires the same Meta pixel itself – ours is mounted only with the custom form.
   if (mode === "ghl") return <GhlQuoteEmbed title={embedTitle} />;
-  return <QuoteForm service={service} onUseStandardForm={service === "buy" ? () => setMode("ghl") : undefined} />;
+  return (
+    <>
+      {mode === "custom" && <MetaPixel />}
+      <QuoteForm service={service} onUseStandardForm={service === "buy" ? () => setMode("ghl") : undefined} />
+    </>
+  );
 }

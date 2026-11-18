@@ -97,7 +97,7 @@ export function validate(p: QuotePayload): QuoteErrors {
  * type, so every value is sent as a one-item list). `ucoVolumeFieldId` is the
  * new collection field's ID, once it exists.
  */
-export function toGhlCustomFields(p: QuotePayload, ucoVolumeFieldId?: string) {
+export function toGhlCustomFields(p: QuotePayload, ucoVolumeFieldId?: string): { id: string; field_value: string[] }[] {
   const out: { id: string; field_value: string[] }[] = [
     { id: ghlFields.businessType.id, field_value: [p.businessType] },
     { id: ghlFields.oilType.id, field_value: [p.oilType] },

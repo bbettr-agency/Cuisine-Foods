@@ -7,6 +7,8 @@ import { ghlFields, UCO_OIL_TYPE } from "@/config/ghl-fields";
 import { quoteFormCopy as copy, supplyOilTypes, ucoVolume, type QuoteService } from "@/config/quote-form";
 import { telUrl, whatsappUrl, whatsappPrefill } from "@/config/conversion";
 import { areaField, regionField, stepFields, validate, type QuoteErrors, type QuotePayload } from "@/lib/quote-validate";
+import { captureAttribution } from "@/lib/attribution";
+import { trackLead } from "@/components/funnel/meta-pixel";
 import { cn } from "@/lib/utils";
 
 /**
@@ -24,7 +26,7 @@ const inputCls =
   "w-full min-h-[52px] rounded-xl border border-line bg-surface px-4 text-base text-ink outline-none transition-colors placeholder:text-ink-faint focus:border-gold-600 focus:ring-2 focus:ring-gold-500/30 aria-[invalid=true]:border-red-600";
 const labelCls = "block text-sm font-semibold text-ink";
 
-type Status = "idle" | "sending" | "done" | "error" | "not_connected";
+type Status = "idle" | "sending" | "done" | "error" | "not_connected" | "use_standard";
 
 export function QuoteForm({ service, onUseStandardForm }: { service: QuoteService; onUseStandardForm?: () => void }) {
   const uid = useId();
@@ -49,8 +51,14 @@ export function QuoteForm({ service, onUseStandardForm }: { service: QuoteServic
     consent: false,
   });
 
+  // One id per form session: the Lead event can never be sent twice for the same enquiry.
+  const eventId = useRef("");
+  const attribution = useRef<Record<string, string>>({});
+
   useEffect(() => {
     startedAt.current = Date.now();
+    eventId.current = typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    attribution.current = captureAttribution();
   }, []);
 
   const set = <K extends keyof QuotePayload>(key: K, value: QuotePayload[K]) => {
@@ -104,18 +112,19 @@ export function QuoteForm({ service, onUseStandardForm }: { service: QuoteServic
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...v, website, elapsedMs: Date.now() - startedAt.current }),
+        body: JSON.stringify({ ...v, website, elapsedMs: Date.now() - startedAt.current, attribution: { ...attribution.current, ...captureAttribution() } }),
       });
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; code?: string; errors?: QuoteErrors };
       if (res.ok && data.ok === true) {
         setStatus("done");
+        trackLead(eventId.current, service); // only here: after the server confirmed the save
       } else if (data.code === "invalid" && data.errors) {
         setErrors(data.errors);
         const firstBad = stepFields.findIndex((keys) => keys.some((k) => data.errors?.[k]));
         setStep(firstBad >= 0 ? firstBad : 0);
         setStatus("idle");
       } else {
-        setStatus(data.code === "not_configured" ? "not_connected" : "error");
+        setStatus(data.code === "not_configured" ? "not_connected" : data.code === "use_standard_form" ? "use_standard" : "error");
       }
     } catch {
       setStatus("error");
@@ -137,7 +146,7 @@ export function QuoteForm({ service, onUseStandardForm }: { service: QuoteServic
     );
   }
 
-  const failed = status === "error" || status === "not_connected";
+  const failed = status === "error" || status === "not_connected" || status === "use_standard";
 
   return (
     <div ref={topRef} tabIndex={-1} className={cn(card, "outline-none")}>
@@ -223,7 +232,7 @@ export function QuoteForm({ service, onUseStandardForm }: { service: QuoteServic
         {failed && (
           <div role="alert" className="mt-6 rounded-2xl border border-red-700/30 bg-red-50 p-4 text-sm text-ink">
             <p className="font-semibold">{copy.failure.title}</p>
-            <p className="mt-1 text-ink-soft">{status === "not_connected" ? copy.failure.notConnected : copy.failure.body}</p>
+            <p className="mt-1 text-ink-soft">{status === "not_connected" ? copy.failure.notConnected : status === "use_standard" ? copy.failure.useStandard : copy.failure.body}</p>
             <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 font-semibold">
               <a href={whatsappUrl(whatsappPrefill[service === "collect" ? "uco" : "supply"])} target="_blank" rel="noopener noreferrer" className="underline decoration-gold-500 decoration-2 underline-offset-4">WhatsApp us</a>
               <a href={telUrl} className="inline-flex items-center gap-1.5 underline decoration-gold-500 decoration-2 underline-offset-4"><Phone className="h-4 w-4" /> {site.contact.phone.display}</a>

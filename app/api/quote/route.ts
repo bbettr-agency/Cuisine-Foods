@@ -1,19 +1,25 @@
 import { NextResponse } from "next/server";
 import { GHL_LOCATION_ID } from "@/config/ghl-fields";
-import { DEFAULT_TRIGGER_TAG } from "@/config/quote-form";
+import { ATTRIBUTION_KEYS, DEFAULT_TRIGGER_TAG } from "@/config/quote-form";
 import { normalisePhone, parsePayload, toGhlCustomFields, validate } from "@/lib/quote-validate";
 
 /**
  * POST /api/quote — the custom multi-step form's server side.
  *
- * Saves the enquiry to GoHighLevel with the Contacts API (upsert, so GHL's own
- * duplicate-contact rules apply), then applies the trigger tag that starts the
- * existing lead workflow. It creates NO opportunity itself – the workflow does,
- * exactly as it does for the official form – so nothing can be duplicated here.
+ * NEW contacts only (for now): it first asks GHL whether the email or phone
+ * already belongs to a contact. If not, it saves the enquiry with the Contacts
+ * API and applies the trigger tag that starts the existing lead workflow. It
+ * creates NO opportunity itself – the workflow does, as it does for the official form.
+ *
+ * RETURNING contacts are deliberately NOT written and NOT re-tagged: how the
+ * existing workflow re-enters and whether it would open a second opportunity is
+ * unverified. They get code "use_standard_form" and are handed to the official
+ * GHL form, which behaves exactly as it does today. (See docs/CUSTOM-FORM-GHL.md.)
  *
  * Rules this route keeps:
  *  - The API token lives only in server environment variables (GHL_API_TOKEN).
  *  - It answers ok:true ONLY when the contact was saved AND the tag was applied.
+ *  - It never removes or re-applies a tag on an existing contact.
  *  - It never logs customer details – only step names and HTTP status codes.
  *  - Without a token (previews, before go-live) it refuses honestly (503).
  */
@@ -26,6 +32,31 @@ const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
 const hits = new Map<string, number[]>(); // best-effort, per server instance
 
+/** GHL matches duplicates on email, then phone – so we look up both. null = lookup failed. */
+async function contactExists(token: string, email: string, phone: string): Promise<boolean | null> {
+  for (const query of [`email=${encodeURIComponent(email)}`, `number=${encodeURIComponent(phone)}`]) {
+    const res = await ghl(token, "GET", `/contacts/search/duplicate?locationId=${GHL_LOCATION_ID}&${query}`);
+    if (!res.ok) {
+      console.error("[quote] duplicate lookup failed", res.status);
+      return null;
+    }
+    const data = (await res.json()) as { contact?: { id?: string } | null };
+    if (data.contact?.id) return true;
+  }
+  return false;
+}
+
+/** Keeps only the allow-listed attribution keys, as short plain strings. */
+function cleanAttribution(input: unknown): Record<string, string> {
+  const src = (input && typeof input === "object" ? input : {}) as Record<string, unknown>;
+  const out: Record<string, string> = {};
+  for (const key of ATTRIBUTION_KEYS) {
+    const value = src[key];
+    if (typeof value === "string" && value.trim()) out[key] = value.trim().slice(0, 200);
+  }
+  return out;
+}
+
 const fail = (status: number, code: string, extra?: object) => NextResponse.json({ ok: false, code, ...extra }, { status });
 
 function rateLimited(ip: string): boolean {
@@ -37,11 +68,11 @@ function rateLimited(ip: string): boolean {
   return recent.length > MAX_PER_WINDOW;
 }
 
-async function ghl(token: string, method: "POST" | "DELETE", path: string, body: unknown) {
+async function ghl(token: string, method: "GET" | "POST", path: string, body?: unknown) {
   return fetch(`${API}${path}`, {
     method,
     headers: { Authorization: `Bearer ${token}`, Version: "2021-07-28", "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify(body),
+    body: body === undefined ? undefined : JSON.stringify(body),
     signal: AbortSignal.timeout(12000),
     cache: "no-store",
   });
@@ -77,37 +108,43 @@ export async function POST(request: Request) {
   // Not connected yet (or the collection field does not exist yet): say so – never pretend.
   if (!token || (payload.service === "collect" && !ucoFieldId)) return fail(503, "not_configured");
 
+  const phone = normalisePhone(payload.phone);
+  // Optional: ONE text field for campaign attribution, only if it has been approved and created.
+  const attributionFieldId = process.env.GHL_FIELD_ATTRIBUTION;
+  const attribution = cleanAttribution(raw.attribution);
+
   try {
-    // 1) Save the contact. "Business Name" goes to last name, as the official form does.
+    // 1) Returning contact? Leave GHL untouched and hand over to the official form.
+    const exists = await contactExists(token, payload.email, phone);
+    if (exists === null) return fail(502, "upstream");
+    if (exists) return fail(409, "use_standard_form");
+
+    // 2) Save the new contact. "Business Name" goes to last name, as the official form does.
+    const customFields = toGhlCustomFields(payload, ucoFieldId);
+    if (attributionFieldId && Object.keys(attribution).length > 0) {
+      customFields.push({ id: attributionFieldId, field_value: [new URLSearchParams(attribution).toString()] });
+    }
     const saved = await ghl(token, "POST", "/contacts/upsert", {
       locationId: GHL_LOCATION_ID,
       firstName: payload.firstName,
       lastName: payload.businessName,
       email: payload.email,
-      phone: normalisePhone(payload.phone),
+      phone,
       source: payload.service === "collect" ? "Website form – used oil collection" : "Website form – bulk oil quote",
-      customFields: toGhlCustomFields(payload, ucoFieldId),
+      customFields,
     });
     if (!saved.ok) {
       console.error("[quote] contact save failed", saved.status);
       return fail(502, "upstream");
     }
-    const data = (await saved.json()) as { contact?: { id?: string; tags?: string[] } };
+    const data = (await saved.json()) as { contact?: { id?: string } };
     const id = data.contact?.id;
     if (!id) {
       console.error("[quote] contact save returned no id");
       return fail(502, "upstream");
     }
 
-    // 2) A tag that is already on the contact does not fire "Tag Added" again, so a
-    //    returning customer's tag is removed first, then applied fresh.
-    if (data.contact?.tags?.includes(tag)) {
-      const removed = await ghl(token, "DELETE", `/contacts/${id}/tags`, { tags: [tag] });
-      if (!removed.ok) {
-        console.error("[quote] tag reset failed", removed.status);
-        return fail(502, "upstream");
-      }
-    }
+    // 3) Apply the trigger tag (fires the workflow's added "Tag Added" trigger once).
     const tagged = await ghl(token, "POST", `/contacts/${id}/tags`, { tags: [tag] });
     if (!tagged.ok) {
       console.error("[quote] tag apply failed", tagged.status);

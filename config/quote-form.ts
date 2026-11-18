@@ -10,15 +10,15 @@ export type QuoteService = "buy" | "collect";
 export const supplyOilTypes = ghlFields.oilType.options.filter((o) => o !== UCO_OIL_TYPE);
 
 /**
- * PROPOSED – not in GHL yet. The one new field a collection enquiry needs, because
- * the existing volume field only has purchase amounts. The bands below are a
- * proposal for the client to confirm; the field ID is supplied server-side through
- * GHL_FIELD_UCO_VOLUME once the field has been created (with these exact options).
- * Until then the server refuses collection submissions rather than dropping the answer.
+ * APPROVED, not yet created in GHL – the one new field a collection enquiry needs
+ * (the existing volume field only has purchase amounts). Label and options are the
+ * client-approved wording; create the GHL dropdown with EXACTLY these values. Its
+ * field ID is supplied server-side through GHL_FIELD_UCO_VOLUME once it exists;
+ * until then the server refuses collection submissions rather than dropping the answer.
  */
 export const ucoVolume = {
   label: "Estimated used oil per month",
-  options: ["Under 100 litres", "100–500 litres", "500–1,000 litres", "More than 1,000 litres"],
+  options: ["Less than 20 L", "20–50 L", "51–100 L", "101–200 L", "201–500 L", "More than 500 L", "Not sure"],
 };
 
 /** Tag the server applies after a successful save – the proposed workflow trigger. */
@@ -39,5 +39,19 @@ export const quoteFormCopy = {
     title: "We couldn't send your request.",
     body: "Nothing was submitted. Please try again, or reach our team directly.",
     notConnected: "Our online form isn't connected yet. Nothing was submitted – please reach our team directly.",
+    useStandard: "We couldn't complete your request through this form. Nothing was submitted – please use our standard form or reach our team directly.",
   },
 } as const;
+
+/**
+ * META PIXEL – prepared, OFF by default. The ID is the pixel the official GHL form
+ * already uses, so reporting stays in the same pixel. It only loads when
+ * NEXT_PUBLIC_META_PIXEL_ENABLED is "true" (set per Vercel environment, after approval).
+ */
+export const metaPixel = {
+  id: "2662434760785009",
+  enabled: process.env.NEXT_PUBLIC_META_PIXEL_ENABLED === "true",
+};
+
+/** Attribution parameters captured with an enquiry (allow-list; nothing else is read). */
+export const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid", "fbc", "fbp"] as const;
