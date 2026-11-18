@@ -79,6 +79,24 @@ async function ghl(token: string, method: "GET" | "POST", path: string, body?: u
   });
 }
 
+/**
+ * GET /api/quote — configuration self-check. Creates nothing and returns no secret:
+ * only whether a token is configured here and whether GHL accepts it, using one
+ * read-only lookup of an address that cannot exist (.invalid is a reserved domain).
+ */
+export async function GET(request: Request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (rateLimited(`check:${ip}`)) return fail(429, "rate_limited");
+  const token = process.env.GHL_API_TOKEN;
+  if (!token) return NextResponse.json({ configured: false, ghl: "not_checked" });
+  try {
+    const res = await ghl(token, "GET", `/contacts/search/duplicate?locationId=${GHL_LOCATION_ID}&email=${encodeURIComponent("config-check@cuisinefoods.invalid")}`);
+    return NextResponse.json({ configured: true, ghl: res.ok ? "ok" : `rejected_${res.status}` });
+  } catch {
+    return NextResponse.json({ configured: true, ghl: "unreachable" });
+  }
+}
+
 export async function POST(request: Request) {
   // Same-origin only: the form posts from this site, nothing else should.
   const origin = request.headers.get("origin");
