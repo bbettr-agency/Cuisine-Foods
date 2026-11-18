@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { GHL_LOCATION_ID } from "@/config/ghl-fields";
-import { ATTRIBUTION_KEYS, DEFAULT_TRIGGER_TAG } from "@/config/quote-form";
+import { ATTRIBUTION_KEYS, DEFAULT_TRIGGER_TAG, ucoVolume } from "@/config/quote-form";
 import { normalisePhone, parsePayload, toGhlCustomFields, validate } from "@/lib/quote-validate";
 
 /**
@@ -105,9 +105,9 @@ export async function POST(request: Request) {
 
   const token = process.env.GHL_API_TOKEN;
   const tag = process.env.GHL_TRIGGER_TAG || DEFAULT_TRIGGER_TAG;
-  const ucoFieldId = process.env.GHL_FIELD_UCO_VOLUME;
-  // Not connected yet (or the collection field does not exist yet): say so – never pretend.
-  if (!token || (payload.service === "collect" && !ucoFieldId)) return fail(503, "not_configured");
+  const ucoFieldId = process.env.GHL_FIELD_UCO_VOLUME || ucoVolume.id;
+  // Not connected yet: say so – never pretend.
+  if (!token) return fail(503, "not_configured");
 
   const phone = normalisePhone(payload.phone);
   // Optional: ONE text field for campaign attribution, only if it has been approved and created.
@@ -120,7 +120,8 @@ export async function POST(request: Request) {
     const exists = await contactExists(token, payload.email, phone);
     if (exists !== false) return fail(502, "upstream");
 
-    // 2) Save the new contact. "Business Name" goes to last name, as the official form does.
+    // 2) Save the new contact WITH all custom fields in one call, so every answer is on the
+    //    contact before the workflows start. "Business Name" goes to last name, as the official form does.
     const customFields = toGhlCustomFields(payload, ucoFieldId);
     if (attributionFieldId && Object.keys(attribution).length > 0) {
       customFields.push({ id: attributionFieldId, field_value: new URLSearchParams(attribution).toString().slice(0, 1500) });
@@ -145,7 +146,8 @@ export async function POST(request: Request) {
       return fail(502, "upstream");
     }
 
-    // 3) Apply the trigger tag (fires the workflow's added "Tag Added" trigger once).
+    // 3) Only now – after the save succeeded – apply the trigger tag. This starts both entry
+    //    workflows, whose routing conditions read the fields saved in step 2.
     const tagged = await ghl(token, "POST", `/contacts/${id}/tags`, { tags: [tag] });
     if (!tagged.ok) {
       console.error("[quote] tag apply failed", tagged.status);

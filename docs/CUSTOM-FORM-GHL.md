@@ -1,6 +1,12 @@
 # Custom quote form – GoHighLevel integration notes
 
-**Status: preview only. Not connected, not in production. Nothing in GHL has been changed.**
+**Status: preview only. Not connected (no token in Vercel), not in production.**
+
+Done in GHL so far: tag `cuisine-custom-form-submitted` (ID `ehaX4cL4kyPhX2dLwNfT`); field
+"Estimated used oil per month" (ID `4Sw8vyql0mfm3bJZOHZE`, single dropdown, 7 options); a
+Contact Tag trigger added by the client to BOTH `Copy - Cuisine Foods Leads (Phase 2)` and
+`CUISINE REPS ALLOCATING`, next to their Form Submitted triggers, with re-entry enabled.
+No lead has been submitted through the custom form.
 
 The custom three-step form (`components/funnel/quote-form.tsx`) posts to `/api/quote`, which
 writes to the Cuisine Foods sub-account (`HzftIvKXZGCy4lvw09vh`) through the Contacts API.
@@ -86,10 +92,24 @@ Captured in the browser and sent with the enquiry: `utm_source`, `utm_medium`,
 cookies when the pixel is on. Stored in GHL only if `GHL_FIELD_ATTRIBUTION` is set.
 The contact's Source is set to "Website form – bulk oil quote" / "– used oil collection".
 
-## 6. Server environment variables (Vercel, Preview scope for testing)
+## 6. Server environment variables (Vercel, **Preview** scope only)
 
-`GHL_API_TOKEN`, `GHL_TRIGGER_TAG`, `GHL_FIELD_UCO_VOLUME`, optional `GHL_FIELD_ATTRIBUTION`,
-optional `NEXT_PUBLIC_META_PIXEL_ENABLED`. Without `GHL_API_TOKEN` the form refuses to submit.
+Required: `GHL_API_TOKEN` (Private Integration token: View Contacts + Edit Contacts). Nothing else.
+Optional: `GHL_TRIGGER_TAG`, `GHL_FIELD_UCO_VOLUME` (overrides of the built-in defaults),
+`GHL_FIELD_ATTRIBUTION` (field not created yet), `NEXT_PUBLIC_META_PIXEL_ENABLED`.
+Without `GHL_API_TOKEN` the form refuses to submit. Once it is set, anyone who can open the
+preview URL can create a real contact – keep Vercel Deployment Protection on, or remove the
+variable after testing.
+
+## 6a. What the opportunity data shows (read-only, aggregates, 4,000 of 4,111 read)
+
+- A normal lead has TWO opportunities: one in a "Reps (IGNORE)" pipeline and one in the
+  allocated rep's Sales pipeline. That is the current design, not a fault.
+- 122 contacts have two or more OPEN opportunities in the same rep pipeline, so repeat
+  submissions already create duplicate opportunities today (duplicates are allowed at account
+  level). The Create Opportunity action's own setting is not visible through the API.
+- Every opportunity read has source "Meta Ads". Whether that is hard-coded in the workflow
+  action or derived from the form's attribution is unknown; check it on the first test.
 
 ## 7. Controlled integration test (needs approval before each write)
 

@@ -10,18 +10,18 @@ export type QuoteService = "buy" | "collect";
 export const supplyOilTypes = ghlFields.oilType.options.filter((o) => o !== UCO_OIL_TYPE);
 
 /**
- * APPROVED, not yet created in GHL – the one new field a collection enquiry needs
- * (the existing volume field only has purchase amounts). Label and options are the
- * client-approved wording; create the GHL dropdown with EXACTLY these values. Its
- * field ID is supplied server-side through GHL_FIELD_UCO_VOLUME once it exists;
- * until then the server refuses collection submissions rather than dropping the answer.
+ * The one field a collection enquiry adds, because the existing volume field only
+ * has purchase amounts. Created in GHL as a single dropdown with EXACTLY these
+ * client-approved options (field key contact.estimated_used_oil_per_month).
+ * The ID is not secret; GHL_FIELD_UCO_VOLUME can override it server-side.
  */
 export const ucoVolume = {
+  id: "4Sw8vyql0mfm3bJZOHZE",
   label: "Estimated used oil per month",
   options: ["Less than 20 L", "20–50 L", "51–100 L", "101–200 L", "201–500 L", "More than 500 L", "Not sure"],
 };
 
-/** Tag the server applies after a successful save – the proposed workflow trigger. */
+/** Tag the server applies after a successful save (GHL tag ID ehaX4cL4kyPhX2dLwNfT) – both entry workflows listen for it. */
 export const DEFAULT_TRIGGER_TAG = "cuisine-custom-form-submitted";
 
 export const quoteFormCopy = {
