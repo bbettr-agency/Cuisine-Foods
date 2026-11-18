@@ -40,8 +40,13 @@ export type FunnelContent = {
     title: string;
     body: string;
     reassurance: string;
-    /** Optional helper shown above the form (e.g. how to answer a question). */
-    hint?: string;
+    /**
+     * Set while the official GHL form does not yet carry the right questions for
+     * this service. The funnel then shows a clearly labelled "awaiting" panel with
+     * direct contact routes INSTEAD of the form – never a form that looks ready but
+     * is not. Delete this block once GHL is updated and the form embeds again.
+     */
+    pending?: { label: string; title: string; body: string };
     /** GHL field query keys → values to preselect in the official form. */
     prefill?: Record<string, string>;
     iframeTitle: string;
@@ -172,9 +177,16 @@ export const funnels: Record<FunnelId, FunnelContent> = {
     form: {
       eyebrow: "Arrange your collection",
       title: "Tell us about your used oil.",
-      body: "Our team reviews your details and contacts you to confirm collection arrangements for your business.",
+      body: "Our team takes your details and contacts you to confirm collection arrangements for your business.",
       reassurance: "No obligation. Your details are only used to arrange your collection enquiry.",
-      hint: "“Used Oil Collection” is already selected under Oil type. For the volume question, choose the closest match – our team confirms the details with you.",
+      // AWAITING GHL: the official form has a "Used Oil Collection" option but still asks
+      // purchase-volume questions and supply-only consent wording. Remove `pending` once
+      // the collection questions are added in GHL (the prefill below is ready for it).
+      pending: {
+        label: "Online collection form – coming soon",
+        title: "Arrange your collection directly with our team",
+        body: "Our online collection form is being finalised with the right questions for used cooking oil. Until then, WhatsApp or call us and our team will take your details and confirm the arrangements.",
+      },
       prefill: { [GHL_OIL_TYPE_KEY]: "Used Oil Collection" },
       iframeTitle: "Cuisine Foods – arrange a used cooking oil collection",
     },
@@ -192,7 +204,7 @@ export const funnels: Record<FunnelId, FunnelContent> = {
     steps: {
       title: "From enquiry to collection – straightforward",
       items: [
-        { title: "Tell us about your used oil", body: "Complete the enquiry form with your business details." },
+        { title: "Tell us about your used oil", body: "Send us your business details." },
         { title: "We confirm collection arrangements", body: "Our team reviews your requirements and contacts you." },
         { title: "Your used oil is collected", body: "Collection and applicable payment are arranged according to confirmed terms." },
       ],

@@ -104,13 +104,25 @@ export function FunnelPage({ content: c }: { content: FunnelContent }) {
             <p className="mx-auto mt-3 max-w-xl text-ink-soft">{c.form.body}</p>
             <p className="mx-auto mt-2 max-w-xl text-sm text-ink-faint">{c.form.reassurance}</p>
           </div>
-          {c.form.hint ? (
-            <p className="mx-auto mt-5 max-w-xl rounded-2xl border border-gold-500/30 bg-gold-100/40 px-4 py-3 text-center text-sm leading-relaxed text-ink-soft">
-              {c.form.hint}
-            </p>
-          ) : null}
           <div className="mt-6 sm:mt-8">
-            <GhlQuoteEmbed prefill={c.form.prefill} title={c.form.iframeTitle} />
+            {c.form.pending ? (
+              /* Integration point: the official GHL form goes here once it carries this service's questions. */
+              <div data-form-status="pending" className="rounded-[25px] border-2 border-dashed border-gold-500/50 bg-surface px-5 py-8 text-center sm:px-10 sm:py-10">
+                <span className="inline-flex rounded-full bg-gold-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold-800">{c.form.pending.label}</span>
+                <h3 className="mt-4 font-display text-xl font-bold text-ink sm:text-2xl">{c.form.pending.title}</h3>
+                <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-ink-soft sm:text-base">{c.form.pending.body}</p>
+                <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+                  <a href={whatsappUrl(whatsappPrefill[c.hero.whatsappPrefill])} target="_blank" rel="noopener noreferrer" className={ctaCls}>
+                    WhatsApp our team <ArrowRight className="h-4 w-4 shrink-0" />
+                  </a>
+                  <a href={telUrl} className="inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full border border-ink/25 px-6 text-base font-semibold text-ink transition-colors hover:border-ink/55 hover:bg-ink/[0.04] sm:w-auto">
+                    <Phone className="h-4 w-4 shrink-0" /> Call {site.contact.phone.display}
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <GhlQuoteEmbed prefill={c.form.prefill} title={c.form.iframeTitle} />
+            )}
           </div>
         </div>
       </section>

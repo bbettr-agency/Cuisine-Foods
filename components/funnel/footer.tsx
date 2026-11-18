@@ -10,7 +10,8 @@ export function Footer() {
 
   return (
     <footer className="bg-ink text-paper">
-      <div className="container-x py-14 lg:py-16">
+      {/* Mobile: extra bottom space so the fixed Call/WhatsApp bar never covers the last footer content (+ iPhone safe area). */}
+      <div className="container-x pt-14 pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.3fr_repeat(4,1fr)]">
           {/* Brand + contact */}
           <div>

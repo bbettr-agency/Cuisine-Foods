@@ -38,7 +38,8 @@ export function PalmTheatre({ states }: { states: PalmState[] }) {
         {live ? <PalmPinned states={states} /> : <PalmStatic states={states} />}
       </div>
       <div className="lg:hidden">
-        {live ? <PalmMobile states={states} /> : <PalmStatic states={states} mobile />}
+        {/* Mobile: always the readable static layout — text stays legible (no scroll-pinned fade). */}
+        <PalmStatic states={states} mobile />
       </div>
     </section>
   );
