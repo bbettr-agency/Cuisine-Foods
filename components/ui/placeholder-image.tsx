@@ -24,6 +24,7 @@ export function PlaceholderImage({
   sizes = "(max-width: 768px) 100vw, 50vw",
   aspectClass,
   objectPosition,
+  priority,
 }: {
   id: string;
   className?: string;
@@ -33,6 +34,8 @@ export function PlaceholderImage({
   aspectClass?: string;
   /** CSS object-position for the cover crop (e.g. "50% 42%"). */
   objectPosition?: string;
+  /** Force eager loading (above-the-fold image) regardless of the manifest flag. */
+  priority?: boolean;
 }) {
   const slot = getImage(id);
   const shell = cn(
@@ -50,7 +53,7 @@ export function PlaceholderImage({
           src={slot.src}
           alt={slot.alt}
           fill
-          priority={slot.priority}
+          priority={priority ?? slot.priority}
           sizes={sizes}
           className="object-cover"
           style={objectPosition ? { objectPosition } : undefined}

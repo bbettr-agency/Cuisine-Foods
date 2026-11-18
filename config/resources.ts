@@ -182,6 +182,55 @@ export const articles: Article[] = [
     moneyHref: "/frying-oil",
     moneyLabel: "Choose the right frying oil",
   },
+  {
+    slug: "when-to-change-fryer-oil",
+    cluster: "frying",
+    title: "When should you change your fryer oil?",
+    metaTitle: "When to Change Fryer Oil in a Commercial Kitchen (South Africa) | Cuisine Foods",
+    metaDescription:
+      "How to tell when your fryer oil is spent – the visual and sensory signs, a quick oil-quality test, when to replace it, and how to handle the used oil safely.",
+    excerpt: "Change oil on condition, not the calendar. Here's how to read the signs – and handle the spent oil safely.",
+    updated: "2026-11-08",
+    readMinutes: 5,
+    intro:
+      "Fryer oil doesn't fail on a fixed day – it fails on condition. Two kitchens running the same oil can be a week apart on when it's spent, because what you fry, how hot, and how well you look after it all change the pace. So the real skill isn't counting days; it's reading the oil. Here's how to tell when it's time, confirm it with a quick check, and turn the change-over into a clean, compliant routine.",
+    sections: [
+      { heading: "Visual and sensory warning signs", body: "Your eyes, nose and the food itself are the fastest test you have, and they cost nothing. Change the oil when it has darkened to a deep brown and no longer clears between batches, when it smells acrid or burnt rather than neutral, or when it foams and the foam doesn't subside and it smokes at your normal frying temperature. The food tells you too: items that come out greasy, limp, unevenly coloured or carrying a stale aftertaste are a sign the oil is past its best. Any one of these on its own is a yellow flag; two or more together means it should go." },
+      { heading: "A quick oil-quality test", body: "Sensory checks are fast but subjective, and they drift as your team gets used to a fryer, so back them with an objective check. Commercial oil test strips and handheld TPM meters – TPM stands for total polar materials, the compounds that build up as oil breaks down – give a repeatable reading, so a shift manager makes the same call as the head chef. South Africa doesn't set a single figure that restaurants must test against, so the point isn't to chase a number: it's consistency. Pair a ten-second check with your sensory signs and your own food-quality standard, and the same decision gets made every shift, instead of good oil being dumped early or spent oil being pushed too far." },
+      { heading: "Making the right replacement decision", body: "Once you know the signs, build a rhythm around them rather than waiting for a crisis. Oil type matters: palm olein is the most heat-stable of the common commercial oils and generally lasts longest, while sunflower and soya are excellent all-rounders that turn over a little faster in a hard-working fryer. What you fry matters just as much – breaded and battered foods, and anything salted over the vat, load the oil with debris and shorten its life. Above all, change before quality drops rather than after: heavily degraded oil is a food-safety issue as well as a food-quality one, and it can't be reused indefinitely." },
+      { heading: "Handle the spent oil safely", body: "When the oil's done, how you handle it keeps your kitchen compliant. Let it cool before you touch it – hot oil is a burn risk and spatters – then decant it into sealed containers kept away from prep areas so it stays contained and clean. Never pour it down the drain: fats, oils and grease are prohibited in the sewer by municipal by-laws in cities including Johannesburg, Tshwane and Cape Town, and your kitchen carries a duty of care for the waste until it is handled properly." },
+      { heading: "The easy part: we collect it", body: "The change-over is also a chance to claw back a little cost. Because used cooking oil is a biodiesel feedstock, a documented collector removes it, recycles it, and pays you per litre rather than charging to take it away. Cuisine Foods handles both sides of that change-over – fresh bulk oil in on your schedule, and compliant used-oil collection out – so the day you change your fryer is one call, not two." },
+    ],
+    faqIds: ["when-change-oil", "palm-vs-sunflower", "uco-recycle"],
+    moneyHref: "/frying-oil",
+    moneyLabel: "See our frying oils",
+    sources: [
+      { label: "Municipal fats, oils & grease (FOG) by-laws – City of Cape Town, City of Johannesburg and City of Tshwane wastewater/industrial-effluent by-laws" },
+    ],
+  },
+  {
+    slug: "reduce-commercial-cooking-oil-costs",
+    cluster: "frying",
+    title: "How to reduce commercial cooking-oil costs",
+    metaTitle: "How to Reduce Commercial Cooking-Oil Costs (South Africa) | Cuisine Foods",
+    metaDescription:
+      "Lower what your kitchen spends on cooking oil – total operating cost over price per litre, less avoidable waste, smarter bulk buying, and paid used-oil collection.",
+    excerpt: "The cheapest oil on the invoice is rarely the cheapest oil in practice. Here's where the real cost sits – and how to lower it.",
+    updated: "2026-11-08",
+    readMinutes: 5,
+    intro:
+      "Cooking oil is one of the few things a kitchen buys, heats for hours, and then throws away – which makes it an easy line to overspend on without noticing. The temptation is to treat it as a price-per-litre decision and buy whatever's cheapest. But the cheapest oil on the invoice is rarely the cheapest oil in practice. Here's where the real cost actually sits, and the levers a South African kitchen can pull to bring it down – without cutting corners on food.",
+    sections: [
+      { heading: "Watch total operating cost, not price per litre", body: "Price per litre is only the first number. The real cost of oil includes how fast you get through it, the labour in every change-over, the oil thrown away before it was spent, and what you recover when it's finally collected. A slightly more expensive, more stable oil that lasts longer and needs fewer changes can cost less per week of frying than a cheaper one that turns over quickly. Judge oil on cost over time, per week of trading – not on the invoice line alone." },
+      { heading: "Replacement frequency is your biggest lever", body: "The single thing that moves your oil bill most is how often you replace it, so fewer, well-timed changes beat frequent, premature ones. Two habits do most of the work: choosing an oil suited to how you fry, and knowing exactly when a batch is genuinely spent rather than guessing. Palm olein, for example, is the most heat-stable of the common commercial oils and holds up best in all-day, high-volume fryers. For the day-to-day frying routine and how to read the end point, see our commercial frying guide and our guide to when to change your fryer oil – this article stays on the cost side." },
+      { heading: "Cut the oil you waste without realising", body: "A lot of oil cost is avoidable waste rather than genuine consumption. The usual culprits are dumping oil before it's spent by changing on a fixed day instead of on condition; letting water or debris into fresh or used oil so it degrades or can't be collected cleanly; spillage and over-filling fryers above the line; and using a short-life oil in a fryer that runs all day. None of these need new equipment to fix – just a tighter routine." },
+      { heading: "Buy and stock like it's a planned cost", body: "Emergency top-ups at retail prices are one of the quietest drains on an oil budget. Reliable bulk supply removes that: the right pack sizes for your throughput, delivered on a schedule you set, so you're never caught short and buying small. Cuisine Foods supplies bulk cooking oil from 20L with no strict minimum, on a daily, weekly or monthly rhythm – which makes oil a line you can plan and forecast, not react to." },
+      { heading: "Recover value on the way out", body: "Oil cost has two ends, and most kitchens only manage the buying end. When a batch is finally spent, it isn't just waste to pay someone to remove – used cooking oil is a biodiesel feedstock, and a documented collector pays you per litre for it. That recovered value comes straight off the true cost of the fresh oil you buy. Cuisine Foods runs compliant used-oil collection alongside supply – one partner for both ends of the cost line." },
+    ],
+    faqIds: ["bulk-pricing", "min-order", "uco-pay-rate"],
+    moneyHref: "/bulk-cooking-oil-supply",
+    moneyLabel: "Order bulk cooking oil",
+  },
 ];
 
 export const clusters = {

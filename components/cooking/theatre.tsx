@@ -38,7 +38,8 @@ export function CookingTheatre({ states }: { states: CookState[] }) {
   return (
     <section aria-label="Cooking Oil story – the living label" className="relative bg-paper">
       <div className="hidden lg:block">{live ? <CookingPinned states={states} /> : <CookingStatic states={states} />}</div>
-      <div className="lg:hidden">{live ? <CookingMobile states={states} /> : <CookingStatic states={states} mobile />}</div>
+      {/* Mobile: always the readable static layout — text stays legible (no scroll-pinned fade). */}
+      <div className="lg:hidden"><CookingStatic states={states} mobile /></div>
     </section>
   );
 }

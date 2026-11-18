@@ -7,13 +7,13 @@ Marketing + lead-generation website for **Cuisine Foods** — bulk cooking oil s
 ## Stack
 - Next.js 14 (App Router, static-first) · React 18 · TypeScript (strict)
 - Tailwind CSS (design tokens in `app/globals.css`) · Framer Motion (restrained motion) · lucide-react
-- Forms → GoHighLevel webhook (`/api/lead` → `GHL_WEBHOOK_URL`)
+- Forms → the official GoHighLevel form embed (`components/funnel/ghl-quote-embed.tsx`) – the only form on the site
 - Deploy: Vercel, auto-deploy from `main`
 
 ## Architecture (config-driven)
 Everything content lives in `config/`; components never hardcode copy.
 ```
-app/            routes, layout (metadata + JSON-LD), sitemap.ts, robots.ts, api/lead
+app/            routes, layout (metadata + JSON-LD), sitemap.ts, robots.ts
 views/          page templates (money-page, pillar, location, article)
 components/     ui · funnel (header/footer/forms/CTAs) · sections · shared · seo
 config/         site · navigation · products · services · buyers · pillars · locations
@@ -39,7 +39,6 @@ npx tsc --noEmit   # typecheck
 
 ## Environment
 Copy `.env.example` → `.env.local` (dev) and set in Vercel (prod):
-- `GHL_WEBHOOK_URL` — GoHighLevel inbound webhook for enquiries
 - `NEXT_PUBLIC_SITE_URL` — canonical origin (default `https://cuisinefoods.co.za`)
 
 ## Project docs
