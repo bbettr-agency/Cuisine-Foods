@@ -91,12 +91,12 @@ export default function AboutPage() {
 
       {/* Branches */}
       <Section>
-        <SectionHeading eyebrow="Where to find us" title="Two branches, two provinces" align="center" />
-        <div className="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
-          {site.branches.map((b) => (
+        <SectionHeading eyebrow="Where to find us" title="Our regional offices" align="center" />
+        <div className="mx-auto mt-10 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {site.offices.map((b) => (
             <div key={b.id} className="card p-6">
               <p className="flex items-center gap-2 font-display text-lg font-bold text-ink"><Building2 className="h-5 w-5 text-brand-600" /> {b.label}</p>
-              <p className="mt-2 text-sm text-ink-soft">{b.street}, {b.city}, {b.postalCode}</p>
+              <p className="mt-2 text-sm text-ink-soft">{b.address}</p>
               <p className="mt-1 text-xs text-ink-faint">{site.contact.hours}</p>
             </div>
           ))}

@@ -90,7 +90,7 @@ export function LocationProvinceView({ province }: { province: Province }) {
           <div>
             <p className="eyebrow mb-3">Our {province.name} branch</p>
             <h2 className="text-h2 text-ink">{site.name} – {branch.label}</h2>
-            <p className="mt-4 text-ink-soft">{branch.street}, {branch.city}, {branch.postalCode}</p>
+            <p className="mt-4 text-ink-soft">{branch.address}</p>
             <p className="mt-1 text-sm text-ink-faint">{site.contact.hours}</p>
             <div className="mt-6"><Button href={branch.mapLink} variant="outline" external>Open in Google Maps</Button></div>
           </div>

@@ -53,14 +53,14 @@ export function Footer() {
         </div>
 
         {/* Branches (NAP) */}
-        <div className="mt-12 grid gap-6 border-t border-paper/10 pt-8 sm:grid-cols-2 lg:max-w-3xl">
-          {site.branches.map((b) => (
+        <div className="mt-12 grid gap-6 border-t border-paper/10 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+          {site.offices.map((b) => (
             <div key={b.id} className="flex gap-3 text-sm">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
               <div>
                 <p className="font-semibold text-paper">{site.name} – {b.label}</p>
                 <p className="text-paper/70">
-                  {b.street}, {b.city}, {b.postalCode}
+                  {b.address}
                 </p>
                 <p className="text-paper/50">{site.contact.hours}</p>
               </div>

@@ -12,8 +12,9 @@ import { getHub } from "@/config/coverage";
 
 /**
  * KwaZuluNatalView — the coming-soon province page. While the hub status is
- * "coming-soon" it must NOT pose as an operating branch: no address, city,
- * phone, depot, schedule, LocalBusiness or operating claim. It states the
+ * "coming-soon" it must NOT pose as an operating branch: no local phone, depot,
+ * schedule, LocalBusiness or operating claim. The official office address is
+ * shown (the client supplied it), which is not a service-area claim. It states the
  * confirmed intent (supply + UCO collection are the confirmed national
  * capabilities), says "opening soon", and captures interest. The route itself
  * is noindex until status flips to "open" (see the page file). Everything here
@@ -76,9 +77,17 @@ export function KwaZuluNatalView() {
             ))}
           </ul>
           <p className="mt-8 rounded-[var(--radius)] border border-gold-500/30 bg-gold-100/40 p-5 text-sm leading-relaxed text-ink-soft">
-            We're being upfront: we haven't opened the KwaZulu-Natal hub yet, so we're not publishing a depot address,
-            local phone number or collection schedule we can't stand behind. Register your interest and we'll be in
-            touch as the region goes live.
+            {hub?.address ? (
+              <>
+                <span className="font-semibold text-ink">Our KwaZulu-Natal office:</span> {hub.address.lines.join(", ")}.{" "}
+                {hub.map ? (
+                  <a href={hub.map.link} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand-700 hover:underline">Open in Google Maps</a>
+                ) : null}
+                <br />
+              </>
+            ) : null}
+            We're being upfront: we're not yet publishing a local phone number or collection schedule for the region.
+            Register your interest and we'll be in touch.
           </p>
         </div>
       </Section>

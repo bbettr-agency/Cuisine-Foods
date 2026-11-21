@@ -20,8 +20,9 @@ Foods (Pty) Ltd", and company registration number] ("Cuisine Foods", "we", "us")
 Cuisine Foods is the "responsible party" for your personal information under the Protection of
 Personal Information Act 4 of 2013 ("POPIA").
 
-- **Gauteng branch:** 591 Barolong Street, Icon Park, Sunderland Ridge, Centurion, 0157
-- **Western Cape branch:** 34B Station Road, Montague Gardens, Cape Town, 7441
+- **Gauteng office:** 591 Barolong Street, Icon Park, Sunderland Ridge, Centurion, Gauteng, 0157
+- **Western Cape office:** Unit 2, 10 Stella Road, Montague Gardens, Western Cape, 7442
+- **KwaZulu-Natal office:** Unit 4, 2 Isongo Road, Queensmead Industrial, Queensburgh, KwaZulu-Natal, 4093
 - **Telephone:** 010 312 5275
 - **Email:** admin@cuisinefoods.co.za
 - **Information Officer:** [CONFIRM – name, and whether registered with the Information Regulator]

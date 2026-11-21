@@ -35,11 +35,11 @@ export default function ContactPage() {
               <a href={`mailto:${site.contact.email}`} className="flex items-center gap-3 text-ink hover:text-brand-700"><Mail className="h-5 w-5 text-brand-600" /> {site.contact.email}</a>
             </div>
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              {site.branches.map((b) => (
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {site.offices.map((b) => (
                 <div key={b.id}>
                   <p className="flex items-center gap-2 font-semibold text-ink"><MapPin className="h-4 w-4 text-brand-600" /> {b.label}</p>
-                  <p className="mt-1 text-sm text-ink-soft">{b.street}, {b.city}, {b.postalCode}</p>
+                  <p className="mt-1 text-sm text-ink-soft">{b.address}</p>
                   <p className="text-xs text-ink-faint">{site.contact.hours}</p>
                   <div className="mt-3"><Button href={b.mapLink} variant="outline" size="md" external>Open in Maps</Button></div>
                 </div>

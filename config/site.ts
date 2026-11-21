@@ -5,7 +5,7 @@
  * surfaced only through the progressive trust system (config/trust.ts).
  */
 
-import { physicalHubs, openProvinceNames, type Hub } from "@/config/coverage";
+import { physicalHubs, officeHubs, openProvinceNames, type Hub } from "@/config/coverage";
 
 /**
  * Branch = the presentation shape consumed by schema + branch cards. It is now
@@ -26,7 +26,15 @@ export type Branch = {
   gbpUrl?: string; // Google Business Profile URL – add once the profile is live
   mapEmbed: string; // Google Maps embed src
   mapLink: string;
+  address: string; // the official address, as displayed
 };
+
+/** An office as shown in address lists (contact, about, footer). Includes offices whose
+ *  regional service is not yet open – an address here is not a service-area claim. */
+export type Office = { id: Hub["id"]; label: string; address: string; mapLink: string };
+
+/** The official address lines joined for single-line display. */
+const displayAddress = (h: Hub): string => h.address!.lines.join(", ");
 
 /** Map a verified physical hub to the Branch shape the app/schema expect. */
 function hubToBranch(h: Hub): Branch {
@@ -44,6 +52,7 @@ function hubToBranch(h: Hub): Branch {
     gbpUrl: h.gbpUrl,
     mapEmbed: h.map!.embed,
     mapLink: h.map!.link,
+    address: displayAddress(h),
   };
 }
 
@@ -76,6 +85,10 @@ export const site = {
   // config/coverage.ts (open hubs with confirmed address/geo). KZN is excluded
   // until its facts are confirmed, so no fabricated branch is ever emitted.
   branches: physicalHubs().map(hubToBranch) as Branch[],
+
+  // Every published office address (Gauteng, Western Cape, KwaZulu-Natal). Use for
+  // address lists; use `branches` for schema and anything that implies live service.
+  offices: officeHubs().map((h): Office => ({ id: h.id, label: h.name, address: displayAddress(h), mapLink: h.map!.link })),
 
   // Provinces with a live physical hub. Note: the national service area itself is
   // South Africa (see lib/schema.ts) — this is the open-hub province list.
