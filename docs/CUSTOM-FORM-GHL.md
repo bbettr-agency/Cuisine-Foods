@@ -61,32 +61,34 @@ For each of `Copy - Cuisine Foods Leads (Phase 2)` and `CUISINE REPS ALLOCATING`
 - The per-rep "Lead's Automation", "Follow Ups" and "Closed Won" workflows are not entry
   workflows and get nothing unless step 1 shows otherwise.
 
-## 3. Repeat submissions
+## 3. Repeat submissions (returning contacts)
 
-Facts read from the account: duplicate contacts are **not** allowed (matched on email, then
-phone); duplicate opportunities **are** allowed at account level.
+Facts read from the account: duplicate contacts are not allowed (matched on email, then phone);
+duplicate opportunities are allowed; contacts have NO assigned owner – reps are identified by
+tags such as `luewelin's lead` and by their sales pipeline.
 
-A tag already on a contact does not fire Tag Added again, and removing and re-applying it
-re-runs the workflow – which could open a second opportunity or re-assign a rep, depending on
-the two settings in §2 (3) and (4). Those are unverified, so the form does the conservative thing:
+**Current behaviour (default):** an existing contact is not written to. The visitor gets the
+generic failure and is offered the official GHL form.
 
-- **New contact** (email and phone both unknown to GHL): contact saved, tag applied once.
-- **Existing contact**: handling is **disabled**. Nothing is written to GHL – no field, tag,
-  note or task. The visitor gets the same generic "we couldn't send your request" message
-  used for any failure; the buy funnel offers the official GHL form on the spot, the collect
-  funnel shows WhatsApp and phone. The official form then behaves exactly as it does today.
+**Prepared, switched off (`repeatEnquiry.enabled` in `config/quote-form.ts`):**
 
-No message says whether a contact exists. Limit of this interim approach: a new contact
-succeeds and an existing one does not, so someone probing with known details could still
-infer it. Closing that fully needs an approved way to accept repeat enquiries.
+1. The server adds a **note** to the existing contact with the full new enquiry. Saved fields,
+   existing tags, the trigger tag and both lead workflows are untouched; no opportunity is made.
+2. The server adds the tag **`cuisine-repeat-enquiry`**.
+3. The visitor gets the normal thank-you (so nothing reveals that they were already known).
 
-Candidates to test before choosing (none is enabled):
+Needed in GHL before switching it on (new items only – nothing existing changes):
 
-| Option | Behaviour | Needs verifying first |
-|---|---|---|
-| A (current) | Existing contacts are sent to the official form | – |
-| B | Update the contact, remove + re-apply the tag | Re-entry is on AND the opportunity action does not allow duplicates |
-| C | Leave the contact unchanged, add a task for its owner | Task API permission; how reps are notified of tasks |
+- Tag `cuisine-repeat-enquiry`.
+- ONE new workflow, e.g. "Website – repeat enquiry alert":
+  - Trigger: Contact Tag → Tag Added → `cuisine-repeat-enquiry`. Allow re-entry: ON.
+  - If/Else on the contact's rep tag (`luewelin's lead`, `paul's lead`, `schalk's lead`,
+    `marina's lead`, `andrew's lead`, `ettiene's lead`) → Internal Notification to that rep;
+    else → Internal Notification to the person who allocates new leads.
+  - Last action: Remove Contact Tag `cuisine-repeat-enquiry` (so the next enquiry alerts again).
+  - No Create Opportunity action.
+
+Unverified until one approved test: the notes call with the Vercel token's permissions.
 
 ## 4. Meta Pixel (built; on automatically for Preview builds of `feat/custom-form` only)
 
@@ -141,8 +143,9 @@ variable after testing.
 2. Control: one internal test lead through the official form; record fields, tags, workflow
    history, owner, opportunity (pipeline + stage), notifications.
 3. Custom form, new internal identity: compare with the control item by item.
-4. Same identity again: expect the generic failure message and the offer of the official
-   form, and NO change at all in GHL.
+4. Same identity again: with repeat enquiries OFF, the generic failure and the offer of the
+   official form, no change in GHL; with them ON, the normal thank-you, one new note, one
+   rep alert, and no new opportunity.
 5. One test each for Gauteng, Western Cape and North-West routing.
 6. One used-oil test: new field populated, routing as expected.
 7. Wrong token on Preview: form reports failure, nothing saved.
@@ -155,3 +158,32 @@ the tag call. Step 3 is the first time they run.
 
 Single choice per question (GHL allows several); local phone numbers saved as `+27…`;
 consent wording is service-specific; GHL's own form-attribution data is not produced.
+
+## 9. Production launch checklist
+
+Order matters. Nothing here has been done.
+
+1. Merge pull request #2 (`feat/custom-form`) into `feat/unified-quote-funnel`, then #1 into
+   `main`. Vercel deploys `main` to production automatically.
+2. Before that merge, in Vercel → Environment Variables, **Production** scope:
+   - `GHL_API_TOKEN` – the same Private Integration token used in Preview.
+   - `NEXT_PUBLIC_META_PIXEL_ENABLED=true` – only if the pixel should run in production
+     (the automatic switch covers previews of `feat/custom-form` only).
+3. After the deploy: open `/api/quote` on production → `{"configured":true,"ghl":"ok"}`.
+4. One approved live test per funnel; check contact, workflows, opportunities, Meta Lead.
+5. Point ads at `/quote`, `/quote/buy` or `/quote/collect` as wanted.
+6. Domain cutover (separate decision): DNS for `cuisinefoods.co.za` to Vercel; old-URL
+   redirects are in `next.config.js`.
+
+## 10. Rollback
+
+| Problem | Action | Time |
+|---|---|---|
+| Custom form misbehaves | Vercel: set `NEXT_PUBLIC_QUOTE_FORM_MODE=ghl`, redeploy → all funnels use the official GHL form | minutes |
+| One visitor is stuck | Send them the funnel URL with `?form=ghl` | immediate |
+| Bad release | Vercel → Deployments → previous production deployment → Instant Rollback | immediate |
+| GHL writes must stop | Remove `GHL_API_TOKEN` from Production and redeploy (form then refuses honestly) | minutes |
+| Pixel problem | Remove `NEXT_PUBLIC_META_PIXEL_ENABLED`, redeploy | minutes |
+
+The official GHL form, its Form Submitted triggers and both workflows are unchanged, so the
+fallback path is exactly what runs today.

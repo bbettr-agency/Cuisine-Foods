@@ -28,6 +28,16 @@ export const ucoVolume = {
  */
 export const attributionField = { id: "sxUePgtfySBUhbMvDQPq" };
 
+/**
+ * RETURNING CONTACTS – prepared, OFF until approved (see docs/CUSTOM-FORM-GHL.md §3).
+ * When on, an enquiry from someone already in GHL is recorded as a NOTE on their
+ * contact and the tag below is added. The contact's fields, its existing tags and
+ * the lead workflows are not touched, and no opportunity is created. A small,
+ * separate GHL workflow listens for the tag, alerts the rep and removes the tag
+ * again so the next enquiry can alert too.
+ */
+export const repeatEnquiry = { enabled: false, tag: "cuisine-repeat-enquiry" };
+
 /** Tag the server applies after a successful save (GHL tag ID ehaX4cL4kyPhX2dLwNfT) – both entry workflows listen for it. */
 export const DEFAULT_TRIGGER_TAG = "cuisine-custom-form-submitted";
 

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { GHL_LOCATION_ID } from "@/config/ghl-fields";
-import { ATTRIBUTION_KEYS, DEFAULT_TRIGGER_TAG, attributionField, ucoVolume } from "@/config/quote-form";
-import { normalisePhone, parsePayload, toGhlCustomFields, validate } from "@/lib/quote-validate";
+import { ATTRIBUTION_KEYS, DEFAULT_TRIGGER_TAG, attributionField, repeatEnquiry, ucoVolume } from "@/config/quote-form";
+import { normalisePhone, parsePayload, toGhlCustomFields, validate, type QuotePayload } from "@/lib/quote-validate";
 
 /**
  * POST /api/quote — the custom multi-step form's server side.
@@ -11,11 +11,11 @@ import { normalisePhone, parsePayload, toGhlCustomFields, validate } from "@/lib
  *  - NEW contact: saved with the Contacts API, then the trigger tag is applied,
  *    which starts the existing lead workflow. No opportunity is created here –
  *    the workflow does that, as it does for the official form.
- *  - RETURNING contact: handling is DISABLED. Nothing at all is written to GHL
- *    (no field, tag, note or task). The route answers with the same generic
- *    failure it gives for any upstream problem, and the form offers the
- *    official GHL form, which behaves exactly as it does today. No message
- *    says whether a contact exists. See docs/CUSTOM-FORM-GHL.md.
+ *  - RETURNING contact: by default nothing is written and the route answers with
+ *    the same generic failure as any upstream problem (the form then offers the
+ *    official GHL form). Once config `repeatEnquiry.enabled` is switched on, the
+ *    enquiry is recorded as a note and an alert tag is added instead, and the
+ *    visitor gets the normal thank-you. See docs/CUSTOM-FORM-GHL.md.
  *
  * Rules this route keeps:
  *  - The API token lives only in server environment variables (GHL_API_TOKEN).
@@ -33,8 +33,8 @@ const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
 const hits = new Map<string, number[]>(); // best-effort, per server instance
 
-/** GHL matches duplicates on email, then phone – so we look up both. null = lookup failed. */
-async function contactExists(token: string, email: string, phone: string): Promise<boolean | null> {
+/** GHL matches duplicates on email, then phone – so we look up both. Returns the contact id, false, or null if the lookup failed. */
+async function findContact(token: string, email: string, phone: string): Promise<string | false | null> {
   for (const query of [`email=${encodeURIComponent(email)}`, `number=${encodeURIComponent(phone)}`]) {
     const res = await ghl(token, "GET", `/contacts/search/duplicate?locationId=${GHL_LOCATION_ID}&${query}`);
     if (!res.ok) {
@@ -42,9 +42,22 @@ async function contactExists(token: string, email: string, phone: string): Promi
       return null;
     }
     const data = (await res.json()) as { contact?: { id?: string } | null };
-    if (data.contact?.id) return true;
+    if (data.contact?.id) return data.contact.id;
   }
   return false;
+}
+
+/** A returning contact's new enquiry, as plain text for the note on their record. */
+function enquiryNote(p: QuotePayload, phone: string): string {
+  return [
+    `NEW WEBSITE ENQUIRY – ${p.service === "collect" ? "used oil collection" : "bulk oil quote"}`,
+    `Business: ${p.businessName} (${p.businessType})`,
+    `Contact given: ${p.firstName} · ${phone} · ${p.email}`,
+    `Oil type: ${p.oilType}`,
+    `${p.service === "collect" ? "Used oil per month" : "Monthly volume"}: ${p.volume}`,
+    `Location: ${[p.province, p.region, p.area].filter(Boolean).join(" > ").replace(/[\u2060\u200b]/g, "")}`,
+    "Sent through the website form by an existing contact. Their saved fields and tags were not changed.",
+  ].join("\n");
 }
 
 /** Keeps only the allow-listed attribution keys, as short plain strings. */
@@ -133,10 +146,27 @@ export async function POST(request: Request) {
   const attribution = cleanAttribution(raw.attribution);
 
   try {
-    // 1) Returning contact, or the lookup failed: write nothing and answer with the SAME generic
-    //    failure in both cases. The form then offers the official GHL form.
-    const exists = await contactExists(token, payload.email, phone);
-    if (exists !== false) return fail(502, "upstream");
+    // 1) Is this person already in GHL?
+    const existingId = await findContact(token, payload.email, phone);
+    if (existingId === null) return fail(502, "upstream");
+    if (existingId) {
+      // Returning contact. Until the repeat-enquiry path is approved, write nothing and answer
+      // with the same generic failure as any upstream problem (the form offers the GHL form).
+      if (!repeatEnquiry.enabled) return fail(502, "upstream");
+      // Approved path: record the enquiry as a note, then add the alert tag. Nothing else on
+      // the contact changes, and the lead workflows are not started again.
+      const noted = await ghl(token, "POST", `/contacts/${existingId}/notes`, { body: enquiryNote(payload, phone) });
+      if (!noted.ok) {
+        console.error("[quote] repeat-enquiry note failed", noted.status);
+        return fail(502, "upstream");
+      }
+      const alerted = await ghl(token, "POST", `/contacts/${existingId}/tags`, { tags: [repeatEnquiry.tag] });
+      if (!alerted.ok) {
+        console.error("[quote] repeat-enquiry tag failed", alerted.status);
+        return fail(502, "upstream");
+      }
+      return NextResponse.json({ ok: true });
+    }
 
     // 2) Save the new contact WITH all custom fields in one call, so every answer is on the
     //    contact before the workflows start. "Business Name" goes to last name, as the official form does.

@@ -13,12 +13,14 @@ import { MetaPixel } from "@/components/funnel/meta-pixel";
  *  - "ghl":    the official GoHighLevel embed, kept as the immediate fallback.
  *
  * Fallback routes, fastest first:
- *  1. Change `FORM_MODE` below to "ghl" – every funnel is back on the embed.
+ *  1. Set NEXT_PUBLIC_QUOTE_FORM_MODE=ghl and redeploy – every funnel is back on the embed.
  *  2. Add ?form=ghl to any funnel URL – that visit uses the embed.
  *  3. If a submission fails, the visitor is offered the embed on the spot
  *     (buy funnel only – the official form has no collection questions yet).
  */
-const FORM_MODE: "custom" | "ghl" = "custom";
+// Set NEXT_PUBLIC_QUOTE_FORM_MODE=ghl in Vercel and redeploy to put every funnel back on the
+// official embed without a code change (the rollback switch).
+const FORM_MODE: "custom" | "ghl" = process.env.NEXT_PUBLIC_QUOTE_FORM_MODE === "ghl" ? "ghl" : "custom";
 
 export function FunnelForm({ service, embedTitle }: { service: QuoteService; embedTitle: string }) {
   // null until we know which form this visit gets, so the pixel never loads next to the embed.
