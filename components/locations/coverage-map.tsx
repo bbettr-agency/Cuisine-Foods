@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SA_PATH, SA_VIEW, HUB_MAP_POS } from "@/config/sa-geo";
-import { allHubs, type Hub } from "@/config/coverage";
+import { allHubs, type Hub, openingLabel } from "@/config/coverage";
 
 /**
  * CoverageMap — the /locations national map. It reuses the shared SA geometry
@@ -17,7 +17,7 @@ const SIDE: Record<Hub["id"], "right" | "left"> = { gauteng: "right", "kwazulu-n
 
 function statusLabel(h: Hub): string {
   if (h.status === "open") return h.address?.city ?? "Operating";
-  if (h.status === "coming-soon") return "Opening soon";
+  if (h.status === "coming-soon") return openingLabel(h);
   return "Planned";
 }
 

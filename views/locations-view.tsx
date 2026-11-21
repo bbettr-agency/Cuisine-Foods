@@ -9,7 +9,7 @@ import { CtaBand } from "@/components/funnel/cta-band";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CoverageMap } from "@/components/locations/coverage-map";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
-import { allHubs, type Hub } from "@/config/coverage";
+import { allHubs, type Hub, openingLabel, openProvincesPhrase, comingSoonPhrase } from "@/config/coverage";
 
 /**
  * LocationsView — the national network / coverage hub. Expands the homepage
@@ -41,7 +41,7 @@ export function LocationsView() {
           breadcrumbSchema(crumbs),
           serviceSchema({
             name: "Cuisine Foods coverage – commercial cooking oil supply & used-oil collection",
-            description: "Where Cuisine Foods operates: regional hubs in Gauteng and the Western Cape, with KwaZulu-Natal opening soon, serving commercial kitchens across South Africa.",
+            description: `Where Cuisine Foods operates: regional hubs in ${openProvincesPhrase()}${comingSoonPhrase() ? `, with ${comingSoonPhrase()}` : ""}, serving commercial kitchens across South Africa.`,
             path: "/locations",
             national: true,
           }),
@@ -62,7 +62,7 @@ export function LocationsView() {
             <h1 className="max-w-3xl text-display text-ink">Where Cuisine Foods operates</h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
               We're a national commercial cooking-oil supplier and used-oil recovery partner, run from regional hubs.
-              Gauteng and the Western Cape are operating today, with KwaZulu-Natal opening soon – and we supply and
+              {openProvincesPhrase()} are operating today{comingSoonPhrase() ? `, with ${comingSoonPhrase()}` : ""} – and we supply and
               collect well beyond our hub cities.
             </p>
           </Reveal>
@@ -93,7 +93,7 @@ export function LocationsView() {
                       open ? "bg-brand-50 text-brand-800" : "border border-dashed border-gold-500/50 text-gold-700"
                     }`}
                   >
-                    {open ? "Operating" : "Opening soon"}
+                    {open ? "Operating" : openingLabel(h)}
                   </span>
                 </div>
                 {open && h.address?.city && (

@@ -10,6 +10,7 @@
  * no-fabrication rule: no prices, minimum orders, payment amounts, collection
  * frequencies or guaranteed service areas are stated here.
  */
+import { openProvincesAmp, openProvincesPhrase } from "@/config/coverage";
 import { Banknote, CalendarCheck, ShieldCheck, Truck, UserRound, type LucideIcon } from "lucide-react";
 
 export type FunnelId = "buy" | "collect";
@@ -85,7 +86,7 @@ export const funnels: Record<FunnelId, FunnelContent> = {
       note: "No spam. No price-shopping bots. Just a quote from a real human.",
       imageId: "supply-pillar",
     },
-    trustPoints: ["Branches in Gauteng & the Western Cape", "Family-owned, proudly South African", "No-obligation quote"],
+    trustPoints: [`Branches in ${openProvincesAmp()}`, "Family-owned, proudly South African", "No-obligation quote"],
     benefits: [
       { icon: Truck, title: "Nationwide delivery", body: "From our Centurion and Cape Town branches to every major metro – daily, weekly or monthly slots." },
       { icon: ShieldCheck, title: "Consistent quality", body: "Same oil, same spec, every delivery, so your food tastes the same to every customer." },
@@ -161,7 +162,7 @@ export const funnels: Record<FunnelId, FunnelContent> = {
       note: "No obligation. Collection and payment terms are confirmed with you first.",
       imageId: "funnel-collect-drum",
     },
-    trustPoints: ["Branches in Gauteng & the Western Cape", "Family-owned, proudly South African", "Responsible handling"],
+    trustPoints: [`Branches in ${openProvincesAmp()}`, "Family-owned, proudly South African", "Responsible handling"],
     benefits: [
       { icon: CalendarCheck, title: "Convenient collection", body: "Tell us about your kitchen and we arrange collection around how your business runs – confirmed with you directly." },
       { icon: Banknote, title: "Paid for qualifying oil", body: "Used cooking oil has value. Qualifying oil is paid for – our team confirms the terms for your oil when they contact you." },
@@ -196,7 +197,7 @@ export const funnels: Record<FunnelId, FunnelContent> = {
     },
     faqs: [
       { q: "Which businesses can arrange collection?", a: "Any business that produces used cooking oil can enquire – restaurants, takeaways, caterers, hotels, bakeries and food manufacturers. Tell us about yours and our team confirms what we can arrange." },
-      { q: "Do you collect in my area?", a: "We operate from branches in Gauteng and the Western Cape. Share your location on the form and our team confirms whether we can collect from you." },
+      { q: "Do you collect in my area?", a: `We operate from branches in ${openProvincesPhrase()}. Share your location on the form and our team confirms whether we can collect from you.` },
       { q: "How does payment work?", a: "Qualifying used oil is paid for. The terms depend on your oil and are confirmed by our team before collection – we don't publish a one-size rate." },
       { q: "How often will you collect?", a: "That is agreed with you. Our team confirms a collection arrangement once they understand how much used oil your kitchen produces." },
       { q: "What happens to the collected oil?", a: "It is handled responsibly and recovered into the biodiesel supply chain." },

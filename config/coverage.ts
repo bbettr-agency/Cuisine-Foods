@@ -54,6 +54,7 @@ export type Hub = {
   contact?: { phone?: string; email?: string }; // falls back to site.contact when absent
   gbpUrl?: string; // Google Business Profile URL (add once the profile is live)
   opening?: string; // short note shown while planned / coming-soon
+  openingDate?: string; // confirmed opening date as displayed, e.g. "1 December 2026"
 };
 
 const gauteng: Hub = {
@@ -113,6 +114,18 @@ const westernCape: Hub = {
  * "coming-soon", so no LocalBusiness schema, metro pages or operating claims are
  * emitted, and the province page stays noindex. Geo, local contact, GBP and
  * metros are still unknown and deliberately omitted.
+ *
+ * OPENING DAY (1 December 2026) — nothing switches by itself. When the client
+ * confirms the office is operating:
+ *   1. Set `status: "open"` below. That alone updates every status label, the
+ *      "opening …" notes, the branch count and province lists (helpers at the
+ *      bottom of this file), and makes /kwazulu-natal indexable.
+ *   2. Add `geo` (exact pin) – required before a LocalBusiness node / branch card
+ *      is emitted – plus confirmed hours, and `metros` if any.
+ *   3. Rewrite the "expanding into" hero copy in views/kwazulu-natal-view.tsx and
+ *      the literal branch wording in config/faqs.ts and app/about/page.tsx.
+ *   4. Separately, and only once confirmed: add KwaZulu-Natal to the GHL
+ *      "Location" field and routing, then to the quote form's province list.
  */
 const kwaZuluNatal: Hub = {
   id: "kwazulu-natal",
@@ -123,7 +136,8 @@ const kwaZuluNatal: Hub = {
   terminology: "regional hub",
   services: { supply: true, ucoCollection: true, greaseTrap: false, complianceReporting: false },
   metros: [], // PENDING client — do not assume Durban / Pietermaritzburg
-  opening: "Opening soon – Cuisine Foods' national coverage is expanding into KwaZulu-Natal.",
+  openingDate: "1 December 2026", // client-confirmed
+  opening: "Opening 1 December 2026 – Cuisine Foods' national coverage is expanding into KwaZulu-Natal.",
   address: {
     lines: ["Unit 4", "2 Isongo Road", "Queensmead Industrial", "Queensburgh", "KwaZulu-Natal", "4093"],
     street: "Unit 4, 2 Isongo Road, Queensmead Industrial",
@@ -179,11 +193,30 @@ export const serviceAreaNames = (key: keyof HubServices): string[] =>
 
 /** A natural-language list of the open province names ("Gauteng and the Western
  *  Cape"). Use sparingly in copy — the national message is carried elsewhere. */
-export const openProvincesPhrase = (): string => {
-  const names = openProvinceNames();
-  if (names.length <= 1) return names[0] ?? "South Africa";
-  return `${names.slice(0, -1).join(", ")} and the ${names[names.length - 1]}`;
-};
+export const openProvincesPhrase = (): string => joinProvinces(openProvinceNames(), "and", true);
+
+/** Province names in running text; "Western Cape" takes the article ("the Western Cape"). */
+function joinProvinces(names: string[], joiner: "and" | "&", withArticle: boolean): string {
+  const parts = names.map((n) => (withArticle && n === "Western Cape" ? `the ${n}` : n));
+  if (parts.length <= 1) return parts[0] ?? "South Africa";
+  return `${parts.slice(0, -1).join(", ")} ${joiner} ${parts[parts.length - 1]}`;
+}
+
+/** Open provinces with an ampersand: "Gauteng & the Western Cape" (or without the article). */
+export const openProvincesAmp = (withArticle = true): string => joinProvinces(openProvinceNames(), "&", withArticle);
+
+/** The number of OPERATING branches as a word ("Two" today; "Three" once KZN's status is "open"). */
+export const openBranchCountWord = (): string => ["No", "One", "Two", "Three", "Four", "Five"][openHubs().length] ?? String(openHubs().length);
+
+/** Status label for a hub that is not open yet: "Opening 1 December 2026", else "Opening soon". */
+export const openingLabel = (h?: Hub): string => (h?.openingDate ? `Opening ${h.openingDate}` : "Opening soon");
+
+/** The same, for mid-sentence use: "opening 1 December 2026" / "opening soon". */
+export const openingPhrase = (h?: Hub): string => openingLabel(h).replace(/^O/, "o");
+
+/** Not-yet-open hubs for running text: "KwaZulu-Natal opening 1 December 2026" ("" when none). */
+export const comingSoonPhrase = (): string =>
+  coverage.hubs.filter((h) => h.status === "coming-soon").map((h) => `${h.name} ${openingPhrase(h)}`).join(" and ");
 
 /** Region options for the lead form (all hubs + a fallback). Consumed in a later phase. */
 export const formRegions = (): { value: string; label: string }[] => [

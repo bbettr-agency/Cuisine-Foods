@@ -1,3 +1,4 @@
+import { comingSoonPhrase, openProvincesPhrase } from "@/config/coverage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Building2, HeartHandshake, Recycle, ShieldCheck } from "lucide-react";
@@ -38,7 +39,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow={site.ownership}
         h1="One partner for the oil in and the oil out"
-        subhead="Cuisine Foods is a family-owned South African business supplying bulk cooking oil and collecting used cooking oil nationwide – run from regional hubs in Gauteng and the Western Cape, with KwaZulu-Natal opening soon. A genuine closed loop for professional kitchens."
+        subhead={`Cuisine Foods is a family-owned South African business supplying bulk cooking oil and collecting used cooking oil nationwide – run from regional hubs in ${openProvincesPhrase()}${comingSoonPhrase() ? `, with ${comingSoonPhrase()}` : ""}. A genuine closed loop for professional kitchens.`}
         imageId="about-team"
         crumbs={crumbs}
         primaryLabel="Get a Quote"
@@ -97,12 +98,12 @@ export default function AboutPage() {
             <div key={b.id} className="card p-6">
               <p className="flex items-center gap-2 font-display text-lg font-bold text-ink"><Building2 className="h-5 w-5 text-brand-600" /> {b.label}</p>
               <p className="mt-2 text-sm text-ink-soft">{b.address}</p>
-              <p className="mt-1 text-xs text-ink-faint">{site.contact.hours}</p>
+              <p className="mt-1 text-xs text-ink-faint">{b.open ? site.contact.hours : b.statusNote}</p>
             </div>
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-xl text-center text-sm text-ink-soft">
-          We deliver nationwide from these hubs, with KwaZulu-Natal opening soon.{" "}
+          We deliver nationwide from our operating hubs{comingSoonPhrase() ? `, with ${comingSoonPhrase()}` : ""}.{" "}
           <Link href="/locations" className="font-semibold text-brand-700 hover:underline">See our national coverage →</Link>
         </p>
       </Section>

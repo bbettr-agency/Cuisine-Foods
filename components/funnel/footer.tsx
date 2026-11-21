@@ -62,7 +62,7 @@ export function Footer() {
                 <p className="text-paper/70">
                   {b.address}
                 </p>
-                <p className="text-paper/50">{site.contact.hours}</p>
+                <p className="text-paper/50">{b.open ? site.contact.hours : b.statusNote}</p>
               </div>
             </div>
           ))}

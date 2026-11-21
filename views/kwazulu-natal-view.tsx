@@ -8,7 +8,7 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CtaBand } from "@/components/funnel/cta-band";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/schema";
-import { getHub } from "@/config/coverage";
+import { getHub, openingLabel } from "@/config/coverage";
 
 /**
  * KwaZuluNatalView — the coming-soon province page. While the hub status is
@@ -16,12 +16,14 @@ import { getHub } from "@/config/coverage";
  * schedule, LocalBusiness or operating claim. The official office address is
  * shown (the client supplied it), which is not a service-area claim. It states the
  * confirmed intent (supply + UCO collection are the confirmed national
- * capabilities), says "opening soon", and captures interest. The route itself
+ * capabilities), states the confirmed opening date, and captures interest. The route itself
  * is noindex until status flips to "open" (see the page file). Everything here
  * derives from config/coverage.ts, so the page upgrades itself when KZN opens.
  */
 export function KwaZuluNatalView() {
   const hub = getHub("kwazulu-natal");
+  // One label for the whole page; changes by itself when the hub's status is set to "open".
+  const statusLabel = hub?.status === "open" ? "Now open" : openingLabel(hub);
   const crumbs = [{ name: "Home", path: "/" }, { name: "KwaZulu-Natal", path: "/kwazulu-natal" }];
 
   const confirmed = [
@@ -43,7 +45,7 @@ export function KwaZuluNatalView() {
           <Breadcrumbs items={crumbs} />
           <Reveal>
             <p className="eyebrow mb-3 inline-flex items-center gap-2">
-              <Clock className="h-4 w-4 text-gold-600" /> KwaZulu-Natal · Opening soon
+              <Clock className="h-4 w-4 text-gold-600" /> KwaZulu-Natal · {statusLabel}
             </p>
             <h1 className="max-w-3xl text-display text-ink">Cuisine Foods is expanding into KwaZulu-Natal</h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
@@ -105,7 +107,7 @@ export function KwaZuluNatalView() {
       </Section>
 
       <CtaBand
-        title="Opening soon in KwaZulu-Natal"
+        title={`${statusLabel} in KwaZulu-Natal`}
         body="Register your interest now and we'll contact you as supply and collection go live in your area."
         primaryLabel="Register your interest"
         primaryHref="/contact#quote"

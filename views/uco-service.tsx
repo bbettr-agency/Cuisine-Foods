@@ -1,6 +1,6 @@
 import type { MoneyPage } from "@/config/types";
 import { getFaqs } from "@/config/faqs";
-import { coverage, serviceAreaNames, openProvincesPhrase } from "@/config/coverage";
+import { coverage, serviceAreaNames, openProvincesPhrase, comingSoonPhrase } from "@/config/coverage";
 import { whatsappPrefill, quoteHref } from "@/config/conversion";
 import { hrefFor, resolveRelated } from "@/lib/registry";
 import { faqPageSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema";
@@ -39,9 +39,8 @@ export function UcoServiceView({ page }: { page: MoneyPage }) {
   const allRelated = [...related, ...(page.resourceLinks ?? [])];
 
   const areaNames = page.serviceAreaKey ? serviceAreaNames(page.serviceAreaKey) : [];
-  const comingSoon = coverage.hubs.filter((h) => h.status === "coming-soon").map((h) => h.name);
   const note = page.national
-    ? `Collecting from commercial kitchens, run from our regional hubs in ${openProvincesPhrase()}${comingSoon.length ? `, with ${comingSoon.join(" and ")} opening soon` : ""}.`
+    ? `Collecting from commercial kitchens, run from our regional hubs in ${openProvincesPhrase()}${comingSoonPhrase() ? `, with ${comingSoonPhrase()}` : ""}.`
     : areaNames.length
       ? `Available from our ${areaNames.length > 1 ? areaNames.slice(0, -1).join(", ") + " and " + areaNames.slice(-1) : areaNames[0]} operations.`
       : undefined;

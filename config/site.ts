@@ -5,7 +5,7 @@
  * surfaced only through the progressive trust system (config/trust.ts).
  */
 
-import { physicalHubs, officeHubs, openProvinceNames, type Hub } from "@/config/coverage";
+import { physicalHubs, officeHubs, openProvinceNames, openingLabel, type Hub } from "@/config/coverage";
 
 /**
  * Branch = the presentation shape consumed by schema + branch cards. It is now
@@ -31,7 +31,14 @@ export type Branch = {
 
 /** An office as shown in address lists (contact, about, footer). Includes offices whose
  *  regional service is not yet open – an address here is not a service-area claim. */
-export type Office = { id: Hub["id"]; label: string; address: string; mapLink: string };
+export type Office = {
+  id: Hub["id"];
+  label: string;
+  address: string;
+  mapLink: string;
+  open: boolean; // operating today – only then are opening hours shown
+  statusNote: string; // shown instead of hours for an office that is not open yet
+};
 
 /** The official address lines joined for single-line display. */
 const displayAddress = (h: Hub): string => h.address!.lines.join(", ");
@@ -88,7 +95,7 @@ export const site = {
 
   // Every published office address (Gauteng, Western Cape, KwaZulu-Natal). Use for
   // address lists; use `branches` for schema and anything that implies live service.
-  offices: officeHubs().map((h): Office => ({ id: h.id, label: h.name, address: displayAddress(h), mapLink: h.map!.link })),
+  offices: officeHubs().map((h): Office => ({ id: h.id, label: h.name, address: displayAddress(h), mapLink: h.map!.link, open: h.status === "open", statusNote: h.status === "open" ? "" : openingLabel(h) })),
 
   // Provinces with a live physical hub. Note: the national service area itself is
   // South Africa (see lib/schema.ts) — this is the open-hub province list.

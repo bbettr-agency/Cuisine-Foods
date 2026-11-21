@@ -40,7 +40,7 @@ export default function ContactPage() {
                 <div key={b.id}>
                   <p className="flex items-center gap-2 font-semibold text-ink"><MapPin className="h-4 w-4 text-brand-600" /> {b.label}</p>
                   <p className="mt-1 text-sm text-ink-soft">{b.address}</p>
-                  <p className="text-xs text-ink-faint">{site.contact.hours}</p>
+                  <p className="text-xs text-ink-faint">{b.open ? site.contact.hours : b.statusNote}</p>
                   <div className="mt-3"><Button href={b.mapLink} variant="outline" size="md" external>Open in Maps</Button></div>
                 </div>
               ))}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Pillar } from "@/config/pillars";
 import { getFaqs } from "@/config/faqs";
-import { coverage, openProvincesPhrase } from "@/config/coverage";
+import { coverage, openProvincesPhrase, comingSoonPhrase } from "@/config/coverage";
 import { faqPageSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
@@ -30,8 +30,7 @@ export function UcoPillarView({ pillar }: { pillar: Pillar }) {
   const path = `/${pillar.slug}`;
   const crumbs = [{ name: "Home", path: "/" }, { name: "Used Cooking Oil Collection", path }];
   const faqs = getFaqs(pillar.faqIds);
-  const comingSoon = coverage.hubs.filter((h) => h.status === "coming-soon").map((h) => h.name);
-  const note = `Operating from regional hubs in ${openProvincesPhrase()}${comingSoon.length ? `, with ${comingSoon.join(" and ")} opening soon` : ""}.`;
+  const note = `Operating from regional hubs in ${openProvincesPhrase()}${comingSoonPhrase() ? `, with ${comingSoonPhrase()}` : ""}.`;
 
   return (
     <>
