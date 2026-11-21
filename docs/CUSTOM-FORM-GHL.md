@@ -173,6 +173,14 @@ consent wording is service-specific; GHL's own form-attribution data is not prod
   (they answer the new used-oil question instead). If the allocation step depends on volume,
   they could be skipped. Re-check the two test contacts after the next allocation run.
 
+## 8b. Automated messages to leads (checked 21 Nov, read-only)
+
+The conversations of the two used-oil test contacts and the bulk test contact contain only
+internal activity entries ("Opportunity created" / "Opportunity updated"). No SMS, email or
+WhatsApp was sent to any of them by GHL, before or after rep allocation. So there is no
+automated wording that could mislead a used-oil lead – and also no automated confirmation;
+the on-site thank-you is the only acknowledgement a lead receives until a rep makes contact.
+
 ## 9. Production launch checklist
 
 Order matters. Nothing here has been done.
