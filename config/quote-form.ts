@@ -21,6 +21,13 @@ export const ucoVolume = {
   options: ["Less than 20 L", "20–50 L", "51–100 L", "101–200 L", "201–500 L", "More than 500 L", "Not sure"],
 };
 
+/**
+ * "Website attribution" – Contact custom field, Multi Line (Large Text), key
+ * contact.website_attribution. Holds the campaign parameters of a NEW contact, one
+ * "key: value" per line. The ID is not secret; GHL_FIELD_ATTRIBUTION can override it.
+ */
+export const attributionField = { id: "sxUePgtfySBUhbMvDQPq" };
+
 /** Tag the server applies after a successful save (GHL tag ID ehaX4cL4kyPhX2dLwNfT) – both entry workflows listen for it. */
 export const DEFAULT_TRIGGER_TAG = "cuisine-custom-form-submitted";
 

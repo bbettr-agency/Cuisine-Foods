@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { GHL_LOCATION_ID } from "@/config/ghl-fields";
-import { ATTRIBUTION_KEYS, DEFAULT_TRIGGER_TAG, ucoVolume } from "@/config/quote-form";
+import { ATTRIBUTION_KEYS, DEFAULT_TRIGGER_TAG, attributionField, ucoVolume } from "@/config/quote-form";
 import { normalisePhone, parsePayload, toGhlCustomFields, validate } from "@/lib/quote-validate";
 
 /**
@@ -128,8 +128,8 @@ export async function POST(request: Request) {
   if (!token) return fail(503, "not_configured");
 
   const phone = normalisePhone(payload.phone);
-  // Optional: ONE text field for campaign attribution, only if it has been approved and created.
-  const attributionFieldId = process.env.GHL_FIELD_ATTRIBUTION;
+  // ONE multi-line field for campaign attribution (created in GHL; env var can override the ID).
+  const attributionFieldId = process.env.GHL_FIELD_ATTRIBUTION || attributionField.id;
   const attribution = cleanAttribution(raw.attribution);
 
   try {

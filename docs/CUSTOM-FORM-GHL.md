@@ -22,8 +22,8 @@ as the fallback and is not modified.
 | 3 | Additional workflow trigger | **Contact Tag → Tag Added → `cuisine-custom-form-submitted`**, added *next to* the existing Form Submitted trigger. No action, filter or setting downstream is changed. |
 | 4 | Private Integration token | Runtime scopes: View Contacts, Edit Contacts. Nothing else. (Creating items 1–2 through the API would additionally need Edit Tags and Edit Custom Fields; creating them by hand needs no token change.) |
 
-Approved, NOT created yet: one Contact custom field **Website attribution**, type **Multi Line
-(Large Text)**. Mapping the server writes (one `key: value` per line, this order, only the keys
+**Created:** Contact custom field **Website attribution** (ID `sxUePgtfySBUhbMvDQPq`, key
+`contact.website_attribution`), type **Multi Line (Large Text)**. Its ID is built into the code. Mapping the server writes (one `key: value` per line, this order, only the keys
 that are present, 200 characters per value, 1,500 in total):
 
 ```
@@ -39,8 +39,7 @@ fbp: <Meta _fbp cookie, only when the pixel is on>
 landing_page: /quote
 ```
 
-It is written once, when a NEW contact is created, and only when `GHL_FIELD_ATTRIBUTION` holds
-the field's ID. GHL publishes no official character limit (community reports: about 12,000 for
+It is written once, when a NEW contact is created. GHL publishes no official character limit (community reports: about 12,000 for
 multi-line), and a field's type cannot be changed after creation. The first test write is the
 compatibility check.
 
@@ -120,8 +119,8 @@ The contact's Source is set to "Website form – bulk oil quote" / "– used oil
 ## 6. Server environment variables (Vercel, **Preview** scope only)
 
 Required: `GHL_API_TOKEN` (Private Integration token: View Contacts + Edit Contacts). Nothing else.
-Optional: `GHL_TRIGGER_TAG`, `GHL_FIELD_UCO_VOLUME` (overrides of the built-in defaults),
-`GHL_FIELD_ATTRIBUTION` (field not created yet), `NEXT_PUBLIC_META_PIXEL_ENABLED`.
+Optional overrides of built-in defaults: `GHL_TRIGGER_TAG`, `GHL_FIELD_UCO_VOLUME`,
+`GHL_FIELD_ATTRIBUTION`, `NEXT_PUBLIC_META_PIXEL_ENABLED`.
 Without `GHL_API_TOKEN` the form refuses to submit. Once it is set, anyone who can open the
 preview URL can create a real contact – keep Vercel Deployment Protection on, or remove the
 variable after testing.
