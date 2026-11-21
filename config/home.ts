@@ -8,8 +8,8 @@ export const home = {
     subhead:
       "Bulk sunflower, palm olein and soya delivered to restaurants, hotels and food manufacturers – and we collect your used cooking oil when you're done. Run from regional hubs, close to the kitchens we serve.",
     // Two-path fork (the most important conversion decision on the page)
-    primary: { label: "Get a Bulk Oil Quote", href: "/request-a-quote?intent=supply", intent: "supply" as const },
-    secondary: { label: "Arrange Used-Oil Collection", href: "/request-a-quote?intent=uco", intent: "uco" as const },
+    primary: { label: "Get a Bulk Oil Quote", href: "/quote/buy", intent: "supply" as const },
+    secondary: { label: "Arrange Used-Oil Collection", href: "/quote/collect", intent: "uco" as const },
   },
 
   // Section 2 – the three-product lineup the hero products travel into.

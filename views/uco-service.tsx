@@ -1,7 +1,7 @@
 import type { MoneyPage } from "@/config/types";
 import { getFaqs } from "@/config/faqs";
 import { coverage, serviceAreaNames, openProvincesPhrase } from "@/config/coverage";
-import { whatsappPrefill } from "@/config/conversion";
+import { whatsappPrefill, quoteHref } from "@/config/conversion";
 import { hrefFor, resolveRelated } from "@/lib/registry";
 import { faqPageSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
@@ -45,7 +45,7 @@ export function UcoServiceView({ page }: { page: MoneyPage }) {
     : areaNames.length
       ? `Available from our ${areaNames.length > 1 ? areaNames.slice(0, -1).join(", ") + " and " + areaNames.slice(-1) : areaNames[0]} operations.`
       : undefined;
-  const quoteHref = `/request-a-quote?intent=${page.intent}${page.quoteTopic ? `&topic=${page.quoteTopic}` : ""}`;
+  const quoteLink = quoteHref(page.intent);
 
   const schema: object[] = [breadcrumbSchema(crumbs)];
   if (faqs.length) schema.push(faqPageSchema(faqs));
@@ -70,7 +70,7 @@ export function UcoServiceView({ page }: { page: MoneyPage }) {
         crumbs={crumbs}
         intent="uco"
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
         secondary={isGetPaid ? { label: "Arrange a collection", href: "/used-cooking-oil-collection" } : undefined}
         note={note}
         waMessage={page.quoteTopic === "grease-trap-cleaning" ? whatsappPrefill.greaseTrap : undefined}
@@ -125,7 +125,7 @@ export function UcoServiceView({ page }: { page: MoneyPage }) {
         title={closing.title}
         body={closing.body}
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
       />
     </>
   );

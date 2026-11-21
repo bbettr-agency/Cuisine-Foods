@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
-import { telUrl, whatsappUrl, whatsappPrefill, cta } from "@/config/conversion";
+import { telUrl, whatsappUrl, whatsappPrefill, cta, quoteHref } from "@/config/conversion";
 import type { CtaIntent } from "@/config/conversion";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -38,7 +38,7 @@ export function UcoHero({
   waMessage?: string;
 }) {
   const waMsg = waMessage ?? (intent === "uco" ? whatsappPrefill.uco : whatsappPrefill.general);
-  const href = primaryHref ?? `/request-a-quote?intent=${intent}`;
+  const href = primaryHref ?? quoteHref(intent);
 
   return (
     <section className="relative overflow-hidden border-b border-line">

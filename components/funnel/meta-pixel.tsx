@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Script from "next/script";
 import { metaPixel } from "@/config/quote-form";
 import { cn } from "@/lib/utils";
 
@@ -31,26 +30,44 @@ function readConsent(): Consent {
  *  - Until the visitor allows advertising measurement, NOTHING from Meta is loaded:
  *    no script, no cookie, no event. A small banner asks once and remembers the answer.
  *  - On "Allow" it loads the pixel and sends ONE PageView for the page.
+ *  - Mount it at most once per page.
  *
  * It is mounted only where the custom form (or the selection page) is shown. The
  * official GHL embed fires this same pixel itself, so the two never run together.
  */
-export function MetaPixel({ aboveStickyCta = false }: { aboveStickyCta?: boolean }) {
+export function MetaPixel({ aboveStickyCta = false, side = "right" }: { aboveStickyCta?: boolean; side?: "left" | "right" }) {
   const [consent, setConsent] = useState<Consent | null>(null); // null until read in the browser
 
   useEffect(() => {
     setConsent(readConsent());
   }, []);
 
-  if (!metaPixel.enabled || consent === null || consent === "denied") return null;
+  // One PageView per mounted page. The pixel code is injected once per browser tab; arriving
+  // on another page of the site (full load or in-site navigation) sends that page's PageView.
+  useEffect(() => {
+    if (!metaPixel.enabled || consent !== "granted") return;
+    if (!window.fbq) {
+      type Queue = Fbq & { callMethod?: (...a: unknown[]) => void; queue: unknown[]; push: unknown; loaded: boolean; version: string };
+      const fbq = function (...args: unknown[]) {
+        if (fbq.callMethod) fbq.callMethod(...args);
+        else fbq.queue.push(args);
+      } as Queue;
+      fbq.push = fbq;
+      fbq.loaded = true;
+      fbq.version = "2.0";
+      fbq.queue = [];
+      window.fbq = fbq;
+      (window as unknown as { _fbq?: Fbq })._fbq = fbq;
+      const el = document.createElement("script");
+      el.async = true;
+      el.src = "https://connect.facebook.net/en_US/fbevents.js";
+      document.head.appendChild(el);
+      fbq("init", metaPixel.id);
+    }
+    window.fbq?.("track", "PageView");
+  }, [consent]);
 
-  if (consent === "granted") {
-    return (
-      <Script id="meta-pixel" strategy="afterInteractive">
-        {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${metaPixel.id}');fbq('track','PageView');`}
-      </Script>
-    );
-  }
+  if (!metaPixel.enabled || consent === null || consent !== "unknown") return null;
 
   const choose = (value: "granted" | "denied") => {
     try {
@@ -64,7 +81,8 @@ export function MetaPixel({ aboveStickyCta = false }: { aboveStickyCta?: boolean
       role="dialog"
       aria-label="Advertising measurement"
       className={cn(
-        "fixed inset-x-3 z-[60] mx-auto max-w-md rounded-2xl border border-line bg-surface p-4 shadow-lift sm:inset-x-auto sm:right-4",
+        "fixed inset-x-3 z-[60] mx-auto max-w-md rounded-2xl border border-line bg-surface p-4 shadow-lift sm:inset-x-auto",
+        side === "left" ? "sm:left-4" : "sm:right-4",
         aboveStickyCta ? "bottom-[96px] lg:bottom-4" : "bottom-4",
       )}
     >

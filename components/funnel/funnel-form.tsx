@@ -15,14 +15,24 @@ import { MetaPixel } from "@/components/funnel/meta-pixel";
  * Fallback routes, fastest first:
  *  1. Set NEXT_PUBLIC_QUOTE_FORM_MODE=ghl and redeploy – every funnel is back on the embed.
  *  2. Add ?form=ghl to any funnel URL – that visit uses the embed.
- *  3. If a submission fails, the visitor is offered the embed on the spot
- *     (buy funnel only – the official form has no collection questions yet).
+ *  3. If a submission fails – including a returning contact, which the custom form does
+ *     not handle yet – the visitor is offered the official form on the spot. On the
+ *     collect journey it opens with "Used Oil Collection" preselected.
  */
 // Set NEXT_PUBLIC_QUOTE_FORM_MODE=ghl in Vercel and redeploy to put every funnel back on the
 // official embed without a code change (the rollback switch).
 const FORM_MODE: "custom" | "ghl" = process.env.NEXT_PUBLIC_QUOTE_FORM_MODE === "ghl" ? "ghl" : "custom";
 
-export function FunnelForm({ service, embedTitle }: { service: QuoteService; embedTitle: string }) {
+export function FunnelForm({
+  service,
+  embedTitle,
+  pixelSide = "right",
+}: {
+  service: QuoteService;
+  embedTitle: string;
+  /** Which corner the consent banner uses on desktop (site pages keep the right corner for WhatsApp). */
+  pixelSide?: "left" | "right";
+}) {
   // null until we know which form this visit gets, so the pixel never loads next to the embed.
   const [mode, setMode] = useState<"custom" | "ghl" | null>(null);
 
@@ -31,11 +41,12 @@ export function FunnelForm({ service, embedTitle }: { service: QuoteService; emb
   }, []);
 
   // The official embed fires the same Meta pixel itself – ours is mounted only with the custom form.
-  if (mode === "ghl") return <GhlQuoteEmbed title={embedTitle} />;
+  // On the collect journey the official form opens with its "Used Oil Collection" option preselected.
+  if (mode === "ghl") return <GhlQuoteEmbed title={embedTitle} prefill={service === "collect" ? { multi_dropdown_4m53: "Used Oil Collection" } : undefined} />;
   return (
     <>
-      {mode === "custom" && <MetaPixel aboveStickyCta />}
-      <QuoteForm service={service} onUseStandardForm={service === "buy" ? () => setMode("ghl") : undefined} />
+      {mode === "custom" && <MetaPixel aboveStickyCta side={pixelSide} />}
+      <QuoteForm service={service} onUseStandardForm={() => setMode("ghl")} />
     </>
   );
 }

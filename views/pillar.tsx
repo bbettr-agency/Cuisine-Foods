@@ -1,3 +1,4 @@
+import { quoteHref } from "@/config/conversion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Pillar } from "@/config/pillars";
@@ -93,7 +94,7 @@ export function PillarView({ pillar }: { pillar: Pillar }) {
       )}
 
       <FaqSection ids={pillar.faqIds} alt />
-      <CtaBand intent={pillar.intent} primaryLabel={pillar.primaryCtaLabel} primaryHref={`/request-a-quote?intent=${pillar.intent}`} />
+      <CtaBand intent={pillar.intent} primaryLabel={pillar.primaryCtaLabel} primaryHref={quoteHref(pillar.intent)} />
     </>
   );
 }

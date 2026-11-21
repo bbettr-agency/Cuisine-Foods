@@ -54,7 +54,7 @@ export function KwaZuluNatalView() {
           </Reveal>
           <Reveal delay={0.08}>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Button href="/request-a-quote?intent=supply&region=KwaZulu-Natal" size="lg">Register your interest</Button>
+              <Button href="/contact#quote" size="lg">Register your interest</Button>
               <Button href="/locations" variant="outline" size="lg">See our national network</Button>
             </div>
           </Reveal>
@@ -99,7 +99,7 @@ export function KwaZuluNatalView() {
         title="Opening soon in KwaZulu-Natal"
         body="Register your interest now and we'll contact you as supply and collection go live in your area."
         primaryLabel="Register your interest"
-        primaryHref="/request-a-quote?intent=supply&region=KwaZulu-Natal"
+        primaryHref="/contact#quote"
       />
     </>
   );

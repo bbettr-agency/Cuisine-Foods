@@ -181,6 +181,19 @@ WhatsApp was sent to any of them by GHL, before or after rep allocation. So ther
 automated wording that could mislead a used-oil lead – and also no automated confirmation;
 the on-site thank-you is the only acknowledgement a lead receives until a rep makes contact.
 
+## 8c. Site-wide form (21 Nov)
+
+- The custom form is the enquiry form on `/quote/buy`, `/quote/collect`, `/contact` and
+  `/request-a-quote` (the last two through `EnquiryForm`, a service toggle around the same
+  `FunnelForm`). One component, one endpoint, one GHL integration.
+- Every quote CTA goes through `quoteHref()` in `config/conversion.ts`: bulk → `/quote/buy`,
+  used oil → `/quote/collect`, general → `/quote`. KwaZulu-Natal CTAs go to `/contact#quote`
+  because KZN is not an option in the form's province question (nor in the GHL field).
+- Attribution is captured on whichever page a visitor lands on (root layout) and reaches the
+  form after in-site navigation.
+- The official GHL form is no longer shown by default anywhere. It remains as the fallback:
+  rollback switch, `?form=ghl`, and the link offered after any failed submission.
+
 ## 9. Production launch checklist
 
 Order matters. Nothing here has been done.

@@ -10,7 +10,7 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
-import { GhlQuoteEmbed } from "@/components/funnel/ghl-quote-embed";
+import { EnquiryForm } from "@/components/funnel/enquiry-form";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Cuisine Foods | Gauteng & Western Cape",
@@ -47,10 +47,10 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Quote form – full-width block (same width as the /quote funnel) so the GHL form lays out two fields per row. */}
+          {/* The site-wide custom form (official GHL form remains its built-in fallback). */}
           <Reveal>
-            <div id="quote" className="mt-12">
-              <GhlQuoteEmbed />
+            <div id="quote" className="mt-12 scroll-mt-28">
+              <EnquiryForm />
             </div>
           </Reveal>
         </div>

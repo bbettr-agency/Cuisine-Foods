@@ -68,7 +68,7 @@ export function LocationsView() {
           </Reveal>
           <Reveal delay={0.08}>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Button href="/request-a-quote?intent=supply" size="lg">Get a Quote</Button>
+              <Button href="/quote/buy" size="lg">Get a Quote</Button>
               <Button href="/used-cooking-oil-collection" variant="outline" size="lg">Arrange a Collection</Button>
             </div>
           </Reveal>
@@ -133,7 +133,7 @@ export function LocationsView() {
             your area – and when.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button href="/request-a-quote?intent=supply" size="lg">Tell us where you are</Button>
+            <Button href="/quote/buy" size="lg">Tell us where you are</Button>
           </div>
         </div>
       </Section>
@@ -142,7 +142,7 @@ export function LocationsView() {
         title="One partner for the oil in and the oil out"
         body="Wherever you are, get a bulk oil quote or arrange a used-oil collection – we'll confirm what we can do for your area."
         primaryLabel="Get a Quote"
-        primaryHref="/request-a-quote?intent=supply"
+        primaryHref="/quote/buy"
       />
     </>
   );

@@ -4,7 +4,7 @@ import { whatsappUrl, whatsappPrefill } from "@/config/conversion";
 import { PlaceholderImage } from "@/components/ui/placeholder-image";
 import { FunnelHeader } from "@/components/funnel/funnel-header";
 import { FunnelFooter } from "@/components/funnel/funnel-footer";
-import { AttributionCapture, FunnelLink } from "@/components/funnel/funnel-link";
+import { FunnelLink } from "@/components/funnel/funnel-link";
 import { MetaPixel } from "@/components/funnel/meta-pixel";
 
 /**
@@ -18,7 +18,6 @@ export function FunnelSelect() {
     <div className="flex min-h-dvh flex-col bg-paper text-ink">
       {/* One PageView for the selection page (inert unless the pixel is enabled). No GHL embed here, so no double count. */}
       <MetaPixel />
-      <AttributionCapture />
       <FunnelHeader />
 
       <section className="relative flex-1 overflow-hidden">

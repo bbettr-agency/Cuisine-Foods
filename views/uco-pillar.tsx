@@ -1,3 +1,4 @@
+import { quoteHref } from "@/config/conversion";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Pillar } from "@/config/pillars";
@@ -173,7 +174,7 @@ export function UcoPillarView({ pillar }: { pillar: Pillar }) {
         title="Ready to arrange a collection?"
         body="Tell us your kitchen, rough weekly volume and area. We'll confirm a buy-back rate and a collection schedule that fits how you work."
         primaryLabel={pillar.primaryCtaLabel}
-        primaryHref={`/request-a-quote?intent=${pillar.intent}`}
+        primaryHref={quoteHref(pillar.intent)}
       />
     </>
   );
