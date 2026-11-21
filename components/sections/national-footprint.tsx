@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/container";
-import { allHubs, type Hub } from "@/config/coverage";
+import { allHubs, type Hub, openingLabel } from "@/config/coverage";
 import { SA_PATH, SA_VIEW, HUB_MAP_POS } from "@/config/sa-geo";
 
 /**
@@ -49,7 +49,7 @@ const REVEAL: Record<Hub["id"], [number, number]> = {
 };
 
 function hubCity(h: Hub): string {
-  return h.status === "open" ? h.address?.city ?? "Regional hub" : "Opening soon";
+  return h.status === "open" ? h.address?.city ?? "Regional hub" : openingLabel(h);
 }
 
 export function NationalFootprint() {
@@ -128,7 +128,7 @@ export function NationalFootprint() {
                       )}
                     </span>
                     <span className={`mt-0.5 block text-sm ${open ? "text-brand-100/80" : "text-gold-300/90"}`}>
-                      {open ? h.address?.city ?? "Regional hub" : "Opening soon"}
+                      {open ? h.address?.city ?? "Regional hub" : openingLabel(h)}
                     </span>
                   </span>
                 </>

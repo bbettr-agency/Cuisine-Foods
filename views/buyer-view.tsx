@@ -3,7 +3,7 @@ import { ArrowRight, Phone } from "lucide-react";
 import type { MoneyPage } from "@/config/types";
 import { getFaqs } from "@/config/faqs";
 import { hrefFor, resolveRelated } from "@/lib/registry";
-import { telUrl, whatsappUrl, whatsappPrefill, cta } from "@/config/conversion";
+import { telUrl, whatsappUrl, whatsappPrefill, cta, quoteHref } from "@/config/conversion";
 import { breadcrumbSchema, serviceSchema, faqPageSchema } from "@/lib/schema";
 
 import { JsonLd } from "@/components/seo/json-ld";
@@ -37,7 +37,7 @@ export function BuyerView({ page }: { page: MoneyPage }) {
   const faqs = getFaqs(page.faqIds);
   const related = resolveRelated(page.relatedSlugs);
   const allRelated = [...related, ...(page.resourceLinks ?? [])];
-  const quoteHref = `/request-a-quote?intent=supply${page.quoteTopic ? `&topic=${page.quoteTopic}` : ""}`;
+  const quoteLink = quoteHref("supply");
 
   return (
     <>
@@ -62,7 +62,7 @@ export function BuyerView({ page }: { page: MoneyPage }) {
             </Reveal>
             <Reveal delay={0.08}>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                <Button href={quoteHref} variant="primary" size="lg">{page.primaryCtaLabel}</Button>
+                <Button href={quoteLink} variant="primary" size="lg">{page.primaryCtaLabel}</Button>
                 <Button href={whatsappUrl(whatsappPrefill.supply)} variant="outlineInk" size="lg" external>{cta.whatsapp}</Button>
                 <a href={telUrl} className="inline-flex items-center gap-2 text-sm font-medium text-ink-soft hover:text-ink">
                   <Phone className="h-4 w-4 text-brand-600" /> {cta.call}
@@ -174,7 +174,7 @@ export function BuyerView({ page }: { page: MoneyPage }) {
         title={`${page.h1} – get your pricing`}
         body="Tell us your volumes, sites and area, and we'll put together pricing and a supply schedule built around how you actually operate."
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
       />
     </>
   );

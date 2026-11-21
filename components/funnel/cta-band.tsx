@@ -12,7 +12,7 @@ export function CtaBand({
   body = "Get a bulk oil quote or arrange a free used-oil collection today. No obligation, no lock-in.",
   intent = "general",
   primaryLabel,
-  primaryHref = "/request-a-quote",
+  primaryHref = "/quote",
 }: {
   title?: string;
   body?: string;

@@ -1,7 +1,7 @@
 import type { MoneyPage } from "@/config/types";
 import { getFaqs } from "@/config/faqs";
-import { coverage, serviceAreaNames, openProvincesPhrase } from "@/config/coverage";
-import { whatsappPrefill } from "@/config/conversion";
+import { coverage, serviceAreaNames, openProvincesPhrase, comingSoonPhrase } from "@/config/coverage";
+import { whatsappPrefill, quoteHref } from "@/config/conversion";
 import { hrefFor, resolveRelated } from "@/lib/registry";
 import { faqPageSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
@@ -39,13 +39,12 @@ export function UcoServiceView({ page }: { page: MoneyPage }) {
   const allRelated = [...related, ...(page.resourceLinks ?? [])];
 
   const areaNames = page.serviceAreaKey ? serviceAreaNames(page.serviceAreaKey) : [];
-  const comingSoon = coverage.hubs.filter((h) => h.status === "coming-soon").map((h) => h.name);
   const note = page.national
-    ? `Collecting from commercial kitchens, run from our regional hubs in ${openProvincesPhrase()}${comingSoon.length ? `, with ${comingSoon.join(" and ")} opening soon` : ""}.`
+    ? `Collecting from commercial kitchens, run from our regional hubs in ${openProvincesPhrase()}${comingSoonPhrase() ? `, with ${comingSoonPhrase()}` : ""}.`
     : areaNames.length
       ? `Available from our ${areaNames.length > 1 ? areaNames.slice(0, -1).join(", ") + " and " + areaNames.slice(-1) : areaNames[0]} operations.`
       : undefined;
-  const quoteHref = `/request-a-quote?intent=${page.intent}${page.quoteTopic ? `&topic=${page.quoteTopic}` : ""}`;
+  const quoteLink = quoteHref(page.intent);
 
   const schema: object[] = [breadcrumbSchema(crumbs)];
   if (faqs.length) schema.push(faqPageSchema(faqs));
@@ -70,7 +69,7 @@ export function UcoServiceView({ page }: { page: MoneyPage }) {
         crumbs={crumbs}
         intent="uco"
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
         secondary={isGetPaid ? { label: "Arrange a collection", href: "/used-cooking-oil-collection" } : undefined}
         note={note}
         waMessage={page.quoteTopic === "grease-trap-cleaning" ? whatsappPrefill.greaseTrap : undefined}
@@ -125,7 +124,7 @@ export function UcoServiceView({ page }: { page: MoneyPage }) {
         title={closing.title}
         body={closing.body}
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
       />
     </>
   );

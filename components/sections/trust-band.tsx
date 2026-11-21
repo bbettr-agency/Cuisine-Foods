@@ -1,7 +1,7 @@
 import { Check, ShieldCheck } from "lucide-react";
 import { trustBand } from "@/config/commercial";
 import { enabledCerts } from "@/config/trust";
-import { cta, whatsappUrl, whatsappPrefill } from "@/config/conversion";
+import { cta, whatsappUrl, whatsappPrefill, quoteHref } from "@/config/conversion";
 import type { CtaIntent } from "@/config/conversion";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
@@ -74,7 +74,7 @@ export function TrustBand({
             </ul>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button href={`/request-a-quote?intent=${intent}`}>{ctaLabel}</Button>
+              <Button href={quoteHref(intent)}>{ctaLabel}</Button>
               <Button href={whatsappUrl(waMsg)} variant="outlineInk" external>{cta.whatsapp}</Button>
             </div>
 

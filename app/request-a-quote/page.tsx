@@ -8,7 +8,7 @@ import { Container, Section } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { GhlQuoteEmbed } from "@/components/funnel/ghl-quote-embed";
+import { EnquiryForm } from "@/components/funnel/enquiry-form";
 
 export const metadata: Metadata = buildMetadata({
   title: "Request a Quote | Bulk Oil or UCO Collection | Cuisine Foods",
@@ -43,10 +43,10 @@ export default function QuotePage({ searchParams }: { searchParams: { intent?: s
               <li key={r} className="flex items-start gap-3 text-ink"><Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" /> {r}</li>
             ))}
           </ul>
-          {/* Full-width block (same width as the /quote funnel) so the GHL form lays out two fields per row. */}
+          {/* The site-wide custom form (official GHL form remains its built-in fallback). */}
           <Reveal>
-            <div id="quote" className="mt-10">
-              <GhlQuoteEmbed />
+            <div id="quote" className="mt-10 scroll-mt-28">
+              <EnquiryForm initial={intent === "uco" ? "collect" : "buy"} />
             </div>
           </Reveal>
         </div>

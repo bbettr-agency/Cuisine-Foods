@@ -8,19 +8,22 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CtaBand } from "@/components/funnel/cta-band";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/schema";
-import { getHub } from "@/config/coverage";
+import { getHub, openingLabel } from "@/config/coverage";
 
 /**
  * KwaZuluNatalView — the coming-soon province page. While the hub status is
- * "coming-soon" it must NOT pose as an operating branch: no address, city,
- * phone, depot, schedule, LocalBusiness or operating claim. It states the
+ * "coming-soon" it must NOT pose as an operating branch: no local phone, depot,
+ * schedule, LocalBusiness or operating claim. The official office address is
+ * shown (the client supplied it), which is not a service-area claim. It states the
  * confirmed intent (supply + UCO collection are the confirmed national
- * capabilities), says "opening soon", and captures interest. The route itself
+ * capabilities), states the confirmed opening date, and captures interest. The route itself
  * is noindex until status flips to "open" (see the page file). Everything here
  * derives from config/coverage.ts, so the page upgrades itself when KZN opens.
  */
 export function KwaZuluNatalView() {
   const hub = getHub("kwazulu-natal");
+  // One label for the whole page; changes by itself when the hub's status is set to "open".
+  const statusLabel = hub?.status === "open" ? "Now open" : openingLabel(hub);
   const crumbs = [{ name: "Home", path: "/" }, { name: "KwaZulu-Natal", path: "/kwazulu-natal" }];
 
   const confirmed = [
@@ -42,7 +45,7 @@ export function KwaZuluNatalView() {
           <Breadcrumbs items={crumbs} />
           <Reveal>
             <p className="eyebrow mb-3 inline-flex items-center gap-2">
-              <Clock className="h-4 w-4 text-gold-600" /> KwaZulu-Natal · Opening soon
+              <Clock className="h-4 w-4 text-gold-600" /> KwaZulu-Natal · {statusLabel}
             </p>
             <h1 className="max-w-3xl text-display text-ink">Cuisine Foods is expanding into KwaZulu-Natal</h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
@@ -54,7 +57,7 @@ export function KwaZuluNatalView() {
           </Reveal>
           <Reveal delay={0.08}>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Button href="/request-a-quote?intent=supply&region=KwaZulu-Natal" size="lg">Register your interest</Button>
+              <Button href="/contact#quote" size="lg">Register your interest</Button>
               <Button href="/locations" variant="outline" size="lg">See our national network</Button>
             </div>
           </Reveal>
@@ -76,9 +79,17 @@ export function KwaZuluNatalView() {
             ))}
           </ul>
           <p className="mt-8 rounded-[var(--radius)] border border-gold-500/30 bg-gold-100/40 p-5 text-sm leading-relaxed text-ink-soft">
-            We're being upfront: we haven't opened the KwaZulu-Natal hub yet, so we're not publishing a depot address,
-            local phone number or collection schedule we can't stand behind. Register your interest and we'll be in
-            touch as the region goes live.
+            {hub?.address ? (
+              <>
+                <span className="font-semibold text-ink">Our KwaZulu-Natal office:</span> {hub.address.lines.join(", ")}.{" "}
+                {hub.map ? (
+                  <a href={hub.map.link} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand-700 hover:underline">Open in Google Maps</a>
+                ) : null}
+                <br />
+              </>
+            ) : null}
+            We're being upfront: we're not yet publishing a local phone number or collection schedule for the region.
+            Register your interest and we'll be in touch.
           </p>
         </div>
       </Section>
@@ -96,10 +107,10 @@ export function KwaZuluNatalView() {
       </Section>
 
       <CtaBand
-        title="Opening soon in KwaZulu-Natal"
+        title={`${statusLabel} in KwaZulu-Natal`}
         body="Register your interest now and we'll contact you as supply and collection go live in your area."
         primaryLabel="Register your interest"
-        primaryHref="/request-a-quote?intent=supply&region=KwaZulu-Natal"
+        primaryHref="/contact#quote"
       />
     </>
   );

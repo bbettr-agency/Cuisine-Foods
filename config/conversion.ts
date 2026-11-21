@@ -19,6 +19,17 @@ export const cta = {
   quote: "Request a Quote",
 } as const;
 
+/**
+ * Where a quote/enquiry CTA leads. Every enquiry on the site goes through the same
+ * custom three-step form: bulk-oil CTAs open it on the buy journey, used-oil CTAs
+ * on the collect journey, and anything general opens the service selection page.
+ */
+export function quoteHref(intent?: string): string {
+  if (intent === "uco") return "/quote/collect";
+  if (intent === "supply") return "/quote/buy";
+  return "/quote";
+}
+
 /** Build a WhatsApp click-to-chat URL with a pre-filled, page-specific message. */
 export function whatsappUrl(message?: string): string {
   const base = `https://wa.me/${site.contact.whatsapp.number}`;

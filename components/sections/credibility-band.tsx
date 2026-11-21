@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { easeOutExpo, viewportOnce } from "@/lib/motion";
-import { openHubs, allHubs, coverage } from "@/config/coverage";
+import { openHubs, allHubs, coverage, comingSoonPhrase } from "@/config/coverage";
 
 /**
  * CredibilityBand (V2) – national proof band under "Our Cooking Oils".
@@ -45,10 +45,9 @@ export function CredibilityBand() {
   const allOpen = open.length === total.length;
   const hubFigure = String(allOpen ? total.length : open.length).padStart(2, "0");
   const openNames = open.map((h) => h.name);
-  const comingNames = coverage.hubs.filter((h) => h.status === "coming-soon").map((h) => h.name);
   const hubSub = allOpen
     ? total.map((h) => h.name).join(" · ")
-    : `${openNames.join(" & ")}${comingNames.length ? ` – ${comingNames.join(", ")} opening soon` : ""}`;
+    : `${openNames.join(" & ")}${comingSoonPhrase() ? ` – ${comingSoonPhrase()}` : ""}`;
 
   const supporting = [
     { k: "Nationwide", v: "One partner for supply and collection" },

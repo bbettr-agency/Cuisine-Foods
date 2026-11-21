@@ -1,3 +1,4 @@
+import { quoteHref } from "@/config/conversion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Pillar } from "@/config/pillars";
@@ -55,7 +56,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
     { label: "Buy-back", value: "We collect & pay for used oil" },
   ];
 
-  const quoteHref = `/request-a-quote?intent=${pillar.intent}&topic=bulk-cooking-oil`;
+  const quoteLink = quoteHref(pillar.intent);
 
   // Use-case routing — helps a buyer choose the right conversation, no fake specs.
   const chooser = [
@@ -83,7 +84,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
         crumbs={crumbs}
         intent={pillar.intent}
         primaryLabel={pillar.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
         packshot={{ src: "/images/website/product-cooking.png", w: 869, h: 1046, alt: "Cuisine Foods 100% pure cooking oil – 20L bucket" }}
         packshotWidthClass="w-[68%] max-w-[310px] lg:max-w-[400px]"
         motif={<div className="living-art h-full w-full"><LivingBotanical className="h-full w-full" /></div>}
@@ -163,7 +164,7 @@ export function CookingOilView({ pillar }: { pillar: Pillar }) {
         title="cooking oil?"
         body="Tell us your monthly volume and delivery area – we'll come back quickly with bulk pricing and a reliable supply schedule for your kitchen or production line."
         primaryLabel={pillar.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
       />
     </>
   );
