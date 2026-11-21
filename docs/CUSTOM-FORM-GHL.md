@@ -22,12 +22,27 @@ as the fallback and is not modified.
 | 3 | Additional workflow trigger | **Contact Tag → Tag Added → `cuisine-custom-form-submitted`**, added *next to* the existing Form Submitted trigger. No action, filter or setting downstream is changed. |
 | 4 | Private Integration token | Runtime scopes: View Contacts, Edit Contacts. Nothing else. (Creating items 1–2 through the API would additionally need Edit Tags and Edit Custom Fields; creating them by hand needs no token change.) |
 
-Approved in principle, NOT created yet: one attribution field. Recommended type **Multi Line
-(Large Text)**, name e.g. "Website attribution". The server writes one line such as
-`utm_source=facebook&utm_campaign=…&fbclid=…`, capped at 1,500 characters. GHL publishes no
-official character limit; community reports put multi-line fields at roughly 12,000 and give
-no figure for single-line, which is why multi-line is recommended. A field's type cannot be
-changed after creation. Compatibility is confirmed only by the first test write (§7).
+Approved, NOT created yet: one Contact custom field **Website attribution**, type **Multi Line
+(Large Text)**. Mapping the server writes (one `key: value` per line, this order, only the keys
+that are present, 200 characters per value, 1,500 in total):
+
+```
+utm_source: facebook
+utm_medium: paid
+utm_campaign: <campaign>
+utm_content: <ad>
+utm_term: <term>
+fbclid: <Meta click id from the ad URL>
+gclid: <Google click id, if any>
+fbc: <Meta _fbc cookie, only when the pixel is on>
+fbp: <Meta _fbp cookie, only when the pixel is on>
+landing_page: /quote
+```
+
+It is written once, when a NEW contact is created, and only when `GHL_FIELD_ATTRIBUTION` holds
+the field's ID. GHL publishes no official character limit (community reports: about 12,000 for
+multi-line), and a field's type cannot be changed after creation. The first test write is the
+compatibility check.
 
 ## 2. Which workflows get the new trigger
 
@@ -74,12 +89,13 @@ Candidates to test before choosing (none is enabled):
 | B | Update the contact, remove + re-apply the tag | Re-entry is on AND the opportunity action does not allow duplicates |
 | C | Leave the contact unchanged, add a task for its owner | Task API permission; how reps are notified of tasks |
 
-## 4. Meta Pixel (prepared, off)
+## 4. Meta Pixel (built; on only where `NEXT_PUBLIC_META_PIXEL_ENABLED=true`)
 
 - Pixel `2662434760785009` – the same pixel the official form uses.
 - Off unless `NEXT_PUBLIC_META_PIXEL_ENABLED=true` for that Vercel environment.
-- PageView once per funnel page load; Lead only after the server confirms the save, with an
-  event id so it cannot be sent twice.
+- PageView once per funnel page load, including the `/quote` selection page. Lead only after
+  the server confirms BOTH the contact save and the trigger tag, with an event id so it cannot
+  be sent twice. A failed or retried submission sends no Lead.
 - Loaded only with the custom form. The official embed fires the pixel itself, so the two are
   never loaded together on purpose; if a visitor falls back to the embed after a failed
   submission, the embed adds one extra PageView (no extra Lead).

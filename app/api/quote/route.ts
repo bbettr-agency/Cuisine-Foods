@@ -53,7 +53,7 @@ function cleanAttribution(input: unknown): Record<string, string> {
   const out: Record<string, string> = {};
   for (const key of ATTRIBUTION_KEYS) {
     const value = src[key];
-    if (typeof value === "string" && value.trim()) out[key] = value.trim().slice(0, 200);
+    if (typeof value === "string" && value.trim()) out[key] = value.replace(/[\r\n]+/g, " ").trim().slice(0, 200);
   }
   return out;
 }
@@ -142,7 +142,9 @@ export async function POST(request: Request) {
     //    contact before the workflows start. "Business Name" goes to last name, as the official form does.
     const customFields = toGhlCustomFields(payload, ucoFieldId);
     if (attributionFieldId && Object.keys(attribution).length > 0) {
-      customFields.push({ id: attributionFieldId, field_value: new URLSearchParams(attribution).toString().slice(0, 1500) });
+      // One "key: value" per line, in the documented order, capped well inside the field's size.
+      const lines = Object.entries(attribution).map(([k, v]) => `${k}: ${v}`).join("\n");
+      customFields.push({ id: attributionFieldId, field_value: lines.slice(0, 1500) });
     }
     const saved = await ghl(token, "POST", "/contacts/upsert", {
       locationId: GHL_LOCATION_ID,

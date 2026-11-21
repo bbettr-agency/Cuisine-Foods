@@ -21,6 +21,11 @@ export function captureAttribution(): Record<string, string> {
   const params = new URLSearchParams(window.location.search);
   const out: Record<string, string> = { ...saved };
   for (const key of ATTRIBUTION_KEYS) {
+    // landing_page is set once, on the first funnel page of the visit, and then kept.
+    if (key === "landing_page") {
+      if (!out.landing_page) out.landing_page = window.location.pathname.slice(0, 200);
+      continue;
+    }
     const value = key === "fbc" ? cookie("_fbc") : key === "fbp" ? cookie("_fbp") : params.get(key) ?? "";
     if (value) out[key] = value.slice(0, 200);
   }

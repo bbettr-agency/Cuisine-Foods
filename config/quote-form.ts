@@ -52,5 +52,9 @@ export const metaPixel = {
   enabled: process.env.NEXT_PUBLIC_META_PIXEL_ENABLED === "true",
 };
 
-/** Attribution parameters captured with an enquiry (allow-list; nothing else is read). */
-export const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid", "fbc", "fbp"] as const;
+/**
+ * Attribution captured with an enquiry (allow-list; nothing else is read), in the
+ * order it is written to the "Website attribution" field – one "key: value" per line.
+ * landing_page is the path the visitor first arrived on (no domain, no query string).
+ */
+export const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid", "fbc", "fbp", "landing_page"] as const;
