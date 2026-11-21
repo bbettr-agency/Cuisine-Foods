@@ -43,9 +43,10 @@ export const quoteFormCopy = {
 } as const;
 
 /**
- * META PIXEL – prepared, OFF by default. The ID is the pixel the official GHL form
- * already uses, so reporting stays in the same pixel. It only loads when
- * NEXT_PUBLIC_META_PIXEL_ENABLED is "true" (set per Vercel environment, after approval).
+ * META PIXEL – the pixel the official GHL form already uses, so reporting stays in
+ * one place. Whether it is on is decided per build in next.config.js (preview of
+ * feat/custom-form only, until production is approved). Even when on, nothing from
+ * Meta loads until the visitor allows it (components/funnel/meta-pixel.tsx).
  */
 export const metaPixel = {
   id: "2662434760785009",

@@ -32,7 +32,7 @@ export function FunnelForm({ service, embedTitle }: { service: QuoteService; emb
   if (mode === "ghl") return <GhlQuoteEmbed title={embedTitle} />;
   return (
     <>
-      {mode === "custom" && <MetaPixel />}
+      {mode === "custom" && <MetaPixel aboveStickyCta />}
       <QuoteForm service={service} onUseStandardForm={service === "buy" ? () => setMode("ghl") : undefined} />
     </>
   );

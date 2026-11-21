@@ -89,7 +89,16 @@ Candidates to test before choosing (none is enabled):
 | B | Update the contact, remove + re-apply the tag | Re-entry is on AND the opportunity action does not allow duplicates |
 | C | Leave the contact unchanged, add a task for its owner | Task API permission; how reps are notified of tasks |
 
-## 4. Meta Pixel (built; on only where `NEXT_PUBLIC_META_PIXEL_ENABLED=true`)
+## 4. Meta Pixel (built; on automatically for Preview builds of `feat/custom-form` only)
+
+Switch: decided at build time in `next.config.js` – ON when Vercel builds a Preview of
+`feat/custom-form`, or wherever `NEXT_PUBLIC_META_PIXEL_ENABLED=true` is set on purpose; OFF
+everywhere else, including production. No dashboard setting is needed for testing.
+
+Consent: nothing from Meta (script, cookie, event) loads until the visitor presses "Allow" on a
+small banner; "No thanks" is remembered and nothing loads. A Lead is sent only for visitors who
+allowed it. The official GHL embed has its own pixel and consent handling, outside this code.
+
 
 - Pixel `2662434760785009` – the same pixel the official form uses.
 - Off unless `NEXT_PUBLIC_META_PIXEL_ENABLED=true` for that Vercel environment.
