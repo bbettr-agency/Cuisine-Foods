@@ -79,7 +79,7 @@ generic failure and is offered the official GHL form.
 
 Needed in GHL before switching it on (new items only – nothing existing changes):
 
-- Tag `cuisine-repeat-enquiry`.
+- Tag `cuisine-repeat-enquiry` – **created** (ID `54Ya8V1NSc2W5zKODEGM`).
 - ONE new workflow, e.g. "Website – repeat enquiry alert":
   - Trigger: Contact Tag → Tag Added → `cuisine-repeat-enquiry`. Allow re-entry: ON.
   - If/Else on the contact's rep tag (`luewelin's lead`, `paul's lead`, `schalk's lead`,
@@ -158,6 +158,20 @@ the tag call. Step 3 is the first time they run.
 
 Single choice per question (GHL allows several); local phone numbers saved as `+27…`;
 consent wording is service-specific; GHL's own form-attribution data is not produced.
+
+## 8a. Used-oil lead routing (checked 21 Nov, read-only)
+
+- Rep allocation is not instant for ANY lead. Of the newest real form leads, the five aged
+  2–24 hours (four sunflower, one used oil) had no rep tag; every lead older than about 30
+  hours had one. New leads wait in "⭐ Cuisine Foods Gauteng" plus "Gauteng Reps (IGNORE) /
+  New Leads" until allocated, then move to a rep's sales pipeline.
+- The two used-oil test contacts sit in exactly that waiting position, with the same tags
+  (`gp lead`, `gp lead (phase2)`) the bulk test had before allocation.
+- Used-oil leads from the official form do get allocated: 22 of 25 in the last three months
+  carry a rep tag.
+- One real difference: custom-form used-oil leads have no "Estimated monthly volume" value
+  (they answer the new used-oil question instead). If the allocation step depends on volume,
+  they could be skipped. Re-check the two test contacts after the next allocation run.
 
 ## 9. Production launch checklist
 
