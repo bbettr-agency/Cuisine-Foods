@@ -3,9 +3,9 @@
  * clicks any WhatsApp link on the site; it captures five details, sends them to
  * GHL through our own server route, then continues to the ORIGINAL WhatsApp link.
  *
- * The province list is all nine provinces because this is an enquiry capture, not
- * a statement of where Cuisine Foods delivers or collects. It is deliberately
- * separate from the quote form's province question (config/ghl-fields.ts).
+ * The province list is all nine provinces. GHL's "Location" field now carries the
+ * same nine, so the value sent is spelled exactly as that field's option
+ * (see WHATSAPP_PROVINCE_VALUE) and can be mapped straight onto it.
  */
 export const WHATSAPP_PROVINCES = [
   "Gauteng",
@@ -18,6 +18,9 @@ export const WHATSAPP_PROVINCES = [
   "North West",
   "Northern Cape",
 ] as const;
+
+/** What is sent to GHL for each province: the exact option text of the "Location" field. */
+export const WHATSAPP_PROVINCE_VALUE: Record<string, string> = { "North West": "North-West" };
 
 export const WHATSAPP_LEAD_SOURCE = "Website WhatsApp Popup";
 

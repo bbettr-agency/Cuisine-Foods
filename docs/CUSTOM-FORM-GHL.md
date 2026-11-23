@@ -194,6 +194,15 @@ the on-site thank-you is the only acknowledgement a lead receives until a rep ma
 - The official GHL form is no longer shown by default anywhere. It remains as the fallback:
   rollback switch, `?form=ghl`, and the link offered after any failed submission.
 
+## 8d. National province list (23 Nov)
+
+GHL's "Location" field (`VjXdXxTnXCF12t3OPei0`) was extended, with client approval, from six
+to nine options: KwaZulu-Natal, Eastern Cape and Northern Cape were appended; the original six
+are unchanged. The quote forms list all nine (from `config/ghl-fields.ts`); the three new
+provinces have no region or area follow-up. The WhatsApp popup sends the same option text
+("North-West" with the hyphen), so its `province` can be mapped to Location. Routing for the
+three new provinces is being added to the workflows by the client.
+
 ## 9. Production launch checklist
 
 Order matters. Nothing here has been done.

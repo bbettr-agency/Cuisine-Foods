@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { ATTRIBUTION_KEYS } from "@/config/quote-form";
-import { WHATSAPP_LEAD_SOURCE, WHATSAPP_PROVINCES } from "@/config/whatsapp-popup";
+import { WHATSAPP_LEAD_SOURCE, WHATSAPP_PROVINCES, WHATSAPP_PROVINCE_VALUE } from "@/config/whatsapp-popup";
 import { normalisePhone } from "@/lib/quote-validate";
 
 /**
@@ -92,7 +92,7 @@ export async function POST(request: Request) {
     last_name: lastName,
     email,
     phone,
-    province,
+    province: WHATSAPP_PROVINCE_VALUE[province] ?? province, // spelled as GHL's "Location" option
     source: WHATSAPP_LEAD_SOURCE,
     page: clean(raw.page, 200), // path only, e.g. "/sunflower-oil"
     whatsapp_cta_message: clean(raw.whatsappMessage, 300), // the prefilled message of the button they clicked
