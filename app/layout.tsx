@@ -12,6 +12,7 @@ import { FloatingWhatsApp } from "@/components/funnel/floating-whatsapp";
 import { StickyMobileCTA } from "@/components/funnel/sticky-mobile-cta";
 import { ChromeGate } from "@/components/funnel/chrome-gate";
 import { AttributionCapture } from "@/components/funnel/funnel-link";
+import { WhatsAppLeadPopup } from "@/components/funnel/whatsapp-lead-popup";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap", weight: ["600", "700", "800"] });
@@ -49,6 +50,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd data={siteGraph()} />
         {/* Remembers ad parameters from whichever page a visitor lands on, so they reach the form. */}
         <AttributionCapture />
+        {/* One popup for every WhatsApp link on the site (all pages, including the funnels). */}
+        <WhatsAppLeadPopup />
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-700 focus:px-4 focus:py-2 focus:text-paper">
           Skip to content
         </a>

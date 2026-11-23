@@ -119,6 +119,22 @@ export function trackLead(eventId: string, service: string) {
 }
 
 /**
+ * WhatsApp popup: a "Contact" event, sent only after the server confirmed the details
+ * were delivered, only where the pixel is already running with the visitor's consent,
+ * and once per submission. It is NOT the quote form's Lead event and carries no
+ * personal details.
+ */
+export function trackWhatsAppContact(eventId: string) {
+  if (!metaPixel.enabled || typeof window === "undefined" || !window.fbq || readConsent() !== "granted") return;
+  const key = `cf_wa_${eventId}`;
+  try {
+    if (sessionStorage.getItem(key)) return;
+    sessionStorage.setItem(key, "1");
+  } catch {}
+  window.fbq("track", "Contact", { content_name: "whatsapp" }, { eventID: eventId });
+}
+
+/**
  * ResetAdChoice — the "change your mind" control on the Privacy Policy page. It
  * forgets the visitor's advertising choice, so the banner asks again on the next
  * enquiry page. It does not load anything from Meta itself.

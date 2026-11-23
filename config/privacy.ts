@@ -58,6 +58,7 @@ export const privacySections: PolicySection[] = [
           "your province and, where applicable, your region and area.",
         ],
       },
+      "If you use a WhatsApp button on this website, we first ask for your first name, last name, email address, phone number and province, so that the right person can pick up your chat. You can continue to WhatsApp without giving them.",
       "If you contact us by WhatsApp, phone or email, we also receive whatever you choose to tell us. We do not ask for identity numbers, payment card details or other special personal information through this website. Please do not send them through the enquiry forms.",
       "Campaign information. If you arrive from an advert or a link, the web address may carry campaign details (for example utm_source or utm_campaign) and click identifiers from advertising platforms (for example Meta's fbclid). If you submit an enquiry, these are saved with it, together with the page you first arrived on, so that we know which advert or link led to the enquiry.",
       "Technical information. Our hosting provider processes standard technical data needed to deliver the website, such as your IP address, your browser type and the pages requested.",
