@@ -8,6 +8,8 @@
  * stay `enabled: false` until confirmed.
  */
 
+import { openHubs, openProvincesAmp } from "@/config/coverage";
+
 export type TrustStat = { value: string; label: string; enabled: boolean; note?: string };
 export type TrustBadge = { id: string; label: string; enabled: boolean };
 export type Testimonial = {
@@ -22,7 +24,7 @@ export const trust = {
   /** Headline proof strip (shown under the hero). Only enabled items render. */
   stats: [
     { value: "Since 2009", label: "Serving SA kitchens", enabled: true, note: "PENDING: reconcile 2009 vs 15+ yrs" },
-    { value: "2", label: "Branches – Gauteng & Western Cape", enabled: true },
+    { value: String(openHubs().length), label: `Branches – ${openProvincesAmp(false)}`, enabled: true }, // operating branches only
     { value: "Family-owned", label: "Proudly South African", enabled: true },
     // Disabled until the client confirms a licence/registration — never publish an unverified "Licensed" claim.
     { value: "Documented", label: "Compliant UCO collection", enabled: false, note: "PENDING: exact licence/registration – was 'Licensed', disabled as unverified" },

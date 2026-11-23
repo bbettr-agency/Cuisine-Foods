@@ -1,3 +1,4 @@
+import { quoteHref } from "@/config/conversion";
 import type { MoneyPage } from "@/config/types";
 import { getFaqs } from "@/config/faqs";
 import { getImage } from "@/config/images";
@@ -30,7 +31,7 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
   const closing = closingFor(page);
 
   const schemaKind = page.schemaKind ?? (page.kind === "product" ? "product" : "service");
-  const quoteHref = `/request-a-quote?intent=${page.intent}${page.quoteTopic ? `&topic=${page.quoteTopic}` : ""}`;
+  const quoteLink = quoteHref(page.intent);
 
   const schema: object[] = [breadcrumbSchema(crumbs)];
   if (faqs.length) schema.push(faqPageSchema(faqs));
@@ -51,7 +52,7 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
         crumbs={crumbs}
         intent={page.intent}
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
       />
 
       {/* Lead with the value (no heading repeating the H1) + key points */}
@@ -112,7 +113,7 @@ export function MoneyPageView({ page }: { page: MoneyPage }) {
         title={closing.title}
         body={closing.body}
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
       />
     </>
   );

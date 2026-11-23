@@ -29,6 +29,8 @@ export type HubServices = {
 };
 
 export type HubAddress = {
+  /** The official address exactly as supplied by the client, one entry per line. This is what is displayed. */
+  lines: string[];
   street: string;
   suburb: string;
   city: string;
@@ -52,6 +54,7 @@ export type Hub = {
   contact?: { phone?: string; email?: string }; // falls back to site.contact when absent
   gbpUrl?: string; // Google Business Profile URL (add once the profile is live)
   opening?: string; // short note shown while planned / coming-soon
+  openingDate?: string; // confirmed opening date as displayed, e.g. "1 December 2026"
 };
 
 const gauteng: Hub = {
@@ -64,6 +67,7 @@ const gauteng: Hub = {
   services: { supply: true, ucoCollection: true, greaseTrap: true, complianceReporting: true },
   metros: ["johannesburg", "pretoria"],
   address: {
+    lines: ["591 Barolong Street, Icon Park", "Sunderland Ridge", "Centurion", "Gauteng", "0157"],
     street: "591 Barolong Street, Icon Park, Sunderland Ridge",
     suburb: "Sunderland Ridge",
     city: "Centurion",
@@ -72,8 +76,8 @@ const gauteng: Hub = {
   },
   geo: { lat: -25.8665, lng: 28.1466 },
   map: {
-    embed: "https://www.google.com/maps?q=591+Barolong+Street,+Sunderland+Ridge,+Centurion&output=embed",
-    link: "https://www.google.com/maps/search/?api=1&query=591+Barolong+Street+Sunderland+Ridge+Centurion",
+    embed: "https://www.google.com/maps?q=591+Barolong+Street,+Icon+Park,+Sunderland+Ridge,+Centurion,+0157&output=embed",
+    link: "https://www.google.com/maps/search/?api=1&query=591+Barolong+Street%2C+Icon+Park%2C+Sunderland+Ridge%2C+Centurion%2C+0157",
   },
 };
 
@@ -87,26 +91,41 @@ const westernCape: Hub = {
   services: { supply: true, ucoCollection: true, greaseTrap: true, complianceReporting: true },
   metros: ["cape-town", "northern-suburbs"],
   address: {
-    street: "34B Station Road, Montague Gardens",
+    lines: ["Unit 2", "10 Stella Road", "Montague Gardens", "Western Cape", "7442"],
+    street: "Unit 2, 10 Stella Road, Montague Gardens",
     suburb: "Montague Gardens",
-    city: "Cape Town",
-    postalCode: "7441",
+    city: "Cape Town", // metro, used for labels and schema locality; not a line of the official address
+    postalCode: "7442",
     region: "WC",
   },
+  // TO CONFIRM: suburb-level coordinates (Montague Gardens) carried over from the previous
+  // address. Replace with the exact pin for Unit 2, 10 Stella Road once verified.
   geo: { lat: -33.8741, lng: 18.5169 },
   map: {
-    embed: "https://www.google.com/maps?q=34B+Station+Road,+Montague+Gardens,+Cape+Town&output=embed",
-    link: "https://www.google.com/maps/search/?api=1&query=34B+Station+Road+Montague+Gardens+Cape+Town",
+    embed: "https://www.google.com/maps?q=Unit+2,+10+Stella+Road,+Montague+Gardens,+7442&output=embed",
+    link: "https://www.google.com/maps/search/?api=1&query=Unit+2%2C+10+Stella+Road%2C+Montague+Gardens%2C+7442",
   },
 };
 
 /**
- * KwaZulu-Natal — confirmed third regional hub, under development.
- * Status is "coming-soon" during the V2 build. All physical facts (city,
- * address, geo, contact, GBP, metros) are UNKNOWN and deliberately omitted —
- * they must come from the client before any KZN LocalBusiness/metro content is
- * emitted. `services` reflects the confirmed national model (supply + UCO);
- * grease-trap / compliance-reporting footprint for KZN is unconfirmed → false.
+ * KwaZulu-Natal — third regional hub. The client has supplied an official OFFICE
+ * ADDRESS, which is published wherever offices are listed. That is NOT a
+ * confirmation of delivery or collection service in the region: status stays
+ * "coming-soon", so no LocalBusiness schema, metro pages or operating claims are
+ * emitted, and the province page stays noindex. Geo, local contact, GBP and
+ * metros are still unknown and deliberately omitted.
+ *
+ * OPENING DAY (1 December 2026) — nothing switches by itself. When the client
+ * confirms the office is operating:
+ *   1. Set `status: "open"` below. That alone updates every status label, the
+ *      "opening …" notes, the branch count and province lists (helpers at the
+ *      bottom of this file), and makes /kwazulu-natal indexable.
+ *   2. Add `geo` (exact pin) – required before a LocalBusiness node / branch card
+ *      is emitted – plus confirmed hours, and `metros` if any.
+ *   3. Rewrite the "expanding into" hero copy in views/kwazulu-natal-view.tsx and
+ *      the literal branch wording in config/faqs.ts and app/about/page.tsx.
+ *   4. Separately, and only once confirmed: add KwaZulu-Natal to the GHL
+ *      "Location" field and routing, then to the quote form's province list.
  */
 const kwaZuluNatal: Hub = {
   id: "kwazulu-natal",
@@ -117,8 +136,21 @@ const kwaZuluNatal: Hub = {
   terminology: "regional hub",
   services: { supply: true, ucoCollection: true, greaseTrap: false, complianceReporting: false },
   metros: [], // PENDING client — do not assume Durban / Pietermaritzburg
-  opening: "Opening soon – Cuisine Foods' national coverage is expanding into KwaZulu-Natal.",
-  // address / geo / map / contact / gbpUrl intentionally omitted until verified.
+  openingDate: "1 December 2026", // client-confirmed
+  opening: "Opening 1 December 2026 – Cuisine Foods' national coverage is expanding into KwaZulu-Natal.",
+  address: {
+    lines: ["Unit 4", "2 Isongo Road", "Queensmead Industrial", "Queensburgh", "KwaZulu-Natal", "4093"],
+    street: "Unit 4, 2 Isongo Road, Queensmead Industrial",
+    suburb: "Queensmead Industrial",
+    city: "Queensburgh",
+    postalCode: "4093",
+    region: "KZN",
+  },
+  map: {
+    embed: "https://www.google.com/maps?q=Unit+4,+2+Isongo+Road,+Queensmead+Industrial,+Queensburgh,+4093&output=embed",
+    link: "https://www.google.com/maps/search/?api=1&query=Unit+4%2C+2+Isongo+Road%2C+Queensmead+Industrial%2C+Queensburgh%2C+4093",
+  },
+  // geo / contact / gbpUrl intentionally omitted until verified.
 };
 
 export const coverage = {
@@ -143,6 +175,10 @@ export const openHubs = (): Hub[] => coverage.hubs.filter((h) => h.status === "o
  *  physical facts. KZN (coming-soon, no address) is excluded until facts exist. */
 export const physicalHubs = (): Hub[] => coverage.hubs.filter((h) => h.status === "open" && !!h.address && !!h.geo && !!h.map);
 
+/** Every hub with a published office address, whatever its status (for address lists only –
+ *  an office address is not a service-area or LocalBusiness claim). */
+export const officeHubs = (): Hub[] => coverage.hubs.filter((h) => !!h.address && !!h.map);
+
 /** Province names of open hubs (regional areaServed / legacy provincesServed). */
 export const openProvinceNames = (): string[] => openHubs().map((h) => h.province);
 
@@ -157,11 +193,30 @@ export const serviceAreaNames = (key: keyof HubServices): string[] =>
 
 /** A natural-language list of the open province names ("Gauteng and the Western
  *  Cape"). Use sparingly in copy — the national message is carried elsewhere. */
-export const openProvincesPhrase = (): string => {
-  const names = openProvinceNames();
-  if (names.length <= 1) return names[0] ?? "South Africa";
-  return `${names.slice(0, -1).join(", ")} and the ${names[names.length - 1]}`;
-};
+export const openProvincesPhrase = (): string => joinProvinces(openProvinceNames(), "and", true);
+
+/** Province names in running text; "Western Cape" takes the article ("the Western Cape"). */
+function joinProvinces(names: string[], joiner: "and" | "&", withArticle: boolean): string {
+  const parts = names.map((n) => (withArticle && n === "Western Cape" ? `the ${n}` : n));
+  if (parts.length <= 1) return parts[0] ?? "South Africa";
+  return `${parts.slice(0, -1).join(", ")} ${joiner} ${parts[parts.length - 1]}`;
+}
+
+/** Open provinces with an ampersand: "Gauteng & the Western Cape" (or without the article). */
+export const openProvincesAmp = (withArticle = true): string => joinProvinces(openProvinceNames(), "&", withArticle);
+
+/** The number of OPERATING branches as a word ("Two" today; "Three" once KZN's status is "open"). */
+export const openBranchCountWord = (): string => ["No", "One", "Two", "Three", "Four", "Five"][openHubs().length] ?? String(openHubs().length);
+
+/** Status label for a hub that is not open yet: "Opening 1 December 2026", else "Opening soon". */
+export const openingLabel = (h?: Hub): string => (h?.openingDate ? `Opening ${h.openingDate}` : "Opening soon");
+
+/** The same, for mid-sentence use: "opening 1 December 2026" / "opening soon". */
+export const openingPhrase = (h?: Hub): string => openingLabel(h).replace(/^O/, "o");
+
+/** Not-yet-open hubs for running text: "KwaZulu-Natal opening 1 December 2026" ("" when none). */
+export const comingSoonPhrase = (): string =>
+  coverage.hubs.filter((h) => h.status === "coming-soon").map((h) => `${h.name} ${openingPhrase(h)}`).join(" and ");
 
 /** Region options for the lead form (all hubs + a fallback). Consumed in a later phase. */
 export const formRegions = (): { value: string; label: string }[] => [

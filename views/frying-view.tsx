@@ -1,3 +1,4 @@
+import { quoteHref } from "@/config/conversion";
 import type { MoneyPage } from "@/config/types";
 import { getFaqs } from "@/config/faqs";
 import { hrefFor, resolveRelated } from "@/lib/registry";
@@ -33,7 +34,7 @@ export function FryingView({ page }: { page: MoneyPage }) {
   const faqs = getFaqs(page.faqIds);
   const related = resolveRelated(page.relatedSlugs);
   const allRelated = [...related, ...(page.resourceLinks ?? [])];
-  const quoteHref = `/request-a-quote?intent=${page.intent}${page.quoteTopic ? `&topic=${page.quoteTopic}` : ""}`;
+  const quoteLink = quoteHref(page.intent);
 
   const schema: object[] = [breadcrumbSchema(crumbs)];
   if (faqs.length) schema.push(faqPageSchema(faqs));
@@ -56,7 +57,7 @@ export function FryingView({ page }: { page: MoneyPage }) {
         subhead={page.subhead}
         crumbs={crumbs}
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
         routes={routes}
       />
 
@@ -92,7 +93,7 @@ export function FryingView({ page }: { page: MoneyPage }) {
         title="Not sure which frying oil to order?"
         body="Tell us how your kitchen fries and your monthly volume – we'll recommend the right oil and come back with bulk pricing and a delivery schedule."
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={quoteHref}
+        primaryHref={quoteLink}
         choices={[
           { name: "Palm olein", tag: "High-volume", href: "/palm-olein" },
           { name: "Sunflower oil", tag: "Versatile", href: "/sunflower-oil" },

@@ -51,7 +51,7 @@ export function LocationProvinceView({ province }: { province: Province }) {
             <h2 className="font-display text-xl font-bold text-ink">Bulk cooking oil supply in {province.name}</h2>
             <p className="mt-2 text-ink-soft">Sunflower, palm olein & soya delivered across {province.name} on your schedule – reliable, consistent, competitively priced.</p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
-              <Button href={`/request-a-quote?intent=supply${regionQ}`}>Get a Bulk Oil Quote</Button>
+              <Button href={"/quote/buy"}>Get a Bulk Oil Quote</Button>
               <Link href="/bulk-cooking-oil-supply" className="text-sm font-semibold text-brand-700 hover:underline">Explore bulk oil supply →</Link>
             </div>
           </Reveal>
@@ -59,7 +59,7 @@ export function LocationProvinceView({ province }: { province: Province }) {
             <h2 className="font-display text-xl font-bold text-ink">Used cooking oil collection in {province.name}</h2>
             <p className="mt-2 text-ink-soft">Scheduled used-oil collection across {province.name} – we pay you for it and provide collection documentation.</p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
-              <Button href={`/request-a-quote?intent=uco${regionQ}`} variant="gold">Arrange Collection</Button>
+              <Button href={"/quote/collect"} variant="gold">Arrange Collection</Button>
               <Link href="/used-cooking-oil-collection" className="text-sm font-semibold text-brand-700 hover:underline">Explore UCO collection →</Link>
             </div>
           </Reveal>
@@ -90,7 +90,7 @@ export function LocationProvinceView({ province }: { province: Province }) {
           <div>
             <p className="eyebrow mb-3">Our {province.name} branch</p>
             <h2 className="text-h2 text-ink">{site.name} – {branch.label}</h2>
-            <p className="mt-4 text-ink-soft">{branch.street}, {branch.city}, {branch.postalCode}</p>
+            <p className="mt-4 text-ink-soft">{branch.address}</p>
             <p className="mt-1 text-sm text-ink-faint">{site.contact.hours}</p>
             <div className="mt-6"><Button href={branch.mapLink} variant="outline" external>Open in Google Maps</Button></div>
           </div>
@@ -118,7 +118,7 @@ export function LocationProvinceView({ province }: { province: Province }) {
         title={`Supplying & collecting across ${province.name}`}
         body="Get a bulk oil quote or arrange a used-oil collection today."
         primaryLabel="Get a Quote"
-        primaryHref={`/request-a-quote?intent=supply${regionQ}`}
+        primaryHref={"/quote/buy"}
       />
     </>
   );

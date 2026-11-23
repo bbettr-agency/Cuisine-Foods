@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { captureAttribution } from "@/lib/attribution";
 
 /**
  * Advertising attribution parameters that are carried between the funnel routes
@@ -54,4 +55,16 @@ export function FunnelLink({
       {children}
     </a>
   );
+}
+
+/**
+ * AttributionCapture — remembers the ad's UTM / click-id parameters and the landing
+ * path as soon as a funnel page loads (the selection page has no form to do it).
+ * Renders nothing and sends nothing; the values travel only with a submitted enquiry.
+ */
+export function AttributionCapture() {
+  useEffect(() => {
+    captureAttribution();
+  }, []);
+  return null;
 }

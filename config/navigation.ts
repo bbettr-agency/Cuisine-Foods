@@ -1,5 +1,12 @@
 /** NAVIGATION – header + footer. Labels/URLs config-driven; no hardcoded links in components. */
 
+import { getHub, openingLabel } from "@/config/coverage";
+
+// KwaZulu-Natal's status labels follow config/coverage.ts (they change when its status is set to "open").
+const kzn = getHub("kwazulu-natal");
+const kznOpen = kzn?.status === "open";
+const kznStatus = kznOpen ? "Regional hub" : openingLabel(kzn);
+
 export type NavLink = { label: string; href: string; description?: string };
 export type NavGroup = { label: string; href?: string; links: NavLink[] };
 
@@ -38,7 +45,7 @@ export const headerNav: NavGroup[] = [
       { label: "Western Cape", href: "/western-cape", description: "Cape Town & surrounds" },
       { label: "– Cape Town", href: "/western-cape/cape-town" },
       { label: "– Northern Suburbs", href: "/western-cape/northern-suburbs" },
-      { label: "KwaZulu-Natal", href: "/kwazulu-natal", description: "Opening soon" },
+      { label: "KwaZulu-Natal", href: "/kwazulu-natal", description: kznStatus },
     ],
   },
   {
@@ -90,7 +97,7 @@ export const footerNav: NavGroup[] = [
       { label: "Western Cape", href: "/western-cape" },
       { label: "Cape Town", href: "/western-cape/cape-town" },
       { label: "Northern Suburbs", href: "/western-cape/northern-suburbs" },
-      { label: "KwaZulu-Natal (soon)", href: "/kwazulu-natal" },
+      { label: kznOpen ? "KwaZulu-Natal" : "KwaZulu-Natal (opening 1 Dec)", href: "/kwazulu-natal" },
     ],
   },
   {
@@ -100,6 +107,7 @@ export const footerNav: NavGroup[] = [
       { label: "Resources", href: "/resources" },
       { label: "Contact", href: "/contact" },
       { label: "Request a Quote", href: "/request-a-quote" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
     ],
   },
 ];

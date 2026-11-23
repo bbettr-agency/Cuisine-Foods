@@ -53,16 +53,16 @@ export function Footer() {
         </div>
 
         {/* Branches (NAP) */}
-        <div className="mt-12 grid gap-6 border-t border-paper/10 pt-8 sm:grid-cols-2 lg:max-w-3xl">
-          {site.branches.map((b) => (
+        <div className="mt-12 grid gap-6 border-t border-paper/10 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+          {site.offices.map((b) => (
             <div key={b.id} className="flex gap-3 text-sm">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
               <div>
                 <p className="font-semibold text-paper">{site.name} – {b.label}</p>
                 <p className="text-paper/70">
-                  {b.street}, {b.city}, {b.postalCode}
+                  {b.address}
                 </p>
-                <p className="text-paper/50">{site.contact.hours}</p>
+                <p className="text-paper/50">{b.open ? site.contact.hours : b.statusNote}</p>
               </div>
             </div>
           ))}
@@ -70,7 +70,10 @@ export function Footer() {
 
         {/* Legal / credit */}
         <div className="mt-10 flex flex-col gap-3 border-t border-paper/10 pt-6 text-xs text-paper/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} {site.name}. All rights reserved. {site.ownership}.</p>
+          <p>
+            © {year} {site.name}. All rights reserved. {site.ownership}.{" "}
+            <Link href="/privacy-policy" className="font-medium text-paper/70 underline-offset-2 hover:text-paper hover:underline">Privacy Policy</Link>
+          </p>
           <p>
             Website designed &amp; developed by{" "}
             <a

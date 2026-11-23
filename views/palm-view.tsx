@@ -1,3 +1,4 @@
+import { quoteHref } from "@/config/conversion";
 import type { MoneyPage } from "@/config/types";
 import { getFaqs } from "@/config/faqs";
 import { getImage } from "@/config/images";
@@ -73,7 +74,7 @@ export function PalmView({ page }: { page: MoneyPage }) {
         crumbs={crumbs}
         intent={page.intent}
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
+        primaryHref={quoteHref(page.intent)}
         packshot={{ src: "/images/website/product-palm.png", w: 827, h: 1027, alt: "Cuisine Foods 100% pure palm olein – bulk pail" }}
         packshotWidthClass="w-[64%] max-w-[290px] lg:max-w-[370px]"
         motif={<div className="palm-canopy h-full w-full"><PalmBotanical className="h-full w-full" /></div>}
@@ -112,7 +113,7 @@ export function PalmView({ page }: { page: MoneyPage }) {
         title={`${page.h1.toLowerCase()}?`}
         body="Tell us your monthly volume and delivery area – we'll come back quickly with pricing and a delivery schedule that keeps a busy fryer running."
         primaryLabel={page.primaryCtaLabel}
-        primaryHref={`/request-a-quote?intent=${page.intent}&topic=${page.quoteTopic ?? ""}`}
+        primaryHref={quoteHref(page.intent)}
       />
     </>
   );

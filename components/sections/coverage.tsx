@@ -1,3 +1,4 @@
+import { openBranchCountWord } from "@/config/coverage";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { provinces } from "@/config/locations";
@@ -13,7 +14,7 @@ export function Coverage() {
       <SectionHeading
         eyebrow="Where we operate"
         title="Local to Gauteng &amp; the Western Cape"
-        intro="Two branches, two provinces, one closed-loop service – supply and collection, close to your kitchen."
+        intro={`${openBranchCountWord()} branches, ${openBranchCountWord().toLowerCase()} provinces, one closed-loop service – supply and collection, close to your kitchen.`}
         align="center"
       />
       <RevealGroup className="mt-12 grid gap-6 lg:grid-cols-2">

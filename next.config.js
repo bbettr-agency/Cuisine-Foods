@@ -20,8 +20,19 @@ const redirects = [
   { source: "/uco-report", destination: "/uco-compliance-reporting", permanent: true },
 ];
 
+/**
+ * Meta Pixel switch, decided at build time so it needs no dashboard setting:
+ *  - ON for Vercel PREVIEW builds of the feat/custom-form branch only (testing).
+ *  - ON anywhere NEXT_PUBLIC_META_PIXEL_ENABLED is explicitly "true".
+ *  - OFF everywhere else, including production, until that variable is set on purpose.
+ */
+const pixelOnThisBuild =
+  process.env.NEXT_PUBLIC_META_PIXEL_ENABLED === "true" ||
+  (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_GIT_COMMIT_REF === "feat/custom-form");
+
 const nextConfig = {
   reactStrictMode: true,
+  env: { NEXT_PUBLIC_META_PIXEL_ENABLED: pixelOnThisBuild ? "true" : "" },
   poweredByHeader: false,
   images: {
     // No remote/placeholder hosts. Real images live in /public/images (per SYSTEM/08).

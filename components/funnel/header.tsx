@@ -135,7 +135,7 @@ export function Header() {
             <Phone className="h-4 w-4" aria-hidden />
             {site.contact.phone.display}
           </a>
-          <Button href="/request-a-quote" size="md" variant="primary">
+          <Button href="/quote" size="md" variant="primary">
             {cta.quote}
           </Button>
         </div>
@@ -196,7 +196,7 @@ export function Header() {
               </div>
             ))}
             <div className="mt-6 grid grid-cols-1 gap-3">
-              <Button href="/request-a-quote" size="lg" variant="primary">
+              <Button href="/quote" size="lg" variant="primary">
                 {cta.quote}
               </Button>
               <div className="grid grid-cols-2 gap-3">
