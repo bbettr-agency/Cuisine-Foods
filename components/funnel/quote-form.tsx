@@ -221,7 +221,10 @@ export function QuoteForm({ service, onUseStandardForm }: { service: QuoteServic
                   aria-describedby={errors.consent ? `${uid}-consent-err` : undefined}
                   className="mt-0.5 h-5 w-5 shrink-0 rounded border-ink/30 accent-[rgb(var(--gold-600))]"
                 />
-                <span>{copy.consent[service]}</span>
+                <span>
+                  {copy.consent[service]}{" "}
+                  <a href="/privacy-policy" target="_blank" rel="noopener" className="font-semibold text-ink underline decoration-gold-500 decoration-2 underline-offset-2">Privacy Policy</a>
+                </span>
               </label>
               {errors.consent && <p id={`${uid}-consent-err`} className="mt-2 text-sm font-medium text-red-700">{errors.consent}</p>}
             </div>

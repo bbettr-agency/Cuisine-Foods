@@ -11,6 +11,7 @@ export function FunnelFooter() {
         <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
           <a href={telUrl} className="hover:text-paper">{site.contact.phone.display}</a>
           <a href={`mailto:${site.contact.email}`} className="hover:text-paper">{site.contact.email}</a>
+          <a href="/privacy-policy" target="_blank" rel="noopener" className="hover:text-paper">Privacy Policy</a>
           <Link href="/" className="hover:text-paper">Main website</Link>
         </p>
       </div>

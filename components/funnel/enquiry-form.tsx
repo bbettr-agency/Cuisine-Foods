@@ -43,6 +43,10 @@ export function EnquiryForm({ initial = "buy" }: { initial?: QuoteService }) {
       </div>
       {/* key: switching service starts a fresh form for that journey */}
       <FunnelForm key={service} service={service} embedTitle={current.embedTitle} pixelSide="left" />
+      <p className="mt-4 text-center text-sm text-ink-faint">
+        How we handle your details:{" "}
+        <a href="/privacy-policy" className="font-semibold text-ink underline decoration-gold-500 decoration-2 underline-offset-2">Privacy Policy</a>
+      </p>
     </div>
   );
 }

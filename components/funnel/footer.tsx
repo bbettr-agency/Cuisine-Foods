@@ -70,7 +70,10 @@ export function Footer() {
 
         {/* Legal / credit */}
         <div className="mt-10 flex flex-col gap-3 border-t border-paper/10 pt-6 text-xs text-paper/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} {site.name}. All rights reserved. {site.ownership}.</p>
+          <p>
+            © {year} {site.name}. All rights reserved. {site.ownership}.{" "}
+            <Link href="/privacy-policy" className="font-medium text-paper/70 underline-offset-2 hover:text-paper hover:underline">Privacy Policy</Link>
+          </p>
           <p>
             Website designed &amp; developed by{" "}
             <a

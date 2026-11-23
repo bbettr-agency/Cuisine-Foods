@@ -6,6 +6,7 @@ import { buyers } from "@/config/buyers";
 import { provinces, metros } from "@/config/locations";
 import { articles, clusters } from "@/config/resources";
 import { hrefFor } from "@/lib/registry";
+import { privacyPolicy } from "@/config/privacy";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url.replace(/\/$/, "");
@@ -24,6 +25,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const entries: MetadataRoute.Sitemap = [];
+
+  // The privacy policy joins the sitemap once it has been confirmed and reviewed.
+  if (privacyPolicy.reviewed) staticPaths.push([privacyPolicy.path, 0.3]);
 
   for (const [p, priority] of staticPaths) {
     entries.push({ url: url(p), lastModified: now, changeFrequency: "monthly", priority });

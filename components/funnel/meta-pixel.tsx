@@ -87,7 +87,8 @@ export function MetaPixel({ aboveStickyCta = false, side = "right" }: { aboveSti
       )}
     >
       <p className="text-sm leading-relaxed text-ink-soft">
-        <span className="font-semibold text-ink">Help us measure our adverts?</span> With your permission we use the Meta Pixel to see which adverts lead to enquiries. Your choice does not affect your request.
+        <span className="font-semibold text-ink">Help us measure our adverts?</span> With your permission we use the Meta Pixel to see which adverts lead to enquiries. Your choice does not affect your request.{" "}
+        <a href="/privacy-policy#cookies" target="_blank" rel="noopener" className="font-semibold text-ink underline decoration-gold-500 decoration-2 underline-offset-2">Privacy Policy</a>
       </p>
       <div className="mt-3 flex gap-2">
         <button type="button" onClick={() => choose("granted")} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full bg-ink px-4 text-sm font-semibold text-paper transition-colors hover:bg-ink/85">
@@ -115,4 +116,30 @@ export function trackLead(eventId: string, service: string) {
     sessionStorage.setItem(key, "1");
   } catch {}
   window.fbq("track", "Lead", { content_name: service }, { eventID: eventId });
+}
+
+/**
+ * ResetAdChoice — the "change your mind" control on the Privacy Policy page. It
+ * forgets the visitor's advertising choice, so the banner asks again on the next
+ * enquiry page. It does not load anything from Meta itself.
+ */
+export function ResetAdChoice() {
+  const [done, setDone] = useState(false);
+  return (
+    <p className="mt-5">
+      <button
+        type="button"
+        onClick={() => {
+          try {
+            localStorage.removeItem(CONSENT_KEY);
+          } catch {}
+          setDone(true);
+        }}
+        className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-ink/25 px-5 text-sm font-semibold text-ink transition-colors hover:border-ink/55"
+      >
+        Reset my advertising choice
+      </button>
+      {done && <span role="status" className="ml-3 text-sm text-ink-soft">Done – you will be asked again on our enquiry pages.</span>}
+    </p>
+  );
 }

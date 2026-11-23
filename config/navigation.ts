@@ -107,6 +107,7 @@ export const footerNav: NavGroup[] = [
       { label: "Resources", href: "/resources" },
       { label: "Contact", href: "/contact" },
       { label: "Request a Quote", href: "/request-a-quote" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
     ],
   },
 ];
